@@ -7,6 +7,5 @@ public class JoinDao {
  int c =3;
  int aa=1;
  int cc=1;
- int ddd=1;
  
 }
