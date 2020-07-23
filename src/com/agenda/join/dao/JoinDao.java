@@ -8,20 +8,33 @@ public class JoinDao {
  int aa=1;
  int cc=1;
 
- String a = "박서윤";
- String b = "박서윤";
- String c = "박서윤";
- String d = "박서윤";
+ String name = "자영";
+ 
+ 
+ String a = "諛뺤꽌�쑄";
+ String b = "諛뺤꽌�쑄";
+ String c = "諛뺤꽌�쑄";
+ String d = "諛뺤꽌�쑄";
+ 
+ 
  int dd = 2;
  int eee=3;
+ 
+ 
  String eeee="test";
+ 
+ 
  char aee ='e';
  char asdf ='e';
+ 
+ 
  int asdfasdf = 4;
  int asdfa = 5;
  int asdfja = 122;
  int as = 1;
  int asdfasd = 2;
  int adfsdf =4;
+ 
+ 
  
 }
