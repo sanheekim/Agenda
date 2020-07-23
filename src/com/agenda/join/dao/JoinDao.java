@@ -20,5 +20,8 @@ public class JoinDao {
  int asdfasdf = 4;
  int asdfa = 5;
  int asdfja = 122;
+ int as = 1;
+ int asdfasd = 2;
+ int adfsdf =4;
  
 }
