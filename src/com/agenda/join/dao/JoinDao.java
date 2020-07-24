@@ -10,10 +10,10 @@ public class JoinDao {
 
 
  
- String d = "諛뺤꽌�쑄";
- String e = "諛뺤꽌�쑄";
- String f = "諛뺤꽌�쑄";
- String g = "諛뺤꽌�쑄";
+ String d = "네";
+ String e = "네";
+ String f = "네";
+ String g = "네";
  
  
  int dd = 2;
