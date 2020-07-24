@@ -8,7 +8,7 @@ public class JoinDao {
  int aa=1;
  int cc=1;
 
- String a = "박서윤";
+ String a = "박서윤"; 
  String b = "박서윤";
  String c = "박서윤";
  String d = "박서윤";
