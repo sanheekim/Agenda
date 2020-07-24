@@ -13,9 +13,8 @@ public class JoinDao {
  int eee=3;
  
  
- String eeee="test";
- 
- String name ="짜영";
+ String eeee="자영";
+
  
  char aee ='e';
  char asdf ='e';
