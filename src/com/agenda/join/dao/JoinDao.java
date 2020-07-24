@@ -14,8 +14,8 @@ public class JoinDao {
  
  
  String eeee="test";
- String seoyoon="seoyoon";
  String seo="yoon";
+ String yoon="seo";
  
  
  char aee ='e';
