@@ -3,6 +3,7 @@
 
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,11 +12,11 @@
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="javascript.fullPage.css">
     <script src="javascript.fullPage.min.js"></script>
-    <link rel="stylesheet"  type="text/css" href="main/main.css">
+    <link rel="stylesheet"  type="text/css" href="main.css">
 </head>
 <body>
     <header>
-
+  	  <jsp:include page="../header/header.jsp" />
     </header>
     <section id="fullpage">
 
@@ -166,5 +167,5 @@
       'slideSelector': '.slide',
   });
 </script>
-<script type="text/javascript" src="main/main.js"></script>
+<script type="text/javascript" src="main.js"></script>
 </html>
