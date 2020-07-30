@@ -11,7 +11,7 @@ public class MyinfoSqlMapConfig {
 	private SqlSessionFactory sqlSessionFactory;
 	
 	public SqlSessionFactory getSqlSessionFactory() {
-		String resource="com/agenda/myinfo/config.xml";
+		String resource="com/agenda/myinfo/MyInfoconfig.xml";
 		Reader reader = null;
 		
 		try {
