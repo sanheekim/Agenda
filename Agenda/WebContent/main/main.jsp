@@ -11,8 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" type="text/css" href="javascript.fullPage.css">
-    <script src="javascript.fullPage.min.js"></script>
-    <link rel="stylesheet"  type="text/css" href="main.css">
+    <script src="${pageContext.request.contextPath}/main/javascript.fullPage.min.js"></script>
+    <link rel="stylesheet"  type="text/css" href="${pageContext.request.contextPath}/main/main.css">
 </head>
 <body>
     <header>
@@ -167,5 +167,5 @@
       'slideSelector': '.slide',
   });
 </script>
-<script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/main/main.js"></script>
 </html>
