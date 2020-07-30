@@ -14,7 +14,7 @@ h2 { /*헤더 투명도*/
 	opacity: 0.5;
 }
 
-h1 { /*페이지 이름*/
+.wrapper #h1 { /*페이지 이름*/
 	position: absolute;
 	left: 5%;
 	right: 0%;
@@ -34,8 +34,12 @@ h1 { /*페이지 이름*/
 	cursor: pointer;
 }
 
-h1 img {
-	position: absolute; width: 32px; height: 30px; left: -40px; top: 12px;
+.wrapper #h1 img {
+	position: absolute; 
+	width: 32px; 
+	height: 30px; 
+	left: -40px; 
+	top: 12px;
 }
 
 .sidenav { /*메뉴*/
