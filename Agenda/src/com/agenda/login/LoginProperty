@@ -1,0 +1,5 @@
+driver = oracle.jdbc.driver.OracleDriver
+url = jdbc:oracle:thin:@qclass.iptime.org:1521:xe
+
+username = bigmaster02_semi
+password = semi
