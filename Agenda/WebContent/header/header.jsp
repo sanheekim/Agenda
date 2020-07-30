@@ -15,10 +15,7 @@
 	<header>
 		<div class="wrapper">
 			<h2></h2>
-			<h1>
-				<img src="${pageContext.request.contextPath}/header/resources/img/medicine.png"
-					style="position: absolute; width: 32px; height: 30px; left: -40px; top: -8px;">AH.GENDA
-			</h1>
+			<h1><img src="${pageContext.request.contextPath}/header/resources/img/medicine.png">AH.GENDA</h1>
 			<nav>
 				<ul class="menu">
 					<li><a href="#"><span class="login"><button id="로그인">Log in</button></span></a></li>
@@ -30,20 +27,20 @@
 		<div id="mySidenav" class="sidenav">
 			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 			<p>SERVICE</p>
-			<a href="#" onmouseover="this.innerHTML='&nbsp;ABC'"
+			<a href="#" onmouseover="this.innerHTML='&nbsp;Medication check'"
 				onmouseout="this.innerHTML='&nbsp;의약품조회'"">의약품조회</a> 
 			<a href="#"
-				onmouseover="this.innerHTML='&nbsp;DEF'"
+				onmouseover="this.innerHTML='&nbsp;Finding Pharmacy'"
 				onmouseout="this.innerHTML='&nbsp;약국찾기'""><span>약국찾기</span></a> 
-			<a href="#" onmouseover="this.innerHTML='&nbsp;GHI'"
+			<a href="#" onmouseover="this.innerHTML='&nbsp;Prescription'"
 				onmouseout="this.innerHTML='&nbsp;처방전'""><span>처방전</span></a> <br>
 			<br>
 			<br>
 			<p>NOTICE</p>
-			<a href="#" onmouseover="this.innerHTML='&nbsp;123'"
+			<a href="#" onmouseover="this.innerHTML='&nbsp;Notice'"
 				onmouseout="this.innerHTML='&nbsp;공지사항'"">공지사항</a>
 			<p>SUPPORT</p>
-			<a href="#" onmouseover="this.innerHTML='&nbsp;456'"
+			<a href="#" onmouseover="this.innerHTML='&nbsp;Questions and Answers'"
 				onmouseout="this.innerHTML='&nbsp;Q&A'"">Q&A</a>
 		</div>
 

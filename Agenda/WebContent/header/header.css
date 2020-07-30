@@ -34,6 +34,10 @@ h1 { /*페이지 이름*/
 	cursor: pointer;
 }
 
+h1 img {
+	position: absolute; width: 32px; height: 30px; left: -40px; top: 12px;
+}
+
 .sidenav { /*메뉴*/
 	height: 100%; /*메뉴길이*/
 	width: 0; /*호버하기전 메뉴너비*/
