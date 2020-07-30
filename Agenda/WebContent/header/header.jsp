@@ -17,7 +17,7 @@
 			<h2></h2>
 			<h1><img src="${pageContext.request.contextPath}/header/resources/img/medicine.png">AH.GENDA</h1>
 			<nav>
-				<ul class="menu">
+				<ul class="menu"><!--  -->
 					<li><a href="#"><span class="login"><button id="로그인">Log in</button></span></a></li>
 					<li><a href="#"><span class="reg"><button id="회원가입">Register</button></span></a></li>
 					<li><a href="#"><span class="list" onclick="openNav()">&#9776;</span></a></li>

@@ -40,7 +40,7 @@ h1 img {
 
 .sidenav { /*메뉴*/
 	height: 100%; /*메뉴길이*/
-	width: 0; /*호버하기전 메뉴너비*/
+	width: 0; /*호버하기전 메뉴너.비*/
 	position: fixed;
 	z-index: 1;
 	top: 0;
