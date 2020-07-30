@@ -49,11 +49,11 @@ public class LoginController extends HttpServlet {
 				session.setAttribute("dto",dto);
 				session.setMaxInactiveInterval(10*60);
 				// User, Admin 구분하지 않고 바로 main으로 보내기
-				RequestDispatcher dispatch = request.getRequestDispatcher("메인페이지로 보내기");
+				RequestDispatcher dispatch = request.getRequestDispatcher("main/main.jsp");
 				dispatch.forward(request, response);
 				//response.sendRedirect(".login/main.jsp");
 				
-			
+				
 //			if(dto.getMember_role().equals("ADMIN")) {				
 //				
 //		    RequestDispatcher dispatch = request.getRequestDispatcher("login/loginAdmin.jsp");
