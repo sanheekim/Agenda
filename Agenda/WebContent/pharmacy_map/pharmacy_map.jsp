@@ -12,16 +12,16 @@
 <html>
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" type="text/css" href="pharmacy_map.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/pharmacy_map/pharmacy_map.css">
 </head>
 <body>
 	<header>
-		<h1 style="text-align: center">헤더영역</h1>
+		<jsp:include page="../header/header.jsp" />
 	</header>
 
 	<section>
 		<div id="map_header">
-		<h1>약국찾기</h1>
+		<h2>약국찾기</h2>
 		<hr>
 		</div>
 		<div class="map_wrap">
@@ -32,9 +32,13 @@
 			</div>
 		</div>
 	</section>
+	
+	<footer>
+		<jsp:include page="../footer/mainFooter.jsp" />
+	</footer>
 
 </body>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bbd355e231cd5468c69e01f2e5801a5d&libraries=services"></script>
-<script src="pharmacy_map.js"></script>
+<script src="${pageContext.request.contextPath}/pharmacy_map/pharmacy_map.js"></script>
 </html>
