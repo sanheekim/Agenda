@@ -55,7 +55,7 @@ System.out.println("컨트롤러로 넘어옴");
 				
 				
 				// User, Admin 구분하지 않고 바로 main으로 보내기
-				RequestDispatcher dispatch = request.getRequestDispatcher("main/main.jsp");
+				RequestDispatcher dispatch = request.getRequestDispatcher("header/loginMain.jsp");
 				dispatch.forward(request, response);
 				//response.sendRedirect("main/main.jsp");
 				
@@ -75,12 +75,12 @@ System.out.println("컨트롤러로 넘어옴");
 //				dispatch.forward(request,response);			
 //				response.sendRedirect(".login/loginUser.jsp");
 //			}			
-		}
+			}else {
+				response.sendRedirect("login/logingForm.jsp");
+			}
 			
-			
-		
-		}
 
+		}
 
 	}
 
