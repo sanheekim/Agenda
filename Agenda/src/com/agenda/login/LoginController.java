@@ -17,7 +17,7 @@ public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public LoginController() {
-
+System.out.println("컨트롤러로 넘어옴");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -42,16 +42,22 @@ public class LoginController extends HttpServlet {
 
 			LoginDao dao = new LoginDao();
 			LoginDto dto  = dao.login(member_id, member_pw);
+			
+			
 			HttpSession session = request.getSession();
 			
 			
 			if(dto != null) {
+				
+				
 				session.setAttribute("dto",dto);
 				session.setMaxInactiveInterval(10*60);
+				
+				
 				// User, Admin 구분하지 않고 바로 main으로 보내기
 				RequestDispatcher dispatch = request.getRequestDispatcher("main/main.jsp");
 				dispatch.forward(request, response);
-				//response.sendRedirect(".login/main.jsp");
+				//response.sendRedirect("main/main.jsp");
 				
 				
 //			if(dto.getMember_role().equals("ADMIN")) {				
