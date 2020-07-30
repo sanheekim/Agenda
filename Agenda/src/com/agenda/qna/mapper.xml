@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.agenda.qna">
+	<resultMap type="QNADto" id="ResultMap">
+		<result property="qna_no" column="QNA_NO" />
+		<result property="qna_title" column="QNA_TITLE" />
+		<result property="qna_content" column="QNA_CONTENT" />
+		<result property="qna_regdate" column="QNA_REGDATE" />
+		<result property="qna_hit" column="QNA_HIT" />
+		<result property="qna_delflag" column="QNA_DELFLAG" />
+		<result property="member_id" column="MEMBER_ID" />
+	</resultMap>
+
+	<select id="selectList" resultMap="ResultMap">
+	<![CDATA[
+		SELECT QNA_NO, QNA_TITLE, QNA_CONTENT, QNA_REGDATE, QNA_HIT, QNA_DELFLAG, MEMBER_ID
+ 		FROM (SELECT QNA_NO, QNA_TITLE, QNA_CONTENT, QNA_REGDATE, QNA_HIT, QNA_DELFLAG, MEMBER_ID,ROWNUM AS RNUM
+		        FROM (SELECT QNA_NO, QNA_TITLE, QNA_CONTENT, QNA_REGDATE, QNA_HIT, QNA_DELFLAG, MEMBER_ID FROM AG_QNA ORDER BY QNA_NO)A
+		 			  WHERE ROWNUM <= #{startNum})
+		WHERE RNUM >= #{endNum}
+		ORDER BY QNA_NO DESC
+	]]>
+	</select>
+
+	<select id="selectOne" parameterType="int" resultType="QNADto">
+		SELECT QNA_NO, QNA_TITLE, QNA_CONTENT, QNA_REGDATE, QNA_HIT, QNA_DELFLAG, MEMBER_ID
+		FROM AG_QNA
+		WHERE QNA_NO = #{QNA_NO}
+	</select>
+	
+	<select id="count" resultType="int">
+ 		SELECT COUNT(*) as count FROM AG_QNA
+ 	</select>
+
+	<insert id="insert" parameterType="QNADto">
+		INSERT INTO AG_QNA
+		VALUES
+		(QNA_NO_SEQ.NEXTVAL, #{qna_title}, #{qna_content}, SYSDATE, 0, 'N', null)
+	</insert>
+
+	<update id="update" parameterType="QNADto">
+		UPDATE AG_QNA
+		SET QNA_TITLE = #{qna_title}, QNA_CONTENT = #{qna_content}
+		WHERE QNA_NO = #{qna_no}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		DELETE FROM AG_QNA
+		WHERE QNA_NO = #{qna_no}
+	</delete>
+	
+</mapper>
