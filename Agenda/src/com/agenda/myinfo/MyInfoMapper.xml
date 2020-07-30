@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="myInfomapper">
+	<resultMap type="myInfoDto" id="myInfoMap">
+		<result property ="member_id" column="MEMBER_ID"/>
+		<result property ="member_name" column="MEMBER_NAME"/>
+		<result property ="member_email" column="MEMBER_EMAIL"/>
+		<result property ="member_addr" column="MEMBER_ADDR"/>
+	</resultMap> <!-- 결과를 연결해주는것: 컬럼값을 프로퍼티에다가(setSeq) 넣어주겠따 -->
+ 
+ 	
+ 	<select id="selectOne" parameterType="String" resultMap="myInfoMap">
+		SELECT MEMBER_ID, MEMBER_NAME, MEMBER_EMAIL, MEMBER_ADDR
+ 		FROM AG_MEMBER
+		WHERE MEMBER_ID = #{member_id} 	
+ 	</select>
+ 	
+ 
+ 	
+ 	
+ 	<update id = "update" parameterType="myInfoDto">
+ 		UPDATE AG_MEMBER
+ 		SET MEMBER_EMAIL = #{member_email}, MEMBER_ADDR = #{member_addr}
+ 		WHERE MEMBER_ID = #{member_id}
+ 	</update>
+ 	
+ 	
+ 	<update id="delete" parameterType="String">
+ 		UPDATE AG_MEMBER
+ 		SET MEMBER_ENABLED = 'Y'
+ 		WHERE MEMBER_ID = #{member_id}
+ 	</update> 
+ 	
+ 		
+
+</mapper>
