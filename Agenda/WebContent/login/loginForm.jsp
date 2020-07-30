@@ -49,7 +49,7 @@
 
     <div class=login__bottom>
     
-			<form action="../LoginController" method="post">
+			<form action="com.agenda.login/LoginController" method="post">
 			
 				<input type="hidden" name="command" value="login" />
 				
