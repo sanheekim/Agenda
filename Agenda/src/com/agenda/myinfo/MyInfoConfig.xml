@@ -2,7 +2,7 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
 
-	<properties resource="com/agenda/common/db.properties"/>
+	<properties resource="com/agenda/common/db.Properties"/>
 	
 	<typeAliases>
 		<typeAlias type="com.agenda.myinfo.MyinfoDto" alias="myInfoDto"/>
