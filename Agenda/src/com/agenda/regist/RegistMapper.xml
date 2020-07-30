@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.agenda.regist.RegistMapper">
+	
+	<resultMap type="RegistDto" id="RegistMap">
+		<result property="member_id" column="MEMBER_ID"/>
+		<result property="member_pw" column="MEMBER_PW"/>
+		<result property="member_name" column="MEMBER_NAME"/>
+		<result property="member_addr" column="MEMBER_ADDR"/>
+		<result property="member_enabled" column="MEMBER_ENABLED"/>
+		<result property="member_token" column="MEMBER_TOKEN"/>
+		<result property="member_salt" column="MEMBER_SALT"/>
+		<result property="member_phone" column="MEMBER_PHONE"/>
+		<result property="member_no" column="MEMBER_NO"/>
+	</resultMap> 
+	<!---->
+		
+	<select id="selectOne" parameterType="int" resultMap="AG_MEMBERMap">
+		SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_ADDR, MEMBER_ENABLED,
+			   MEMBER_TOKEN, MEMBER_SALT, MEMBER_PHONE, MEMBER_NO
+		FROM AG_MEMBER
+		WHERE MEMBER_NO = #{SEQ}
+	</select>
+		
+	<insert id="insert" parameterType="RegistDto">
+		INSERT INTO AG_MEMBER
+		VALUES(#{MEMBER_ID}, #{member_id}, #{member_name}, #{member_addr}, #{member_enabled}, #{member_token}
+						   , #{member_salt}, #{member_phone}, #{member_no}, AG_MEMBER.NEXTVAL)
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		DELETE FROM AG_MEMBER
+		WHERE MEMBER_ID = #{member_id}
+	</delete>
+	
+</mapper>
