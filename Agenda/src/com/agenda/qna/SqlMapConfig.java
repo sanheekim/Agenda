@@ -7,8 +7,6 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-
-
 public class SqlMapConfig {
 	
 	//모든 마이바티스 애플리케이션은 SqlSessionFactory 인스턴스를 사용한다

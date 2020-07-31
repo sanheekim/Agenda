@@ -13,41 +13,68 @@
 	</resultMap>
 
 	<select id="selectList" resultMap="ResultMap">
-	<![CDATA[
-		SELECT QNA_NO, QNA_TITLE, QNA_CONTENT, QNA_REGDATE, QNA_HIT, QNA_DELFLAG, MEMBER_ID
- 		FROM (SELECT QNA_NO, QNA_TITLE, QNA_CONTENT, QNA_REGDATE, QNA_HIT, QNA_DELFLAG, MEMBER_ID,ROWNUM AS RNUM
-		        FROM (SELECT QNA_NO, QNA_TITLE, QNA_CONTENT, QNA_REGDATE, QNA_HIT, QNA_DELFLAG, MEMBER_ID FROM AG_QNA ORDER BY QNA_NO)A
-		 			  WHERE ROWNUM <= #{startNum})
-		WHERE RNUM >= #{endNum}
-		ORDER BY QNA_NO DESC
-	]]>
+		SELECT * 
+		FROM (
+			  SELECT ROWNUM AS rn, A.* 
+			  FROM (
+					SELECT ROWNUM, QNA_NO, QNA_TITLE, QNA_CONTENT, QNA_REGDATE, QNA_HIT, QNA_DELFLAG, MEMBER_ID 
+					FROM AG_QNA A
+			<choose>
+				<when test="searchOption == 'all'">
+					WHERE (member_id like '%'||#{keyword}||'%'
+					OR qna_content like '%'||#{keyword}||'%'
+					OR qna_title like '%'||#{keyword}||'%')
+				</when>
+				<otherwise>
+					WHERE ${searchOption} like '%'||#{keyword}||'%'
+				</otherwise>
+			</choose>
+			ORDER BY qna_no DESC
+					) A
+			) 
+		WHERE rn BETWEEN #{start} AND #{end}
+	</select>
+	
+	<select id="listCount" resultType="int">
+		SELECT COUNT(*) FROM AG_QNA
+		<choose>
+				<when test="searchOption == 'all'">
+					WHERE (member_id like '%'||#{keyword}||'%'
+					OR qna_content like '%'||#{keyword}||'%'
+					OR qna_title like '%'||#{keyword}||'%')
+				</when>
+				<otherwise>
+					WHERE ${searchOption} like '%'||#{keyword}||'%'
+				</otherwise>
+		</choose>
 	</select>
 
 	<select id="selectOne" parameterType="int" resultType="QNADto">
-		SELECT QNA_NO, QNA_TITLE, QNA_CONTENT, QNA_REGDATE, QNA_HIT, QNA_DELFLAG, MEMBER_ID
+		SELECT
+		QNA_NO, QNA_TITLE, QNA_CONTENT, QNA_REGDATE, QNA_HIT, QNA_DELFLAG, MEMBER_ID
 		FROM AG_QNA
 		WHERE QNA_NO = #{QNA_NO}
 	</select>
-	
-	<select id="count" resultType="int">
- 		SELECT COUNT(*) as count FROM AG_QNA
- 	</select>
+
 
 	<insert id="insert" parameterType="QNADto">
 		INSERT INTO AG_QNA
 		VALUES
-		(QNA_NO_SEQ.NEXTVAL, #{qna_title}, #{qna_content}, SYSDATE, 0, 'N', null)
+		(QNA_NO_SEQ.NEXTVAL, #{qna_title}, #{qna_content}, SYSDATE, 0, 'N',
+		null)
 	</insert>
 
 	<update id="update" parameterType="QNADto">
 		UPDATE AG_QNA
-		SET QNA_TITLE = #{qna_title}, QNA_CONTENT = #{qna_content}
+		SET QNA_TITLE =
+		#{qna_title}, QNA_CONTENT = #{qna_content}
 		WHERE QNA_NO = #{qna_no}
 	</update>
 
 	<delete id="delete" parameterType="int">
 		DELETE FROM AG_QNA
-		WHERE QNA_NO = #{qna_no}
+		WHERE QNA_NO
+		= #{qna_no}
 	</delete>
 	
 </mapper>

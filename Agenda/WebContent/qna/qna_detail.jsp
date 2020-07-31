@@ -48,7 +48,7 @@
 						<input type="button" value="수정하기"
 						onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=update&qna_no=${detail.qna_no }'">
 						<input type="button" value="목록으로"
-						onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=list'"> 
+						onclick="location.href='${pageContext.request.contextPath}/qna/index.jsp'"> 
 						<input type="button" value="글삭제"
 						onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=delete&qna_no=${detail.qna_no }'">
 					</td>

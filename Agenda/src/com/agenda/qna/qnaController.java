@@ -1,7 +1,9 @@
 package com.agenda.qna;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,7 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 
 @WebServlet("/qnaController.do")
 public class qnaController extends HttpServlet {
@@ -32,24 +33,36 @@ public class qnaController extends HttpServlet {
 		QNADao dao = new QNADao();
 		
 		if (command.equals("list")) {
-			int page = 1;
-
-			if (request.getParameter("page") != null) {
-				page = Integer.parseInt(request.getParameter("page"));
-				System.out.println("페이지" + page);
-			}
 			
-			Paging paging = new Paging();
-			int count = dao.getAllCount();
+			String searchOption = request.getParameter("searchOption");
+			String keyword = request.getParameter("keyword");
+			int curPage = Integer.parseInt(request.getParameter("curPage"));
+			
+			System.out.println("서치옵션 : " + searchOption + " 키워드 : " + keyword + " 현재 페이지 : " + curPage);
+				
+			// 레코드의 갯수 계산
+			
+			int count = dao.listCount(searchOption, keyword);
+			System.out.println("글 개수 : " + count);
 
-			paging.setTotalcount(count);
-			paging.setPage(page);
-
-			List<QNADto> list = dao.selectList(paging);
-
-			request.setAttribute("list", list);
-			request.setAttribute("boardpaging", paging);
-
+			// 페이지 나누기 관련 처리
+			BoardPager boardPager = new BoardPager(count, curPage);
+			
+			// 페이지당 게시물 수 - 완료
+			int start = boardPager.getPageBegin();
+			int end = boardPager.getPageEnd();
+			
+			List<QNADto> list = dao.selectList(start, end, searchOption, keyword);
+			
+			// 데이터를 맵에 저장
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("list", list); // list
+			map.put("count", count); // 레코드의 갯수
+			map.put("searchOption", searchOption); // 검색옵션
+			map.put("keyword", keyword); // 검색키워드
+			map.put("boardPager", boardPager);
+			
+			request.setAttribute("map", map);
 			dispatch("qna/qna_list.jsp", request, response);
 			
 		} else if (command.equals("write")) {
@@ -65,7 +78,7 @@ public class qnaController extends HttpServlet {
 			int res = dao.insert(dto);
 
 			if (res > 0) {
-				response.sendRedirect("qnaController.do?command=list");
+				response.sendRedirect("qnaController.do?command=list&curPage=1&searchOption=all&keyword=");
 			} else {
 				String msg = "작성 실패!";
 				jsResponse(msg, "qnaController.do?command=write", request, response);

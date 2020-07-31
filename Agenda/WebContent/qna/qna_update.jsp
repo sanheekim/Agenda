@@ -49,7 +49,7 @@
 					<td colspan="2">
 					<input type="submit" value="수정" onclick="formSubmit()"> 
 					<input type="button" value="취소"
-						onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=list'"></td>
+						onclick="location.href='${pageContext.request.contextPath}/qna/index.jsp'"></td>
 				</tr>
 			</table>
 		</form>
