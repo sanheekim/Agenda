@@ -26,9 +26,9 @@
 	<section>
 		<h1>Q & A</h1>
 		<hr>
-		<form action="${pageContext.request.contextPath}/qnaController.do?" method="post">
-			${map.count}개의 게시물이 있습니다.
+		<form action="${pageContext.request.contextPath}/qnaController.do" method="post">
 			<input type="hidden" name="command" value="list">
+			${map.count}개의 게시물이 있습니다.
 			<table>
 			
 				<tr>
