@@ -74,3 +74,13 @@ fieldset {
 	border: none;
 	text-align: right;
 }
+
+.paging{
+	border : 1px solid red;
+	display: flex;
+}
+
+.list{
+	list-style: none;
+	display: flex;
+}

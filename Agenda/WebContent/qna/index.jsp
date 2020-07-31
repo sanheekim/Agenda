@@ -4,8 +4,6 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +12,7 @@
 </head>
 <body>
 
-	<jsp:forward page="qnaController.do?command=list"></jsp:forward>
+	<jsp:forward page="..//qnaController.do?command=list&curPage=1&searchOption=all&keyword="></jsp:forward>
 	
 </body>
 </html>

@@ -3,78 +3,68 @@ package com.agenda.qna;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.apache.ibatis.session.SqlSession;
 
 public class QNADao extends SqlMapConfig {
 	
 	private String namespace = "com.agenda.qna.";
 	
-//	//글목록
-//	public List<QNADto> selectList(){
-//		SqlSession session = null;
-//		List<QNADto> list = null;
-//		
-//		try {
-//			session = getSqlSessionFactory().openSession(false);
-//			list = session.selectList(namespace+"selectList");
-//			System.out.println(">>"+session);
-//		} catch(Exception e) {
-//			e.printStackTrace();
-//			System.out.println("[ERROR] 3.4.");
-//		} finally {
-//			session.close();			
-//		}
-//		return list;
-//	}
-	
-	public List<QNADto> selectList(Paging boardPager){
-		int startNum = boardPager.getStartNum();
-		int endNum = boardPager.getEndNum();
-		System.out.println("페이지의 게시물 시작번호" + startNum + " 끝번호" + endNum);
-		
-		Map<String, Integer> map = new HashMap<String, Integer>();
-		map.put("startNum", startNum);
-		map.put("endNum", endNum);
+	//게시글 리스트
+	public List<QNADto> selectList(int start, int end, String searchOption, String keyword) {
 		
 		SqlSession session = null;
-		List<QNADto> boardpaging = null;
+		List<QNADto> list = null;
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("searchOption", searchOption);
+		map.put("keyword", keyword);
+		// BETWEEN #{start}, #{end}에 입력될 값
+		map.put("start", start);
+		map.put("end", end);
 		
 		try {
 			session = getSqlSessionFactory().openSession(false);
-			boardpaging = session.selectList(namespace+"selectList", map);
-			System.out.println("dao list 성공");
+			list = session.selectList(namespace+"selectList", map);
+			System.out.println(">>"+session+"dao 글 보기 성공");
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.out.println("[ERROR] dao");
+			System.out.println("[ERROR] 3.4.");
+		} finally {
+			session.close();
+		}
+		
+		return list;
+	}
+	
+		
+	//게시글 수 countArticle(
+	public int listCount(String searchOption, String keyword) {
+		
+		SqlSession session = null;
+		int res = 0;
+		
+		// 검색옵션, 키워드 맵에 저장
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("searchOption", searchOption);
+		map.put("keyword", keyword);
+		
+		try {
+			session = getSqlSessionFactory().openSession(false);
+			res = session.selectOne(namespace+"listCount", map);
+			System.out.println(">>"+session+"dao 글 카운트 성공");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("[ERROR] 3.4.");
 		} finally {
 			session.close();
 			System.out.println("dao종료");
 		}
 		
-		return boardpaging;
-		
-	}
-	
-	public int getAllCount() {
-		SqlSession session = null;
-		int count = 0;
+		return res;
 
-		try {
-			session = getSqlSessionFactory().openSession(false);
-			count = session.selectOne(namespace + "count");
-			System.out.println("dao getAllCount 성공");
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("[ERROR] dao");
-		} finally {
-			session.close();
-			System.out.println("dao종료");
-		}
-
-		return count;
 	}
-	
 	
 	//글상세내용
 	public QNADto selectOne(int qna_no) {
