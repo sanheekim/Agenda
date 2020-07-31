@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/header/header.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/header/loginMain.css" type="text/css" media="screen" />
 <title>Insert title here</title>
 </head>
 <body>
@@ -19,7 +19,7 @@
 			<nav>
 				<ul class="menu"><!--  -->
 					<li><a href="myinfo/myinfoUpdate.jsp"><span class="mypage"><button id="마이페이지">Mypage</button></span></a></li>
-					<li><a href="regist/registForm.jsp"><span class="logout"><button id="로그아웃">Log out</button></span></a></li>
+					<li><a href=""><span class="logout"><button id="로그아웃">Log out</button></span></a></li>
 					<li><a href="#"><span class="list" onclick="openNav()">&#9776;</span></a></li>
 				</ul>
 			</nav>
