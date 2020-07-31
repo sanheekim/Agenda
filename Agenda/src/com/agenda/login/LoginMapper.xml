@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.agenda.regist.RegistMapper">
+<mapper namespace="com.agenda.login.LoginMapper">
  
-<resultMap type="loginDto" id="LoginMap">
+<resultMap type="logindto" id="Logindto">
 
 	<id     property = "member_id" column ="MEMBER_ID"/>
 	<result property = "member_pw" column= "MEMBER_PW"/>
@@ -22,13 +22,14 @@
 
 <!-- login sql문 작성  -->
 
-<select id="login" parameterType="loginDto" resultType="loginDto" >
+<select id="login" parameterType="loginDto" resultType="logindto" >
 
 	SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL,
-		   MEMBER_ADDR, MEMBER_PHONE, MEMBER_ENABLED, MEMBER_ROLE,MEMBER_SALT
+		   MEMBER_ADDR, MEMBER_PHONE, MEMBER_ENABLED, MEMBER_ROLE, MEMBER_TOKEN, MEMBER_SALT
 	FROM   AG_MEMBER 
-	WHERE  MEMBER_ID = #{member_id} AND MEMBER_PW = #{member_pw}
-	
+	WHERE  MEMBER_ID = #{member_id}
+	AND    MEMBER_PW = #{member_pw}
+	<!-- AND    MEMBER_ENABLED = #{member_enabled}-->
 </select>
 
 </mapper>

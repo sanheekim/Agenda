@@ -6,18 +6,21 @@ public class LoginDao extends LoginSqlMapConfig{
 	
 	private String namespace="com.agenda.login.LoginMapper.";
 	
-	public LoginDto login(String member_id, String member_pw) {
+	public LoginDto login(LoginDto idpw) {
 		
 		SqlSession session = null;
-		LoginDto logindto = new LoginDto(member_id,member_pw);
-
+		LoginDto logindto = null;
+		
+		
 		try {
 			session = getSqlSessionFactory().openSession(false);
-			logindto = session.selectOne(namespace+"login",logindto);
+			logindto = session.selectOne(namespace+"login", idpw);
 			
 		} catch (Exception e) {
 			
 			e.printStackTrace();
+		} finally {
+			session.close();
 		}
 		return logindto;
 	}

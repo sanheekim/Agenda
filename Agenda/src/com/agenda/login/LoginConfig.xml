@@ -4,11 +4,12 @@
 
 
 
-<properties resource="com/agenda/login/LoginProperty"/>
+<properties resource="com/agenda/login/db.properties"/>
 
 <settings>
-        <setting name="cacheEnabled" value="false" />
-        <setting name="jdbcTypeForNull" value="NULL" />
+       <!--  <setting name="cacheEnabled" value="false" />
+        <setting name="jdbcTypeForNull" value="NULL" /> -->
+        <setting name="jdbcTypeForNull" value="VARCHAR" />
 </settings>
 
 <typeAliases>

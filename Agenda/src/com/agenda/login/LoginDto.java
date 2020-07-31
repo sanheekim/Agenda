@@ -7,11 +7,12 @@ public class LoginDto {
 	private String member_name;
 	private String member_email;
 	private String member_addr;
+	private String member_phone;
 	private String member_enabled;
 	private String member_role;
 	private String member_token;
 	private String member_salt;
-	private String member_phone;
+	
 	
 	public LoginDto() {
 	
@@ -34,7 +35,7 @@ public class LoginDto {
 	}
 	
 	
-	//login : member_id, member_id 
+	//login : member_id, member_pw
 	
 	public LoginDto (String member_id, String member_pw) {
 		this.member_id = member_id;
@@ -42,7 +43,14 @@ public class LoginDto {
 
 	}
 	
-	//일반유저: id,pw,name,addr,phone,email
+	public LoginDto (String member_id, String member_pw,String member_enabled) {
+		this.member_id = member_id;
+		this.member_pw = member_pw;
+		this.member_enabled = member_enabled;
+
+	}
+	
+	//일반유저정보보기: id,pw,name,addr,phone,email
 	public LoginDto(String member_id, String member_pw, String member_name, String member_email,String member_addr,
 			String member_phone) {
 		

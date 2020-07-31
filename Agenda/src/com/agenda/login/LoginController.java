@@ -17,7 +17,7 @@ public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public LoginController() {
-System.out.println("컨트롤러로 넘어옴");
+				System.out.println("컨트롤러로 넘어옴");
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -37,27 +37,37 @@ System.out.println("컨트롤러로 넘어옴");
 		//로그인페이지
 		if(command.equals("login")) {
 			
+			HttpSession session = request.getSession();
 			String member_id = request.getParameter("member_id");
 			String member_pw = request.getParameter("member_pw");
 
 			LoginDao dao = new LoginDao();
-			LoginDto dto  = dao.login(member_id, member_pw);
+//			dao.login(member_id, member_pw);
+			
+			LoginDto input  = new LoginDto(member_id,member_pw);
+			LoginDto dto = dao.login(input);
+			System.out.println("dto="+dto);
 			
 			
-			HttpSession session = request.getSession();
+			System.out.println(member_id);
+			System.out.println(member_pw);
+	
+			
+			
+			
+			
 			
 			
 			if(dto != null) {
 				
-				
 				session.setAttribute("dto",dto);
 				session.setMaxInactiveInterval(10*60);
 				
-				
+				System.out.println("DTO 있음  = mypage main으로 보냄");
 				// User, Admin 구분하지 않고 바로 main으로 보내기
 				RequestDispatcher dispatch = request.getRequestDispatcher("header/loginMain.jsp");
 				dispatch.forward(request, response);
-				//response.sendRedirect("main/main.jsp");
+				//response.sendRedirect("header/loginMain.jsp");
 				
 				
 //			if(dto.getMember_role().equals("ADMIN")) {				
@@ -74,20 +84,34 @@ System.out.println("컨트롤러로 넘어옴");
 //				RequestDispatcher dispatch = request.getRequestDispatcher("login/loginUser.jsp");
 //				dispatch.forward(request,response);			
 //				response.sendRedirect(".login/loginUser.jsp");
-//			}			
-			}else {
-				response.sendRedirect("login/logingForm.jsp");
-			}
+//			}
+				
+				
+			} else {
+				System.out.println("dto is null : login form 으로 다시 보냄");
+				loginResponse("아이디 또는 비밀번호가 틀렸습니다","loginForm.jsp",response);
+				//response.sendRedirect("login/loginForm.jsp"); 
 			
+			}
+			 
 
 		}
 
 	}
 
-	private void dispatch(HttpServletRequest request, HttpServletResponse response, String url)
-			throws ServletException, IOException {
-		RequestDispatcher dispatch = request.getRequestDispatcher(url);
-		dispatch.forward(request, response);
+	
+	public void loginResponse(String msg, String url, HttpServletResponse response) throws IOException {
+		String js = "<script type = 'text/javascript'>"
+					+"alert('"+msg+"');"
+					+"location.href='"+url+"';"
+					+"</script>";
+		
+		response.getWriter().append(js);
 	}
-
+	
+	 private void dispatch(HttpServletRequest request, HttpServletResponse
+	  response, String url) throws ServletException, IOException {
+	 RequestDispatcher dispatch = request.getRequestDispatcher(url);
+	 dispatch.forward(request, response); }
+	 
 }
