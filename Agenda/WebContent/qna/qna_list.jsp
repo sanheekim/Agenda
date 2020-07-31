@@ -14,8 +14,8 @@
 <title>Insert title here</title>
 <script>
 	// 원하는 페이지로 이동시 검색조건, 키워드 값을 유지하기 위해 
-	function list(page){
-		location.href="${pageContext.request.contextPath}/qnaController.do?command=list&curPage="+page+"&searchOption=${map.searchOption}"+"&keyword=${map.keyword}";
+	function list(curPage){
+		location.href="${pageContext.request.contextPath}/qnaController.do?command=list&curPage="+curPage+"&searchOption=${map.searchOption}"+"&keyword=${map.keyword}";
 	}
 </script>
 </head>
@@ -28,6 +28,7 @@
 		<hr>
 		<form action="${pageContext.request.contextPath}/qnaController.do" method="post">
 			<input type="hidden" name="command" value="list">
+			<input type="hidden" name="curPage" value="1">
 			${map.count}개의 게시물이 있습니다.
 			<table>
 			
