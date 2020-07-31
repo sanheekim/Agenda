@@ -40,7 +40,7 @@
      <div class="login__top">
 
       
-          <img class="login__icon" src="/imgs/favicon.png" alt="logo"  href="" />
+          <img class="login__icon" src="login/imgs/favicon.png" alt="logo"  href="" />
           
           
         <div class="login__title">로그인</div>
@@ -85,15 +85,21 @@
 
 
       <div class="login__submit__api">
+      
         <div class="login__submit__kakao">
-          <button type="submit">카카오계정으로 로그인</button></div>
+             <a href="#"><img id=kakao__btn  src="imgs/카카오버튼.png"/></a>
+         </div>
          
           <div class="login__submit__google">
-           <img id=naver__btn  src="imgs/구글버튼.png"/></div>
+           		<a href="#"><img id=google__btn  src="imgs/구글버튼.png"/></a>
+           </div>
          
             <div class="login__submit__naver">
-              <a href="<%=apiURL%>"><img id=naver__btn  src="imgs/네아로버튼.png"/></a>
-              </div>
+              	<a href="<%=apiURL%>"><img id=naver__btn  src="imgs/네아로버튼.png"/></a>
+            </div>
+            
+            
+        </div>
       </div>
 
   </body>

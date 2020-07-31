@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +16,6 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-
 
 @WebServlet("/LoginNaverInfo.do")
 public class LoginNaverInfo extends HttpServlet {
@@ -77,47 +77,45 @@ public class LoginNaverInfo extends HttpServlet {
 			br.close();
 			
 			
-			System.out.println("resp값"+resp.toString());
-			
-			
+			System.out.println("resp값="+resp.toString());
 			JSONParser parser = new JSONParser();
 			JSONObject result = (JSONObject)parser.parse(resp.toString());
+			System.out.println("result값=" + result);
 			
 			
-			System.out.println("result값+++" + result);
 			
+			String name = (String) ((JSONObject)result.get("response")).get("name");
+			System.out.println(name);
 			
-			((JSONObject)result.get("resp")).get("email");
-			
-			
-			String email = (String)((JSONObject)result.get("resp")).get("email");
-			String name = (String)((JSONObject)result.get("resp")).get("name");
+			String email = (String)((JSONObject)result.get("response")).get("email");
 			System.out.println(email);
 			
-
+			String id = (String)((JSONObject)result.get("response")).get("id");
+			System.out.println(id);
+		
 			
-			System.out.println("email : " + email);
-			System.out.println("name  : " + name);			
-			System.out.println(response.toString());
+			session.setAttribute("member_id", name);
+			session.setAttribute("member_email", email);
+			session.setAttribute("member_name", name);
 			
-			session.setAttribute("id", name);
-			session.setAttribute("email", email);
-			session.setAttribute("name", name);
+			System.out.println(session);
 			
-			
-			
-
-			//resultMap을 만들어서 dto에 email 이랑 name alias를 만들기 뮬어보기
-			
-			
+			if(session != null) {
+				
+				System.out.println("session이 null이 아니면 넘어가라 ");
+				RequestDispatcher dispatch = request.getRequestDispatcher("regist/registForm.jsp");
+				dispatch.forward(request, response);		
+			}
 			
 			
 		} catch (Exception e) {
 
+		
 			System.out.println(e);
 		}
 
 	}
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

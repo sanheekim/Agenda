@@ -31,7 +31,7 @@ input[type="password"] {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid red;
+  border: 2px solid red;
   justify-content: space-between;
 }
 .login__icon {
@@ -48,13 +48,8 @@ input[type="password"] {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  border: 1px solid orange;
-}
-
-.cancel {
-  border: 1px solid green;
-  font-size: 12px;
+  align-items: center; 
+  width:300px;
 }
 
 .cancelbtn {
@@ -70,7 +65,7 @@ button {
   background-color: black;
   color: white;
   padding: 3px 3px;
-  margin: 8px 0;
+  margin: 10px 0;
   border: none;
   cursor: pointer;
   width: 300px;
@@ -87,12 +82,17 @@ button:hover {
   margin: 0 0;
   margin: auto;
   text-align: center;
+  width:300px;
 }
-.login__submit__kakao > button {
+
+.login__submit__api  i{
+	border: 1px solid black;
+}
+/* .login__submit__kakao > button {
   color: black;
   background-color: yellow;
   text-align: center;
-}
+} */
 
 
 .login__submit__naver{
@@ -100,12 +100,22 @@ button:hover {
   width:100%;
    
 }
-
+.login__submit__kakao{
+	width:300px;
+}
 
 .login__submit__remember {
   font-size: 13px;
 }
-
+#google__btn{
+	border:1px solid grey;
+}
+#kakao__btn{
+	border:1px solid grey;
+}
+#naver__btn{
+	border:1px solid grey;
+}
 span.psw {
   float: right;
   padding-top: 16px;
