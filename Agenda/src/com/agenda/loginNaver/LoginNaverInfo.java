@@ -103,7 +103,7 @@ public class LoginNaverInfo extends HttpServlet {
 			if(session != null) {
 				
 				System.out.println("session이 null이 아니면 넘어가라 ");
-				RequestDispatcher dispatch = request.getRequestDispatcher("regist/registForm.jsp");
+				RequestDispatcher dispatch = request.getRequestDispatcher("regist/NaverRegistForm.jsp");
 				dispatch.forward(request, response);		
 			}
 			
