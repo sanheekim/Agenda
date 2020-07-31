@@ -89,8 +89,9 @@ public class LoginController extends HttpServlet {
 		else if (command.equals("logout")) {
 
 			// session 객체가 가진 값 삭제
+			loginResponse("로그아웃되셨습니다", "lmain/main.jsp", response);
 			session.invalidate();
-			response.sendRedirect("main/main.jsp");
+			//response.sendRedirect("main/main.jsp");
 
 		}
 
