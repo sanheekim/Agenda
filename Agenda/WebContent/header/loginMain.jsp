@@ -19,7 +19,7 @@
 			<nav>
 				<ul class="menu"><!--  -->
 					<li><a href="myinfo/myinfoUpdate.jsp"><span class="mypage"><button id="마이페이지">Mypage</button></span></a></li>
-					<li><a href=""><span class="logout"><button id="로그아웃">Log out</button></span></a></li>
+					<li><a href="LoginController?command=logout"><span class="logout"><button id="로그아웃">Log out</button></span></a></li>
 					<li><a href="#"><span class="list" onclick="openNav()">&#9776;</span></a></li>
 				</ul>
 			</nav>
