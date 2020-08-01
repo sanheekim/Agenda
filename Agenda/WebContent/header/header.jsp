@@ -20,7 +20,7 @@
 <body>
 	<header>
 		<div class="wrapper">
-			<div id="header-bar">
+			<div id="header-bar" onclick="location.href='${pageContext.request.contextPath}/main/main.jsp'">
 				<img src="${pageContext.request.contextPath}/header/resources/img/medicine.png">
 				<span>AH.GENDA</span>
 			</div>
