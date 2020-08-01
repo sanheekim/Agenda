@@ -21,7 +21,7 @@ input[type="password"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid red;
+ /*  border: 2px solid red; */
   margin-top:200px;
    
   
@@ -31,7 +31,7 @@ input[type="password"] {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 2px solid red;
+ 
   justify-content: space-between;
 }
 .login__icon {
@@ -42,7 +42,7 @@ input[type="password"] {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 1px solid blue;
+
 }
 .login__submit__api {
   display: flex;
@@ -103,7 +103,10 @@ button:hover {
 .login__submit__kakao{
 	width:300px;
 }
-
+#kakao-login-btn{
+	width:300px;
+	height:35px;
+}
 .login__submit__remember {
   font-size: 13px;
 }

@@ -27,14 +27,14 @@
 			<nav>
 				<ul class="header-menu">
 					<li>
-						<a href="login/loginForm.jsp">
+						<a href="${pageContext.request.contextPath}/login/loginForm.jsp">
 						<span class="login">
 						<button id="로그인">Log in</button>
 						</span>
 						</a>
 					</li>
 					<li>
-						<a href="regist/registForm.jsp">
+						<a href="${pageContext.request.contextPath}/regist/registForm.jsp">
 						<span class="reg">
 						<button id="회원가입">Register</button>
 						</span>
