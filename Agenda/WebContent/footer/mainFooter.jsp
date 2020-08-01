@@ -8,7 +8,6 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/footer/footer.js"></script>
 	
 <script src="https://kit.fontawesome.com/fa4588ee5d.js"></script>
-
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -50,8 +49,6 @@
 							class="footer__icon__youtube"> <i class="fas fa-mobile-alt"></i>
 						</a>
 					</div>
-
-
 
 				</div>
 			</div>
