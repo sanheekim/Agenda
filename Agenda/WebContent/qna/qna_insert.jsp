@@ -18,9 +18,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<header>
-		<h1 align="center">헤더 영역</h1>
-	</header>
+  	<jsp:include page="../header/header.jsp" />
 	<section>
 		<h1>Q&A 글작성</h1>
 		<hr>
@@ -48,6 +46,7 @@
 			</table>
 		</form>
 	</section>
+    <jsp:include page="../footer/mainFooter.jsp" />
 	<script
 		src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 	<script>

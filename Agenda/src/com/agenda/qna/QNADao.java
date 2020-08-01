@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
-public class QNADao extends SqlMapConfig {
+public class QNADao extends QNASqlMapConfig {
 	
 	private String namespace = "com.agenda.qna.";
 	

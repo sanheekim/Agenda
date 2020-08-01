@@ -21,8 +21,9 @@
 </head>
 
 <body>
-	<header>
-	</header>
+
+   <jsp:include page="../header/header.jsp" />
+    
 	<section>
 		<h1>Q & A</h1>
 		<hr>
@@ -109,11 +110,9 @@
 					</td>
 				</tr>
 				<!-- 페이징끝 -->
-				
 			</table>
 		</form>
 	</section>
-	<footer>
-	</footer>
+	<jsp:include page="../footer/mainFooter.jsp" />
 </body>
 </html>

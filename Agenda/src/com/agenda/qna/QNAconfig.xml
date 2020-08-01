@@ -21,7 +21,7 @@
 	</environments>
 
 	<mappers>
-		<mapper resource="com/agenda/qna/mapper.xml" />
+		<mapper resource="com/agenda/qna/QNAmapper.xml" />
 	</mappers>
 
 </configuration>

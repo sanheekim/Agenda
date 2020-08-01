@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/qnaController.do")
-public class qnaController extends HttpServlet {
+public class QNAController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -46,7 +46,7 @@ public class qnaController extends HttpServlet {
 			System.out.println("글 개수 : " + count);
 
 			// 페이지 나누기 관련 처리
-			BoardPager boardPager = new BoardPager(count, curPage);
+			QNABoardPager boardPager = new QNABoardPager(count, curPage);
 			
 			// 페이지당 게시물 수 - 완료
 			int start = boardPager.getPageBegin();

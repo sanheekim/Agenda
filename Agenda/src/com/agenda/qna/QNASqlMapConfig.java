@@ -7,7 +7,7 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-public class SqlMapConfig {
+public class QNASqlMapConfig {
 	
 	//모든 마이바티스 애플리케이션은 SqlSessionFactory 인스턴스를 사용한다
 	private SqlSessionFactory sqlSessionFactory;
@@ -15,7 +15,7 @@ public class SqlMapConfig {
 	public SqlSessionFactory getSqlSessionFactory() {
 		
 		//생성한 config 파일이 존재하는 경로 설정
-		String resource ="com/agenda/qna/qnaconfig.xml";
+		String resource ="com/agenda/qna/QNAconfig.xml";
 		Reader reader = null;
 		
 		try {
