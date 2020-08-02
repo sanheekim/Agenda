@@ -23,6 +23,8 @@ public class LoginDao extends LoginSqlMapConfig{
 			session.close();
 		}
 		return logindto;
+		
+		
 	}
 	
 }
