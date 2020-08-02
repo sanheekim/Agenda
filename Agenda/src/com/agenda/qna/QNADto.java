@@ -11,14 +11,14 @@ public class QNADto {
 	private String qna_content;
 	private Date qna_regdate;
 	private int qna_hit;
-	private char qna_delflag;
+	private String qna_delflag;
 	private String member_id;
 
 	public QNADto() {
 
 	}
 
-	public QNADto(int qna_no, String qna_title, String qna_content, Date qna_regdate, int qna_hit, char qna_delflag,
+	public QNADto(int qna_no, String qna_title, String qna_content, Date qna_regdate, int qna_hit, String qna_delflag,
 			String member_id) {
 		this.qna_no = qna_no;
 		this.qna_title = qna_title;
@@ -86,11 +86,11 @@ public class QNADto {
 		this.qna_hit = qna_hit;
 	}
 
-	public char getQna_delflag() {
+	public String getQna_delflag() {
 		return qna_delflag;
 	}
 
-	public void setQna_delflag(char qna_delflag) {
+	public void setQna_delflag(String qna_delflag) {
 		this.qna_delflag = qna_delflag;
 	}
 

@@ -30,7 +30,7 @@
 		<form action="${pageContext.request.contextPath}/qnaController.do" method="post">
 			<input type="hidden" name="command" value="list">
 			<input type="hidden" name="curPage" value="1">
-			${map.count}개의 게시물이 있습니다.
+			총 ${map.count}개의 게시물이 있습니다.
 			<table>
 			
 				<tr>
@@ -43,8 +43,10 @@
 				
 				
 				<c:forEach var="row" items="${map.list}">
+				<c:choose>
+					<c:when test="${row.qna_delflag == 'N' }">
 					<tr>
-						<td>${row.qna_no}</td>
+						<td>${row.qna_no} </td>
 						<!-- 게시글 상세보기 페이지로 이동시 게시글 목록페이지에 있는 검색조건, 키워드, 현재페이지 값을 유지하기 위해 -->
 						<td><a
 							href="${pageContext.request.contextPath}/qnaController.do?command=detail&qna_no=${row.qna_no}">${row.qna_title}
@@ -53,7 +55,19 @@
 						<td>${row.qna_regdate}</td>
 						<td><!-- 조회수 --></td>
 					</tr>
+					</c:when>
+					<c:otherwise>
+					<tr>
+						<td>${row.qna_no}</td>
+						<td><span>삭제된 글 입니다</span></td>
+						<td><!-- 작성자 --></td>
+						<td>${row.qna_regdate}</td>
+						<td><!-- 조회수 --></td>
+					</tr>
+					</c:otherwise>
+					</c:choose>
 				</c:forEach>
+				
 				
 				<!-- 검색 -->
 				<tr>
@@ -110,6 +124,7 @@
 					</td>
 				</tr>
 				<!-- 페이징끝 -->
+				
 			</table>
 		</form>
 	</section>
