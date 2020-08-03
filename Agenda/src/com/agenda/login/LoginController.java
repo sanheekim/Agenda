@@ -111,22 +111,22 @@ public class LoginController extends HttpServlet {
 			FindDto.setMember_email(member_email);
 
 			dto = dao.findid(FindDto);
-			String member_id = dto.getMember_id();
-			request.setAttribute("member_id", member_id);
 			
-			
-			
-			if (member_id == null) {
-				
-				loginResponse("찾으시는 아이디가 존재하지 않습니다.","login/loginForgotId.jsp",response);
-				//RequestDispatcher dispatch = request.getRequestDispatcher("login/loginSearchFalse.jsp");
-				//dispatch.forward(request, response);
-
-			} else {
-
+		
+			if (dto != null) {
+				String member_id = dto.getMember_id();
+				request.setAttribute("member_id", member_id);
 				RequestDispatcher dispatch = request.getRequestDispatcher("login/loginSearchId.jsp");
 				dispatch.forward(request, response);
+
+			} else {
+				
+				//response.sendRedirect("login/loginForgotId.jsp");
+				
+				loginResponse("찾으시는 아이디가 존재하지 않습니다.","login/loginForgotId.jsp",response);
+				
 			}
+			
 		}
 
 		/*
