@@ -6,13 +6,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/medilockerscan/mediLockerScanMain.css" >
+<script type="text/javascript" src="${pageContext.request.contextPath}/medilockerscan/mediLockerScanMain.js"></script>
 </head>
 <body>
 	<header>
 		<jsp:include page="../header/loginMain.jsp"></jsp:include>
 	</header>
 	<div id="LockerMainDiv">
-		<h2>처방전 보관함</h2>
+		<div id="LockerThemeDiv">
+			<h2>처방전 보관함</h2>
+			<button onclick="upload();">SCAN</button>
+		</div>
 		<div id="LockerSubDiv">
 			<div id="LockerListDiv">
 				<div>2020.08.03 처방전1</div>
