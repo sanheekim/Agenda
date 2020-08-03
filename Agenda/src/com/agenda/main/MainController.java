@@ -23,14 +23,14 @@ public class MainController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("text/html; charset=UTF-8");
-		
+		System.out.println("");
 		String command = request.getParameter("command");
 		System.out.println("[" + command + "]");
 		
 		if(command.equals("mediSearch")) {
 			response.sendRedirect("medisearch/mediSearch.jsp");
 		}else if(command.equals("mediLocker")) {
-			
+			response.sendRedirect("medilockerscan/mediLockerScanMain.jsp");
 		}else if(command.equals("findPharm")) {
 			response.sendRedirect("pharmacy_map/pharmacy_map.jsp");
 		}else if(command.equals("notice")){
