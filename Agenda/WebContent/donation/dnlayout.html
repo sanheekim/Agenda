@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Donation</title>
+<script src="https://cdn.bootpay.co.kr/js/bootpay-3.2.6.min.js" type="application/javascript"></script>
+<script src="http://code.jquery.com/jquery-3.5.1.js"></script>
+<style type="text/css">
+
+	body{
+ 		margin: 0 0;
+ 		padding: 0 0;
+	}
+	
+	#donation {
+		display:flex;
+		flex-direction:column;
+		align-items:center;
+		width: 100vw;
+		height: 100vh;
+	}
+	
+	#dn_top {
+		display:flex;
+		justify-content:center;
+		width: 1200px;
+		height: 250px;
+	}
+	
+	#dn_title {
+		display:flex;
+		justify-content:center;
+		align-items:center;
+		font-family: Montserrat;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 64px;
+		line-height: 72px;
+		letter-spacing: -0.015em;
+		color: #000000;		
+	}
+	
+	#dn_bottom {
+		position: relative;
+		width: 1200px;
+		top: 600;
+		display: flex;
+		align-items: center;
+		justify-content:space-around;
+	}
+	
+	.dn_box {
+		/* position: relative; */
+		width: 230px;
+		height: 580px;
+		top: 373px;
+		bottom: 40px;
+	}
+	
+	.dn_img {
+		top: 373;
+		width: 180px;
+		height: 180px;
+		background: #DCDCDC;
+		display: flex;
+		align-items: center;
+		justify-content:space-around;
+		cursor: pointer;
+		border: 1px solid #d7d7d7;
+		color: gray;
+	}
+	
+	.sentences {
+		width: 180px;
+		height: 300px;
+		top: 617px;
+		bottom: 40px;
+	}
+</style>
+<script src="https://cdn.bootpay.co.kr/js/bootpay-3.2.6.min.js" type="application/javascript"></script>
+
+<script type="text/javascript">
+</script>
+
+</head>
+<body>
+
+<div id="donation">
+	<div id="dn_top">
+		<div id="dn_title">후원</div>
+	</div>
+	
+	<div id="dn_bottom">
+			<div class="dn_box">
+				<div class="dn_img" onclick="pay01()">1,000원</div>
+				<div class="sentences">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.</div>
+			</div>
+			<div class="dn_box">
+				<div class="dn_img" onclick="pay02()">5,000원</div>
+				<div class="sentences">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.</div>
+			</div>
+			<div class="dn_box">
+				<div class="dn_img" onclick="pay03()">10,000원</div>
+				<div class="sentences">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.</div>
+			</div>
+			<div class="dn_box">
+				<div class="dn_img" onclick="pay04()">50,000원</div>
+				<div class="sentences">Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione.</div>
+			</div>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="dnpay.js"></script>
+
+
+</body>
+</html>
