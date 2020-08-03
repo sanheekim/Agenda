@@ -12,7 +12,7 @@
 </head>
 <body>
 
-	<jsp:forward page="../qnaController.do?command=list&curPage=1&searchOption=all&keyword="></jsp:forward>
+	<jsp:forward page="..//qnaController.do?command=list&curPage=1&searchOption=all&keyword="></jsp:forward>
 	
 </body>
 </html>

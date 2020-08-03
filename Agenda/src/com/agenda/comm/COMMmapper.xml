@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.agenda.comm.mapper">
+	
+	<resultMap type="COMMDto" id="COMMResultMap">
+		<result property="comm_no" column="COMM_NO" />
+		<result property="comm_content" column="COMM_CONTENT"/>
+		<result property="comm_regdate" column="COMM_REGDATE"/>
+		<result property="qna_no" column="QNA_NO"/>
+		<result property="member_id" column="MEMBER_ID"/>
+	</resultMap>
+
+	<insert id="insertReply" parameterType="COMMDto">
+		INSERT INTO AG_COMMENT
+		VALUES (COMM_NO_SEQ.NEXTVAL, #{comm_content }, SYSDATE, #{qna_no }, 'INGYU')
+	</insert>
+	
+	<select id="listReply" resultMap="COMMResultMap">
+		SELECT * 
+		FROM AG_COMMENT
+		WHERE QNA_NO = #{qna_no }
+		ORDER BY COMM_REGDATE
+	</select>
+	
+	<update id="updateReply" parameterType="COMMDto">
+		UPDATE AG_COMMENT 
+		SET COMM_CONTENT = #{comm_content }
+		WHERE COMM_NO = #{comm_no }
+	</update>
+	
+	<delete id="deleteReply" parameterType="int">
+		DELETE FROM AG_COMMENT
+		WHERE COMM_NO = #{comm_no }
+	</delete>
+	
+	<select id="countReply" resultType="int">
+		SELECT COUNT(*) FROM AG_COMMENT WHERE COMM_NO=#{comm_no }
+	</select>
+
+</mapper>

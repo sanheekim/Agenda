@@ -17,95 +17,61 @@
 <title>Insert title here</title>
 </head>
 <script>
+
+
+/* 댓글 입력 */
 $(document).ready(function(){
-	/* --------------- 댓글 관련 -------------- */
-	// 1. 댓글 입력
 	$("#btnReply").click(function(){
-		//reply(); // 폼데이터 형식으로 입력
-		replyJson(); // json 형식으로 입력
+		console.log("click");
+		replyInsert(); 
 	});
 	
-	// 2. 댓글 목록
-	listReply(); // 댓글 목록 불러오기
-	//listReply2(); // json 리턴방식
-	//listReplyRest("1"); // rest방식
+	$("#btnDelete").click(function(){
+		console.log("click");
+		replyInsert(); 
+	});
 	
 });
 
-/* --------------- 댓글 관련 -------------- */
-
-// 1_1. 댓글 입력 함수(폼 데이터 방식)
-function reply(){
-	var contentReply=$("#contentReply").val();
-	var qna_no="${detail.qna_no}"
-	var param="contentReply="+contentReply+"&qna_no="+qna_no;
+function replyInsert(){
+	
+	var comm_content=$("#comm_content").val();
+	var qna_no="${detail.qna_no}";
+	console.log(comm_content + " " + qna_no);
+	
+	var url = "commController.do";
+	console.log(url);
+	
 	$.ajax({				
 		type: "post",
-		url: "${pageContext.request.contextPath}/commController.do?command=write",
-		data: param,
+		url: url +"?command=write",
+		data : {
+			qna_no : qna_no,
+			comm_content : comm_content
+			},
 		success: function(){
 			alert("댓글이 등록되었습니다.");
-			//listReply2();
-			listReply();
-		}
+		}                
 	});
 }
 
-// 1_2. 댓글 입력 함수(json방식)
-function replyJson(){
-	var contentReply=$("#contentReply").val();
-	var qna_no="${detail.qna_no}"
+/* 댓글 삭제 */
+
+function replyDelete(){
+	var qna_no="${detail.qna_no}";
+	console.log(qna_no);
+	
+	var url = "commController.do";
+	console.log(url);
+	
 	$.ajax({				
 		type: "post",
-		url: "${pageContext.request.contextPath}/commController.do?command=write",
-		dateType: "text",
-		// param형식보다 간편
-		data: JSON.stringify({
-			contentReply : contentReply,
-			qna_no : qna_no
-		}),
+		url: url +"?command=delete",
 		success: function(){
-			alert("댓글이 등록되었습니다.");
-			// 댓글 입력 완료후 댓글 목록 불러오기 함수 호출
-			listReply(); 	// 전통적인 Controller방식
-			//listReply2(); 	// json리턴 방식
-			//listReplyRest("1"); // Rest 방식
-		}
+			alert("댓글이 삭제되었습니다.");
+		}                
 	});
 }
-
-// 2_1. 댓글 목록 - 전통적인 Controller방식
-function listReply(){
-	$.ajax({
-		type: "POST",
-		url: "${pageContext.request.contextPath}/commController.do?command=commlist&qna_no=${detail.qna_no }",
-		success: function(result){
-		// responseText가 result에 저장됨.
-			$("#listReply").html(result);
-		}
-	});
-}
-
-// 2_2. 댓글 목록 - RestController를 이용 json형식으로 리턴
-function listReply2(){
-	$.ajax({
-		type: "get",
-		//contentType: "application/json", ==> 생략가능(RestController이기때문에 가능)
-		url: "${path}/reply/listJson.do?qna_no=${dto.qna_no}",
-		success: function(result){
-			console.log(result);
-			var output = "<table>";
-			for(var i in result){
-				output += "<tr>";
-				output += "<td>"+result[i].member_in;
-				output += result[i].contentReply+"</td>";
-				output += "<tr>";
-			}
-			output += "</table>";
-			$("#listReply").html(output);
-		}
-	});
-};
 
 </script>
 <body>
@@ -116,15 +82,11 @@ function listReply2(){
 		<h1>Q&A 글보기</h1>
 		<hr>
 		<!-- 글 상세내역 부분 -->
-		<form action="${pageContext.request.contextPath}/commController.do" method="post">
-			<input type="hidden" name="command" value="write">
-			<input type="hidden" name="comm_step" value="1">
 			<input type="hidden" name="qna_no" value="${detail.qna_no }" id="qna_no">
 			<table id="board">
 				<tr>
-					<td colspan="6">
-					<input type="hidden" name="qna_title" value="${detail.qna_title }">${detail.qna_title }
-					</td>
+					<td colspan="6"><input type="hidden" name="qna_title"
+						value="${detail.qna_title }">${detail.qna_title }</td>
 				</tr>
 				<tr>
 					<th>작성자</th>
@@ -141,26 +103,43 @@ function listReply2(){
 					</td>
 				</tr>
 				<tr>
-					<td colspan="6">
-						<input type="button" value="수정하기"
+					<td colspan="6"><input type="button" value="수정하기"
 						onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=update&qna_no=${detail.qna_no }'">
 						<input type="button" value="목록으로"
-						onclick="location.href='${pageContext.request.contextPath}/qna/index.jsp'"> 
+						onclick="location.href='${pageContext.request.contextPath}/qna/index.jsp'">
 						<input type="button" value="글삭제"
 						onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=delete&qna_no=${detail.qna_no }'">
 					</td>
 				</tr>
-			<!-- 댓글 작성 영역 -->
+			</table>
+			<!-- 댓글 목록 -->
+			<div id="listReply">
+			<table>
+				<c:forEach var="row" items="${commlist}">
+				<tr>	
+					<td>
+						${row.member_id}
+						<br>
+						${row.comm_content}
+						<br>
+						${row.comm_regdate}
+						<br>
+						<hr>
+						<input type="button" value="수정" id="btnUpdate">
+						<input type="button" value="삭제" id="btnDelete">
+					</td>
+				</tr>
+				</c:forEach>
+			</table>
+			</div>
+			<table>
 				<tr>
 					<th>작성자</th>
-					<td colspan="3"><textarea name="comm_content" id="contentReply"></textarea></td>
+					<td colspan="3"><textarea name="comm_content" id="comm_content"></textarea></td>
 					<td>작성시간</td>
-					<td><input type="button" value="작성" id="btnReply"></td>
+					<td><input type="submit" value="작성" id="btnReply"></td>
 				</tr>
 			</table>
-		</form>
-		<!-- 댓글 목록 -->
-		<div id="listReply"></div>
 	</section>
 	
     <jsp:include page="../footer/mainFooter.jsp" />

@@ -1,0 +1,11 @@
+--댓글번호, 댓글내용, 댓글작성일, 댓글순서, 글번호, 아이디
+
+
+SELECT *
+FROM AG_COMMENT
+ORDER BY comm_regdate;
+
+INSERT INTO AG_COMMENT
+VALUES ( COMM_NO_SEQ.NEXTVAL, 'hi', SYSDATE, 1, 21, 'INGYU');
+
+CREATE SEQUENCE COMM_NO_SEQ;
