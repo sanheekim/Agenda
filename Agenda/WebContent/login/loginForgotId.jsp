@@ -10,9 +10,7 @@
 margin-top:20px;
 height:100vh;
 }
-.forgotId__title{
-font-size: 50px;
-}
+
 section {
 	width: 1000px;
 	height: 100%;
@@ -47,10 +45,8 @@ function idSearch(){
 <section>
 	<div id="fotgotId">
 		<div class="fotgotId__top">
-<%-- 			<a href="${pageContext.request.contextPath}/main/main.jsp"> <img
-				class="login__icon" src="imgs/favicon.png" alt="logo" />
-			</a> --%>
-			<div class="forgotId__title">아이디 찾기</div>
+
+			<h2 class="forgotId__title">아이디 찾기</h2>
 		</div>
 
 

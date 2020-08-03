@@ -15,9 +15,6 @@ section {
 	margin: 80px auto;
 }
 
-.searchId__Title{
-font-size:30px;
-}
 
 </style>
 </head>
@@ -26,10 +23,10 @@ font-size:30px;
  String id = (String)request.getAttribute("member_id");
  System.out.println("id:" + id);
 %>
-	<jsp:include page="../header/header.jsp" />
+	 <jsp:include page="../header/header.jsp" />
 	<section>
 	<div id=searchId>
-	<div class=searchId__Title>아이디 찾기 성공!</div></div>
+	<h2 class=searchId__Title>아이디 찾기 성공!</h2></div>
 	<div class=searchId__Container>찾으시는 아이디는
 	<div class=searchId__Result><%=id %>입니다.</div>
 </div>
@@ -37,6 +34,6 @@ font-size:30px;
 
 </div>
 </section>
-<jsp:include page="../footer/mainFooter.jsp" />
+ <jsp:include page="../footer/mainFooter.jsp" />
 </body>
 </html>
