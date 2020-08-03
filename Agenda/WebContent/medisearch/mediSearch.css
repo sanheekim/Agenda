@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+
+
+header {
+	width: 100%;
+	height: 50px;
+	border: 1px solid red;
+}
+
+#mainDiv {
+	width : 100%;
+	height: 100%;
+	margin-top: 50px;
+	display: flex;
+	flex-direction: column;
+}
+
+.subDiv{
+	display: flex;
+	justify-content: center;
+}
+
+#subDetailInfo{
+	align-self : center;
+	flex-direction: column;
+}
+.Info{
+	height: 100px;
+}
+
+.subDivItems{
+	display: flex;
+	flex-direction: column;
+	border: 1px solid;
+}
+
+.subDivItem{
+	display : flex;
+	border: 1px solid;	
+	flex-direction: row;
+}
+
+.subDivItem > div{
+	width: 200px;
+}
+
+#subDivItem_1 > div{
+	text-align: center;
+}
+
+.subDivItem > div:nth-child(4){
+	width: 500px;
+}
+@media screen and(max-width: 450px){
+	
+}

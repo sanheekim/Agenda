@@ -30,6 +30,7 @@ public class QNAController extends HttpServlet {
 
 		String command = request.getParameter("command");
 		System.out.println("[" + command + "]");
+		HttpSession session = request.getSession();
 		
 		QNADao dao = new QNADao();
 		
@@ -62,7 +63,7 @@ public class QNAController extends HttpServlet {
 			map.put("searchOption", searchOption); // 검색옵션
 			map.put("keyword", keyword); // 검색키워드
 			map.put("boardPager", boardPager);
-			
+
 			request.setAttribute("map", map);
 			dispatch("qna/qna_list.jsp", request, response);
 			
@@ -95,9 +96,9 @@ public class QNAController extends HttpServlet {
 			System.out.println("delete : " + res);
 			if (res > 0) {
 				String msg = "삭제 성공!";
-				jsResponse(msg, "qnaController.do?command=list", request, response);
+				jsResponse(msg, "qnaController.do?command=list&curPage=1&searchOption=all&keyword=", request, response);
 			} else {
-				String msg = "수정 실패!";
+				String msg = "삭제 실패!";
 				jsResponse(msg, "qnaController.do?command=detail", request, response);
 			}
 		} else if (command.equals("update")) {
