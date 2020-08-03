@@ -29,7 +29,7 @@
             <div class="text-wrap">
                 <p class="text" data-text="아프지마요.">아프지마요.</p>
                 <p class="text" data-text="괜찮아요?">괜찮아요?</p>
-                <p class="text" data-text="다친데는없죠?">다친데는없죠?</p>
+                <p class="text" data-text="다친데는없어요?">다친데는없어요?</p>
             </div>
             <div class="content-wrapper">
                 <div class="content">
