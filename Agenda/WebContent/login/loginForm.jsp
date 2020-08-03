@@ -67,6 +67,7 @@
 	apiURL += "&client_id=" + clientId;
 	apiURL += "&redirect_uri=" + redirectURI;
 	apiURL += "&state=" + state;
+	
 	session.setAttribute("state", state);
 	System.out.println("로그인페이지");
 	%>
@@ -77,7 +78,7 @@
 		<div class="login__top">
 
 
-			<a href= " ${pageContext.request.contextPath}/main/main.jsp"><img class="login__icon" src="imgs/favicon.png" alt="logo"/></a>
+			<a href= "${pageContext.request.contextPath}/main/main.jsp"><img class="login__icon" src="imgs/favicon.png" alt="logo"/></a>
 				 
 
 
@@ -93,19 +94,20 @@
 
 				<div class="login__submit">
 					<div class="login__submit__id">
-						<!-- 	<label for="username"></label> -->
+						
 						<input type="text" placeholder="아이디" name="member_id" required />
 					</div>
 
 					<div class="login__submit__pwd">
-						<!-- <label for="password"></label> -->
+						
 						<input type="password" placeholder="비밀번호" name="member_pw"
 							required />
 					</div>
 
 
-					<div class="login__submit__remember">						
-						<span class="forgotpw"><a href="#">비밀번호</a>를 잊으셨습니까?</a></span>
+					<div class="login__submit__remember">
+					<span class="forgotid"><a href="${pageContext.request.contextPath}/login/loginForgotId.jsp">아이디</a></span>						
+					<span class="forgotpw"><a href="#">비밀번호</a>를 잊으셨습니까?</span>
 					</div>
 
 					<div class="login__submit__button">
@@ -125,7 +127,8 @@
 		<div class="login__submit__api">
 
 			<div class="login__submit__kakao">
-				<a id="kakao-login-btn" /></a>
+				<a href="#"><img  id="kakao-login-btn" src="imgs/카카오버튼.png" /></a>
+				
 			</div>
 
 			<div class="login__submit__google">

@@ -43,6 +43,8 @@ public class LoginDto {
 
 	}
 	
+	//findid: member_name, member_email	
+
 	public LoginDto (String member_id, String member_pw,String member_enabled) {
 		this.member_id = member_id;
 		this.member_pw = member_pw;

@@ -32,4 +32,31 @@
 	<!-- AND    MEMBER_ENABLED = #{member_enabled}-->
 </select>
 
+<select id ="naverlogin" parameterType="loginDto" resultType="logindto" >
+	
+	SELECT MEMBER_ID, MEMBER_NAME , MEMBER_EMAIL
+	FROM   AG_MEMBER
+	WHERE  MEMBER_ID = #{member_id}
+	AND    MEMBER_PW = #{member_pw}
+	
+</select>
+
+<select id="kakaologin" parameterType="loginDto" resultType="logindto">
+	
+	SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME
+	FROM   AG_MEMBER
+	WHERE  MEMBER_ID = #{member_id}
+	AND    MEMBER_PW = #{member_pw}
+</select>
+
+<select id ="findId" parameterType="loginDto" resultType="logindto">
+
+	SELECT MEMBER_ID
+	FROM AG_MEMBER
+	WHERE MEMBER_NAME=#{member_name}
+	AND MEMBER_EMAIL=#{member_email}
+	
+</select>
 </mapper>
+
+

@@ -1,0 +1,93 @@
+/** @format */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+
+
+ 
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 300px;
+  padding: 12px 7px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.fotgotId {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+ /*  border: 2px solid red;
+  margin-top:200px;
+   
+  
+}
+.fotgotId__top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+ 
+  justify-content: space-between;
+}
+.login__icon {
+  width: 20px;
+  border: 1px solid 
+}
+.fotgotId__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+.fotgotId__submit__api {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  width:300px;
+}
+
+.cancelbtn {
+  width: 60px;
+  height: 30px;
+  padding: 5px 7px;
+  background-color: black;
+  color: white;
+  font-size: 12px;
+}
+
+button {
+  background-color: black;
+  color: white;
+  padding: 3px 3px;
+  margin: 10px 0;
+  border: none;
+  cursor: pointer;
+  width: 300px;
+  height: 35px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+.fotgotId__submit__button {
+  background-color: black;
+}
+.fotgotId__submit__api {
+  margin: 0 0;
+  margin: auto;
+  text-align: center;
+  width:300px;
+}
+
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
