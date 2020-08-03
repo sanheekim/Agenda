@@ -10,8 +10,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/main/javascript.fullPage.css">
-    <script src="${pageContext.request.contextPath}/main/javascript.fullPage.min.js"></script>
     <link rel="stylesheet"  type="text/css" href="${pageContext.request.contextPath}/main/main.css">
 </head>
 <body>
@@ -20,7 +18,6 @@
     <header>
   	  <jsp:include page="../header/header.jsp" />
     </header>
-    
     
     <!-- 메인 -->
     <section id="fullpage">
@@ -138,44 +135,51 @@
                     </div>
             </div>
          </section>
-         <section class="section footer">
+      </section>
+      
+      <section class="section main__about">
+			<div class="main__about__title">
+				<h2>How to Scan Prescription</h2>
+			</div>
+
+			<div class="main__about__pages">
+				<div>
+					<h2>01. how to scan my Prescription?</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mae
+						cenas ex justo, efficitur a iaculis ac, pellentesque a odio.
+						Phasellus non eros eu nulla hendrerit s celerisque sed at justo.
+						Sed vulputate.</p>
+				</div>
+				<div>
+					<h2>02.Save your page in cabinet</h2>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mae
+						cenas ex justo, efficitur a iaculis ac, pellentesque a odio.
+						Phasellus non eros eu nulla hendrerit s celerisque sed at justo.
+						Sed vulputate.</p>
+				</div>
+				<div>
+					<h2>03. You're Done!</h2>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Contact -->
+	    <div id="contact">
+	      <div class="contact__title">Do you need help?</div>
+	      <div class="contact__sub">There are many variations of passages of Lorem Ipsum availd chunks as necessary,
+	         making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, com</div>
+	    </div>
+		<footer class="footer">
          	<jsp:include page="../footer/mainFooter.jsp" />
-         </section>
-    </section>
+        </footer>
     
-    <!-- 풋터 -->
-    
-</body>
-<script>
-    fullpage.initialize('#fullpage', {
-      //navigation
-      'menu': false,
-      'anchors':[],
-      'navigation': true,
-      'navigationPosition': 'right',
-      'navigationColor': '#f5f5f5',
-      'navigationTooltips': [],
-      'scrollBar': false,
+ <script>
+ 
 
-      //scrolling
-      'css3': true,
-      'scrollingSpeed': 600,
-      'autoScrolling': true,
-      'easingcss3': 'ease',
-      'loopHorizontal': true,
-      'touchSensitivity': 5,
-
-      //Accessibility
-      'keyboardScrolling': true,
-      'recordHistory': true,
-
-      //design
-      'controlArrows': true,
-
-      //Custom selectors
-      'sectionSelector': '.section',
-      'slideSelector': '.slide',
-  });
 </script>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+
 <script type="text/javascript" src="${pageContext.request.contextPath}/main/main.js"></script>
 </html>

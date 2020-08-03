@@ -1,3 +1,15 @@
+function splitScroll() {
+	const controller = new ScrollMagic.Controller();
+
+	new ScrollMagic.Scene({
+		duration : "200%",
+		triggerElement : ".main__about__title",
+		triggerHook : 0,
+	}).setPin(".main__about__title").addTo(controller);
+}
+
+splitScroll();
+	
 var text = document.getElementsByClassName('text');
 var shadow = '';
 for (var i = 0; i < 20; i++){
@@ -7,6 +19,9 @@ for (var i = 0; i < 20; i++){
 for (var k = 0; k < 3; k ++){
 	text[k].style.textShadow = shadow;
 }
+
+
+
 
 var icon = document.querySelectorAll('.menu-icon-inside')
 
