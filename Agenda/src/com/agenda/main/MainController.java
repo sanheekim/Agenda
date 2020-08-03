@@ -30,7 +30,7 @@ public class MainController extends HttpServlet {
 		if(command.equals("mediSearch")) {
 			response.sendRedirect("medisearch/mediSearch.jsp");
 		}else if(command.equals("mediLocker")) {
-			
+			response.sendRedirect("medilockerscan/mediLockerScanMain.jsp");
 		}else if(command.equals("findPharm")) {
 			response.sendRedirect("pharmacy_map/pharmacy_map.jsp");
 		}else if(command.equals("notice")){
