@@ -185,7 +185,14 @@ $(document).ready(function(){
 					<th>작성자</th>
 					<td colspan="3"><textarea name="comm_content" class="comm_content"></textarea></td>
 					<td>작성시간</td>
-					<td><input type="submit" value="작성" id="btnReply"></td>
+					<c:choose>
+						<c:when test="${logindto ne null }">
+							<td><input type="submit" value="작성" id="btnReply"></td>
+						</c:when>
+						<c:otherwise>
+							<td><input type="submit" value="작성" onclick="alert('로그인 해주세요')"></td>
+						</c:otherwise>
+					</c:choose>
 				</tr>
 			</table>
 	</section>

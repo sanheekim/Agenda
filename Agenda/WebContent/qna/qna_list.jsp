@@ -58,7 +58,7 @@
 						<td><a
 							href="${pageContext.request.contextPath}/qnaController.do?command=detail&qna_no=${row.qna_no}">${row.qna_title}
 						</a></td>
-						<td><!-- 작성자 --></td>
+						<td>${row.member_id }</td>
 						<td>${row.qna_regdate}</td>
 						<td><!-- 조회수 --></td>
 					</tr>
@@ -87,8 +87,15 @@
 					</select>
 							<input name="keyword" value="${map.keyword}">
 							<input type="submit" value="조회">
+							<c:choose>
+							<c:when test="${logindto ne null }">
 							<input type="button" value="글쓰기"
 								onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=write'">
+							</c:when>
+							<c:otherwise>
+								<input type="button" value="글쓰기" onclick="alert('로그인 해주세요')">
+							</c:otherwise>
+							</c:choose>
 					</td>
 				</tr>
 				<!-- 검색 끝 -->

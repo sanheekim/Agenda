@@ -91,7 +91,7 @@ public class QNADao extends QNASqlMapConfig {
 	public int insert(QNADto dto) {
 		SqlSession session = null;
 		int res = 0;
-		
+
 		try {
 			session = getSqlSessionFactory().openSession(false);
 			res = session.insert(namespace+"insert", dto);

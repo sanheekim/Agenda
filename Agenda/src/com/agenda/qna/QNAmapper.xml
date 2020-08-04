@@ -60,8 +60,7 @@
 	<insert id="insert" parameterType="QNADto">
 		INSERT INTO AG_QNA
 		VALUES
-		(QNA_NO_SEQ.NEXTVAL, #{qna_title}, #{qna_content}, SYSDATE, 0, 'N',
-		null)
+		(QNA_NO_SEQ.NEXTVAL, #{qna_title}, #{qna_content}, SYSDATE, 0, 'N', #{member_id} )
 	</insert>
 
 	<update id="update" parameterType="QNADto">

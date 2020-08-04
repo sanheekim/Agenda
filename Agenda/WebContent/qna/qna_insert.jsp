@@ -35,10 +35,11 @@
 		<hr>
 		<form action="${pageContext.request.contextPath}/qnaController.do" method="post">
 			<input type="hidden" name="command" value="writeres">
+			<input type="hidden" name="member_id" value="${logindto.member_id }">
 			<table>
 				<tr>
 					<th>작성자</th>
-					<td>${member_id }</td>
+					<td><c:out value="${logindto.member_id }"></c:out></td>
 				</tr>
 				<tr>
 					<th>제목</th>
