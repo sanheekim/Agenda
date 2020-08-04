@@ -23,7 +23,7 @@
 <body>
 
     <c:choose>
-    	<c:when test="${empty dto }">
+    	<c:when test="${empty logindto }">
     		<jsp:include page="../header/header.jsp" />
     	</c:when>
     	<c:otherwise>
