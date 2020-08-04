@@ -18,21 +18,13 @@
 </head>
 <script>
 
-/* 댓글 입력 */
 $(document).ready(function(){
-	$("#btnReply").click(function(){
-		console.log("insert click");
-		replyInsert(); 
-	});
 	
-	$("#btnDelete").click(function(){
-		console.log("delete click");
-		replyDelete();
-	});
-	
-	function replyInsert(){
+	$("#btnReply").click(function (){
 		
-		var comm_content=$("#comm_content").val();
+		console.log("insert click");
+		
+		var comm_content=$(".comm_content").val();
 		var qna_no="${detail.qna_no}";
 		console.log(comm_content + " " + qna_no);
 		
@@ -41,7 +33,7 @@ $(document).ready(function(){
 		
 		$.ajax({				
 			type: "post",
-			url: url +"?command=write",
+			url: url +"?command=commwrite",
 			data : {
 				qna_no : qna_no,
 				comm_content : comm_content
@@ -51,29 +43,86 @@ $(document).ready(function(){
 				location.href= "qnaController.do?command=detail&qna_no="+${detail.qna_no};
 			}                
 		});
-	}
+	});
+	
+	$(".btnDelete").click(function (){
+		console.log("click");
+		
+		var comm_no= $(this).attr("name");
+		console.log(comm_no);
+		
+		var qna_no="${detail.qna_no}";
+		console.log(qna_no);
+		
+		var url = "commController.do";
+		console.log(url);
+				
+		$.ajax({				
+			type: "post",
+			url: url+"?command=commdelete", 
+			data : {
+				qna_no : qna_no,
+				comm_no : comm_no
+				},
+			success: function(){
+				alert("댓글이 삭제되었습니다.");
+				location.href= "qnaController.do?command=detail&qna_no="+${detail.qna_no};
+			}                
+		});
+	});
+	
+	$(".btnUpdate").click(function(){
+		console.log("update click");
+		
+		$(this).parent().children('.comm_content').attr("disabled", false);
+		$(this).attr("value", "확인");
+		
+		$(this).attr("value", "확인").click(function(){
+			
+			console.log("확인");
+			
+			var qna_no="${detail.qna_no}";
+			console.log(qna_no);
+			
+			var comm_no= $(this).attr("name");
+			console.log(comm_no);
+			
+			var comm_content=$(this).parent().children('.comm_content').val();
+			console.log(comm_content);
+			
+			var url = "commController.do"
+			
+			$.ajax({				
+				type: "post",
+				url: url+"?command=commupdate",
+				data : {
+					qna_no : qna_no,
+					comm_no : comm_no,
+					comm_content : comm_content
+					},
+				success: function(){
+					alert("댓글이 수정되었습니다");
+					location.href= "qnaController.do?command=detail&qna_no="+${detail.qna_no};
+				}                
+			});
+			
+		})
+		
+		
+/* 		var comm_no= $(this).attr("name");
+		console.log(comm_no);
+		
+		var comm_content=$("#comm_content").val();
+		console.log(comm_content);
+		
+		var qna_no="${detail.qna_no}";
+		console.log(qna_no);
+		
+		 */
+		
+	});
 	
 });
-
-/* 댓글 삭제 */
-
-function replyDelete(){
-	var qna_no="${detail.qna_no}";
-	console.log(qna_no);
-	
-	var url = "commController.do";
-	console.log(url);
-	
-	$.ajax({				
-		type: "post",
-		url: url+"?command=delete",
-		success: function(){
-			alert("댓글이 삭제되었습니다.");
-			location.href= "qnaController.do?command=detail&qna_no="+${detail.qna_no};
-		}                
-	});
-}
-
 </script>
 <body>
   	 
@@ -94,7 +143,7 @@ function replyDelete(){
 					<td><input type="hidden" name="member_id"
 						value="${detail.member_id }">${detail.member_id}</td>
 					<th>작성시간</th>
-					<td>작성시간</td>
+					<td>${detail.qna_regdate}</td>
 					<th>조회</th>
 					<td>조회수</td>
 				</tr>
@@ -119,15 +168,17 @@ function replyDelete(){
 				<c:forEach var="row" items="${commlist}">
 				<tr>	
 					<td>
+						번호 : ${row.comm_no }
+						<br>
 						작성자 : ${row.member_id}
 						<br>
-						내용 : ${row.comm_content}
+						<input type="text" value="${row.comm_content }" disabled="disabled" class="comm_content">
 						<br>
 						날짜 : ${row.comm_regdate}
 						<br>
 						<hr>
-						<input type="button" value="수정" id="btnUpdate">
-						<input type="button" value="삭제" id="btnDelete">
+						<input type="button" value="수정" class="btnUpdate" name="${row.comm_no }">
+						<input type="button" value="삭제" class="btnDelete" name="${row.comm_no }">
 					</td>
 				</tr>
 				</c:forEach>
@@ -136,7 +187,7 @@ function replyDelete(){
 			<table>
 				<tr>
 					<th>작성자</th>
-					<td colspan="3"><textarea name="comm_content" id="comm_content"></textarea></td>
+					<td colspan="3"><textarea name="comm_content" class="comm_content"></textarea></td>
 					<td>작성시간</td>
 					<td><input type="submit" value="작성" id="btnReply"></td>
 				</tr>

@@ -30,13 +30,11 @@ public class COMMController extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-		HttpSession session = request.getSession();
 
 		String command = request.getParameter("command");
 		System.out.println("[" + command + "]");
 		
 		COMMDao dao = new COMMDao();
-		QNADao qnadao = new QNADao();
 		
 		if (command.equals("commlist")) {
 			
@@ -53,7 +51,7 @@ public class COMMController extends HttpServlet {
 			request.setAttribute("commmap", map);
 			dispatch("qna/qna_detail.jsp", request, response);
 			
-		} else if (command.equals("write")) {
+		} else if (command.equals("commwrite")) {
 			
 			String comm_content = request.getParameter("comm_content");
 			int qna_no = Integer.parseInt(request.getParameter("qna_no"));
@@ -61,27 +59,28 @@ public class COMMController extends HttpServlet {
 			
 			COMMDto dto = new COMMDto(comm_content, qna_no);
 			int res = dao.insert(dto);
+			System.out.println("write : " + res);
 			
-			if(res>0) {
-				response.sendRedirect("qnaController.do?command=detail&qna_no="+qna_no);
-			}
+		}  else if (command.equals("commdelete")) {
+			int comm_no = Integer.parseInt(request.getParameter("comm_no"));
+			System.out.println(comm_no);
 			
-		}  else if (command.equals("delete")) {
-			int qna_no = Integer.parseInt(request.getParameter("qna_no"));
-			
-			int res = dao.delete(qna_no);
+			int res = dao.delete(comm_no);
 			System.out.println("delete : " + res);
-			if (res > 0) {
-				String msg = "삭제 성공!";
-				jsResponse(msg, "qnaController.do?command=detail&qna_no="+qna_no, request, response);
-			} else {
-				String msg = "삭제 실패!";
-				jsResponse(msg, "qnaController.do?command=detail&qna_no="+qna_no, request, response);
-			}
-		} else if (command.equals("update")) {
 			
+			
+		} else if (command.equals("commupdate")) {
+			int comm_no = Integer.parseInt(request.getParameter("comm_no"));
+			String comm_content = request.getParameter("comm_content");
+			System.out.println(comm_no + " " + comm_content);
+			
+			COMMDto dto = new COMMDto();
+			dto.setComm_no(comm_no);
+			dto.setComm_content(comm_content);
+			
+			int res = dao.update(dto);
+			System.out.println("update : " + res);
 		}
-
 	}
 
 	public void dispatch(String url, HttpServletRequest request, HttpServletResponse response)
