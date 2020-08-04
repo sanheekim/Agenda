@@ -22,11 +22,11 @@ var ad03 = function(){
 
 var ad04 = function(data){
 	$.ajax({
-		url: "../dnController",
+		url: "../adController",
 		method: "post",
-		data: {"obj" : JSON.stringify(data),command:"donation"},
+		data: {"obj" : JSON.stringify(data), command:"../dnController?command=donation"},
 		success: function(msg){
-			location.href="../dnController?command=dnlist";
+			location.href="../adController?command=alldonation";
 		},
 		error:function(){
 			alert("통신 실패");

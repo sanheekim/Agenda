@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+   
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Admin Page</title>
+<script src="http://code.jquery.com/jquery-3.5.1.js"></script>
 <style type="text/css">
 
 	body{
@@ -116,14 +118,7 @@
 			</div>
 	</div>	
 
-	
-	<div id="ad_footer">
-		<div class="ad_circle"></div>
-		<div class="ad_circle"></div>
-		<div class="ad_circle"></div>
-	</div>
-
-</div>
+	<jsp:include page="../footer/mainFooter.jsp" />
 
 <script type="text/javascript" src="adtransfer.js"></script>
 
