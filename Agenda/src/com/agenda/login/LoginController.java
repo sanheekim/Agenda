@@ -59,7 +59,7 @@ public class LoginController extends HttpServlet {
 
 				System.out.println("DTO 있음  = mypage main으로 보냄");
 				// User, Admin 구분하지 않고 바로 main으로 보내기
-				RequestDispatcher dispatch = request.getRequestDispatcher("header/loginMain.jsp");
+				RequestDispatcher dispatch = request.getRequestDispatcher("main/main.jsp");
 				dispatch.forward(request, response);
 				// response.sendRedirect("header/loginMain.jsp");
 

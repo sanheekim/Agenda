@@ -1,8 +1,11 @@
+<%@page import="com.agenda.login.LoginDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +19,14 @@
 
 	<!-- 헤더 -->
     <header>
-  	  <jsp:include page="../header/header.jsp" />
+    <c:choose>
+    	<c:when test="${empty dto }">
+    		<jsp:include page="../header/header.jsp" />
+    	</c:when>
+    	<c:otherwise>
+    		<jsp:include page="../header/loginMain.jsp" />
+    	</c:otherwise>
+	</c:choose>
     </header>
     
     <!-- 메인 -->
