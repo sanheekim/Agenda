@@ -28,6 +28,7 @@ public class MediLockerScan{
 
   // Detects text in the specified image.
   public static List<String> detectText(String filePath) throws IOException {
+	
     List<AnnotateImageRequest> requests = new ArrayList<>();
 
     ByteString imgBytes = ByteString.readFrom(new FileInputStream(filePath));
