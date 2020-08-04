@@ -18,42 +18,42 @@
 </head>
 <script>
 
-
 /* 댓글 입력 */
 $(document).ready(function(){
 	$("#btnReply").click(function(){
-		console.log("click");
+		console.log("insert click");
 		replyInsert(); 
 	});
 	
 	$("#btnDelete").click(function(){
-		console.log("click");
-		replyInsert(); 
+		console.log("delete click");
+		replyDelete();
 	});
+	
+	function replyInsert(){
+		
+		var comm_content=$("#comm_content").val();
+		var qna_no="${detail.qna_no}";
+		console.log(comm_content + " " + qna_no);
+		
+		var url = "commController.do";
+		console.log(url);
+		
+		$.ajax({				
+			type: "post",
+			url: url +"?command=write",
+			data : {
+				qna_no : qna_no,
+				comm_content : comm_content
+				},
+			success: function(){
+				alert("댓글이 등록되었습니다.");
+				location.href= "qnaController.do?command=detail&qna_no="+${detail.qna_no};
+			}                
+		});
+	}
 	
 });
-
-function replyInsert(){
-	
-	var comm_content=$("#comm_content").val();
-	var qna_no="${detail.qna_no}";
-	console.log(comm_content + " " + qna_no);
-	
-	var url = "commController.do";
-	console.log(url);
-	
-	$.ajax({				
-		type: "post",
-		url: url +"?command=write",
-		data : {
-			qna_no : qna_no,
-			comm_content : comm_content
-			},
-		success: function(){
-			alert("댓글이 등록되었습니다.");
-		}                
-	});
-}
 
 /* 댓글 삭제 */
 
@@ -66,9 +66,10 @@ function replyDelete(){
 	
 	$.ajax({				
 		type: "post",
-		url: url +"?command=delete",
+		url: url+"?command=delete",
 		success: function(){
 			alert("댓글이 삭제되었습니다.");
+			location.href= "qnaController.do?command=detail&qna_no="+${detail.qna_no};
 		}                
 	});
 }
@@ -118,11 +119,11 @@ function replyDelete(){
 				<c:forEach var="row" items="${commlist}">
 				<tr>	
 					<td>
-						${row.member_id}
+						작성자 : ${row.member_id}
 						<br>
-						${row.comm_content}
+						내용 : ${row.comm_content}
 						<br>
-						${row.comm_regdate}
+						날짜 : ${row.comm_regdate}
 						<br>
 						<hr>
 						<input type="button" value="수정" id="btnUpdate">
