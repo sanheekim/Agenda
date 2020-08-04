@@ -87,7 +87,7 @@ public class dnController extends HttpServlet {
 			List <dnDto> list = dao.selectList();
 			request.setAttribute("list", list);
 				
-			RequestDispatcher dispatch = request.getRequestDispatcher("adreceipt.jsp");
+			RequestDispatcher dispatch = request.getRequestDispatcher("myinfo/myreceipt.jsp");
 			dispatch.forward(request, response);
 				
 		}
