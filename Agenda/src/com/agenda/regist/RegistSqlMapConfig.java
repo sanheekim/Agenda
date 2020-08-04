@@ -13,7 +13,7 @@ public class RegistSqlMapConfig {
 	
 	public SqlSessionFactory getSqlSessionFactory()
 	{
-		String resource = "com/agenda/regist/Registconfig.xml";
+		String resource = "com/agenda/regist/RegistConfig.xml";
 		Reader reader = null;
 		
 		try {

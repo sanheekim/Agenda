@@ -2,8 +2,10 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
 <configuration>
 
-	<properties resource="com/agenda/login/LoginProperty"></properties>
-
+	<properties resource="com/agenda/common/db.Properties"></properties>
+	<settings>
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
 	<typeAliases>
 		<typeAlias type="com.agenda.regist.RegistDto" alias="RegistDto"/>
 	</typeAliases>
@@ -21,7 +23,7 @@
  	</environments>
 	
 	<mappers>
-		<mapper resource="com/agneda/regist/RegistMapper.xml"/>
+		<mapper resource="com/agenda/regist/RegistMapper.xml"/>
 	</mappers>
 	
 </configuration>

@@ -6,29 +6,30 @@
 		<result property="member_id" column="MEMBER_ID"/>
 		<result property="member_pw" column="MEMBER_PW"/>
 		<result property="member_name" column="MEMBER_NAME"/>
+		<result property="member_email" column="MEMBER_EMAIL"/>
 		<result property="member_addr" column="MEMBER_ADDR"/>
 		<result property="member_enabled" column="MEMBER_ENABLED"/>
+		<result property="member_role" column="MEMBER_ROLE"/>
 		<result property="member_token" column="MEMBER_TOKEN"/>
 		<result property="member_salt" column="MEMBER_SALT"/>
 		<result property="member_phone" column="MEMBER_PHONE"/>
 		<result property="member_no" column="MEMBER_NO"/>
 	</resultMap> 
-	<!---->
 		
-	<select id="selectOne" parameterType="int" resultMap="AG_MEMBERMap">
-		SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_ADDR, MEMBER_ENABLED,
-			   MEMBER_TOKEN, MEMBER_SALT, MEMBER_PHONE, MEMBER_NO
+	<select id="selectOne" parameterType="RegistDto" resultMap="RegistMap">
+		SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL, MEMBER_ADDR, MEMBER_ENABLED,
+			   MEMBER_ROLE, MEMBER_TOKEN, MEMBER_SALT, MEMBER_PHONE, MEMBER_NO
 		FROM AG_MEMBER
-		WHERE MEMBER_NO = #{SEQ}
+		WHERE MEMBER_NO = #{member_no}
 	</select>
 		
 	<insert id="insert" parameterType="RegistDto">
 		INSERT INTO AG_MEMBER
-		VALUES(#{MEMBER_ID}, #{member_id}, #{member_name}, #{member_addr}, #{member_enabled}, #{member_token}
-						   , #{member_salt}, #{member_phone}, #{member_no}, AG_MEMBER.NEXTVAL)
+		VALUES (#{member_id}, #{member_pw}, #{member_name}, #{member_email}, #{member_addr}, 'Y', 'USER', 
+			    #{member_token}, #{member_salt}, #{member_phone}, AG_MEMBERSEQ.NEXTVAL)
 	</insert>
 	
-	<delete id="delete" parameterType="int">
+	<delete id="delete" parameterType="RegistDto">
 		DELETE FROM AG_MEMBER
 		WHERE MEMBER_ID = #{member_id}
 	</delete>
