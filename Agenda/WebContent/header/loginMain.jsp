@@ -4,6 +4,8 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,11 +19,22 @@
 			<h2></h2>
 			<div id="h1"><img src="${pageContext.request.contextPath}/header/resources/img/medicine.png">AH.GENDA</div>
 			<nav>
-				<ul class="menu"><!--  -->
-					<li><a href="myinfo/myinfoUpdate.jsp"><span class="mypage"><button id="마이페이지">Mypage</button></span></a></li>
+			<c:choose>
+				<c:when test="${logindto.member_role eq 'ADMIN' }">
+					<ul class="menu">
+					<li><a href="admin/adlayout.jsp"><span class="mypage"><button id="마이페이지">Mypage</button></span></a></li>
 					<li><a href="LoginController?command=logout"><span class="logout"><button id="로그아웃">Log out</button></span></a></li>
 					<li><a href="#"><span class="list" onclick="openNav()">&#9776;</span></a></li>
-				</ul>
+					</ul>
+				</c:when>
+				<c:otherwise>
+					<ul class="menu"><!--  -->
+					<li><a href="myinfo/myinfo.jsp"><span class="mypage"><button id="마이페이지">Mypage</button></span></a></li>
+					<li><a href="LoginController?command=logout"><span class="logout"><button id="로그아웃">Log out</button></span></a></li>
+					<li><a href="#"><span class="list" onclick="openNav()">&#9776;</span></a></li>
+					</ul>
+				</c:otherwise>
+			</c:choose>
 			</nav>
 		</div>
 		<div id="mySidenav" class="sidenav">

@@ -19,6 +19,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/qna/qna_insert.css">
 <title>Insert title here</title>
 </head>
+
 <body>
   	<c:choose>
     	<c:when test="${empty loigndto }">
