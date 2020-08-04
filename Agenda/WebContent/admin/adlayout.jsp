@@ -100,15 +100,15 @@
 	</div>
 	
 	<div id="ad_bottom">
-			<div class="ad_box" onclick="ad01()">
+			<div class="ad_box" onclick="">
 			<span>내 정보 수정</span>
 			<img class="icon" src="image/info.png" />
 			</div>
-			<div class="ad_box" onclick="ad02()">
+			<div class="ad_box" onclick="">
 			<span>회원 정보 관리</span>
 			<img class="icon" src="image/search.png" />
 			</div>
-			<div class="ad_box" onclick="ad03()">
+			<div class="ad_box" onclick="">
 			<span>전체 채팅기록</span>
 			<img class="icon" src="image/chat.png" />
 			</div>
