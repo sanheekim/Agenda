@@ -54,7 +54,7 @@ public class LoginController extends HttpServlet {
 
 			if (dto != null) {
 
-				session.setAttribute("dto", dto);
+				session.setAttribute("logindto", dto);
 				session.setMaxInactiveInterval(10 * 60);
 
 				System.out.println("DTO 있음  = mypage main으로 보냄");
