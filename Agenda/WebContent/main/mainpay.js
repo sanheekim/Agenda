@@ -1,8 +1,3 @@
-var name01 = "1000원";
-var name02 = "5000원";
-var name03 = "10000원";
-var name04 = "50000원";
-
 var pay01 = function(){
 
 BootPay.request({

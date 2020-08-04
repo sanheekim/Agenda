@@ -15,6 +15,7 @@
     <title>Document</title>
     <script src="https://cdn.bootpay.co.kr/js/bootpay-3.2.6.min.js" type="application/javascript"></script>
 <script src="http://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="mainpay.js"></script>
     <link rel="stylesheet"  type="text/css" href="${pageContext.request.contextPath}/main/main.css">
 </head> 
 <body>
@@ -189,8 +190,6 @@
  
 
 </script>
-
-<script type="text/javascript" src="mainpay.js"></script>
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
