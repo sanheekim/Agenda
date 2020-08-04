@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.agenda.donation.dnMapper">
+  
+  	<resultMap type="dnDto" id="dnResultMap">
+		<result property="dona_no" column="DONA_NO"/>
+		<result property="dona_bill" column="DONA_BILL"/>
+		<result property="dona_date" column="DONA_DATE"/>
+		<result property="member_id" column="MEMBER_ID"/>	
+	</resultMap>
+	
+	<select id="selectList" resultMap="dnResultMap">
+        SELECT DONA_NO, DONA_BILL, DONA_DATE, MEMBER_ID
+        FROM AG_DONATION
+    </select>
+    
+    <select id="selectOne" parameterType="String" resultMap="dnResultMap">
+		SELECT DONA_NO, DONA_BILL, DONA_DATE, MEMBER_ID
+ 		FROM AG_DONATION
+		WHERE MEMBER_ID = #{member_id} 	
+ 	</select>
+	
+	<insert id="insert" parameterType="dnDto">
+		INSERT INTO AG_DONATION
+		(DONA_NO, DONA_BILL, DONA_DATE)
+		VALUES
+		(AG_DONATIONSEQ.NEXTVAL, #{dona_bill}, #{dona_date})
+	</insert>
+ 	
+ 	<delete id="delete" parameterType="int">
+		DELETE FROM AG_DONATION
+		WHERE DONA_NO = #{dona_no}
+	</delete>
+
+</mapper>
