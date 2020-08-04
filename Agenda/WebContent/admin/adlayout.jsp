@@ -112,7 +112,7 @@
 			<span>전체 채팅기록</span>
 			<img class="icon" src="image/chat.png" />
 			</div>
-			<div class="ad_box" onclick="ad04()">
+			<div class="ad_box" onclick="location.href='../dnController?command=alldnlist'">
 			<span>전체 후원기록</span>
 			<img class="icon" src="image/qr.png" />
 			</div>
