@@ -24,7 +24,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-  	<jsp:include page="../header/header.jsp" />
+  	<c:choose>
+    	<c:when test="${empty dto }">
+    		<jsp:include page="../header/header.jsp" />
+    	</c:when>
+    	<c:otherwise>
+    		<jsp:include page="../header/loginMain.jsp" />
+    	</c:otherwise>
+	</c:choose>
+    
 	<section>
 		<h1>Q&A 글수정</h1>
 		<hr>

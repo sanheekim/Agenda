@@ -32,27 +32,16 @@ public class QNAController extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		LoginDto logindto = new LoginDto();
 
 		String command = request.getParameter("command");
 		System.out.println("[" + command + "]");
-		HttpSession session = request.getSession();
-		LoginDto logindto = (LoginDto) session.getAttribute("logindto");
-		LoginDao logindao = new LoginDao();
-		;
+
 		COMMDao commdao = new COMMDao();
 		QNADao dao = new QNADao();
 		
 		if (command.equals("list")) {
-			
-			String member_id =  logindto.getMember_id();
-			String member_pw = logindto.getMember_pw();
-			System.out.println(member_id + " " +member_pw);
-			
-			LoginDto input = new LoginDto(member_id, member_pw);
-			logindto = logindao.login(input);
-			
-			session.setAttribute("dto", logindto);
-			
+
 			String searchOption = request.getParameter("searchOption");
 			String keyword = request.getParameter("keyword");
 			int curPage = Integer.parseInt(request.getParameter("curPage"));

@@ -33,11 +33,6 @@ public class MainController extends HttpServlet {
 		String command = request.getParameter("command");
 		System.out.println("[" + command + "]");
 		
-		HttpSession session = request.getSession();
-		LoginDto logindto = (LoginDto) session.getAttribute("dto");
-		
-		LoginDao dao = new LoginDao();
-		
 		if(command.equals("mediSearch")) {
 			response.sendRedirect("medisearch/mediSearch.jsp");
 		}else if(command.equals("mediLocker")) {
@@ -47,24 +42,7 @@ public class MainController extends HttpServlet {
 		}else if(command.equals("notice")){
 			
 		}else if(command.equals("qna")) {
-			if (logindto != null) {
-				
-			String member_id =  logindto.getMember_id();
-			String member_pw = logindto.getMember_pw();
-			System.out.println(member_id + " " +member_pw);
-			
-			LoginDto input = new LoginDto(member_id, member_pw);
-			logindto = dao.login(input);
-			
-			session.setAttribute("logindto", logindto);
-			session.setMaxInactiveInterval(10 * 60);
-			
-			dispatch("qna/index.jsp", request, response);
-			
-			} else {
-			
 			response.sendRedirect("qna/index.jsp");
-			}
 		}
 	}
 	

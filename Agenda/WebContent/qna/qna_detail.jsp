@@ -108,26 +108,22 @@ $(document).ready(function(){
 			
 		})
 		
-		
-/* 		var comm_no= $(this).attr("name");
-		console.log(comm_no);
-		
-		var comm_content=$("#comm_content").val();
-		console.log(comm_content);
-		
-		var qna_no="${detail.qna_no}";
-		console.log(qna_no);
-		
-		 */
-		
 	});
 	
 });
 </script>
 <body>
-  	 
-  	<jsp:include page="../header/header.jsp" />
-	
+
+	<c:choose>
+		<c:when test="${empty dto }">
+			<jsp:include page="../header/header.jsp" />
+		</c:when>
+		<c:otherwise>
+			<jsp:include page="../header/loginMain.jsp" />
+		</c:otherwise>
+	</c:choose>
+
+
 	<section>
 		<h1>Q&A 글보기</h1>
 		<hr>

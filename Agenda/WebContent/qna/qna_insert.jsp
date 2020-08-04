@@ -4,6 +4,8 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +20,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-  	<jsp:include page="../header/header.jsp" />
+  	<c:choose>
+    	<c:when test="${empty dto }">
+    		<jsp:include page="../header/header.jsp" />
+    	</c:when>
+    	<c:otherwise>
+    		<jsp:include page="../header/loginMain.jsp" />
+    	</c:otherwise>
+	</c:choose>
+    
 	<section>
 		<h1>Q&A 글작성</h1>
 		<hr>
@@ -27,7 +37,7 @@
 			<table>
 				<tr>
 					<th>작성자</th>
-					<td><input type="text" name="member_id"></td>
+					<td>${member_id }</td>
 				</tr>
 				<tr>
 					<th>제목</th>
