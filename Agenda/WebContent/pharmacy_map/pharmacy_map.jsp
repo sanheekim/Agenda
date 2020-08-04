@@ -4,6 +4,8 @@
 <%request.setCharacterEncoding("UTF-8");%>
 <%response.setContentType("text/html; charset=UTF-8");%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +13,14 @@
 <link rel="stylesheet" type="text/css" href="pharmacy_map.css">
 </head>
 <body>
-	<jsp:include page="../header/header.jsp" />
+	<c:choose>
+    	<c:when test="${empty logindto }">
+    		<jsp:include page="../header/header.jsp" />
+    	</c:when>
+    	<c:otherwise>
+    		<jsp:include page="../header/loginMain.jsp" />
+    	</c:otherwise>
+	</c:choose>
 
 	<section>
 		<div id="map_header">
