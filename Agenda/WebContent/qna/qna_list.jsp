@@ -22,7 +22,14 @@
 
 <body>
 
-   <jsp:include page="../header/header.jsp" />
+    <c:choose>
+    	<c:when test="${empty logindto }">
+    		<jsp:include page="../header/header.jsp" />
+    	</c:when>
+    	<c:otherwise>
+    		<jsp:include page="../header/loginMain.jsp" />
+    	</c:otherwise>
+	</c:choose>
     
 	<section>
 		<h1>Q & A</h1>
