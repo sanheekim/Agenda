@@ -92,6 +92,17 @@ public class dnController extends HttpServlet {
 				
 		}
 		
+		else if (command.equals("alldnlist")) {
+			
+			dnDao dao = new dnDao();
+			
+			List <dnDto> list = dao.selectList();
+			request.setAttribute("list", list);
+				
+			RequestDispatcher dispatch = request.getRequestDispatcher("admin/adreceipt.jsp");
+			dispatch.forward(request, response);
+		}
+		
 		}
 	
 	public void dispatch(String url, HttpServletRequest request, HttpServletResponse response)
