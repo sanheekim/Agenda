@@ -24,6 +24,8 @@ $(document).ready(function(){
 		
 		console.log("insert click");
 		
+		var member_id = $(this).attr("name");
+		console.log(member_id)
 		var comm_content=$(".comm_content").val();
 		var qna_no="${detail.qna_no}";
 		console.log(comm_content + " " + qna_no);
@@ -35,6 +37,7 @@ $(document).ready(function(){
 			type: "post",
 			url: url +"?command=commwrite",
 			data : {
+				member_id : member_id,
 				qna_no : qna_no,
 				comm_content : comm_content
 				},
@@ -180,20 +183,23 @@ $(document).ready(function(){
 				</c:forEach>
 			</table>
 			</div>
+			<!-- 댓글 작성 -->
 			<table>
-				<tr>
-					<th>작성자</th>
+				<c:choose>
+				
+					<c:when test="${logindto ne null }">
+					<tr>
+					<th><c:out value="${logindto.member_id }"></c:out></th>
 					<td colspan="3"><textarea name="comm_content" class="comm_content"></textarea></td>
-					<td>작성시간</td>
-					<c:choose>
-						<c:when test="${logindto ne null }">
-							<td><input type="submit" value="작성" id="btnReply"></td>
-						</c:when>
-						<c:otherwise>
-							<td><input type="submit" value="작성" onclick="alert('로그인 해주세요')"></td>
-						</c:otherwise>
-					</c:choose>
-				</tr>
+					<td><input type="submit" value="작성" id="btnReply" name="${logindto.member_id }"></td>
+					</tr>
+					</c:when>
+					<c:otherwise>
+					<tr>
+					<td><span>로그인해주세요</span></td>
+						</tr>
+					</c:otherwise>
+				</c:choose>
 			</table>
 	</section>
 	

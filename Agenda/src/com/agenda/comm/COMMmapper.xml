@@ -12,7 +12,7 @@
 
 	<insert id="insertReply" parameterType="COMMDto">
 		INSERT INTO AG_COMMENT
-		VALUES (COMM_NO_SEQ.NEXTVAL, #{comm_content }, SYSDATE, #{qna_no }, 'INGYU')
+		VALUES (COMM_NO_SEQ.NEXTVAL, #{comm_content }, SYSDATE, #{qna_no }, #{member_id})
 	</insert>
 	
 	<select id="listReply" resultMap="COMMResultMap">
