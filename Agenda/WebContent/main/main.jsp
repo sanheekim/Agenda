@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://cdn.bootpay.co.kr/js/bootpay-3.2.6.min.js" type="application/javascript"></script>
-<script src="http://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="http://code.jquery.com/jquery-3.5.1.js"></script>
     <link rel="stylesheet"  type="text/css" href="${pageContext.request.contextPath}/main/main.css">
 </head> 
 <body>

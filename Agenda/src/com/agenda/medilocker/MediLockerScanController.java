@@ -1,9 +1,12 @@
 package com.agenda.medilocker;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Enumeration;
+import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -55,6 +58,15 @@ public class MediLockerScanController extends HttpServlet {
 			//파일 저장될 경로값 읽어오는 객체
 			ServletContext context = getServletContext();
 			realfolder = context.getRealPath(savefolder);
+			      
+		    File targetDir = new File(realfolder);  
+		        
+		    if(!targetDir.exists()) {    //디렉토리 없으면 생성.
+		         targetDir.mkdirs();
+		    }
+
+
+
 			
 			try {
 				MultipartRequest multi = new MultipartRequest(request, realfolder, maxSize, 
@@ -67,7 +79,10 @@ public class MediLockerScanController extends HttpServlet {
 				
 				filename = realfolder + "\\" + onFile;
 				out.println(filename);
-				MediLockerScan.detectText(filename);
+				List<String> list = MediLockerScan.detectText(filename);
+				request.setAttribute("list", list);
+				RequestDispatcher dispatch = request.getRequestDispatcher("medilockerscan/mediLockerScanMain.jsp");
+				dispatch.forward(request, response);
 				
 				
 			} catch (IOException e) {

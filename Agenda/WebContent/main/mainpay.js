@@ -1,8 +1,3 @@
-var name01 = "1000원";
-var name02 = "5000원";
-var name03 = "10000원";
-var name04 = "50000원";
-
 var pay01 = function(){
 
 BootPay.request({
@@ -52,16 +47,16 @@ BootPay.request({
 	} else {
 		BootPay.removePaymentWindow();
 	}
-}).close(function (data) {
+})/*.close(function (data) {
     console.log(data);
-}).done(function (data) {
+})*/.done(function (data) {
 		console.log(data);
 		$.ajax({
-			url: "dnController",
+			url: "../dnController",
 			method: "post",
-			data: {"obj" : JSON.stringify(data),command:"donation"},
+			data: {"obj" : JSON.stringify(data), command:"donation"},
 			success: function(msg){
-				location.href="./dnController?command=dnlist";
+				location.href="../dnController?command=dnlist";
 			},
 			error:function(){
 				alert("통신 실패");
@@ -125,7 +120,7 @@ var pay02 = function(){
 		$.ajax({
 			url: "dnController",
 			method: "post",
-			data: {"obj" : JSON.stringify(data),command:"donation"},
+			data: {"obj" : JSON.stringify(data), command:"donation"},
 			success: function(msg){
 				location.href="./dnController?command=dnlist";
 			},
@@ -194,7 +189,7 @@ var pay03 = function(){
 		$.ajax({
 			url: "dnController",
 			method: "post",
-			data: {"obj" : JSON.stringify(data),command:"donation"},
+			data: {"obj" : JSON.stringify(data), command:"donation"},
 			success: function(msg){
 				location.href="./dnController?command=dnlist";
 			},
@@ -262,7 +257,7 @@ var pay04 = function(){
 		$.ajax({
 			url: "dnController",
 			method: "post",
-			data: {"obj" : JSON.stringify(data),command:"donation"},
+			data: {"obj" : JSON.stringify(data), command:"donation"},
 			success: function(msg){
 				location.href="./dnController?command=dnlist";
 			},

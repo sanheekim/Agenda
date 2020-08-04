@@ -27,7 +27,7 @@ public class MediLockerScan{
   }
 
   // Detects text in the specified image.
-  public static void detectText(String filePath) throws IOException {
+  public static List<String> detectText(String filePath) throws IOException {
     List<AnnotateImageRequest> requests = new ArrayList<>();
 
     ByteString imgBytes = ByteString.readFrom(new FileInputStream(filePath));
@@ -44,14 +44,15 @@ public class MediLockerScan{
     try (ImageAnnotatorClient client = ImageAnnotatorClient.create()) {
       BatchAnnotateImagesResponse response = client.batchAnnotateImages(requests);
       List<AnnotateImageResponse> responses = response.getResponsesList();
+      StringBuilder sb = new StringBuilder();
 
       for (AnnotateImageResponse res : responses) {
         if (res.hasError()) {
           System.out.format("Error: %s%n", res.getError().getMessage());
-          return;
+          
         }
         
-        StringBuilder sb = new StringBuilder();
+       
        
         
         // For full list of available annotations, see http://g.co/cloud/vision/docs
@@ -62,9 +63,13 @@ public class MediLockerScan{
           sb.append(annotation.getDescription());
         }
   
-        System.out.println(PillName(sb));
+       
+      
       }
+      System.out.println(PillName(sb));
+      return PillName(sb);
     }
+   
   }
   
   public static List<String> PillName(StringBuilder s) {
