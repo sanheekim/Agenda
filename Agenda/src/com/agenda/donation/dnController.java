@@ -92,15 +92,6 @@ public class dnController extends HttpServlet {
 				
 		}
 		
-	
-		/*
-		 * Map<String, Object> map = new HashMap<String, Object>();
-		 * map.put("dona_bill",map); map.put("dona_date",map);
-		 * 
-		 * request.setAttribute("dona", map); RequestDispatcher dispatcher =
-		 * 
-		 */
-		
 		}
 	
 	public void dispatch(String url, HttpServletRequest request, HttpServletResponse response)

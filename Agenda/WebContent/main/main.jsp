@@ -13,6 +13,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="https://cdn.bootpay.co.kr/js/bootpay-3.2.6.min.js" type="application/javascript"></script>
+<script src="http://code.jquery.com/jquery-3.5.1.js"></script>
     <link rel="stylesheet"  type="text/css" href="${pageContext.request.contextPath}/main/main.css">
 </head> 
 <body>
@@ -122,25 +124,25 @@
         <section class="section third">
             <p>D O N A T I O N</p>
             <div class="donation-wrapper">
-                    <div class="donation-content">
+                    <div class="donation-content" onclick="pay01()">
                         <div class="donation-content-01">
                             <p>1,000</p>
                         </div>
                     </div>
-                    <div class="donation-content">
+                    <div class="donation-content" onclick="pay02()">
                         <div class="donation-content-01">
-                            <p>1,000</p>
+                            <p>5,000</p>
                         </div>
                     </div>
-                    <div class="donation-content">
+                    <div class="donation-content" onclick="pay03()">
                         <div class="donation-content-01">
-                            <p>1,000</p>
+                            <p>10,000</p>
                         </div>
                     </div>
         
-                    <div class="donation-content">
+                    <div class="donation-content" onclick="pay04()">
                         <div class="donation-content-01">
-                            <p>1,000</p>
+                            <p>50,000</p>
                         </div>
                     </div>
             </div>
@@ -187,6 +189,9 @@
  
 
 </script>
+
+<script type="text/javascript" src="mainpay.js"></script>
+
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>

@@ -175,6 +175,7 @@ header {
 	align-items: center;
 	background: #eaeaea;
 	box-shadow: 7px 7px 14px #d3d3d3, -7px -7px 14px #ffffff;
+	cursor: pointer;
 }
 
 .donation-content-01 {
