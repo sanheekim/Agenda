@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.agenda.comm.COMMDao;
+import com.agenda.comm.COMMDto;
+
 @WebServlet("/qnaController.do")
 public class QNAController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -32,6 +35,7 @@ public class QNAController extends HttpServlet {
 		System.out.println("[" + command + "]");
 		HttpSession session = request.getSession();
 		
+		COMMDao commdao = new COMMDao();
 		QNADao dao = new QNADao();
 		
 		if (command.equals("list")) {
@@ -88,7 +92,10 @@ public class QNAController extends HttpServlet {
 		} else if (command.equals("detail")) {
 			int qna_no = Integer.parseInt(request.getParameter("qna_no"));
 			QNADto dto = dao.selectOne(qna_no);
+			List<COMMDto> list = commdao.list(qna_no);
 			request.setAttribute("detail", dto);
+			request.setAttribute("commlist", list);
+
 			dispatch("qna/qna_detail.jsp", request, response);
 		} else if (command.equals("delete")) {
 			int qna_no = Integer.parseInt(request.getParameter("qna_no"));

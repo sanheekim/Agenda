@@ -78,6 +78,8 @@ public class COMMController extends HttpServlet {
 				String msg = "삭제 실패!";
 				jsResponse(msg, "qnaController.do?command=detail&qna_no="+qna_no, request, response);
 			}
+		} else if (command.equals("update")) {
+			
 		}
 
 	}

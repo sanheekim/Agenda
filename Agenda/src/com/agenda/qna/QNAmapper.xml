@@ -72,9 +72,9 @@
 	</update>
 
 	<delete id="delete" parameterType="int">
-		DELETE FROM AG_QNA
-		WHERE QNA_NO
-		= #{qna_no}
+		UPDATE AG_QNA
+		SET QNA_DELFLAG = 'Y'
+		WHERE QNA_NO = #{qna_no}
 	</delete>
 	
 </mapper>
