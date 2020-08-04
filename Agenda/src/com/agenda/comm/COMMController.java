@@ -53,11 +53,16 @@ public class COMMController extends HttpServlet {
 			
 		} else if (command.equals("commwrite")) {
 			
+			String member_id = request.getParameter("member_id");
 			String comm_content = request.getParameter("comm_content");
 			int qna_no = Integer.parseInt(request.getParameter("qna_no"));
-			System.out.println(comm_content + " " + qna_no);
+			System.out.println(member_id + " " + comm_content + " " + qna_no);
 			
-			COMMDto dto = new COMMDto(comm_content, qna_no);
+			COMMDto dto = new COMMDto();
+			dto.setMember_id(member_id);
+			dto.setComm_content(comm_content);
+			dto.setQna_no(qna_no);
+			
 			int res = dao.insert(dto);
 			System.out.println("write : " + res);
 			
