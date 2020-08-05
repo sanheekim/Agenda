@@ -117,6 +117,7 @@
 					<span>8~15자리의 영문,숫자,특수문자의 입력이 가능합니다.</span><br>				
 					<input type="password" name="member_pw" id="mypw2" class="pw" placeholder="비밀번호를 확인하세요." required="required" />
     				<font id="Notice" size="2"></font>
+    				<input type="hidden" name="member_salt">
     				
 				</td>
 			</tr>
@@ -137,13 +138,6 @@
 					<input type="text" name="member_phone" id="myph" placeholder="전화번호를 '-'없이 입력하세요." required="required" />
 				</td>
 			</tr>
-			<!--  
-			<tr>
-				<td>이메일<br>
-					<input type="email" name="myemail" placeholder="이메일을 입력하세요." required="required" />
-				</td>
-			</tr>
-			-->
 			<tr>
 				<td>이메일<br><input type="email" name="member_email" id="email"  placeholder="이메일을 입력하세요."/></td>
 				<td><br><input id="receiver" type="button" value="인증번호발송" onclick="sendEmail()"></td>

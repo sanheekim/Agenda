@@ -12,17 +12,16 @@
 <script type="text/javascript">
 
 	onload = function(){
-		var id = opener.document.getElementsByName("myid")[0].value;
-		document.getElementsByName("id")[0].value = id;
+		var id = opener.document.getElementsByName("member_id")[0].value;
+		document.getElementsByName("member_id")[0].value = id;
 	}
 	
 	function confirmId(bool){
 		if (bool == "true") {
-			opener.document.getElementsByName("myid")[0].title = 'y';
-			opener.document.getElementsByName("mypw")[0].focus();
-			// 이걸 못 읽어오는거아아
+			opener.document.getElementsByName("member_id")[0].title = 'y';
+			opener.document.getElementsByName("member_pw")[0].focus();
 		} else {
-			opener.document.getElementsByName("myid")[0].focus();
+			opener.document.getElementsByName("member_id")[0].focus();
 		}
 		self.close();
 	}	
@@ -35,10 +34,10 @@
 	String idnotused = request.getParameter("idnotused");
 %>
 
-	<table border="1">
+	<table border="0">
 		<tr>
 			<td>
-				<input type="text" name="id" disabled/>
+				<input type="text" name="member_id" disabled/>
 			</td>
 		</tr>
 		<tr>
