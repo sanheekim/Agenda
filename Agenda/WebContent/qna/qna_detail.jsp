@@ -137,8 +137,9 @@ $(document).ready(function(){
 			<input type="hidden" name="qna_no" value="${detail.qna_no }" id="qna_no">
 			<table id="board">
 				<tr>
-					<td colspan="6"><input type="hidden" name="qna_title"
-						value="${detail.qna_title }">${detail.qna_title }</td>
+					<td colspan="6">
+					<input type="hidden" name="qna_title" value="${detail.qna_title }">${detail.qna_title }
+					</td>
 				</tr>
 				<tr>
 					<th>작성자</th>
@@ -147,7 +148,7 @@ $(document).ready(function(){
 					<th>작성시간</th>
 					<td>${detail.qna_regdate}</td>
 					<th>조회</th>
-					<td>조회수</td>
+					<td>${detail.qna_hit}</td>
 				</tr>
 				<tr>
 					<td colspan="6">
