@@ -14,7 +14,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/header/header.css"
-	type="text/css" media="screen" />
+	type="text/css" media="screen"/>
 <title>아괜다 회원가입 페이지 입니다.</title>
 </head>
 <body>

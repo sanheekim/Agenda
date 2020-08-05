@@ -152,7 +152,7 @@
 	          $('#Notice').html('비밀번호 일치함<br><br>');
 	          $('#Notice').attr('color', '#199894b3');
 	        }
-	    });
+	    });  
 	});
 	
 </script>
@@ -168,7 +168,7 @@
 	
 		<input type="hidden" name="command" value="registres"/>
 		<table>
-		<!-- 아이디, 비밀번호, 이름, 주소, 전화번호, 이메일 -->
+		<!-- 아이디, 비밀번호, 이름, 주소, 전화번호,, 이메일 -->
 			<tr>
 				<td>아이디<br>
 				<!-- 이런건 보통 id를 줌 -->
