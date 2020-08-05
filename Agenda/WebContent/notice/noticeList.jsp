@@ -57,7 +57,7 @@
 
 				<c:forEach var="row" items="${map.list}">
 					<c:choose>
-						<c:when test="${row.notice_delflag=='N'}">
+						<c:when test="${row.notice_delflag == N}">
 
 							<tr>
 								<td>${row.notice_no}</td>

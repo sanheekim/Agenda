@@ -75,22 +75,24 @@ public class NoticeController extends HttpServlet {
 		} 
 		//글쓰기 
 		else if(command.equals("write")) {
-			String member_role = request.getParameter("member_role");
-			System.out.println(member_role);
+
 			response.sendRedirect("notice/noticeInsert.jsp");
 			
 		}
 		//공지사항 글쓰기 페이지
-		else if (command.equals("writreres")) {
+		else if (command.equals("writeres")) {
 			
-			String member_id = request.getParameter("member_id");
+			
 			String notice_title = request.getParameter("notice_title");
 			String notice_content = request.getParameter("notice_content");
+			String member_id = request.getParameter("member_id");
+			System.out.println(member_id);
 			System.out.println("Controller->제목: "+notice_title +"내용:"+notice_content+"아이디:"+member_id);
 		
 			NoticeDto dto = new NoticeDto(notice_title, notice_content, member_id);
 			
 			int res = dao.insert(dto);
+			
 			
 			if(res>0) {
 				
@@ -98,8 +100,8 @@ public class NoticeController extends HttpServlet {
 				
 				
 			} else {
-				String msg ="작성실패";
-				noticeResponse(msg,"NoticeController.do?command=write",request,response);
+				
+				noticeResponse("글 작성 실패 하셨습니다!","NoticeController.do?command=write",request,response);
 			}
 			
 		}

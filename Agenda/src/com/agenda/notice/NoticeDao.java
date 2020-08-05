@@ -100,7 +100,7 @@ public class NoticeDao extends NoticeSqlMapConfig {
 			res = session.insert(namespace + "insert", dto);
 			if (res > 0) {
 				session.commit();
-				System.out.println("insert 성공");
+				System.out.println("공지사항 insert 성공");
 			}
 		} catch (Exception e) {
 			System.out.println("error: [insert dao] error 3.4");

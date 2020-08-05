@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +33,7 @@
 		<form action="${pageContext.request.contextPath}/NoticeController.do" method="post">
 		
 		<input type="hidden" name="command" value="writeres">
+		
 		<input type="hidden" name="member_id" value="${logindto.member_id }">
 			<table>
 				<tr>
@@ -72,7 +74,7 @@
 		function formSubmit() {
 			let input = document.createElement("input");
 			input.setAttribute("type", "hidden");
-			input.setAttribute("name", "qna_content")
+			input.setAttribute("name", "notice_content")
 			input.setAttribute("value", editor.getHtml());
 			document.querySelector("#editor").append(input);
 		}
