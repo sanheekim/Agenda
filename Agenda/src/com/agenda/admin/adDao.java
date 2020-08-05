@@ -23,6 +23,19 @@ public class adDao extends adSqlMapConfig {
 		return list;
 	}
 	
+	public adDto selectOne(String member_id) {
+		SqlSession session = null;
+		adDto dto = null;
+		
+		try {
+			session = getSqlSessionFactory().openSession(false);
+			dto = session.selectOne(namespace+"selectOne", member_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return dto;
+	}
+	
 	public int update(adDto dto) {
 		
 		SqlSession session = null;
