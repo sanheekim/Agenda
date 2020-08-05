@@ -11,6 +11,7 @@
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="pharmacy_map.css">
+<script src="pharmacy_map.js" defer="defer"></script>
 </head>
 <body>
 	<c:choose>
@@ -24,8 +25,7 @@
 
 	<section>
 		<div id="map_header">
-		<h1>약국찾기</h1>
-		<hr>
+		<h2>약국찾기</h2>
 		</div>
 		<div class="map_wrap">
 			<div id="map"></div>
@@ -41,5 +41,5 @@
 </body>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bbd355e231cd5468c69e01f2e5801a5d&libraries=services"></script>
-<script src="pharmacy_map.js"></script>
+
 </html>
