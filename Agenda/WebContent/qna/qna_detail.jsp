@@ -26,14 +26,15 @@ $(document).ready(function(){
 		
 		var member_id = $(this).attr("name");
 		console.log(member_id)
-		var comm_content=$(".comm_content").val();
+		var comm_content=$("#comm_content").val();
 		var qna_no="${detail.qna_no}";
 		console.log(comm_content + " " + qna_no);
+	
 		
 		var url = "commController.do";
 		console.log(url);
 		
-		$.ajax({				
+	   $.ajax({				
 			type: "post",
 			url: url +"?command=commwrite",
 			data : {
@@ -45,7 +46,7 @@ $(document).ready(function(){
 				alert("댓글이 등록되었습니다.");
 				location.href= "qnaController.do?command=detail&qna_no="+${detail.qna_no};
 			}                
-		});
+		}); 
 	});
 	
 	$(".btnDelete").click(function (){
@@ -178,11 +179,13 @@ $(document).ready(function(){
 						<br>
 						작성자 : ${row.member_id}
 						<br>
-						<input type="text" value="${row.comm_content }" disabled="disabled" class="comm_content">
+						<textarea rows="3" cols="40" disabled="disabled" class="comm_content">${row.comm_content }</textarea>
 						<br>
 						날짜 : ${row.comm_regdate}
 						<br>
 						<hr>
+						<c:out value="${row.member_id }"></c:out><br>
+						<c:out value="${sessionScope.member_id }"></c:out>
 						<c:if test="${sessionScope.member_id == row.member_id}">
 							<input type="button" value="수정" class="btnUpdate" name="${row.comm_no }">
 							<input type="button" value="삭제" class="btnDelete" name="${row.comm_no }">
@@ -198,9 +201,9 @@ $(document).ready(function(){
 				
 					<c:when test="${logindto ne null }">
 						<tr>
-						<th><c:out value="${logindto.member_id }"></c:out></th>
-						<td colspan="3"><textarea name="comm_content" class="comm_content"></textarea></td>
-						<td><input type="submit" value="작성" id="btnReply" name="${logindto.member_id }"></td>
+							<th><c:out value="${logindto.member_id }"></c:out></th>
+							<td colspan="3"><textarea name="comm_content" id="comm_content"></textarea></td>
+							<td><input type="button" value="작성" id="btnReply" name="${logindto.member_id }"></td>
 						</tr>
 					</c:when>
 					<c:otherwise>
