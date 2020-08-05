@@ -10,7 +10,7 @@ public class adDto {
 	private String member_email;
 	private String member_addr;
 	private String member_phone;
-	private Boolean member_enabled;
+	private String member_enabled;
 	private String member_role;
 	private int member_no;
 	
@@ -18,7 +18,7 @@ public class adDto {
 		
 	}
 	
-	public adDto(String member_id, String member_token, String member_pw, String member_salt, String member_name, String member_email, String member_addr, String member_phone, Boolean member_enabled, String member_role, int member_no) {
+	public adDto(String member_id, String member_token, String member_pw, String member_salt, String member_name, String member_email, String member_addr, String member_phone, String member_enabled, String member_role, int member_no) {
 		this.member_id = member_id;
 		this.member_token = member_token;
 		this.member_pw = member_pw;
@@ -30,6 +30,18 @@ public class adDto {
 		this.member_enabled = member_enabled;
 		this.member_role = member_role;
 		this.member_no = member_no;
+	}
+	
+	public adDto(int member_no, String member_id, String member_pw, String member_name, String member_email, String member_addr, String member_phone, String member_enabled, String member_role) {
+		this.member_no = member_no;
+		this.member_id = member_id;
+		this.member_pw = member_pw;
+		this.member_name = member_name;
+		this.member_email = member_email;
+		this.member_addr = member_addr;
+		this.member_phone = member_phone;
+		this.member_enabled = member_enabled;
+		this.member_role = member_role;
 	}
 	
 	public String getMember_id() {
@@ -96,11 +108,11 @@ public class adDto {
 		this.member_phone = member_phone;
 	}
 
-	public Boolean getMember_enabled() {
+	public String getMember_enabled() {
 		return member_enabled;
 	}
 
-	public void setMember_enabled(Boolean member_enabled) {
+	public void setMember_enabled(String member_enabled) {
 		this.member_enabled = member_enabled;
 	}
 

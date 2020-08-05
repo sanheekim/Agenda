@@ -2,15 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.agenda.admin.adMapper">
 
-<!-- 내 정보 조회, 내 정보 수정은 MyinfoMapper.xml 쓰기.
-	여기에는 adlayout.html에서 '회원정보관리'를 눌렀을 때 전체 회원 정보 조회 테이블 나오게 하고
-	전체 회원 정보 수정 기능 만들기. -->
-	
-<!-- 관리자일 때만 조회가 돼야 하니까 servlet에서 member-id를 받아서 유효성검사를 하기 위한 쿼리 짜기 -->
-
 	<resultMap type="adDto" id="adResultMap">
+		<result property="member_no" column="MEMBER_NO"/>
 		<result property="member_id" column="MEMBER_ID"/>
-		<result property="member_token" column="MEMBER_TOKEN"/>
 		<result property="member_pw" column="MEMBER_PW"/> 
 		<result property="member_name" column="MEMBER_NAME"/>
 		<result property="member_email" column="MEMBER_EMAIL"/>
@@ -18,33 +12,12 @@
 		<result property="member_phone" column="MEMBER_PHONE"/>
 		<result property="member_enabled" column="MEMBER_ENABLED"/>
 		<result property="member_role" column="MEMBER_ROLE"/>
-		<result property="member_salt" column="MEMBER_SALT"/>
 	</resultMap>
 
 	<select id="selectList" resultMap="adResultMap">
-        SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL, MEMBER_ADDR, MEMBER_PHONE, MEMBER_ENABLED, MEMBER_ROLE
+        SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL, MEMBER_ADDR, MEMBER_PHONE, MEMBER_ENABLED, MEMBER_ROLE
         FROM AG_MEMBER
     </select>
-	
-	<!-- 셀렉트리스트: 컨트롤러랑 mapper 왔다갔다
-		1. 회원정보 수정을 눌렀을 때 '유효성 검사'
-		2. member_id를 갖고 서블릿으로 간다.
-		3. 유효성검사를 위한 쿼리를 실행한다. (member_id를 넣어서)
-		SELECT GRADE FROM AG_MEMBER WHERE MEMBER_ID = {dto};
-		
-		dto.role; (GRADE)
-	
-		4. 맞으면 수정하는 페이지로 이동
-		if(dto.role).equals("ADMIN");
-	
-		SELECT * FROM AG_MEMBER;
-
-		5. 아니면 "에러. 비정상적인 접근 등등" ->메시지 내용 알아서
-		else {
-			syso{비정상적인 접근입니다}
-			out.println어쩌고
-		}
-		!-->
 		
 	<update id="update" parameterType="adDto">
 		UPDATE SET AG_MEMBER = #{member_role} WHERE MEMBER_ID = #{member_id};

@@ -5,7 +5,7 @@ import org.apache.ibatis.session.SqlSession;
 
 public class adDao extends adSqlMapConfig {
 	
-	private String namespace = "com.agenda.admin.admapper.";
+	private String namespace = "com.agenda.admin.adMapper.";
 	
 	public List<adDto> selectList() {
 		
@@ -14,14 +14,13 @@ public class adDao extends adSqlMapConfig {
 		
 		try {
 			session = getSqlSessionFactory().openSession(false);
-			list = session.selectList("com.agenda.admin.adMapper.selectList");
+			list = session.selectList(namespace+"selectList");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
 		return list;
-		
 	}
 	
 	public int update(adDto dto) {

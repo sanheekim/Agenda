@@ -10,6 +10,7 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 정보 관리</title>
+<script src="http://code.jquery.com/jquery-3.5.1.js"></script>
 <style type="text/css">
 
 	#allmember {
@@ -27,6 +28,7 @@
 	<table border="1">
 		<thead>
 			<tr>
+			<td>회원번호</td>
 			<td>ID</td>
 			<td>PW</td>
 			<td>이름</td>	
@@ -38,25 +40,22 @@
 			</tr>
 		</thead>
 		<tbody>
-				<c:choose>
-					<c:when test="${empty list }">
-						<div>회원정보가 없습니다.</div>
-					</c:when>
-					<c:otherwise>
-						<c:forEach items="${list }" var="dto">
-							<tr>
-								<td>${dto.member_id }</td>
-								<td>${dto.member_pw }</td>
-								<td>${dto.member_name }</td>
-								<td>${dto.member_email }</td>
-								<td>${dto.member_addr }</td>
-								<td>${dto.member_phone }</td>
-								<td>${dto.member_enabled }</td>
-								<td>${dto.member_role }</td>
-							</tr>
-						</c:forEach>
-					</c:otherwise>
-				</c:choose>
+			<c:forEach items="${list }" var="dto">
+				<tr>
+					<td>${dto.member_no }</td>
+					<td>${dto.member_id }</td>
+					<td>${dto.member_pw }</td>
+					<td>${dto.member_name }</td>
+					<td>${dto.member_email }</td>
+					<td>${dto.member_addr }</td>
+					<td>${dto.member_phone }</td>
+					<td>${dto.member_enabled }</td>
+					<td>${dto.member_role }</td>
+				</tr>
+			</c:forEach>
+			<c:if test="${empty list }">
+			<div>회원정보가 없습니다.</div>
+			</c:if>
 		</tbody>
 	</table>
 </div>
