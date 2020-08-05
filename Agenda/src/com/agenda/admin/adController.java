@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.agenda.myinfo.MyinfoDto;
+
 @WebServlet("/adController")
 public class adController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -29,7 +31,7 @@ public class adController extends HttpServlet {
 		String command = request.getParameter("command");
 		System.out.println(command);
 		
-		if(command.contentEquals("allmember")) {
+		if(command.contentEquals("allMember")) {
 			
 			List <adDto> list = dao.selectList();
 			request.setAttribute("list", list);
@@ -39,6 +41,23 @@ public class adController extends HttpServlet {
 			RequestDispatcher dispatch = request.getRequestDispatcher("admin/admanager.jsp");
 			dispatch.forward(request, response);
 
+		}
+		
+		else if(command.contentEquals("allUpdate")) {
+			
+			String member_role = request.getParameter("member_role");
+			
+			int res = dao.update(dto);
+			System.out.println(res);
+			
+			if(res>0) {
+				System.out.println("수정 중");
+				response.sendRedirect("adController?command=admin&member_role="+member_role);
+				
+			} else {
+				response.sendRedirect("admin/admanager.jsp");
+			}
+			
 		}
 	}
 	

@@ -77,7 +77,6 @@ public class MyinfoController extends HttpServlet {
 				System.out.println("들어옴");
 				response.sendRedirect("MyinfoController?command=myinfo&member_id="+member_id);//command가 list인걸로 다시요청해라
 				
-			
 			}else {
 				response.sendRedirect("myinfo/myinfoUpdate.jsp");
 			}
