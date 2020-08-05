@@ -96,7 +96,7 @@ public class NoticeController extends HttpServlet {
 			
 			if(res>0) {
 				
-				response.sendRedirect("NoticeContorller.do?command=list&curPage=1&searchOption+all&keyword=");
+				response.sendRedirect("NoticeController.do?command=list&curPage=1&searchOption=all&keyword=");
 				
 				
 			} else {
@@ -116,13 +116,15 @@ public class NoticeController extends HttpServlet {
 		}
 		
 		else if(command.equals("delete")) {
+			
 			int notice_no = Integer.parseInt(request.getParameter("notice_no"));
 			int res = dao.delete(notice_no);
 			System.out.println("delete"+res);
+			
 			if(res>0) {
-				noticeResponse("글 삭제 성공" , "NoticeController.do?command=list&curpage=1&searchOption=all&keyword=",request, response);
+				noticeResponse("글 삭제 성공" , "NoticeController.do?command=list&curPage=1&searchOption=all&keyword=",request, response);
 			} else {
-				noticeResponse("글 삭제 실패", "NoticeController.do?command=detail",request,response);
+				noticeResponse("글 삭제 실패",  "NoticeController.do?command=detail",request,response);
 			}
 		}
 		
