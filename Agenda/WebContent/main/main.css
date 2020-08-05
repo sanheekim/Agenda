@@ -15,6 +15,7 @@ header {
 	background-color: whitesmoke;
 	height: 100vh;
 	overflow: hidden;
+	
 }
 
 /* 첫번째 */
@@ -276,6 +277,20 @@ header {
 	transition-duration: 150ms;
 	transition-timing-function: ease-out;
 	animation: cursorAnim .3s infinite alternate;
+	visibility: hidden;
+}
+
+#cursor2{
+	width: 1em;
+	height: 1em;
+	border : 1px solid gray;
+	border-radius: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	pointer-events: none;
+	cursor: none;
+	transition-duration: 150ms;
+	transition-timing-function: ease-out;
 	visibility: hidden;
 }
 

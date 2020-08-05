@@ -32,8 +32,6 @@
 	</header>
 
 	<!-- 메인 -->
-	<div id ="cursor"></div>
-	
 	<section class="section first">
 		<div class="text-wrap">
 			<p class="text" data-text="아프지마요.">아프지마요.</p>
@@ -240,6 +238,10 @@
 			</div>
 		</div>
 	</footer>
+	
+	<!-- 커서 -->
+	<div id ="cursor"></div>
+	<div id ="cursor2"></div>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/main/mainpay1.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/main/mainpay2.js"></script>
