@@ -19,25 +19,91 @@
 
 <style type="text/css">
 
-	h2, h3 {
+	h1 {
 		text-align: center;
 	}
 	
+	h2 {
+		padding-left: 0;
+	}
+	
 	form {
-		width: 600px;
-		height: 600px;
-		border: 1px solid black;	
+		width: 500px;
+		height: 950px;
+		border: 1px solid #dbdbdb;
 		margin-left: auto;
 		margin-right: auto;
+		padding-left: 100px;
+	}
+	
+	td {
+		font-size: 15px;
+	}
+	
+	span {
+		font-size: 10px;
 	}
 	
 	#myid, #mypw1, #mypw2, #myname, #roadFullAddr, #myph, #email{
-		width: 200px;
+		width: 400px;
+		height:30px;
+		font-size:15px;
+		border-top: 1px;
+        border-left: 1px;
+        border-right: 1px;
 		
 	}
 	
-	#roadFullAddr {
-		width: 400px;}
+	#roadFullAddr, #code_text {
+		width: 400px;
+		height: 30px;
+		font-size: 15px;
+		border-top: 1px;
+        border-left: 1px;
+        border-right: 1px;
+	}
+	
+	input::placeholder {
+		color: #dbdbdb;
+	}
+	
+	#button {
+		text-align: center;
+		width:200px;
+		height:30px;
+		background-color: #dbdbdb;
+		border: none;
+		font-size: 15px;
+		cursor: pointer;
+	}
+	
+	#button:hover {
+		background-color: #b5b5b5;
+	}
+	
+	
+	#receiver, #idButton, #addrButton {
+		width: 100px;
+		height: 30px;
+		background-color: white;
+		border: 1px solid black;
+		border-radius: 2em;
+		cursor: pointer;
+	}
+	
+	#receiver:hover {
+		background: #dbdbdb;
+	}
+	
+	#idButton:hover {
+		background: #dbdbdb;
+	}
+	
+	#addrButton:hover {
+		background: #dbdbdb;
+	}
+	
+	
 
 </style>
 
@@ -70,6 +136,8 @@
 			document.getElementById("roadFullAddr").value = roadFullAddr;		
 	}
 	
+	
+	
 	$(function(){
 	    $('#mypw1').keyup(function(){
 	      $('#chkNotice').html('');
@@ -87,18 +155,16 @@
 	    });
 	});
 	
-	
-
 </script>
 
 </head>
 <body>
 
-	<h3>A.gen.da</h3>
+	<h1>A.gen.da</h1>
 	
 	<form action="/Agenda/RegistController" method="post">
 	
-	<h2>아괜다 계정 정보를 입력해주세요.</h2>
+	<br><br><h2>아괜다 계정 정보를 입력해주세요.</h2><br><br>
 	
 		<input type="hidden" name="command" value="registres"/>
 		<table>
@@ -107,46 +173,57 @@
 				<td>아이디<br>
 				<!-- 이런건 보통 id를 줌 -->
 					<input type="text" name="member_id" id="myid" placeholder="아이디를 입력하세요." required="required" title="n" />
-					<input type="button" value="중복체크" onclick="idCheck();"/>    
+					<br>
+					<input type="button" id="idButton" value="중복체크" onclick="idCheck();"/>  
+					<br><span>영문,숫자,특수문자의 입력이 가능합니다.</span><br>  
 				</td>
 			</tr>
 			<tr>
-				<td>비밀번호<br>
+				<td><br>비밀번호<br>
 				<!-- name 속성 지우지마!! -->
-					<input type="password" name="member_pw" id="mypw1" class="pw" placeholder="비밀번호를 입력하세요." required="required" />
-					<span>8~15자리의 영문,숫자,특수문자의 입력이 가능합니다.</span><br>				
-					<input type="password" name="member_pw" id="mypw2" class="pw" placeholder="비밀번호를 확인하세요." required="required" />
+					<input type="password" name="member_pw" id="mypw1" class="pw" placeholder="비밀번호." required="required" />
+					<br><span>영문,숫자,특수문자의 입력이 가능합니다.</span><br>				
+					<br><input type="password" name="member_pw" id="mypw2" class="pw" placeholder="비밀번호 재입력" required="required" />
+					<br><span>비밀번호를 다시 입력해주세요.</span><br>
     				<font id="Notice" size="2"></font>
     				<input type="hidden" name="member_salt">
     				
 				</td>
 			</tr>
 			<tr>
-				<td>이름<br>
-					<input type="text" name="member_name" id="myname" placeholder="이름을 입력하세요." required="required" />
+				<td><br>닉네임<br>
+					<input type="text" name="member_name" id="myname" placeholder="닉네임을 입력해주세요." required="required" />
 				</td>
 			</tr>
 			<tr>
-				<td>주소<br>
-					<button type="button" class="btn btn-warning" onclick="goPopup()">주소검색</button>
+				<td><br>주소<br>
+					<input type="button" id="addrButton" class="btn btn-warning" value="주소검색" onclick="goPopup()">
+					<br>
 					<input type="text" name="member_addr" id="roadFullAddr" class="form-control" placeholder="주소를 검색하세요." required="required" disabled/>
 				</td>
-			
 			</tr>
 			<tr>
-				<td>전화번호<br>
+				<td><br>전화번호<br>
 					<input type="text" name="member_phone" id="myph" placeholder="전화번호를 '-'없이 입력하세요." required="required" />
 				</td>
 			</tr>
 			<tr>
-				<td>이메일<br><input type="email" name="member_email" id="email"  placeholder="이메일을 입력하세요."/></td>
-				<td><br><input id="receiver" type="button" value="인증번호발송" onclick="sendEmail()"></td>
-				<td><input type="text" name="member_email_valid" placeholder="인증코드"></td>
+				<td><br>이메일<br>
+					<input type="email" name="member_email" id="email"  placeholder="이메일을 입력하세요."/>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<input id="receiver" type="button" value="인증번호발송" onclick="sendEmail()">
+					<br>
+					<input type="text" name="member_email_valid" id="code_text" placeholder="인증코드">
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2" align="right">
-					<input type="submit" value="회원가입" />
-					<input type="button" value="취소" />
+					<br><br>
+					<input type="submit" id="button" value="회원가입" />
+					<input type="button" id="button" value="취소" onclick="location.href='${pageContext.request.contextPath}/main/main.jsp'"/>
 				</td>
 			</tr>
 		</table>

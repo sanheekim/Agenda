@@ -15,7 +15,7 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/header/header.css"
 	type="text/css" media="screen" />
-<title>Insert title here</title>
+<title>아괜다 회원가입 페이지 입니다.</title>
 </head>
 <body>
 	<header>
