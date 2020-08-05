@@ -11,20 +11,31 @@ for (var k = 0; k < 3; k ++){
 
 // 커서
 let cousor = document.getElementById("cursor");
-let cousorArea1 = document.getElementsByClassName("donation");
-let cousorArea2 = document.getElementsByClassName("fourth");
-let cousorArea3 = document.getElementsByClassName("contact");
+let cousorArea = document.getElementsByClassName("section");
+
+for (var l = 0; l < 3; l++){
+	cousorArea[l].addEventListener("mousemove", function(e) {
+		hideCursor();
+	});
+}
+
+for (var p = 3; p < cousorArea.length; p++){
+	cousorArea[p].addEventListener("mousemove", function(e) {
+		showCursor();
+		cursor.style.left = e.pageX + "px";
+		cursor.style.top = e.pageY + "px";
+	});
+}
 
 
-cousorArea2[0].addEventListener("mousemove", function(e) {
-	cursor.style.left = e.pageX + "px";
-	cursor.style.top = e.pageY + "px";
-});
+function showCursor(){
+	cursor.style.visibility = "visible"; 
+}
 
-cousorArea3[0].addEventListener("mousemove", function(e) {
-	cursor.style.left = e.pageX + "px";
-	cursor.style.top = e.pageY + "px";
-});
+function hideCursor(){
+	cursor.style.visibility = "hidden"; 
+}
+
 
 
 // 스크롤
@@ -41,7 +52,7 @@ function splitScroll() {
 splitScroll();
 	
 
-// 도네이션 페이지 효과
+// 메뉴 아이콘 효과
 var icon = document.querySelectorAll('.menu-icon-inside')
 
 for(let j = 0; j < icon.length; j++){
@@ -53,3 +64,7 @@ for(let j = 0; j < icon.length; j++){
         icon[j].removeAttribute("style");
     })
 }
+
+//도네이션 페이지 효과
+
+
