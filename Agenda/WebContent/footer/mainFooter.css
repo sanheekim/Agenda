@@ -45,8 +45,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  /* 遺�紐⑦깭洹� �븘�옒�뿉 justify-content�꽔湲� */
   margin: 0 60px 0 0px;
 }
 .footer__outro__container {
@@ -76,6 +74,7 @@
   justify-content: space-between;
   height: 200px;
 }
+
 .footer__outro__mail {
   font-size: var(--font-medium);
   margin-bottom: 30px;
@@ -101,11 +100,19 @@
   width: 400px;
   font-size: var(--font-medium);
   display: flex;
-  /* border: 1px solid white; */
   justify-content: space-between;
 }
 .footer__outro__grid__left {
   width: 400px;
-  /* border: 1px solid white; */
   justify-content: space-between;
+}
+
+.footer__outro__grid__left a{
+	text-decoration: none;
+	color : white;
+}
+
+.footer__outro__grid__row a{
+	text-decoration: none;
+	color : white;
 }

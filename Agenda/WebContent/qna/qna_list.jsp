@@ -21,7 +21,7 @@
 </head>
 
 <body>
-
+	<!-- 헤더 -->
     <c:choose>
     	<c:when test="${empty logindto }">
     		<jsp:include page="../header/header.jsp" />
@@ -31,15 +31,15 @@
     	</c:otherwise>
 	</c:choose>
     
+    <!-- 섹션 -->
 	<section>
 		<h1>Q & A</h1>
-		<hr>
 		<form action="${pageContext.request.contextPath}/qnaController.do" method="post">
 			<input type="hidden" name="command" value="list">
 			<input type="hidden" name="curPage" value="1">
-			총 ${map.count}개의 게시물이 있습니다.
+			<p>총 ${map.count}개의 게시물이 있습니다.</p>
 			<table>
-			
+				<!-- 테이블메뉴 -->
 				<tr>
 					<th>번호</th>
 					<th>제목</th>
@@ -48,7 +48,7 @@
 					<th>조회</th>
 				</tr>
 				
-				
+				<!-- 내용 -->
 				<c:forEach var="row" items="${map.list}">
 				<c:choose>
 					<c:when test="${row.qna_delflag == 'N' }">
@@ -60,21 +60,20 @@
 						</a></td>
 						<td>${row.member_id }</td>
 						<td>${row.qna_regdate}</td>
-						<td><!-- 조회수 --></td>
+						<td>${row.qna_hit }</td>
 					</tr>
 					</c:when>
 					<c:otherwise>
 					<tr>
 						<td>${row.qna_no}</td>
 						<td><span>삭제된 글 입니다</span></td>
-						<td><!-- 작성자 --></td>
+						<td>${row.member_id }</td>
 						<td>${row.qna_regdate}</td>
-						<td><!-- 조회수 --></td>
+						<td>${row.qna_hit }</td>
 					</tr>
 					</c:otherwise>
 					</c:choose>
 				</c:forEach>
-				
 				
 				<!-- 검색 -->
 				<tr>

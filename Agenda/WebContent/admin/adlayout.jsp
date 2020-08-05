@@ -104,7 +104,7 @@
 			<span>내 정보 수정</span>
 			<img class="icon" src="image/info.png" />
 			</div>
-			<div class="ad_box" onclick="location.href='../adController?command=allmember'">
+			<div class="ad_box" onclick="location.href='../adController?command=allMember'">
 			<span>회원 정보 관리</span>
 			<img class="icon" src="image/search.png" />
 			</div>
@@ -119,6 +119,7 @@
 	</div>	
 
 	<jsp:include page="../footer/mainFooter.jsp" />
+</div>
 
 <script type="text/javascript" src="adtransfer.js"></script>
 

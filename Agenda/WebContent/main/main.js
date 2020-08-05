@@ -12,6 +12,8 @@ for (var k = 0; k < 3; k ++){
 // 커서
 let cousor = document.getElementById("cursor");
 let cousorArea = document.getElementsByClassName("section");
+let footer =  document.getElementById("footer");
+console.log(footer);
 
 for (var l = 0; l < 3; l++){
 	cousorArea[l].addEventListener("mousemove", function(e) {
@@ -27,6 +29,11 @@ for (var p = 3; p < cousorArea.length; p++){
 	});
 }
 
+footer.addEventListener("mousemove", function(e) {
+	showCursor();
+	cursor.style.left = e.pageX + "px";
+	cursor.style.top = e.pageY + "px";
+});
 
 function showCursor(){
 	cursor.style.visibility = "visible"; 

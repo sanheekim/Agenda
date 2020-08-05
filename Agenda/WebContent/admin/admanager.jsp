@@ -25,6 +25,34 @@
 	}
 	
 </style>
+
+<script>
+
+function changeRole(){
+	
+	/* var target = document.getElementsByClassName("rlchoose");
+	var option = target.options[target.selectedIndex].text;
+	console.log(option); */
+	
+	var realrole = $("#ID option:selected").val();
+	console.log(realrole);
+		
+		$.ajax({
+			url: "../adController?command=allUpdate",
+			method: "post",
+			data: {realrole : realrole},
+			success: function(data){
+				alert("등급이 수정되었습니다.");
+				location.href="admin/admanager.jsp";
+			},
+			error:function(){
+				alert("통신 실패");
+			}
+	});
+}
+
+</script>
+
 </head>
 <body>
 
@@ -42,7 +70,7 @@
 			<td>주소</td>
 			<td>활성화여부</td>
 			<td>등급</td>
-			<td>수정</td>
+			<td>등급수정</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -56,8 +84,14 @@
 					<td>${dto.member_addr }</td>
 					<td>${dto.member_phone }</td>
 					<td>${dto.member_enabled }</td>
-					<td>${dto.member_role }</td>
-					<td><input type="button" value="수정" id="update" onclick="" /></td>
+					<td>
+						<select name="rlupdate" class="rlchoose">
+							<option value="rlnow">${dto.member_role }</option>
+							<option value="rladmin">ADMIN</option>
+							<option value="rluser">USER</option>
+						</select>
+					</td>
+					<td><input type="button" value="수정" id="update" onclick="changeRole()"/></td>
 				</tr>
 			</c:forEach>
 			<c:if test="${empty list }">
@@ -67,5 +101,6 @@
 	</table>
 </div>
 
+<script type="text/javascript" src="${pageContext.request.contextPath}/admin/adrolemanage.js"></script>
 </body>
 </html>
