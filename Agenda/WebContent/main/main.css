@@ -11,16 +11,14 @@ header {
 	z-index: 1;
 }
 
-.section{
+.section {
 	background-color: whitesmoke;
 	height: 100vh;
 	overflow: hidden;
 }
 
-
 /* 첫번째 */
-
-.fisrt{
+.fisrt {
 	min-width: 100%;
 	min-height: 100vh;
 	background-color: whitesmoke;
@@ -153,7 +151,6 @@ header {
 .third>p {
 	border: 1px dotted pink;
 	font-size: 2em;
-	
 }
 
 .donation-wrapper {
@@ -189,88 +186,100 @@ header {
 	align-items: center;
 }
 
-
-/* 자영씨 */
-
-
-.main__about {
-  height: 300vh;
-  display: flex;
+/* 네번째 */
+.fourth {
+	height: 300vh;
+	display: flex;
 }
 
-.main__about__title {
-  width: 50%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 30px;
-}
-.main__about__pages {
-  width: 50%;
-  color: white;
-}
-.main__about__pages div {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  color: white;
-}
-.main__about__pages div > p {
-  width: 80%;
-  font-size: 18px;
-  line-height: 30px;
-  color: white;
+.fourth-title {
+	width: 50%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 2em;
 }
 
-.main__about__pages div:nth-child(1) {
-  background-color: rgb(97, 97, 97);
-}
-.main__about__pages div:nth-child(2) {
-  background-color: rgb(61, 61, 61);
-}
-.main__about__pages div:nth-child(3) {
-  background-color: rgb(27, 27, 27);
-}
-.main__text {
-  margin: 120px;
-  width: 100%;
-  font-size: var(--font-large);
-  font-weight: var(--weight-bold);
-  font-family: sans-serif;
+.fourth-pages {
+	width: 50%;
 }
 
-/* Contact  */
-
-#contact {
-  width: 100%;
-  height: 100vh;
-  margin: 0px 0px;
-  padding: 0px 0px;
-  background-image: url(imgs/bgtest5.jpg);
-  background-attachment: fixed;
-  background-size: cover;
-  color: var(--color-black);
-
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* background-color: bisque; */
-  color: black;
+.fourth-pages div {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	color: white;
 }
 
-.contact__title {
-  font-size: var(--font-large);
-  font-weight: var(--weight-semi-bold);
-  margin: 0 30px 0px 120px;
-  color: white;
+.fourth-pages div p {
+	width: 80%;
+	font-size: 1em;
+	line-height: 30px;
+	color: white;
 }
-.contact__sub {
-  margin: 40px 120px;
-  width: 300px;
-  height: 300px;
-  color: white;
+
+.fourth-pages div:nth-child(1) {
+	background-color: rgb(97, 97, 97);
+}
+
+.fourth-pages div:nth-child(2) {
+	background-color: rgb(61, 61, 61);
+}
+
+.fourth-pages div:nth-child(3) {
+	background-color: rgb(27, 27, 27);
+}
+
+
+/* 다섯번째  */
+.contact {
+	width: 100%;
+	height: 100vh;
+	background-image: url("");
+	background-attachment: fixed;
+	background-size: cover;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: black;
+}
+
+.contact-title {
+	font-size: 2em;
+	font-weight: bolder;
+	margin: 0 30px 0px 120px;
+}
+
+.contact-sub {
+	margin: 40px 120px;
+	width: 300px;
+	height: 300px;
+}
+
+/* 커서 */
+#cursor {
+	width: 3.5em;
+	height: 3.5em;
+	border-radius: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	pointer-events: none;
+	cursor: none;
+	backdrop-filter: invert(100%);
+	transition-duration: 150ms;
+    transition-timing-function: ease-out;
+    animation : cursorAnim .3s infinite alternate;
+    visibility: hidden;
+}
+
+@keyframes cursorAnim{
+    from{
+        transform: scale(1);
+    }
+    to{
+        transform: scale(1.5);
+    }
 }
