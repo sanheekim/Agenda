@@ -119,6 +119,7 @@
 	</div>	
 
 	<jsp:include page="../footer/mainFooter.jsp" />
+</div>
 
 <script type="text/javascript" src="adtransfer.js"></script>
 
