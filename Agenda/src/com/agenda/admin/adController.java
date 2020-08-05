@@ -1,8 +1,8 @@
 package com.agenda.admin;
 
 import java.io.IOException;
-import java.util.List;
 
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.agenda.myinfo.MyinfoDto;
+import com.agenda.admin.adDto;
 
 @WebServlet("/adController")
 public class adController extends HttpServlet {
@@ -45,19 +45,29 @@ public class adController extends HttpServlet {
 		
 		else if(command.contentEquals("allUpdate")) {
 			
-			String member_role = request.getParameter("member_role");
+			String member_id = request.getParameter("member_id");
+			dto = dao.selectOne(member_id);
+			request.setAttribute("dto", dto);
+			System.out.println(dto);
+			RequestDispatcher dispatch = request.getRequestDispatcher("admin/adrolemanager.jsp");
+			dispatch.forward(request, response);
 			
+		}
+		
+		else if(command.contentEquals("updateres")) {
+			
+			int myno = Integer.parseInt(request.getParameter("myno"));
+			String updaterole = request.getParameter("myrole");
 			int res = dao.update(dto);
-			System.out.println(res);
-			
-			if(res>0) {
-				System.out.println("수정 중");
-				response.sendRedirect("adController?command=admin&member_role="+member_role);
-				
+			if (res > 0){
+				System.out.println("등급 변경 성공!");
+				RequestDispatcher dispatch = request.getRequestDispatcher("adController?command=admanager.jsp");
+				dispatch.forward(request, response);
 			} else {
-				response.sendRedirect("admin/admanager.jsp");
+				System.out.println("등급 변경 실패");
+				RequestDispatcher dispatch = request.getRequestDispatcher("adController?command=admanager.jsp");
+				dispatch.forward(request, response);
 			}
-			
 		}
 	}
 	
