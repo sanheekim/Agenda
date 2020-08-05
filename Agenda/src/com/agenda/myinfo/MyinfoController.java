@@ -2,6 +2,7 @@ package com.agenda.myinfo;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 
 @WebServlet("/MyinfoController")
 public class MyinfoController extends HttpServlet {
@@ -97,10 +97,7 @@ public class MyinfoController extends HttpServlet {
 			}else {
 				response.sendRedirect("MyinfoController?command=myinfo&member_id="+member_id);
 			}
-			
-			
+		}
 			
 		}
 	}
-
-}

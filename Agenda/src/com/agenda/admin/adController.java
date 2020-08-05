@@ -1,9 +1,7 @@
 package com.agenda.admin;
 
 import java.io.IOException;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,12 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.agenda.donation.dnDao;
-import com.agenda.donation.dnDto;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/adController")
 public class adController extends HttpServlet {
@@ -32,12 +25,23 @@ public class adController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		HttpSession session = request.getSession();
+		PrintWriter out = response.getWriter();
+		
+		adDao dao = new adDao();
+		
 		String command = request.getParameter("command");
 		System.out.println(command);
 		
-		if (command.equals("")) {
+		if(command.contentEquals("allmember")) {
 			
-		}
+			List <adDto> list = dao.selectList();
+			session.setAttribute("list", list);
+			
+			RequestDispatcher dispatch = request.getRequestDispatcher("admin/admanager.jsp");
+			dispatch.forward(request, response);
+
+		}		
 	}
 	
 	public void dispatch(String url, HttpServletRequest request, HttpServletResponse response)

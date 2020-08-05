@@ -22,7 +22,7 @@
 </head>
 <body>
 
-<div id="allmember">
+<div id="allmemberlist">
 	<h1>전체회원정보조회</h1>
 	<table border="1">
 		<thead>

@@ -1,7 +1,6 @@
 package com.agenda.admin;
 
 import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 
 public class adDao extends adSqlMapConfig {
@@ -32,8 +31,26 @@ public class adDao extends adSqlMapConfig {
 		
 		try {
 			session = getSqlSessionFactory().openSession(false);
-			res = session.update(namespace+"update",dto);
+			res = session.update(namespace+"update", dto);
 			
+			if(res > 0) {
+				session.commit();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return res;
+	}
+	
+	public int delete(String member_id) {
+		SqlSession session = null;
+		int res = 0;
+		
+		try {
+			session = getSqlSessionFactory().openSession(false);
+			res = session.delete(namespace+"delete", member_id);
 			if(res > 0) {
 				session.commit();
 			}
