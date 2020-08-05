@@ -49,7 +49,8 @@
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 				<p>SERVICE</p>
 				<a href="#" onmouseover="this.innerHTML='&nbsp;Medication check'"
-					onmouseout="this.innerHTML='&nbsp;의약품조회'">의약품조회</a> <a href="#"
+					onmouseout="this.innerHTML='&nbsp;의약품조회'">의약품조회</a> 
+					<a href="${pageContext.request.contextPath}/MainController?command=findPharm"
 					onmouseover="this.innerHTML='&nbsp;Finding Pharmacy'"
 					onmouseout="this.innerHTML='&nbsp;약국찾기'"><span>약국찾기</span></a> <a
 					href="#" onmouseover="this.innerHTML='&nbsp;Prescription'"
@@ -59,7 +60,7 @@
 				<a href="#" onmouseover="this.innerHTML='&nbsp;Notice'"
 					onmouseout="this.innerHTML='&nbsp;공지사항'">공지사항</a>
 				<p>SUPPORT</p>
-				<a href="#"
+				<a href="${pageContext.request.contextPath}/MainController?command=qna"
 					onmouseover="this.innerHTML='&nbsp;Questions and Answers'"
 					onmouseout="this.innerHTML='&nbsp;Q&A'">Q&A</a>
 			</div>
