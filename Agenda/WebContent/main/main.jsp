@@ -190,7 +190,10 @@
 
 </script>
 
-<script type="text/javascript" src="mainpay.js"></script>
+<script type="text/javascript" src="mainpay1.js"></script>
+<script type="text/javascript" src="mainpay2.js"></script>
+<script type="text/javascript" src="mainpay3.js"></script>
+<script type="text/javascript" src="mainpay4.js"></script>
 
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
