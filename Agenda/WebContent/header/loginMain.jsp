@@ -33,7 +33,7 @@
 				</c:when>
 				<c:otherwise>
 					<ul class="header-menu">
-					<li><a href="myinfo/myinfo.jsp"><span class="mypage"><button id="mypage">Mypage</button></span></a></li>
+					<li><a href="MyinfoController?command=myinfo&member_id=${logindto.member_id }"><span class="mypage"><button id="mypage">Mypage</button></span></a></li>
 					<li><a href="LoginController?command=logout"><span class="logout"><button id="logout">Log out</button></span></a></li>
 					<li><a href="#"><span class="list" onclick="openNav()">&#9776;</span></a></li>
 					</ul>

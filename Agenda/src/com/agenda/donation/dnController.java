@@ -81,11 +81,13 @@ public class dnController extends HttpServlet {
 		
 		// 이후 1. adreceipt.jsp에서 <script>에 ajax 써서 body에 있는 테이블에 값 불러오거나
 		// 2. 컨트롤러 통해서 adreceipt.jsp에 뿌리기
+			String member_id = request.getParameter("member_id");
 		
 			dnDao dao = new dnDao();
+			dnDto dto = new dnDto();
 		
-			List <dnDto> list = dao.selectList();
-			request.setAttribute("list", list);
+			dto = dao.selectOne(member_id);
+			request.setAttribute("dto", dto);
 				
 			RequestDispatcher dispatch = request.getRequestDispatcher("myinfo/myreceipt.jsp");
 			dispatch.forward(request, response);

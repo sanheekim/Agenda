@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/medilockerscan/mediLockerScanMain.css" >
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/medilockerscan/mediLockerScanMain.js"></script>
 </head>
 <body>
@@ -30,5 +32,10 @@
 	<footer>
 		<jsp:include page="../footer/mainFooter.jsp"></jsp:include>
 	</footer>
+	  <c:forEach items="${list }" var="scan">
+ 		<li> ${scan }</li>
+ 	  </c:forEach>
+
+	
 </body>
 </html>

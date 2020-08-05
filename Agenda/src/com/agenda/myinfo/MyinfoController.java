@@ -43,7 +43,8 @@ public class MyinfoController extends HttpServlet {
 			
 			session.setAttribute("dto",dto); //dto.변수 값을 뷰에 뿌려줄려고 
 			
-			response.sendRedirect("myinfo/myinfo.jsp");
+			RequestDispatcher dispatch = request.getRequestDispatcher("myinfo/myinfo.jsp");
+			dispatch.forward(request, response);
 			
 			
 				
@@ -51,7 +52,8 @@ public class MyinfoController extends HttpServlet {
 		}
 		else if(command.equals("myinfoUpdateform")) {
 			String member_id = request.getParameter("member_id");
-			MyinfoDto dto = dao.selectOne(member_id);
+			MyinfoDto dto = new MyinfoDto();
+			dto = dao.selectOne(member_id);
 			
 			//request.setAttribute("dto",dto); //dto.변수 값을 뷰에 뿌려줄려고 
 			

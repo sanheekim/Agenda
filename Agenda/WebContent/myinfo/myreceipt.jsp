@@ -29,28 +29,21 @@
 	<table border="1">
 		<thead>
 			<tr>
-			<td>후원 번호</td>
-			<td>후원 아이디</td>
-			<td>금액</td>	
-			<td>후원 날짜</td>
+				<td>후원 번호</td>
+				<td>후원 아이디</td>
+				<td>금액</td>	
+				<td>후원 날짜</td>
 			</tr>
 		</thead>
 		<tbody>
-				<c:choose>
-					<c:when test="${empty list }">
-						<div>후원내역이 없습니다.</div>
-					</c:when>
-					<c:otherwise>
-						<c:forEach items="${list }" var="dto">
-							<tr>
-								<td>${dto.dona_no }</td>
-								<td>${dto.member_id }</td>
-								<td>${dto.dona_bill }</td>
-								<td>${dto.dona_date }</td>
-							</tr>
-						</c:forEach>
-					</c:otherwise>
-				</c:choose>
+				
+			<tr>
+				<td>${dto.dona_no }</td>
+				<td>${dto.member_id }</td>
+				<td>${dto.dona_bill }</td>
+				<td>${dto.dona_date }</td>
+			</tr>
+				
 		</tbody>
 	</table>
 </div>

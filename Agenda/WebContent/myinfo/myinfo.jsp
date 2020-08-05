@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="../MyinfoController" method="post" >
+<form action="MyinfoController" method="post" >
 <input type="hidden" name="command" value="myinfoUpdateform">
 <input type="hidden" name="member_id" value="${dto.member_id}">
 	<table>
@@ -33,8 +33,8 @@
 		<tr>
 			<td>
 				<input type="submit" value="수정"/>
-				<input type="button" value="회원탈퇴" onclick="location.href='../MyinfoController?command=myinfoDelete&member_id=${dto.member_id}'"/> 
-				<input type="button" value="후원내역조회" onclick="location.href='../DonationController?command=Donation&member_id=${dto.member_id}'"/>
+				<input type="button" value="회원탈퇴" onclick="location.href='MyinfoController?command=myinfoDelete&member_id=${dto.member_id}'"/> 
+				<input type="button" value="후원내역조회" onclick="location.href='dnController?command=dnlist&member_id=${dto.member_id}'"/>
 			</td>
 		</tr>
 	</table>

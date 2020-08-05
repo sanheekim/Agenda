@@ -14,7 +14,7 @@
         FROM AG_DONATION
     </select>
     
-    <select id="selectOne" parameterType="String" resultMap="dnResultMap">
+    <select id="selectOne" parameterType="String" resultType="dnDto">
 		SELECT DONA_NO, DONA_BILL, DONA_DATE, MEMBER_ID
  		FROM AG_DONATION
 		WHERE MEMBER_ID = #{member_id} 	
