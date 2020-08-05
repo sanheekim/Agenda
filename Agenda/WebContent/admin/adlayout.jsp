@@ -100,7 +100,7 @@
 	</div>
 	
 	<div id="ad_bottom">
-			<div class="ad_box" onclick="">
+			<div class="ad_box" onclick="location.href='../admin/admyinfo.jsp'">
 			<span>내 정보 수정</span>
 			<img class="icon" src="image/info.png" />
 			</div>
