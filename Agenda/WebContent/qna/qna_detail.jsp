@@ -114,6 +114,8 @@ $(document).ready(function(){
 	});
 	
 });
+
+
 </script>
 <body>
 
@@ -152,12 +154,17 @@ $(document).ready(function(){
 					</td>
 				</tr>
 				<tr>
-					<td colspan="6"><input type="button" value="수정하기"
+					<td colspan="6">
+					<c:if test="${sessionScope.member_id == detail.member_id}">
+						<input type="button" value="수정하기"
 						onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=update&qna_no=${detail.qna_no }'">
+					</c:if>
 						<input type="button" value="목록으로"
 						onclick="location.href='${pageContext.request.contextPath}/qna/index.jsp'">
+					<c:if test="${sessionScope.member_id == detail.member_id}">
 						<input type="button" value="글삭제"
 						onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=delete&qna_no=${detail.qna_no }'">
+					</c:if>
 					</td>
 				</tr>
 			</table>
@@ -176,8 +183,10 @@ $(document).ready(function(){
 						날짜 : ${row.comm_regdate}
 						<br>
 						<hr>
-						<input type="button" value="수정" class="btnUpdate" name="${row.comm_no }">
-						<input type="button" value="삭제" class="btnDelete" name="${row.comm_no }">
+						<c:if test="${sessionScope.member_id == row.member_id}">
+							<input type="button" value="수정" class="btnUpdate" name="${row.comm_no }">
+							<input type="button" value="삭제" class="btnDelete" name="${row.comm_no }">
+						</c:if>
 					</td>
 				</tr>
 				</c:forEach>
@@ -188,15 +197,15 @@ $(document).ready(function(){
 				<c:choose>
 				
 					<c:when test="${logindto ne null }">
-					<tr>
-					<th><c:out value="${logindto.member_id }"></c:out></th>
-					<td colspan="3"><textarea name="comm_content" class="comm_content"></textarea></td>
-					<td><input type="submit" value="작성" id="btnReply" name="${logindto.member_id }"></td>
-					</tr>
+						<tr>
+						<th><c:out value="${logindto.member_id }"></c:out></th>
+						<td colspan="3"><textarea name="comm_content" class="comm_content"></textarea></td>
+						<td><input type="submit" value="작성" id="btnReply" name="${logindto.member_id }"></td>
+						</tr>
 					</c:when>
 					<c:otherwise>
-					<tr>
-					<td><span>로그인해주세요</span></td>
+						<tr>
+						<td><span>댓글 작성을 위해 로그인 해주세요</span></td>
 						</tr>
 					</c:otherwise>
 				</c:choose>

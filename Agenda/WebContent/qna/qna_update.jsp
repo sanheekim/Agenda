@@ -24,6 +24,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<!-- 헤더 -->
   	<c:choose>
     	<c:when test="${empty logindto }">
     		<jsp:include page="../header/header.jsp" />
@@ -33,6 +34,7 @@
     	</c:otherwise>
 	</c:choose>
     
+    <!-- 섹션 -->
 	<section>
 		<h1>Q&A 글수정</h1>
 		<hr>
@@ -42,13 +44,11 @@
 			<table border="1">
 				<tr>
 					<th>작성자</th>
-					<td><input type="text" name="member_id"
-						value="${update.member_id }"></td>
+					<td><input type="text" name="member_id" value="${update.member_id }" disabled="disabled"></td>
 				</tr>
 				<tr>
 					<th>제목</th>
-					<td><input type="text" name="qna_title"
-						value="${update.qna_title }"></td>
+					<td><input type="text" name="qna_title" value="${update.qna_title }"></td>
 				</tr>
 				<tr>
 					<td colspan="2"><div id="editor" name="qna_content"></div></td>
@@ -62,28 +62,30 @@
 			</table>
 		</form>
 	</section>
+	
+	<!-- 풋터 -->
     <jsp:include page="../footer/mainFooter.jsp" />
+    
+    <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+	<script>
+		const editor = new toastui.Editor({
+			el : document.querySelector('#editor'),
+			previewStyle : 'tab',
+			height : '300px',
+			initialValue : `${update.qna_content }`,
+			initialEditType : 'wysiwyg'
+		});
+
+		editor.getHtml();
+
+		function formSubmit() {
+			let input = document.createElement("input");
+			input.setAttribute("type", "hidden");
+			input.setAttribute("name", "qna_content")
+			input.setAttribute("value", editor.getHtml());
+			document.querySelector("#editor").append(input);
+		}
+	</script>
 </body>
-<script
-	src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
-<script>
-	const editor = new toastui.Editor({
-		el : document.querySelector('#editor'),
-		previewStyle : 'tab',
-		height : '500px',
-		language : 'ko',
-		initialValue : `${update.qna_content }`,
-		initialEditType : 'wysiwyg'
-	});
 
-	editor.getHtml();
-
-	function formSubmit() {
-		let input = document.createElement("input");
-		input.setAttribute("type", "hidden");
-		input.setAttribute("name", "qna_content")
-		input.setAttribute("value", editor.getHtml());
-		document.querySelector("#editor").append(input);
-	}
-</script>
 </html>
