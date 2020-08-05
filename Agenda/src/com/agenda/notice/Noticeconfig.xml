@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+<configuration>
+<!-- <properties resource="com/agenda/common/db.Properties"/> -->
+
+	<typeAliases>
+		<typeAlias type="com.agenda.notice.NoticeDto" alias="NoticeDto" />
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@qclass.iptime.org:1521:xe" />
+				<property name="username" value="bigmaster02_semi" />
+				<property name="password" value="semi" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<mapper resource="com/agenda/notice/Noticemapper.xml" />
+	</mappers>
+
+</configuration>

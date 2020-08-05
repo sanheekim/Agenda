@@ -8,10 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.agenda.login.LoginDao;
-import com.agenda.login.LoginDto;
 
 
 @WebServlet("/MainController")
@@ -40,7 +36,7 @@ public class MainController extends HttpServlet {
 		}else if(command.equals("findPharm")) {
 			response.sendRedirect("pharmacy_map/pharmacy_map.jsp");
 		}else if(command.equals("notice")){
-			
+			response.sendRedirect("notice/index.jsp");
 		}else if(command.equals("qna")) {
 			response.sendRedirect("qna/index.jsp");
 		}

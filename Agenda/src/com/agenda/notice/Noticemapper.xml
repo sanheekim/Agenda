@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.agenda.notice">
+
+<resultMap type="NoticeDto" id="ResultMap">
+		<result property="notice_no" column="NOTICE_NO" />
+		<result property="notice_title" column="NOTICE_TITLE" />
+		<result property="notice_content" column="NOTICE_CONTENT" />
+		<result property="notice_regdate" column="NOTICE_REGDATE" />
+		<result property="notice_hit" column="NOTICE_HIT" />
+		<result property="notice_delflag" column="NOTICE_DELFLAG" />
+		<result property="member_id" column="MEMBER_ID"/>
+		<result property="member_role" column="MEMBER_ROLE"/>
+		
+</resultMap>
+
+ 
+ <select id="selectList" resultMap="ResultMap">
+ 
+ 	SELECT *
+ 	FROM (
+ 		SELECT ROWNUM AS rn, A.*
+ 		FROM (
+ 			SELECT ROWNUM,
+ 			NOTICE_NO,
+ 			NOTICE_TITLE,
+ 			NOTICE_CONTENT,
+ 			NOTICE_REGDATE,
+ 			NOTICE_HIT,
+ 			NOTICE_DELFLAG,
+ 			MEMBER_ID
+ 			FROM AG_NOTICE A
+ 	<choose>
+ 		<when test = "searchOption == 'all'">
+ 			WHERE (member_id like '%'||#{keyword}||'%'
+ 			OR notice_content like '%'||#{keyword}||'%'
+ 			OR notice_title like '%' ||#{keyword}||'%')
+ 		</when>
+ 		<otherwise>
+ 			WHERE ${searchOption} like '%' ||#{keyword} || '%'
+ 		</otherwise>
+ 	</choose>
+ 		ORDER BY notice_no DESC
+ 		)A
+ 	)
+ WHERE rn BETWEEN #{start} AND #{end}
+ </select>
+ 
+ <!-- list Count -->
+ <select id="listCount" resultType="int">
+ 	SELECT COUNT(*) FROM AG_NOTICE
+ 	<choose>
+ 		<when test="searchOption == 'all'">
+ 			WHERE (member_id like '%'||#{keyword}||'%'
+ 			OR notice_content like '%' ||#{keyword}||'%'
+ 			OR notice_title like '%' ||#{keyword}||'%')	
+ 		</when>
+ 		<otherwise>
+ 			WHERE ${searchOption} like '%'||#{keyword}||'%'
+ 		</otherwise>
+ 	</choose>
+ </select>
+ 
+<!--CREATE  글쓰기  -->
+<insert id="insert" parameterType="NoticeDto">
+
+	INSERT INTO AG_NOTICE
+	VALUES
+	(NOTICE_NO_SEQ.NEXTVAL,#{notice_title},#{notice_content},SYSDATE,0,'N',#{member_id})
+
+</insert>
+
+<!--UPDATE 글 수정-->
+<update id="update" parameterType="NoticeDto">
+
+	UPDATE AG_NOTICE
+	SET
+	NOTICE_TITLE = #{notice_title},
+	NOTICE_CONTENT = #{notice_content}
+	WHERE NOTICE_NO = #{notice_no}
+
+</update>
+
+
+<!--READ글 하나 읽기 -->
+<select id="selectOne" parameterType="int" resultType="NoticeDto">
+
+	SELECT
+	NOTICE_NO,NOTICE_TITLE,NOTICE_CONTENT, NOTICE_REGDATE, NOTICE_HIT, NOTICE_DELFLAG, MEMBER_ID
+	FROM AG_NOTICE
+	WHERE NOTICE_NO =#{notice_no}
+
+</select>
+
+<!--DELETE 글 삭제  -->
+
+<delete id="delete" parameterType="int">
+	UPDATE AG_NOTICE
+	SET NOTICE_DELFLAG = 'Y'
+	WHERE NOTICE_NO = #{notice_no}
+</delete>
+
+</mapper>
