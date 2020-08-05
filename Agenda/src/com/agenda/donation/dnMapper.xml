@@ -12,6 +12,7 @@
 	<select id="selectList" resultMap="dnResultMap">
         SELECT DONA_NO, DONA_BILL, DONA_DATE, MEMBER_ID
         FROM AG_DONATION
+        ORDER BY DONA_NO
     </select>
     
     <select id="selectOne" parameterType="String" resultType="dnDto">

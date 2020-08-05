@@ -19,6 +19,11 @@
 		background-color: white;
 	}
 	
+	#update {
+		background-color: gold;
+		cursor: pointer;
+	}
+	
 </style>
 </head>
 <body>
@@ -37,6 +42,7 @@
 			<td>주소</td>
 			<td>활성화여부</td>
 			<td>등급</td>
+			<td>수정</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -51,6 +57,7 @@
 					<td>${dto.member_phone }</td>
 					<td>${dto.member_enabled }</td>
 					<td>${dto.member_role }</td>
+					<td><input type="button" value="수정" id="update" onclick="" /></td>
 				</tr>
 			</c:forEach>
 			<c:if test="${empty list }">

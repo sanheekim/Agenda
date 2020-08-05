@@ -17,6 +17,7 @@
 	<select id="selectList" resultMap="adResultMap">
         SELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL, MEMBER_ADDR, MEMBER_PHONE, MEMBER_ENABLED, MEMBER_ROLE
         FROM AG_MEMBER
+        ORDER BY MEMBER_NO
     </select>
 		
 	<update id="update" parameterType="adDto">
