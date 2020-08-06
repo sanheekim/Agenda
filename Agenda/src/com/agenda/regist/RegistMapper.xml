@@ -25,7 +25,7 @@
 		
 	<insert id="insert" parameterType="RegistDto">
 		INSERT INTO AG_MEMBER
-		VALUES (#{member_id}, #{member_pw}, #{member_name}, #{member_email}, #{member_addr}, 'Y', 'USER', 
+		VALUES (#{member_id}, #{member_pw}, #{member_name}, #{member_email}, #{member_addr}, 'N', 'USER', 
 			    #{member_token}, #{member_salt}, #{member_phone}, AG_MEMBERSEQ.NEXTVAL)
 	</insert>
 	
