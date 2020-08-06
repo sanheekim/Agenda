@@ -157,7 +157,7 @@ $(document).ready(function(){
 				</tr>
 				<tr>
 					<td colspan="6">
-					<c:if test="${logiondto.member_id == detail.member_id}">
+					<c:if test="${logindto.member_id == detail.member_id}">
 						<input type="button" value="수정하기"
 						onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=update&qna_no=${detail.qna_no }'">
 					</c:if>
@@ -189,7 +189,7 @@ $(document).ready(function(){
 						<c:if test="${logindto.member_id == row.member_id || logindto.member_role == 'ADMIN'}">
 							<input type="button" value="삭제" class="btnDelete" name="${row.comm_no }">
 						</c:if>
-						<c:if test="test=${logindto.member_id == row.member_id}">
+						<c:if test="${logindto.member_id == row.member_id}">
 							<input type="button" value="수정" class="btnUpdate" name="${row.comm_no }">
 						</c:if>
 					</td>

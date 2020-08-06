@@ -92,7 +92,7 @@ public class QNAController extends HttpServlet {
 			}
 		} else if (command.equals("detail")) {
 			int qna_no = Integer.parseInt(request.getParameter("qna_no"));
-			int res = dao.viewCount(qna_no);
+			dao.viewCount(qna_no);
 			QNADto dto = dao.selectOne(qna_no);
 			List<COMMDto> list = commdao.list(qna_no);
 			
