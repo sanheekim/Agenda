@@ -99,8 +99,10 @@
 								<c:out value="${map.searchOption == 'content'?'selectd':'' }"/>>내용</option>
 							<option value="notice_title"
 								<c:out value="${map.searchOption == 'title'?'selectd':'' }"/>>제목</option>
-					</select> <input name="keyword" value="${map.keyword }"> <input
-						type="submit" value="조회"> <c:choose>
+					</select>
+					<input name="keyword" value="${map.keyword }">
+					<input type="submit" value="조회">
+					<c:choose>
 							<c:when test="${logindto.member_role eq 'ADMIN'}">
 
 								<input type="button" value="글쓰기"

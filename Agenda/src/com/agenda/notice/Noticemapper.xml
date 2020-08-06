@@ -102,5 +102,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SET NOTICE_DELFLAG ='Y'
 		WHERE NOTICE_NO = #{notice_no}
 	</delete>
+	
+<!--게시판 조회수-->
+
+<update id="noticeviewcount" parameterType="NoticeDto">
+
+	UPDATE AG_NOTICE
+	SET NOTICE_HIT = NOTICE_HIT +1
+	WHERE NOTICE_NO = #{notice_no}
+
+</update>
 
 </mapper>

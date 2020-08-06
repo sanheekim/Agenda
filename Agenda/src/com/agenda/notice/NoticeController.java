@@ -110,10 +110,17 @@ public class NoticeController extends HttpServlet {
 		
 		else if(command.equals("detail")) {
 			
+			
+			
 			int notice_no = Integer.parseInt(request.getParameter("notice_no"));
-			NoticeDto dto = dao.selectOne(notice_no);		
+			int res = dao.noticeViewCount(notice_no);
+			NoticeDto dto = dao.selectOne(notice_no);
+			
+			
 			request.setAttribute("detail",dto);
 			dispatch("notice/noticeDetail.jsp",request,response);
+			
+			
 			
 		}
 		
@@ -121,6 +128,7 @@ public class NoticeController extends HttpServlet {
 			
 			int notice_no = Integer.parseInt(request.getParameter("notice_no"));
 			int res = dao.delete(notice_no);
+			
 			System.out.println("delete"+res);
 			
 			if(res>0) {

@@ -17,8 +17,8 @@
 <title>Insert title here</title>
 </head>
 <script>
-
-/* $(document).ready(function(){
+/* 
+ $(document).ready(function(){
 	
 	$("#btnReply").click(function (){
 		
@@ -113,7 +113,7 @@
 		
 	});
 	
-}); */
+});  */
 </script>
 <body>
 
@@ -144,7 +144,7 @@
 					<th>작성시간</th>
 					<td>${detail.notice_regdate}</td>
 					<th>조회</th>
-					<td>조회수</td>
+					<td>${detail.notice_hit }</td>
 				</tr>
 				<tr>
 					<td colspan="6">
@@ -190,35 +190,42 @@
 						날짜 : ${row.comm_regdate}
 						<br>
 						<hr>
+						
+						
+						<c:if test="${logindto.member_id == row.member_id || logindto.member_role == 'ADMIN'  }">
 						<input type="button" value="수정" class="btnUpdate" name="${row.comm_no }">
+						</c:if>
+						<c:if test="test=${logindto.member_id == row.member_id }">
 						<input type="button" value="삭제" class="btnDelete" name="${row.comm_no }">
+						</c:if>
+						
+						
 					</td>
 				</tr>
 				</c:forEach>
 			</table>
 			</div>
 			<!-- 댓글 작성 -->
-			<table>
-			
-			
-			
-			
-				<c:choose>
-				
+			<%-- <table>
+				<c:choose>			s
 					<c:when test="${logindto ne null }">
-					<tr>
-					<th><c:out value="${logindto.member_id }"></c:out></th>
-					<td colspan="3"><textarea name="comm_content" class="comm_content"></textarea></td>
-					<td><input type="submit" value="작성" id="btnReply" name="${logindto.member_id }"></td>
-					</tr>
+						<tr>
+						<th><c:out value="${logindto.member_id }"></c:out></th>
+							<td colspan="3">
+								<textarea name="comm_content" class="comm_content"></textarea>
+							</td>
+							<td>
+							<input type="submit" value="댓글작성" id="btnReply" name="${logindto.member_id }">
+							</td>
+						</tr>
 					</c:when>
 					<c:otherwise>
-					<tr>
-					<td><span>로그인해주세요</span></td>
+						<tr>
+							<td><span>댓글 작성을 위해 로그인해주세요</span></td>
 						</tr>
 					</c:otherwise>
 				</c:choose>
-			</table>
+			</table> --%>
 	</section>
 	
     <jsp:include page="../footer/mainFooter.jsp" />
