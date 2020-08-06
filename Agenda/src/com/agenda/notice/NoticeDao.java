@@ -162,5 +162,29 @@ public class NoticeDao extends NoticeSqlMapConfig {
 		}
 		return res;
 	}
+	
+	//공지사항 게시판 조회수
+	public int noticeViewCount(int notice_no) {
+		SqlSession session = null;
+		int res = 0;
+		
+		session = getSqlSessionFactory().openSession(false);
+		res = session.update(namespace+"noticeviewcount",notice_no);
+		
+		if(res>0) {
+			try {
+				session.commit();
+				System.out.println(">>"+session+"noticeBoard 조회수 성공");
+			} catch (Exception e) {
+				System.out.println(">> error Dao NoticeBoard조회수 3.4");
+				e.printStackTrace();
+			} finally {
+				session.close();
+				System.out.println("noticeBoard hit dao 종료");
+			}
+		}
+		return res;
+	}
+	
 
 }
