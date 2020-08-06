@@ -88,11 +88,11 @@
 							<input type="submit" value="조회">
 							<c:choose>
 							<c:when test="${logindto ne null }">
-							<input type="button" value="글쓰기"
+							<input type="button" value="글쓰기" id="insertBtn"
 								onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=write'">
 							</c:when>
 							<c:otherwise>
-								<input type="button" value="글쓰기" onclick="alert('로그인 해주세요')">
+								<input type="button" value="글쓰기" id="insertBtn" onclick="alert('로그인 해주세요')">
 							</c:otherwise>
 							</c:choose>
 					</td>

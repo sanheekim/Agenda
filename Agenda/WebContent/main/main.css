@@ -2,7 +2,6 @@
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
-	cursor: none;
 }
 
 header {
@@ -291,7 +290,6 @@ header {
 	width: 6em;
 	height: 6em;
 	border-radius: 50%;
-	pointer-events: none;
 	backdrop-filter: invert(100%);
 	transition-duration: 150ms;
 	transition-timing-function: ease-out;
@@ -307,7 +305,6 @@ header {
 	border-radius: 50%;
 	position: absolute;
 	transform: translate(-50%, -50%);
-	pointer-events: none;
 	transition-duration: 150ms;
 	transition-timing-function: ease-out;
 	visibility: hidden;

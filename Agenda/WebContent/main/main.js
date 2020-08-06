@@ -16,9 +16,9 @@ let cousorArea = document.getElementsByClassName("area");
 
 for (var l = 0; l < 4; l++) {
 	cousorArea[l].addEventListener("mousemove", function(e) {
-		cursor2.style.visibility = "visible";
-		cursor2.style.left = e.pageX + "px";
-		cursor2.style.top = e.pageY + "px";
+//		cursor2.style.visibility = "visible";
+//		cursor2.style.left = e.pageX + "px";
+//		cursor2.style.top = e.pageY + "px";
 		cursor.style.visibility = "hidden";
 	});
 }
@@ -63,7 +63,7 @@ for(let j = 0; j < icon.length; j++){
 
 //도네이션 효과
 var donation = document.querySelectorAll('.donation-content-01');
-for(let a = 0; a < icon.length; a++){
+for(let a = 0; a < donation.length; a++){
 	
 	donation[a].addEventListener('mouseover', function(){
 		 donation[a].setAttribute("style","background-color: rgba(255, 255, 255, 0.7);")
@@ -76,18 +76,20 @@ for(let a = 0; a < icon.length; a++){
 
 
 // 스크롤
+
 $('.right-menu-bar li').click(function(){
 	var scrollPosition = $($(this).attr('data-target')).offset().top;
+	console.log(scrollPosition);
 	$('html, body').animate({
 		scrollTop : scrollPosition 
 	}, 500);
 });
 
-
-$('.section').each( function() {
- var sectionPosition = $( this ).offset().top;
- console.log(sectionPosition);
-} );
+//
+//$('.section').each( function() {
+// var sectionPosition = $( this ).offset().top;
+// console.log(sectionPosition);
+//} );
 
 
 //document.addEventListener("scroll", () => {

@@ -132,12 +132,12 @@ $(document).ready(function(){
 
 	<section>
 		<h1>Q&A 글보기</h1>
-		<hr>
 		<!-- 글 상세내역 부분 -->
 			<input type="hidden" name="qna_no" value="${detail.qna_no }" id="qna_no">
 			<table id="board">
 				<tr>
-					<td colspan="6">
+					<th>제목</th>
+					<td colspan="5">
 					<input type="hidden" name="qna_title" value="${detail.qna_title }">${detail.qna_title }
 					</td>
 				</tr>
@@ -170,6 +170,7 @@ $(document).ready(function(){
 					</td>
 				</tr>
 			</table>
+			
 			<!-- 댓글 목록 -->
 			<div id="listReply">
 			<table>
@@ -197,8 +198,9 @@ $(document).ready(function(){
 				</c:forEach>
 			</table>
 			</div>
+			
 			<!-- 댓글 작성 -->
-			<table>
+			<table id="replyBoard">
 				<c:choose>
 				
 					<c:when test="${logindto ne null }">
