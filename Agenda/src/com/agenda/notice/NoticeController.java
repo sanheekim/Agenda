@@ -41,6 +41,7 @@ public class NoticeController extends HttpServlet {
 		//공지사항 게시판 보기 
 		if(command.equals("list")) {
 			System.out.println("Notice Controller 로 넘어옴");
+			
 			String searchOption = request.getParameter("searchOption");
 			String keyword = request.getParameter("keyword");
 			int curPage = Integer.parseInt(request.getParameter("curPage"));
@@ -66,11 +67,12 @@ public class NoticeController extends HttpServlet {
 			map.put("count",count);
 			map.put("searchOption", searchOption);
 			map.put("keyword", keyword);
-			map.put("boardPager", noticePager);			
-			request.setAttribute("map",map);
+			map.put("boardPager", noticePager);
 			
+			
+			request.setAttribute("map",map);			
 			dispatch("notice/noticeList.jsp",request,response);
-			System.out.println("noticeList보기로 넘어감");
+			System.out.println("noticeList보기 화면으로  넘어감");
 			
 		} 
 		//글쓰기 
