@@ -28,35 +28,18 @@
 	
 </style>
 <script type="text/javascript">
-function changeRole(){
-	
-	// 아래 거 쓰면 rlnow가 아니라 3개 값 다 나옴.
-	// var rlvalue = $("#rolechoose").text();
-	// var indexNo = rlvalue[0].selectedIndex; null 뜸
-	
-	var rlvalue = $("#rolechoose option:selected").val();
-	
-	// var rlvalue = document.getElementsByClassName("rolechoose");
-	//     rlvalue = rlvalue.options[rlvalue.selectedIndex].value;
-	
-	// indexNo = document.getElementById("rolechoose").text;
 
-	// var test = document.getElementsByClassName("rolechoose");
-	// var indexNo = test[0].selectedIndex;
-	// console.log(indexNo);
+var changeRole;
+$(document).ready(function() {
+	changeRole(member_id) = function() {
+		location.href="../adController?command=allUpdate&member_id="+member_id;
+	}})
+
+
+	/* function changeRole(member_id){
+		location.href="../adController?command=allUpdate&member_id="+member_id;
+	} */
 	
-	$.ajax({
-		url: "./adController",
-		method: "post",
-		data: {"rlvalue" : rlvalue, command : "allUpdate"},
-		success: function(){
-			location.href="./adController?command=updateres";
-		},
-		error:function(){
-			alert("통신 실패");
-		}
-	});		
-}
 </script>
 </head>
 <body>
@@ -67,45 +50,57 @@ function changeRole(){
 <div id="allmemberlist">
 	<h1>전체회원정보조회</h1>
 	<table border="1">
-		<thead>
+		<col width="100"/>
+		<col width="100"/>
+		<col width="100"/>
+		<col width="100"/>
+		<col width="100"/>
+		<col width="100"/>
+		<col width="100"/>
+		<col width="100"/>
+		<col width="100"/>
+		<col width="100"/>
 			<tr>
-			<td>회원번호</td>
-			<td>ID</td>
-			<td>PW</td>
-			<td>이름</td>	
-			<td>이메일</td>
-			<td>핸드폰</td>
-			<td>주소</td>
-			<td>활성화여부</td>
-			<td>등급</td>
+			<td>번    호</td>
+			<td>I   D</td>
+			<td>P   W</td>
+			<td>이     름</td>	
+			<td>이 메 일</td>
+			<td>핸 드 폰</td>
+			<td>주     소</td>
+			<td>활 성 화</td>
+			<td>등     급</td>
 			<td>등급변경</td>
 			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${list }" var="dto">
-				<tr>
-					<td>${dto.member_no }</td>
-					<td>${dto.member_id }</td>
-					<td>${dto.member_pw }</td>
-					<td>${dto.member_name }</td>
-					<td>${dto.member_email }</td>
-					<td>${dto.member_addr }</td>
-					<td>${dto.member_phone }</td>
-					<td>${dto.member_enabled }</td>
-					<td>
-						<select name="rlchoose" id="rolechoose">
-							<option value="ADMIN" <%=list.equals("ADMIN")?"selected":"" %>>관리자</option>
-							<option value="USER" <%=list.equals("USER")?"selected":"" %>>일반회원</option>
-						</select>
-					</td>
-					<td><input type="button" value="변경" id="update" onclick="changeRole(<%=list.get(0)%>)" /></td>
-					
-				</tr>
-			<c:if test="${empty list }">
-			<div>회원정보가 없습니다.</div>
-			</c:if>
-			</c:forEach>
-		</tbody>
+<%
+		if (list.size() == 0 ) {
+%>
+		<tr>
+			<td>-----회원 정보가 없습니다.-----</td>
+		</tr>
+<%
+		} else {
+			for (adDto dto : list) {
+%>
+		<tr>
+			<td><%=dto.getMember_no() %></td>
+			<td><%=dto.getMember_id() %></td>
+			<td><%=dto.getMember_pw() %></td>
+			<td><%=dto.getMember_name() %></td>
+			<td><%=dto.getMember_email() %></td>
+			<td><%=dto.getMember_addr() %></td>
+			<td><%=dto.getMember_phone() %></td>
+			<td><%=dto.getMember_enabled() %></td>
+			<td><%=dto.getMember_role() %></td>
+			<td><button onclick="changeRole(<%=dto.getMember_id() %>);">변경</button></td>
+		</tr>
+<%
+			}
+		}
+%>
+		<tr>
+			<td colspan="6"><input type="button" onclick="location.href='admin/adlayout.jsp'" value="돌아가기"/></td>
+		</tr>
 	</table>
 
 </div>
