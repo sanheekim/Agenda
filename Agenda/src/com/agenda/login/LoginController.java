@@ -42,10 +42,10 @@ public class LoginController extends HttpServlet {
 
 			String member_id = request.getParameter("member_id");
 			String member_pw = request.getParameter("member_pw");
-
+			String member_enabled = request.getParameter("member_enabeld");
 //			dao.login(member_id, member_pw);
 
-			LoginDto input = new LoginDto(member_id, member_pw);
+			LoginDto input = new LoginDto(member_id, member_pw, member_enabled);
 			dto = dao.login(input);
 			System.out.println("dto=" + dto);
 
@@ -84,7 +84,7 @@ public class LoginController extends HttpServlet {
 				loginResponse("아이디 또는 비밀번호가 틀렸습니다", "login/loginForm.jsp", response);
 				// response.sendRedirect("login/loginForm.jsp");
 
-			}
+			} 
 
 		}
 

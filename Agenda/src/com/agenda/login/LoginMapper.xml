@@ -29,7 +29,7 @@
 	FROM   AG_MEMBER 
 	WHERE  MEMBER_ID = #{member_id}
 	AND    MEMBER_PW = #{member_pw}
-	<!-- AND    MEMBER_ENABLED = #{member_enabled}-->
+	AND    MEMBER_ENABLED = 'N'
 </select>
 
 <select id ="naverlogin" parameterType="loginDto" resultType="logindto" >

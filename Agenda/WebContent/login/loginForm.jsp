@@ -1,6 +1,7 @@
 <!-- @format -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.net.URLEncoder"%>
 <%@ page import="java.security.SecureRandom"%>
 <%@ page import="java.math.BigInteger"%>
@@ -37,9 +38,11 @@
 													success : function(res) {
 														console.log(res);
 														// @breif 아이디
-														document.getElementById("kakaoIdentity").innerHTML = res.id;
+														document
+																.getElementById("kakaoIdentity").innerHTML = res.id;
 														// @breif 생일(월,일)
-														document.getElementById("kakaoemail").innerHTML = res.kakao_account.email;
+														document
+																.getElementById("kakaoemail").innerHTML = res.kakao_account.email;
 													},
 													fail : function(error) {
 														alert(JSON
@@ -67,7 +70,7 @@
 	apiURL += "&client_id=" + clientId;
 	apiURL += "&redirect_uri=" + redirectURI;
 	apiURL += "&state=" + state;
-	
+
 	session.setAttribute("state", state);
 	System.out.println("로그인페이지");
 	%>
@@ -78,8 +81,9 @@
 		<div class="login__top">
 
 
-			<a href= "${pageContext.request.contextPath}/main/main.jsp"><img class="login__icon" src="imgs/favicon.png" alt="logo"/></a>
-				 
+			<a href="${pageContext.request.contextPath}/main/main.jsp"><img
+				class="login__icon" src="imgs/favicon.png" alt="logo" /></a>
+
 
 
 			<div class="login__title">로그인</div>
@@ -94,24 +98,30 @@
 
 				<div class="login__submit">
 					<div class="login__submit__id">
-						
+
 						<input type="text" placeholder="아이디" name="member_id" required />
 					</div>
 
 					<div class="login__submit__pwd">
-						
+
 						<input type="password" placeholder="비밀번호" name="member_pw"
 							required />
 					</div>
 
 
 					<div class="login__submit__remember">
-					<span class="forgotid"><a href="${pageContext.request.contextPath}/login/loginForgotId.jsp">아이디</a></span>						
-					<span class="forgotpw"><a href="#">비밀번호</a>를 잊으셨습니까?</span>
+						<span class="forgotid"><a
+							href="${pageContext.request.contextPath}/login/loginForgotId.jsp">아이디</a></span>
+						<span class="forgotpw"><a href="#">비밀번호</a>를 잊으셨습니까?</span>
 					</div>
 
 					<div class="login__submit__button">
 						<button type="submit" value="loginbtn">로그인</button>
+						
+				
+				
+				
+				
 					</div>
 
 				</div>
@@ -127,8 +137,8 @@
 		<div class="login__submit__api">
 
 			<div class="login__submit__kakao">
-				<a href="#"><img  id="kakao-login-btn" src="imgs/카카오버튼.png" /></a>
-				
+				<a href="#"><img id="kakao-login-btn" src="imgs/카카오버튼.png" /></a>
+
 			</div>
 
 			<div class="login__submit__google">
@@ -141,21 +151,21 @@
 
 
 		</div>
-	<div>
+		<div>
 			카카오 아이디 : <span id="kakaoIdentity"></span>
 		</div>
 
 		<div>
 			메일 : <span id="kakaoemail"></span>
 		</div>
-		
+
 		<form action="" method="post">
 			<div class="logout">
 				<button type="submit" value="logoutbtn">카카오 로그아웃</button>
 			</div>
 		</form>
-	
-		
+
+
 	</div>
 </body>
 </html>
