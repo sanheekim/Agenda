@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+header{
+	width: 100%;
+	height: 50px;
+	border: 1px solid red;
+}
+
+#LockerMainDiv{
+	display: flex;
+	width : 100%;
+	height : 100%;
+	margin-top : 50px;
+	flex-direction: column;
+	align-content: center;
+	
+}
+
+#LockerThemeDiv{
+	display: flex;
+	flex-direction: row;
+}
+
+h2{
+	font-size : 80px;
+	text-align: center;	
+}
+#Locker2ndDiv{
+	display: flex;
+	align-self: center;
+}
+
+#Locker2ndDiv > div{
+	width: 500px;	
+	border: 1px solid;
+	align-items: center;
+}
+
+#Locker3rdDiv{
+	display: flex;
+	flex-direction: column;
+}
+
+#Locker3rdDiv > div{
+	width: 200px;
+	border: 1px solid;
+}
+
+.LockerListDiv{
+	display: flex;
+}
+
+.LockerListDiv > div{
+	width : 100px;
+	border: 1px solid;
+}

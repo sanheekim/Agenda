@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="MediLockerRegist">
+	
+	<select id="selectList" parameterType="String" resultType="MediLockerDto">
+		SELECT MEMBER_ID, PRES_NO, PRES_MEDINAME, PRES_DATE, PRES_VIEW, PRES_NAME FROM AG_PRESCRIPTION WHERE MEMBER_ID = #{member_id}
+	</select>
+	<insert id="insert" parameterType="MediLockerDto">
+		INSERT INTO AG_PRESCRIPTION VALUES(AG_PRES_SEQ.NEXTVAL,#{member_id},#{pres_mediname}, SYSDATE, "IMAGE" )
+	</insert>
+	<update id="update" parameterType="MediLockerDto">
+		UPDATE AG_PRESCRIPTION SET PRES_MEDINAME = #{pres_mediname}||#{pres_medinameadd} WHERE PRES_MEDINAME = #{pres_mediname}
+	</update>
+</mapper>
