@@ -12,7 +12,7 @@ header {
 	height: 50px;
 	position: fixed;
 	top : 0;
-	z-index: 9999;
+	z-index: 1000;
 }
 
 /* 헤더 */
@@ -40,6 +40,7 @@ header {
 	font-size: 1.5em;
 	margin-left: 10px;
 	margin: auto;
+	font-weight: bolder;
 }
 
 .wrapper a{

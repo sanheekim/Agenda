@@ -13,8 +13,8 @@ for (var k = 0; k < 3; k ++){
 let cousor = document.getElementById("cursor");
 let cousor2 = document.getElementById("cursor2");
 let cousorArea = document.getElementsByClassName("section");
+let header =  document.getElementById("header");
 let footer =  document.getElementById("footer");
-
 
 for (var l = 0; l < 3; l++){
 	cousorArea[l].addEventListener("mousemove", function(e) {
@@ -39,8 +39,15 @@ footer.addEventListener("mousemove", function(e) {
 	cursor.style.left = e.pageX + "px";
 	cursor.style.top = e.pageY + "px";
 	cursor2.style.visibility = "hidden"; 
-	
 });
+
+header.addEventListener("mousemove", function(e) {
+	cursor2.style.visibility = "visible"; 
+	cursor2.style.left = e.pageX + "px";
+	cursor2.style.top = e.pageY + "px";
+	cursor.style.visibility = "hidden"; 
+});
+
 
 
 // 스크롤
