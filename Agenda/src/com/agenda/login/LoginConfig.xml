@@ -4,7 +4,7 @@
 
 
 
-<properties resource="com/agenda/login/db.properties"/>
+<properties resource="com/agenda/common/db.Properties"/>
 
 <settings>
        <!--  <setting name="cacheEnabled" value="false" />
