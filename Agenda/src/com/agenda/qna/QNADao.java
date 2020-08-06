@@ -152,5 +152,26 @@ public class QNADao extends QNASqlMapConfig {
 		}
 		return res;
 	}
+	
+	public int viewCount(int qna_no) {
+		SqlSession session = null;
+		int res = 0;
+		
+		try {
+			session = getSqlSessionFactory().openSession(false);
+			res = session.update(namespace+"viewcount", qna_no);
+			if(res>0) {
+				session.commit();
+				System.out.println(">>"+session+"조회수 성공");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("[ERROR] 3.4.");
+		} finally {
+			session.close();
+			System.out.println("dao종료");
+		}
+		return res;
+	}
 
 }

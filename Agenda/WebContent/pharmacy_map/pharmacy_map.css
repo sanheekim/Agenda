@@ -14,22 +14,19 @@ section {
 	margin: 80px auto;
 }
 
-button {
+
+#map_header button {
 	padding: 5px;
 	margin-bottom: 10px;
 	width: 100%;
-}
-
-#map_header hr {
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-#map_header button {
 	border: none;
 	border-radius: 15px;
 	box-shadow: 5px 5px 10px #dadada, -5px -5px 10px #ffffff;
 	padding: 10px 0px 10px 0px;
+}
+
+#map_header h2{
+	margin: 20px auto;
 }
 
 /* 지도 */

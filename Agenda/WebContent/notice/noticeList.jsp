@@ -54,10 +54,10 @@
 					<th>날짜</th>
 					<th>조회</th>
 				</tr>
-
+			<!--내용-->
 				<c:forEach var="row" items="${map.list}">
 					<c:choose>
-						<c:when test="${row.notice_delflag == N}">
+						<c:when test="${row.notice_delflag == 'N'}">
 
 							<tr>
 								<td>${row.notice_no}</td>
@@ -71,6 +71,7 @@
 									<!-- 조회수 -->
 								</td>
 							</tr>
+							
 						</c:when>
 						<c:otherwise>
 							<tr>
@@ -105,15 +106,16 @@
 					
 					<input name="keyword" value="${map.keyword }">
 					 <input type="submit" value="조회">
-					<c:out value="${logindto.member_role }"></c:out>
+					
 					 
-					 <c:choose>
-				 			<c:when test="${logindto.member_role eq 'ADMIN'}">
-					<input type="button" value="글쓰기"
-						onclick="location.href='${pageContext.request.contextPath}/NoticeController.do?command=write'">
-							</c:when>
+				<c:choose>
+				 		<c:when test="${logindto.member_role eq 'ADMIN'}">
+				 			
+							<input type="button" value="글쓰기" onclick="location.href='${pageContext.request.contextPath}/NoticeController.do?command=write'">
+						</c:when>
 					<c:otherwise>
-				<input type="button" value="글쓰기" onclick="alert('글쓰기 권한이 없습니다!')">
+						
+						<input type="button" value="글쓰기" onclick="alert('글쓰기 권한이 없습니다!')">
 					</c:otherwise>
 				</c:choose>
 					

@@ -198,12 +198,12 @@ header {
 	justify-content: center;
 	align-items: center;
 	font-size: 2em;
-	color : gray;
+	color: gray;
 }
 
-.fourth-title h2{
-	border-top : 2px solid #f5f5f5;
-	border-bottom : 2px solid #f5f5f5;
+.fourth-title h2 {
+	border-top: 2px solid #f5f5f5;
+	border-bottom: 2px solid #f5f5f5;
 }
 
 .fourth-pages {
@@ -277,90 +277,40 @@ header {
 	transition-timing-function: ease-out;
 	animation: cursorAnim .3s infinite alternate;
 	visibility: hidden;
+	z-index: 999;
+}
+
+#cursor2 {
+	width: 1em;
+	height: 1em;
+	border: 1px solid gray;
+	border-radius: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	pointer-events: none;
+	cursor: none;
+	transition-duration: 150ms;
+	transition-timing-function: ease-out;
+	visibility: hidden;
+	z-index: 9999;
 }
 
 @keyframes cursorAnim {
-	from {
-	transform:scale(1);}
-to {
-	transform: scale(1.5);}
+	from { 
+	transform:scale(1);
+	}
+	to {
+	transform: scale(1.5);
+	}
 }
 
-/* 풋터 */
-#footer {
-  background-color: black;
-  color: #eeeeee;
-  width: 100%;
-  height: 300px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 60px 0 0px;
-}
-.footer__outro__container {
-  width: 80%;
-  height: 200px;
-  margin: 0px 120px;
-  padding: 0px 0px;
-  box-sizing: content-box;
-  display: flex;
-  justify-content: space-between;
-
-  flex-wrap: wrap;
-}
-.footer__outro__grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0px 0px;
-  flex-direction: column;
-}
-.footer__outro__grid__row {
-  margin: 0px 0px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 200px;
-}
-
-.footer__outro__mail {
-  font-size: 1em;
-  margin-bottom: 30px;
-  border-bottom: 1px solid white;
-}
-.footer__outro__mail > span {
-  font-size: 1em;
-  margin-bottom: 30px;
-  width: 50px;
-  border-bottom: 1px solid white;
-}
-
-.footer__outro__address {
-  font-size: 1em;
-  color: #4d4d4d;
-  margin-bottom: 20px;
-}
-.footer__outro__policy {
-  font-size: 1em;
-}
-
-.footer__outro__grid__right {
-  width: 400px;
-  font-size: 2em;
-  display: flex;
-  justify-content: space-between;
-}
-.footer__outro__grid__left {
-  width: 400px;
-  justify-content: space-between;
-}
-
-.footer__outro__grid__left a{
-	text-decoration: none;
-	color : white;
-}
-
-.footer__outro__grid__row a{
-	text-decoration: none;
-	color : white;
+#scrollTop {
+	width : 50px;
+	height: 50px;
+	border-radius: 50%;
+	border : 1px solid black;
+	background-color : pink;
+	z-index: 100;
+	cursor: pointer;
+	padding: 15px 20px;
 }

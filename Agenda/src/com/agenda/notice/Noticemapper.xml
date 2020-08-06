@@ -96,11 +96,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </select>
 
 <!--DELETE 글 삭제  -->
-
-<delete id="delete" parameterType="int">
-	UPDATE AG_NOTICE
-	SET NOTICE_DELFLAG = 'Y'
-	WHERE NOTICE_NO = #{notice_no}
-</delete>
+	<delete id="delete" parameterType="int">
+		UPDATE AG_NOTICE
+		SET NOTICE_DELFLAG = 'Y'
+		WHERE NOTICE_NO = #{notice_no}
+	</delete>
 
 </mapper>

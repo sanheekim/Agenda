@@ -26,14 +26,15 @@ $(document).ready(function(){
 		
 		var member_id = $(this).attr("name");
 		console.log(member_id)
-		var comm_content=$(".comm_content").val();
+		var comm_content=$("#comm_content").val();
 		var qna_no="${detail.qna_no}";
 		console.log(comm_content + " " + qna_no);
+	
 		
 		var url = "commController.do";
 		console.log(url);
 		
-		$.ajax({				
+	   $.ajax({				
 			type: "post",
 			url: url +"?command=commwrite",
 			data : {
@@ -45,7 +46,7 @@ $(document).ready(function(){
 				alert("댓글이 등록되었습니다.");
 				location.href= "qnaController.do?command=detail&qna_no="+${detail.qna_no};
 			}                
-		});
+		}); 
 	});
 	
 	$(".btnDelete").click(function (){
@@ -136,8 +137,9 @@ $(document).ready(function(){
 			<input type="hidden" name="qna_no" value="${detail.qna_no }" id="qna_no">
 			<table id="board">
 				<tr>
-					<td colspan="6"><input type="hidden" name="qna_title"
-						value="${detail.qna_title }">${detail.qna_title }</td>
+					<td colspan="6">
+					<input type="hidden" name="qna_title" value="${detail.qna_title }">${detail.qna_title }
+					</td>
 				</tr>
 				<tr>
 					<th>작성자</th>
@@ -146,7 +148,7 @@ $(document).ready(function(){
 					<th>작성시간</th>
 					<td>${detail.qna_regdate}</td>
 					<th>조회</th>
-					<td>조회수</td>
+					<td>${detail.qna_hit}</td>
 				</tr>
 				<tr>
 					<td colspan="6">
@@ -155,13 +157,13 @@ $(document).ready(function(){
 				</tr>
 				<tr>
 					<td colspan="6">
-					<c:if test="${sessionScope.member_id == detail.member_id}">
+					<c:if test="${logiondto.member_id == detail.member_id}">
 						<input type="button" value="수정하기"
 						onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=update&qna_no=${detail.qna_no }'">
 					</c:if>
 						<input type="button" value="목록으로"
 						onclick="location.href='${pageContext.request.contextPath}/qna/index.jsp'">
-					<c:if test="${sessionScope.member_id == detail.member_id}">
+					<c:if test="${logindto.member_id == detail.member_id || logindto.member_role == 'ADMIN' }">
 						<input type="button" value="글삭제"
 						onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=delete&qna_no=${detail.qna_no }'">
 					</c:if>
@@ -178,14 +180,17 @@ $(document).ready(function(){
 						<br>
 						작성자 : ${row.member_id}
 						<br>
-						<input type="text" value="${row.comm_content }" disabled="disabled" class="comm_content">
+						<textarea rows="3" cols="40" disabled="disabled" class="comm_content">${row.comm_content }</textarea>
 						<br>
 						날짜 : ${row.comm_regdate}
 						<br>
 						<hr>
-						<c:if test="${sessionScope.member_id == row.member_id}">
-							<input type="button" value="수정" class="btnUpdate" name="${row.comm_no }">
+						
+						<c:if test="${logindto.member_id == row.member_id || logindto.member_role == 'ADMIN'}">
 							<input type="button" value="삭제" class="btnDelete" name="${row.comm_no }">
+						</c:if>
+						<c:if test="test=${logindto.member_id == row.member_id}">
+							<input type="button" value="수정" class="btnUpdate" name="${row.comm_no }">
 						</c:if>
 					</td>
 				</tr>
@@ -198,9 +203,9 @@ $(document).ready(function(){
 				
 					<c:when test="${logindto ne null }">
 						<tr>
-						<th><c:out value="${logindto.member_id }"></c:out></th>
-						<td colspan="3"><textarea name="comm_content" class="comm_content"></textarea></td>
-						<td><input type="submit" value="작성" id="btnReply" name="${logindto.member_id }"></td>
+							<th><c:out value="${logindto.member_id }"></c:out></th>
+							<td colspan="3"><textarea name="comm_content" id="comm_content"></textarea></td>
+							<td><input type="button" value="작성" id="btnReply" name="${logindto.member_id }"></td>
 						</tr>
 					</c:when>
 					<c:otherwise>

@@ -11,37 +11,42 @@ for (var k = 0; k < 3; k ++){
 
 // 커서
 let cousor = document.getElementById("cursor");
+let cousor2 = document.getElementById("cursor2");
 let cousorArea = document.getElementsByClassName("section");
+let header =  document.getElementById("header");
 let footer =  document.getElementById("footer");
-console.log(footer);
 
 for (var l = 0; l < 3; l++){
 	cousorArea[l].addEventListener("mousemove", function(e) {
-		hideCursor();
+		cursor.style.visibility = "hidden";
+		cursor2.style.visibility = "visible"; 
+		cursor2.style.left = e.pageX + "px";
+		cursor2.style.top = e.pageY + "px";
 	});
 }
 
 for (var p = 3; p < cousorArea.length; p++){
 	cousorArea[p].addEventListener("mousemove", function(e) {
-		showCursor();
+		cursor.style.visibility = "visible"; 
 		cursor.style.left = e.pageX + "px";
 		cursor.style.top = e.pageY + "px";
+		cursor2.style.visibility = "hidden"; 
 	});
 }
 
 footer.addEventListener("mousemove", function(e) {
-	showCursor();
+	cursor.style.visibility = "visible"; 
 	cursor.style.left = e.pageX + "px";
 	cursor.style.top = e.pageY + "px";
+	cursor2.style.visibility = "hidden"; 
 });
 
-function showCursor(){
-	cursor.style.visibility = "visible"; 
-}
-
-function hideCursor(){
+header.addEventListener("mousemove", function(e) {
+	cursor2.style.visibility = "visible"; 
+	cursor2.style.left = e.pageX + "px";
+	cursor2.style.top = e.pageY + "px";
 	cursor.style.visibility = "hidden"; 
-}
+});
 
 
 

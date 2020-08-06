@@ -59,14 +59,12 @@
 
 	<insert id="insert" parameterType="QNADto">
 		INSERT INTO AG_QNA
-		VALUES
-		(QNA_NO_SEQ.NEXTVAL, #{qna_title}, #{qna_content}, SYSDATE, 0, 'N', #{member_id} )
+		VALUES (QNA_NO_SEQ.NEXTVAL, #{qna_title}, #{qna_content}, SYSDATE, 0, 'N', #{member_id} )
 	</insert>
 
 	<update id="update" parameterType="QNADto">
 		UPDATE AG_QNA
-		SET QNA_TITLE =
-		#{qna_title}, QNA_CONTENT = #{qna_content}
+		SET QNA_TITLE = #{qna_title}, QNA_CONTENT = #{qna_content}
 		WHERE QNA_NO = #{qna_no}
 	</update>
 
@@ -75,5 +73,11 @@
 		SET QNA_DELFLAG = 'Y'
 		WHERE QNA_NO = #{qna_no}
 	</delete>
+	
+	<update id="viewcount" parameterType="QNADto">
+		UPDATE AG_QNA
+		SET QNA_HIT = QNA_HIT + 1
+		WHERE QNA_NO = #{qna_no}
+	</update>
 	
 </mapper>

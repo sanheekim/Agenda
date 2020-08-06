@@ -4,6 +4,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+<% request.setCharacterEncoding("UTF-8"); %>
+<% response.setContentType("text/html; charset=UTF-8"); %>
 
 <!DOCTYPE html>
 <html>
@@ -26,33 +28,11 @@
 	
 </style>
 
-<script>
-
-function changeRole(){
-	
-	/* var target = document.getElementsByClassName("rlchoose");
-	var option = target.options[target.selectedIndex].text;
-	console.log(option); */
-	
-	var realrole = $("#ID option:selected").val();
-	console.log(realrole);
-		
-		$.ajax({
-			url: "../adController?command=allUpdate",
-			method: "post",
-			data: {realrole : realrole},
-			success: function(data){
-				alert("등급이 수정되었습니다.");
-				location.href="admin/admanager.jsp";
-			},
-			error:function(){
-				alert("통신 실패");
-			}
-	});
-}
-
+<script type="text/javascript">
+	function changeRole(member_id){
+		location.href="adController?command=allUpdate&member_id="+member_id;
+	}
 </script>
-
 </head>
 <body>
 
@@ -70,7 +50,7 @@ function changeRole(){
 			<td>주소</td>
 			<td>활성화여부</td>
 			<td>등급</td>
-			<td>등급수정</td>
+			<td>등급변경</td>
 			</tr>
 		</thead>
 		<tbody>
@@ -84,14 +64,8 @@ function changeRole(){
 					<td>${dto.member_addr }</td>
 					<td>${dto.member_phone }</td>
 					<td>${dto.member_enabled }</td>
-					<td>
-						<select name="rlupdate" class="rlchoose">
-							<option value="rlnow">${dto.member_role }</option>
-							<option value="rladmin">ADMIN</option>
-							<option value="rluser">USER</option>
-						</select>
-					</td>
-					<td><input type="button" value="수정" id="update" onclick="changeRole()"/></td>
+					<td>${dto.member_role }</td>
+					<td><input type="button" value="변경" id="update" onclick="changeRole()"/></td>
 				</tr>
 			</c:forEach>
 			<c:if test="${empty list }">
@@ -100,7 +74,5 @@ function changeRole(){
 		</tbody>
 	</table>
 </div>
-
-<script type="text/javascript" src="${pageContext.request.contextPath}/admin/adrolemanage.js"></script>
 </body>
 </html>

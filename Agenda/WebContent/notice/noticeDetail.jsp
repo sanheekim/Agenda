@@ -152,12 +152,26 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="6"><input type="button" value="수정하기"
-						onclick="location.href='${pageContext.request.contextPath}/NoticeController.do?command=update&notice_no=${detail.notice_no }'">
-						<input type="button" value="목록으로"
-						onclick="location.href='${pageContext.request.contextPath}/notice/index.jsp'">
-						<input type="button" value="글삭제"
-						onclick="location.href='${pageContext.request.contextPath}/NoticeController.do?command=delete&notice_no=${detail.notice_no }'">
+				
+				
+					<td colspan="6">
+					
+					<c:choose>
+				 		<c:when test="${logindto.member_role eq 'ADMIN'}">
+				 			
+							<input type="button" value="수정하기" onclick="location.href='${pageContext.request.contextPath}/NoticeController.do?command=update&notice_no=${detail.notice_no }'">
+							<input type="button" value="목록으로" onclick="location.href='${pageContext.request.contextPath}/notice/index.jsp'">
+							<input type="button" value="글삭제" onclick="location.href='${pageContext.request.contextPath}/NoticeController.do?command=delete&notice_no=${detail.notice_no }'">
+						</c:when>
+					<c:otherwise>
+						
+						
+					</c:otherwise>
+				</c:choose>
+					
+				
+						
+					
 					</td>
 				</tr>
 			</table>
@@ -185,6 +199,10 @@
 			</div>
 			<!-- 댓글 작성 -->
 			<table>
+			
+			
+			
+			
 				<c:choose>
 				
 					<c:when test="${logindto ne null }">

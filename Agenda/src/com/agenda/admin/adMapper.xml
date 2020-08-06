@@ -19,6 +19,12 @@
         FROM AG_MEMBER
         ORDER BY MEMBER_NO
     </select>
+    
+    <select id="selectOne" parameterType="String" resultType="adDto">
+		SELECT MEMBER_NO, MEMBER_ID, MEMBER_NAME, MEMBER_EMAIL, MEMBER_ADDR, MEMBER_ROLE
+ 		FROM AG_MEMBER
+		WHERE MEMBER_ID = #{member_id} 	
+ 	</select>
 		
 	<update id="update" parameterType="adDto">
 		UPDATE SET AG_MEMBER = #{member_role} WHERE MEMBER_ID = #{member_id};
