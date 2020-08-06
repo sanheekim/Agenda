@@ -1,5 +1,5 @@
-<%@page import="java.util.Date"%>
 <%@page import="com.agenda.admin.adDto"%>
+<%@page import="java.util.Date"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -27,14 +27,42 @@
 	}
 	
 </style>
-
 <script type="text/javascript">
-	function changeRole(member_id){
-		location.href="adController?command=allUpdate&member_id="+member_id;
-	}
+function changeRole(){
+	
+	// 아래 거 쓰면 rlnow가 아니라 3개 값 다 나옴.
+	// var rlvalue = $("#rolechoose").text();
+	// var indexNo = rlvalue[0].selectedIndex; null 뜸
+	
+	var rlvalue = $("#rolechoose option:selected").val();
+	
+	// var rlvalue = document.getElementsByClassName("rolechoose");
+	//     rlvalue = rlvalue.options[rlvalue.selectedIndex].value;
+	
+	// indexNo = document.getElementById("rolechoose").text;
+
+	// var test = document.getElementsByClassName("rolechoose");
+	// var indexNo = test[0].selectedIndex;
+	// console.log(indexNo);
+	
+	$.ajax({
+		url: "./adController",
+		method: "post",
+		data: {"rlvalue" : rlvalue, command : "allUpdate"},
+		success: function(){
+			location.href="./adController?command=updateres";
+		},
+		error:function(){
+			alert("통신 실패");
+		}
+	});		
+}
 </script>
 </head>
 <body>
+<%
+	List<adDto> list = (List<adDto>)request.getAttribute("list");
+%>
 
 <div id="allmemberlist">
 	<h1>전체회원정보조회</h1>
@@ -64,15 +92,22 @@
 					<td>${dto.member_addr }</td>
 					<td>${dto.member_phone }</td>
 					<td>${dto.member_enabled }</td>
-					<td>${dto.member_role }</td>
-					<td><input type="button" value="변경" id="update" onclick="changeRole()"/></td>
+					<td>
+						<select name="rlchoose" id="rolechoose">
+							<option value="ADMIN" <%=list.equals("ADMIN")?"selected":"" %>>관리자</option>
+							<option value="USER" <%=list.equals("USER")?"selected":"" %>>일반회원</option>
+						</select>
+					</td>
+					<td><input type="button" value="변경" id="update" onclick="changeRole(<%=list.get(0)%>)" /></td>
+					
 				</tr>
-			</c:forEach>
 			<c:if test="${empty list }">
 			<div>회원정보가 없습니다.</div>
 			</c:if>
+			</c:forEach>
 		</tbody>
 	</table>
+
 </div>
 </body>
 </html>

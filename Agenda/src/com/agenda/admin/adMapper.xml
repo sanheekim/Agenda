@@ -27,7 +27,9 @@
  	</select>
 		
 	<update id="update" parameterType="adDto">
-		UPDATE SET AG_MEMBER = #{member_role} WHERE MEMBER_ID = #{member_id};
+		UPDATE AG_MEMBER
+		SET MEMBER_ROLE = #{member_role}
+		WHERE MEMBER_ID = #{member_id};
 	</update>
 
 </mapper>

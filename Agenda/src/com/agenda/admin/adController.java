@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.agenda.admin.adDto;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 @WebServlet("/adController")
 public class adController extends HttpServlet {
@@ -45,27 +48,28 @@ public class adController extends HttpServlet {
 		
 		else if(command.contentEquals("allUpdate")) {
 			
-			String member_id = request.getParameter("member_id");
-			dto = dao.selectOne(member_id);
+			String rlvalue = request.getParameter("rlvalue");
+			System.out.println(rlvalue);
+			
+			dto = dao.selectOne();
 			request.setAttribute("dto", dto);
 			System.out.println(dto);
-			RequestDispatcher dispatch = request.getRequestDispatcher("admin/adrolemanager.jsp");
-			dispatch.forward(request, response);
 			
 		}
 		
 		else if(command.contentEquals("updateres")) {
 			
-			int myno = Integer.parseInt(request.getParameter("myno"));
-			String updaterole = request.getParameter("myrole");
+			String memberid = request.getParameter("member_id");
+			String updaterole = request.getParameter("member_role");
+			
 			int res = dao.update(dto);
 			if (res > 0){
 				System.out.println("등급 변경 성공!");
-				RequestDispatcher dispatch = request.getRequestDispatcher("adController?command=admanager.jsp");
+				RequestDispatcher dispatch = request.getRequestDispatcher("adController?command=allMember.jsp");
 				dispatch.forward(request, response);
 			} else {
 				System.out.println("등급 변경 실패");
-				RequestDispatcher dispatch = request.getRequestDispatcher("adController?command=admanager.jsp");
+				RequestDispatcher dispatch = request.getRequestDispatcher("adController?command=allMember");
 				dispatch.forward(request, response);
 			}
 		}
