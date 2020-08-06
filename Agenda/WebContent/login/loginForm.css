@@ -110,6 +110,7 @@ button:hover {
 .login__submit__remember {
   font-size: 13px;
 }
+
 #google__btn{
 	border:1px solid grey;
 }
@@ -122,4 +123,9 @@ button:hover {
 span.psw {
   float: right;
   padding-top: 16px;
+}
+
+.g-signin2{
+	width:300px;
+	height:35px;
 }

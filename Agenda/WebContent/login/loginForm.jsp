@@ -16,9 +16,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="google-signin-client_id" content="387206565373-pirulfq47eamrs5ge97dg64f1r8sv7cq.apps.googleusercontent.com">
 <link href="loginForm.css" rel="stylesheet" type="text/css">
-<script type="text/javascript"
-	src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <script type="text/javascript">
 	document
 			.addEventListener(
@@ -57,6 +58,15 @@
 								});
 					});
 </script>
+<script>
+function onSignIn(googleUser) {
+	  var profile = googleUser.getBasicProfile();
+	  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+	  console.log('Name: ' + profile.getName());
+	  console.log('Image URL: ' + profile.getImageUrl());
+	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+}
+</script>
 <title>Document</title>
 </head>
 <body>
@@ -84,7 +94,7 @@
 			<a href="${pageContext.request.contextPath}/main/main.jsp"><img
 				class="login__icon" src="imgs/favicon.png" alt="logo" /></a>
 
-
+                                                                                                                                                                                       
 
 			<div class="login__title">로그인</div>
 
@@ -140,7 +150,12 @@
 				<a href="#"><img id="kakao-login-btn" src="imgs/카카오버튼.png" /></a>
 
 			</div>
-
+			
+			<!-- 구글 로그인 시작-->
+			<div class="g-signin2" data-onsuccess="onSignIn">
+			</div>
+			<!-- 구글 로그인 끝 -->
+			
 			<div class="login__submit__google">
 				<a href="#"><img id=google__btn src="imgs/구글버튼.png" /></a>
 			</div>
