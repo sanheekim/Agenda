@@ -29,16 +29,15 @@
 </style>
 <script type="text/javascript">
 
-var changeRole;
+function changeRole(member_id){
+	location.href="../adController?command=allUpdate&member_id="+member_id;
+}
+
+/* var changeRole;
 $(document).ready(function() {
 	changeRole(member_id) = function() {
 		location.href="../adController?command=allUpdate&member_id="+member_id;
-	}})
-
-
-	/* function changeRole(member_id){
-		location.href="../adController?command=allUpdate&member_id="+member_id;
-	} */
+	}}) */
 	
 </script>
 </head>
@@ -92,7 +91,7 @@ $(document).ready(function() {
 			<td><%=dto.getMember_phone() %></td>
 			<td><%=dto.getMember_enabled() %></td>
 			<td><%=dto.getMember_role() %></td>
-			<td><button onclick="changeRole(<%=dto.getMember_id() %>);">변경</button></td>
+			<td><button id="update" onclick="changeRole(<%=dto.getMember_id() %>);">변경</button></td>
 		</tr>
 <%
 			}
