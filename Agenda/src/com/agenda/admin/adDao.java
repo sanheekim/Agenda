@@ -36,14 +36,14 @@ public class adDao extends adSqlMapConfig {
 		return dto;
 	}
 	
-	public int update(adDto dto) {
+	public int update(String member_id, String member_role) {
 		
 		SqlSession session = null;
 		int res = 0;
 		
 		try {
 			session = getSqlSessionFactory().openSession(false);
-			res = session.update(namespace+"update", dto);
+			res = session.update(namespace+"update", member_id);
 			
 			if(res > 0) {
 				session.commit();
