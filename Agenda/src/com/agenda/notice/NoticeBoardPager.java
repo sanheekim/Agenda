@@ -7,7 +7,7 @@ public class NoticeBoardPager {
 	public static final int PAGE_SCALE = 10;
 	
 	//화면당 페이지 수
-	public static final int BLOCK_SCALE = 10;
+	public static final int BLOCK_SCALE = 3;
 	
 	private int curPage; //현재페이지
 	private int prevPage; //이전 페이지

@@ -15,6 +15,7 @@ public class NoticeDao extends NoticeSqlMapConfig {
 		
 		SqlSession session = null;
 		List<NoticeDto> list = null;
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("searchOption", searchOption);
 		map.put("keyword", keyword);

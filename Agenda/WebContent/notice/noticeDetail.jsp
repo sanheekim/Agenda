@@ -135,7 +135,7 @@
 			<table id="board">
 				<tr>
 					<td colspan="6"><input type="hidden" name="notice_title"
-						value="${detail.notice_title }">${detail.notice_title }</td>
+						value="${detail.notice_title}">${detail.notice_title }</td>
 				</tr>
 				<tr>
 					<th>작성자</th>
@@ -161,7 +161,7 @@
 				 			
 							<input type="button" value="수정하기" onclick="location.href='${pageContext.request.contextPath}/NoticeController.do?command=update&notice_no=${detail.notice_no }'">
 							<input type="button" value="목록으로" onclick="location.href='${pageContext.request.contextPath}/notice/index.jsp'">
-							<input type="button" value="글삭제" onclick="location.href='${pageContext.request.contextPath}/NoticeController.do?command=delete&notice_no=${detail.notice_no }'">
+							<input type="button" value="글삭제" onclick="location.href=' ${pageContext.request.contextPath}/NoticeController.do?command=delete&notice_no=${detail.notice_no }'">
 						</c:when>
 					<c:otherwise>
 						

@@ -9,12 +9,12 @@ public class NoticeDto {
 	
 	
 	private int notice_no;
-	private int notice_step;
+	
 	private String notice_title;
 	private String notice_content;
 	private Date notice_regdate;
 	private int notice_hit;
-	private char notice_delflag;
+	private String notice_delflag;
 	private String member_id;
 	
 	public NoticeDto() {
@@ -23,7 +23,7 @@ public class NoticeDto {
 	
 	//공지사항 리스트 읽기
 	public NoticeDto(int notice_no, String notice_title,String notice_content,
-			Date notice_regdate, int notice_hit, char notice_delflag,String member_id) {
+			Date notice_regdate, int notice_hit, String notice_delflag,String member_id) {
 		this.notice_no=notice_no;
 		this.notice_title=notice_title;
 		this.notice_content=notice_content;
@@ -33,7 +33,7 @@ public class NoticeDto {
 		this.member_id=member_id;
 	}
 	
-	//공지사항 글 쓰기 = 관리자만 글 쓰기 가능함 = member_role = ADMIN..을 어디서 할까
+	//공지사항 글 쓰기 
 	public NoticeDto(String notice_title, String notice_content,String member_id) {
 		this.notice_title=notice_title;
 		this.notice_content=notice_content;
@@ -55,12 +55,7 @@ public class NoticeDto {
 	public void setNotice_no(int notice_no) {
 		this.notice_no = notice_no;
 	}
-	public int getNotice_step() {
-		return notice_step;
-	}
-	public void setNotice_step(int notice_step) {
-		this.notice_step = notice_step;
-	}
+	
 	public String getNotice_title() {
 		return notice_title;
 	}
@@ -85,10 +80,10 @@ public class NoticeDto {
 	public void setNotice_hit(int notice_hit) {
 		this.notice_hit = notice_hit;
 	}
-	public char getNotice_delflag() {
-		return notice_delflag;
+	public String getNotice_delflag() {
+		return notice_delflag+"";
 	}
-	public void setNotice_delflag(char notice_delflag) {
+	public void setNotice_delflag(String notice_delflag) {
 		this.notice_delflag = notice_delflag;
 	}
 	public String getMember_id() {

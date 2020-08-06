@@ -6,6 +6,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.agenda.notice">
 
 <resultMap type="NoticeDto" id="ResultMap">
+
 		<result property="notice_no" column="NOTICE_NO" />
 		<result property="notice_title" column="NOTICE_TITLE" />
 		<result property="notice_content" column="NOTICE_CONTENT" />
@@ -98,7 +99,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <!--DELETE 글 삭제  -->
 	<delete id="delete" parameterType="int">
 		UPDATE AG_NOTICE
-		SET NOTICE_DELFLAG = 'Y'
+		SET NOTICE_DELFLAG ='Y'
 		WHERE NOTICE_NO = #{notice_no}
 	</delete>
 
