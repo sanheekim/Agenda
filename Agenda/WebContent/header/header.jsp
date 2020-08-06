@@ -48,16 +48,19 @@
 			<div id="mySidenav" class="sidenav">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 				<p>SERVICE</p>
-				<a href="#" onmouseover="this.innerHTML='&nbsp;Medication check'"
+				<a href="${pageContext.request.contextPath}/MainController?command=mediSearch" 
+					onmouseover="this.innerHTML='&nbsp;Medication check'"
 					onmouseout="this.innerHTML='&nbsp;의약품조회'">의약품조회</a> 
-					<a href="${pageContext.request.contextPath}/MainController?command=findPharm"
+				<a href="${pageContext.request.contextPath}/MainController?command=findPharm"
 					onmouseover="this.innerHTML='&nbsp;Finding Pharmacy'"
-					onmouseout="this.innerHTML='&nbsp;약국찾기'"><span>약국찾기</span></a> <a
-					href="#" onmouseover="this.innerHTML='&nbsp;Prescription'"
+					onmouseout="this.innerHTML='&nbsp;약국찾기'"><span>약국찾기</span></a> 
+				<a href="${pageContext.request.contextPath}/MainController?command=mediLocker" 
+					onmouseover="this.innerHTML='&nbsp;Prescription'"
 					onmouseout="this.innerHTML='&nbsp;처방전'"><span>처방전</span></a> <br>
 				<br> <br>
 				<p>NOTICE</p>
-				<a href="#" onmouseover="this.innerHTML='&nbsp;Notice'"
+				<a href="${pageContext.request.contextPath}/MainController?command=notice" 
+					onmouseover="this.innerHTML='&nbsp;Notice'"
 					onmouseout="this.innerHTML='&nbsp;공지사항'">공지사항</a>
 				<p>SUPPORT</p>
 				<a href="${pageContext.request.contextPath}/MainController?command=qna"
