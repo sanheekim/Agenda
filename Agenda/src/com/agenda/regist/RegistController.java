@@ -1,6 +1,6 @@
 package com.agenda.regist;
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
@@ -60,7 +60,8 @@ public class RegistController extends HttpServlet {
 		}else if (command.equals("registres")){
 			// 1.
 			String member_id = request.getParameter("member_id");
-			String member_pw = request.getParameter("member_pw");
+			String member_salt = Password.generateSalt();
+			String member_pw = Password.getEncrypt(request.getParameter("member_pw"), member_salt);
 			String member_name = request.getParameter("member_name");
 			String member_email = request.getParameter("member_email");
 			String member_email_valid = request.getParameter("member_email_valid");
@@ -68,11 +69,11 @@ public class RegistController extends HttpServlet {
 			String member_enabled = request.getParameter("member_enabled");
 			String member_role = request.getParameter("member_role");
 			String member_token = request.getParameter("member_token");
-			String member_salt = request.getParameter("member_salt");
 			String member_phone = request.getParameter("member_phone"); 
 			
 			System.out.println(member_id);
 			System.out.println(member_pw);
+			System.out.println(member_salt);
 			System.out.println(member_name);
 			System.out.println(member_email);
 			System.out.println(member_email_valid);
@@ -85,7 +86,6 @@ public class RegistController extends HttpServlet {
 			
 			System.out.println(SHA256.getEncryptSaltFixed(member_email));
 			System.out.println(member_id);
-			
 			
 			if(member_email_valid.equals(SHA256.getEncryptSaltFixed(member_email)))
 			{
@@ -115,8 +115,18 @@ public class RegistController extends HttpServlet {
 			}
 			else {
 				//이러면 인증 코드 달라서 통과 X
-				System.out.println("3");
+				System.out.println("인증코드가 올바르지 않음");
 			}
+			
+//		} else if (command.equals("login")) {
+//			String member_id = request.getParameter("member_id");
+//			RegistDto dto = dao.getSaltId(member_id);
+//			String member_pw = SHA256.getEncrypt(request.getParameter("member_pw"), dto.getMember_salt());
+//			dto = dao.login(member_id, member_pw);
+			
+//			HttpSession session1 = request.getSession(); //세션받는거
+//			session1.setAttribute("AG_MEMBER", dto);
+			
 		} else if (command.equals("emailValid")) {
 			System.out.println("4-1");
 			response.setContentType("application/text");

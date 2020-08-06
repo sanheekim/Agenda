@@ -23,7 +23,24 @@ public class RegistDao extends RegistSqlMapConfig {
 	       
 	      return dto;     
 	}
-
+	 
+//	@Override
+//	public RegistDto getSaltId(String member_id) {
+//		SqlSession session = null;
+//		RegistDto dto = new RegistDto();
+//		
+//		try {
+//			session = getSqlSessionFactory().openSession(false);
+//			dto = session.selectOne(namespace + "selectOne", member_id);
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			session.close();
+//		}
+//		
+//		return dto;
+//	}
+	 
 	public boolean insertUser(RegistDto dto) {
 		
 		SqlSession session = null;
@@ -42,6 +59,26 @@ public class RegistDao extends RegistSqlMapConfig {
 		}
 		return res > 0? true : false;
 	}
+	
+	
+//	public boolean insertNaver(RegistDto naver) {
+//		
+//		SqlSession session = null;
+//		int res = 0;
+//		
+//		try {
+//			session = getSqlSessionFactory().openSession(false);
+//			res = session.insert(namespace + "insertNaver", naver);
+//			if(res > 0) {
+//				session.commit();
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			session.close();
+//		}
+//		return res > 0? true : false;
+//	}
 
 }
 
