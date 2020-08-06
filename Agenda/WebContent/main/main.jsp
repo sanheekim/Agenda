@@ -215,6 +215,10 @@
 	<footer id = "footerArea" class="area">
 		<jsp:include page="../footer/mainFooter.jsp" />
 	</footer>
+    <!-- Arrow up -->
+    <button class="arrow-up">
+      <i class="fas fa-arrow-up"></i>
+    </button>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/main/mainpay1.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/main/mainpay2.js"></script>
@@ -223,5 +227,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/main/main.js"></script>
+
+
+
 </body>
 </html>

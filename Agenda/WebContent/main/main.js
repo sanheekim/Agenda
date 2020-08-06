@@ -98,3 +98,32 @@ $('.right-menu-bar li').click(function(){
 //		  console.log("확인");
 //	  } 
 //});
+
+
+
+const main = document.querySelector('.first');
+const mainHeight = main.getBoundingClientRect().height;
+
+
+// Show "arrow up" button when scrolling down
+const arrowUp = document.querySelector(".arrow-up");
+
+document.addEventListener('scroll', () => {
+  if (window.scrollY > mainHeight/ 2) {
+    arrowUp.classList.add("visible");
+    // arrowUp의 클래스리스트에 "visible을 붙여줌"
+  } else {
+    arrowUp.classList.remove("visible");
+    // classList에 visible을 지워준다
+  }
+});
+
+// Handle click on the "arrow up" button
+arrowUp.addEventListener("click", () => {
+  scrollIntoView(".first");
+});
+
+function scrollIntoView(selector){
+	const scrollTo = document.querySelector(selector);
+	scrollTo.scrollIntoView({behavior:'smooth'});
+}
