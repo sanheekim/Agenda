@@ -1,10 +1,9 @@
-// 첫페이지 텍스트
+// 3D텍스트
 var text = document.getElementsByClassName('text');
 var shadow = '';
 for (var i = 0; i < 20; i++){
     shadow +=(shadow? ',':'')+ -i*1+'px ' + i*1+'px 0 #d9d9d9' ;
 }
-
 for (var k = 0; k < 3; k ++){
 	text[k].style.textShadow = shadow;
 }
@@ -12,43 +11,27 @@ for (var k = 0; k < 3; k ++){
 // 커서
 let cousor = document.getElementById("cursor");
 let cousor2 = document.getElementById("cursor2");
-let cousorArea = document.getElementsByClassName("section");
-let header =  document.getElementById("header");
-let footer =  document.getElementById("footer");
 
-for (var l = 0; l < 3; l++){
+let cousorArea = document.getElementsByClassName("area");
+
+for (var l = 0; l < 4; l++) {
 	cousorArea[l].addEventListener("mousemove", function(e) {
-		cursor.style.visibility = "hidden";
-		cursor2.style.visibility = "visible"; 
+		cursor2.style.visibility = "visible";
 		cursor2.style.left = e.pageX + "px";
 		cursor2.style.top = e.pageY + "px";
+		cursor.style.visibility = "hidden";
 	});
 }
 
-for (var p = 3; p < cousorArea.length; p++){
+for (var p = 4; p < cousorArea.length; p++){
 	cousorArea[p].addEventListener("mousemove", function(e) {
-		cursor.style.visibility = "visible"; 
+		cursor2.style.visibility = "hidden";
+		cursor.style.visibility = "visible";
 		cursor.style.left = e.pageX + "px";
 		cursor.style.top = e.pageY + "px";
-		cursor2.style.visibility = "hidden"; 
+		cursor.style.zIndex = "0";
 	});
 }
-
-footer.addEventListener("mousemove", function(e) {
-	cursor.style.visibility = "visible"; 
-	cursor.style.left = e.pageX + "px";
-	cursor.style.top = e.pageY + "px";
-	cursor2.style.visibility = "hidden"; 
-});
-
-header.addEventListener("mousemove", function(e) {
-	cursor2.style.visibility = "visible"; 
-	cursor2.style.left = e.pageX + "px";
-	cursor2.style.top = e.pageY + "px";
-	cursor.style.visibility = "hidden"; 
-});
-
-
 
 // 스크롤
 function splitScroll() {
@@ -77,6 +60,39 @@ for(let j = 0; j < icon.length; j++){
     })
 }
 
-//도네이션 페이지 효과
+
+//도네이션 효과
+var donation = document.querySelectorAll('.donation-content-01');
+for(let a = 0; a < icon.length; a++){
+	
+	donation[a].addEventListener('mouseover', function(){
+		 donation[a].setAttribute("style","background-color: rgba(255, 255, 255, 0.7);")
+	});
+	
+	donation[a].addEventListener('mouseout', function(){
+		 donation[a].removeAttribute("style");
+	});
+}
 
 
+// 스크롤
+$('.right-menu-bar li').click(function(){
+	var scrollPosition = $($(this).attr('data-target')).offset().top;
+	$('html, body').animate({
+		scrollTop : scrollPosition 
+	}, 500);
+});
+
+
+$('.section').each( function() {
+ var sectionPosition = $( this ).offset().top;
+ console.log(sectionPosition);
+} );
+
+
+//document.addEventListener("scroll", () => {
+//	console.log(window.scrollY);
+//	  if (window.scrollY > section.scrollY) {
+//		  console.log("확인");
+//	  } 
+//});

@@ -16,25 +16,9 @@
 <script src="https://cdn.bootpay.co.kr/js/bootpay-3.2.6.min.js" type="application/javascript"></script>
 <script src="http://code.jquery.com/jquery-3.5.1.js"></script>
 <link rel="stylesheet" type="text/css"href="${pageContext.request.contextPath}/main/main.css">
-</head>
-<script>
-$(window).scroll(function(){
-	if ($(this).scrollTop() > 300){
-		$('#scrollTop').show();
-	} else{
-		$('#scrollTop').hide();
-	}
-});
-
-$('#scrollTop').click(function(){
-	$('html, body').animate({scrollTop:0},400);
-	return false;
-});
-</script>
 <body>
-
 	<!-- 헤더 -->
-	<header id = "header">
+	<header id = "header" class="area">
 		<c:choose>
 			<c:when test="${empty logindto }">
 				<jsp:include page="../header/header.jsp" />
@@ -46,7 +30,22 @@ $('#scrollTop').click(function(){
 	</header>
 
 	<!-- 메인 -->
-	<section class="section first">
+	
+	<!-- 커서 -->
+	<div id ="cursor"></div>
+	<div id ="cursor2"></div>
+
+	<!-- 메뉴바 -->
+	<ul class="right-menu-bar">
+		<li data-target=".first"></li>
+		<li data-target=".second"></li>
+		<li data-target=".third"></li>
+		<li data-target=".fourth"></li>
+		<li data-target=".contact"></li>
+		<li data-target="#footerArea"></li>
+	</ul>
+	
+	<section class="section first area">
 		<div class="text-wrap">
 			<p class="text" data-text="아프지마요.">아프지마요.</p>
 			<p class="text" data-text="괜찮아요?">괜찮아요?</p>
@@ -60,7 +59,7 @@ $('#scrollTop').click(function(){
 	</section>
 
 
-	<section class="section second">
+	<section class="section second area">
 		<p>M E N U</p>
 		<div class="menu-wrap">
 			<div class="menu">
@@ -126,6 +125,7 @@ $('#scrollTop').click(function(){
 							xmlns="http://www.w3.org/2000/svg">
                                 <path d="M158.25 72.5312H138.469V32.9688C138.469 27.7224 136.385 22.691 132.675 18.9813C128.965 15.2716 123.934 13.1875 118.688 13.1875H116.05C111.632 13.1909 107.343 14.6731 103.865 17.3977C100.388 20.1223 97.9224 23.9326 96.8622 28.2213L83.6747 64.4869C82.8486 66.7973 81.3413 68.8029 79.3519 70.2391C77.3624 71.6753 74.9843 72.4745 72.5312 72.5312H19.7812V191.219H158.25C166.994 191.219 175.38 187.745 181.562 181.562C187.745 175.38 191.219 166.994 191.219 158.25V105.5C191.219 96.7561 187.745 88.3704 181.562 82.1876C175.38 76.0047 166.994 72.5313 158.25 72.5312V72.5312ZM59.3438 178.031H32.9688V85.7188H59.3438V178.031ZM178.031 158.25C178.031 163.496 175.947 168.528 172.237 172.237C168.528 175.947 163.496 178.031 158.25 178.031H72.5312V85.7188C77.7499 85.7191 82.8405 84.1026 87.103 81.0917C91.3655 78.0808 94.5906 73.8233 96.3347 68.9047L109.522 32.3094V31.5181C109.857 30.0307 110.697 28.7053 111.899 27.7676C113.102 26.8299 114.592 26.3377 116.116 26.375H118.688C120.436 26.375 122.113 27.0697 123.35 28.3063C124.587 29.5428 125.281 31.22 125.281 32.9688V85.7188H158.25C163.496 85.7188 168.528 87.8028 172.237 91.5125C175.947 95.2222 178.031 100.254 178.031 105.5V158.25Z"
 								fill="black" />
+						</svg>
 					</div>
 				</div>
 				<div class="description">
@@ -150,7 +150,7 @@ $('#scrollTop').click(function(){
 		</div>
 	</section>
 
-	<section class="section third">
+	<section class="section third area">
 		<p>D O N A T I O N</p>
 		<div class="donation-wrapper">
 			<div class="donation-content" onclick="pay01()">
@@ -178,49 +178,43 @@ $('#scrollTop').click(function(){
 	</section>
 
 	
-	<section class="section fourth">
+	<section class="section fourth area">
 		<div class="fourth-title">
-				<h2>How to Scan Prescription</h2>
+				<h2 id=>How to Scan Prescription</h2>
 			</div>
 		<div class="fourth-pages">
-			<div>
+			<div class="fourth-pages-text">
 				<h2>01. how to scan my Prescription?</h2>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mae
 					cenas ex justo, efficitur a iaculis ac, pellentesque a odio.
 					Phasellus non eros eu nulla hendrerit s celerisque sed at justo.
 					Sed vulputate.</p>
 			</div>
-			<div>
+			<div class="fourth-pages-text">
 				<h2>02.Save your page in cabinet</h2>
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mae
 					cenas ex justo, efficitur a iaculis ac, pellentesque a odio.
 					Phasellus non eros eu nulla hendrerit s celerisque sed at justo.
 					Sed vulputate.</p>
 			</div>
-			<div>
+			<div class="fourth-pages-text">
 				<h2>03. You're Done!</h2>
 			</div>
 		</div>
 	</section>
 
-	<section class="section contact">
-		<div class="contact-title">Do you need help?</div>
+	<section class="section contact area">
+		<div class="contact-title"><p>Do you need help?</p></h2></div>
 		<div class="contact-sub">There are many variations of passages
 			of Lorem Ipsum availd chunks as necessary, making this the first true
 			generator on the Internet. It uses a dictionary of over 200 Latin
 			words, com</div>
-			<!-- 탑 이동 -->
-		<div id ="scrollTop"><span>TOP</span></div>
 	</section>
 
 	<!-- 풋터 -->
-	<footer id =footer>
+	<footer id = "footerArea" class="area">
 		<jsp:include page="../footer/mainFooter.jsp" />
 	</footer>
-
-	<!-- 커서 -->
-	<div id ="cursor"></div>
-	<div id ="cursor2"></div>
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/main/mainpay1.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/main/mainpay2.js"></script>
