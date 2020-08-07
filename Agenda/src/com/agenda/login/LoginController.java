@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.agenda.regist.Password;
+
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -35,22 +37,33 @@ public class LoginController extends HttpServlet {
 		LoginDto dto = new LoginDto();
 
 		String command = request.getParameter("command");
-		System.out.println(command);
+		System.out.println("["+command+"]");
 		HttpSession session = request.getSession();
+		
+		
 		// 로그인페이지
 		if (command.equals("login")) {
 
 			String member_id = request.getParameter("member_id");
-			String member_pw = request.getParameter("member_pw");
-			String member_enabled = request.getParameter("member_enabeld");
-//			dao.login(member_id, member_pw);
-
+			System.out.println(">>"+member_id);
+			
+			dto = dao.idsalt(member_id);
+			System.out.println(">>saltdto"+dto.getMember_salt());
+			
+			String member_pw = Password.getEncrypt(request.getParameter("member_pw"),dto.getMember_salt());
+			System.out.println(member_pw);
+			
+			
+			String member_enabled = request.getParameter("member_enabeld");	
 			LoginDto input = new LoginDto(member_id, member_pw, member_enabled);
+			
 			dto = dao.login(input);
+			
 			System.out.println("dto=" + dto);
 
-			System.out.println(member_id);
-			System.out.println(member_pw);
+			
+			
+			
 
 			if (dto != null) {
 

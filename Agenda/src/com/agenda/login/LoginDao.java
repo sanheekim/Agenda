@@ -38,4 +38,20 @@ public class LoginDao extends LoginSqlMapConfig {
 
 		return logindto;
 	}
+	
+	public LoginDto idsalt(String member_id) {
+		SqlSession session = null;
+		LoginDto logindto = null;
+		
+		try {
+			session = getSqlSessionFactory().openSession(false);
+			logindto = session.selectOne(namespace+"saltId",member_id);
+			
+		} catch (Exception e) {
+		
+			e.printStackTrace();
+		}
+		
+		return logindto;
+	}
 }

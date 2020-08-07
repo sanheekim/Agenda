@@ -36,21 +36,20 @@ public class LoginDto {
 	
 	
 	//login : member_id, member_pw
-	
 	public LoginDto (String member_id, String member_pw) {
 		this.member_id = member_id;
 		this.member_pw = member_pw;
 
 	}
 	
-	//find id: member_name, member_email	
-
 	public LoginDto (String member_id, String member_pw,String member_enabled) {
+		
 		this.member_id = member_id;
 		this.member_pw = member_pw;
 		this.member_enabled = member_enabled;
 
 	}
+	
 	
 	//일반유저정보보기: id,pw,name,addr,phone,email
 	public LoginDto(String member_id, String member_pw, String member_name, String member_email,String member_addr,

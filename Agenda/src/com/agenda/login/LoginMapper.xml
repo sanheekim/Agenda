@@ -57,6 +57,17 @@
 	AND MEMBER_EMAIL=#{member_email}
 	
 </select>
+
+<!--id입력시 salt값이 나옴-->
+<select id="saltId" parameterType="String" resultType="logindto">
+
+	SELECT MEMBER_SALT
+	FROM AG_MEMBER
+	WHERE MEMBER_ID = #{member_id}
+	
+</select>
+
+
 </mapper>
 
 
