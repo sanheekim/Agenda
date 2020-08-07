@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+@font-face{font-family:'Nanum Gothic'; src:url('../font/NanumBarunGothic.ttf')}
+@font-face{font-family:'Nanum Gothic Light'; src:url('../font/NanumBarunGothicLight.ttf')}
+@font-face{font-family:'Nanum Gothic Bold'; src:url('../font/NanumBarunGothicBold.ttf')}
+@font-face{font-family:'Nanum Gothic Ultra Light'; src:url('../font/NanumBarunGothicUltraLight.ttf')}
+
 /*헤더 전체*/
 *{
 	margin: 0px;
@@ -40,7 +45,7 @@ header {
 	font-size: 1.5em;
 	margin-left: 10px;
 	margin: auto;
-	font-weight: bolder;
+	font-family:'Nanum Gothic Bold';
 }
 
 .wrapper a{
@@ -76,12 +81,14 @@ header {
 	border-radius: 5px;
 	padding: 5px 20px;
 	margin : 5px 10px 5px 0px;
+	font-family:'Nanum Gothic Light';
 }
 
 .login button:hover {
 	border : none;
 	background-color: black;
 	color: white;
+	font-family:'Nanum Gothic Light';
 }
 
 .reg button { /*register*/
@@ -91,12 +98,14 @@ header {
 	border-radius: 5px;
 	padding: 5px 15px;
 	margin: 5px 10px 5px 0px;
+	font-family:'Nanum Gothic Light';
 }
 
 .reg button:hover {
 	border : none;
 	background-color: black;
 	color: white;
+	font-family:'Nanum Gothic Light';
 }
 
 
