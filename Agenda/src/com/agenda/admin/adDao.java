@@ -43,7 +43,7 @@ public class adDao extends adSqlMapConfig {
 		
 		try {
 			session = getSqlSessionFactory().openSession(false);
-			res = session.update(namespace+"update", member_id);
+			res = session.update(namespace+"update", member_role);
 			
 			if(res > 0) {
 				session.commit();

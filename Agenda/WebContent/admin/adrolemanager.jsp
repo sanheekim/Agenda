@@ -14,9 +14,9 @@
 
 	<h1>회원등급 변경 페이지</h1>
 
-	<form action="adController.jsp" method="post">
+	<form action="../Agenda/adController" method="post">
 		<input type="hidden" name="command" value="updateres"/>
-		<input type="hidden" name="myno" value="<%=dto.getMember_id()%>"/>
+		<input type="hidden" name="member_role" value="<%=dto.getMember_role() %>"/>
 		
 		<table border="1">
 			<col width="50" />
@@ -42,7 +42,7 @@
 			<tr>
 				<td colspan="2">
 					<input type="submit" value="변경 완료" />
-					<input type="button" value="목록"/>
+					<input type="button" value="목록" onclick="location.href='../Agenda/adController?command=allMember'" />
 				</td>
 			</tr>
 		</table>

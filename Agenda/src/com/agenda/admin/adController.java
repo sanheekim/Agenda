@@ -56,7 +56,7 @@ public class adController extends HttpServlet {
 			request.setAttribute("dto", dto);
 			System.out.println(dto);
 			
-			RequestDispatcher dispatch = request.getRequestDispatcher("adrolemanager.jsp");
+			RequestDispatcher dispatch = request.getRequestDispatcher("admin/adrolemanager.jsp");
 			dispatch.forward(request, response);
 		}
 		
@@ -66,15 +66,15 @@ public class adController extends HttpServlet {
 			String member_role = request.getParameter("member_role");
 			
 			int res = dao.update(member_id, member_role);
+			System.out.println(res);
+			
 			if (res > 0){
 				System.out.println("등급 변경 성공!");
-				JOptionPane.showMessageDialog(null, "등급 변경 성공!");
-				RequestDispatcher dispatch = request.getRequestDispatcher("adController?command=allMember");
+				RequestDispatcher dispatch = request.getRequestDispatcher("./adController?command=allMember");
 				dispatch.forward(request, response);
 			} else {
 				System.out.println("등급 변경 실패");
-				JOptionPane.showMessageDialog(null, "등급 변경 실패");
-				RequestDispatcher dispatch = request.getRequestDispatcher("adController?command=allMember");
+				RequestDispatcher dispatch = request.getRequestDispatcher("admin/adrolemanager.jsp");
 				dispatch.forward(request, response);
 			}
 		}

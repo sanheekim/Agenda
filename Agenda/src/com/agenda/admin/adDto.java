@@ -53,6 +53,12 @@ public class adDto {
 		this.member_role = member_role;
 	}
 	
+	public adDto(String member_id, String member_name, String member_role) {
+		this.member_id = member_id;
+		this.member_name = member_name;
+		this.member_role = member_role;
+	}
+	
 	public String getMember_id() {
 		return member_id;
 	}
