@@ -17,103 +17,7 @@
 <title>Insert title here</title>
 </head>
 <script>
-/* 
- $(document).ready(function(){
-	
-	$("#btnReply").click(function (){
-		
-		console.log("insert click");
-		
-		var member_id = $(this).attr("name");
-		console.log(member_id)
-		var comm_content=$(".comm_content").val();
-		var notice_no="${detail.notice_no}";
-		console.log(comm_content + " " + notice_no);
-		
-		var url = "commController.do";
-		console.log(url);
-		
-		$.ajax({				
-			type: "post",
-			url: url +"?command=commwrite",
-			data : {
-				member_id : member_id,
-				notice_no : notice_no,
-				comm_content : comm_content
-				},
-			success: function(){
-				alert("댓글이 등록되었습니다.");
-				location.href= "NoticeController.do?command=detail&notice_no="+${detail.notice_no};
-			}                
-		});
-	});
-	
-	$(".btnDelete").click(function (){
-		console.log("click");
-		
-		var comm_no= $(this).attr("name");
-		console.log(comm_no);
-		
-		var notice_no="${detail.notice_no}";
-		console.log(notice_no);
-		
-		var url = "commController.do";
-		console.log(url);
-				
-		$.ajax({				
-			type: "post",
-			url: url+"?command=commdelete", 
-			data : {
-				notice_no : notice_no,
-				comm_no : comm_no
-				},
-			success: function(){
-				alert("댓글이 삭제되었습니다.");
-				location.href= "NoticeController.do?command=detail&notice_no="+${detail.notice_no};
-			}                
-		});
-	});
-	
-	$(".btnUpdate").click(function(){
-		console.log("update click");
-		
-		$(this).parent().children('.comm_content').attr("disabled", false);
-		$(this).attr("value", "확인");
-		
-		$(this).attr("value", "확인").click(function(){
-			
-			console.log("확인");
-			
-			var notice_no="${detail.notice_no}";
-			console.log(notice_no);
-			
-			var comm_no= $(this).attr("name");
-			console.log(comm_no);
-			
-			var comm_content=$(this).parent().children('.comm_content').val();
-			console.log(comm_content);
-			
-			var url = "commController.do"
-			
-			$.ajax({				
-				type: "post",
-				url: url+"?command=commupdate",
-				data : {
-					notice_no : notice_no,
-					comm_no : comm_no,
-					comm_content : comm_content
-					},
-				success: function(){
-					alert("댓글이 수정되었습니다");
-					location.href= "NoticeController.do?command=detail&notice_no="+${detail.notice_no};
-				}                
-			});
-			
-		})
-		
-	});
-	
-});  */
+
 </script>
 <body>
 
@@ -129,7 +33,7 @@
 
 	<section>
 		<h1>공지사항 글보기</h1>
-		<hr>
+		
 		<!-- 글 상세내역 부분 -->
 			<input type="hidden" name="notice_no" value="${detail.notice_no }" id="notice_no">
 			<table id="board">

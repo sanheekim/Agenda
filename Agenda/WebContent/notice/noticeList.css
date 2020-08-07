@@ -16,26 +16,64 @@ section {
 	margin: 80px auto;
 }
 
-hr{
-	margin-top : 10px;
-	margin-bottom: 10px;
-}
-
 table {
 	border-collapse: collapse;
-	width: 900px;
-	padding : 50px;
+	width: 100%;
+}
+
+tr {
+	text-align: center;
+}
+
+p {
+	text-align: right;
+	padding-bottom: 5px;
 }
 
 th {
-	width : 150px;
-	text-align: left;
+	border-top: 1px solid black;
 }
 
-th,td{
-	padding : 5px;
+td {
+	border-top: 1px dotted black;
 }
 
-tr:last-child {
-	text-align: right;
+th, td {
+	padding: 8px;
 }
+
+th:first-child {
+	width: 30px;
+}
+
+th:nth-child(2) {
+	width: 300px;
+}
+
+th:nth-child(3) {
+	width: 30px;
+}
+
+th:nth-child(4) {
+	width: 100px;
+}
+
+th:nth-child(5) {
+	width: 30px;
+}
+
+td a{
+	text-decoration: none;
+	color : black;
+}
+
+td span{
+	color : gray;
+	text-decoration: line-through;
+}
+
+#insertBtn{
+	padding : 0 10px;
+}
+
+

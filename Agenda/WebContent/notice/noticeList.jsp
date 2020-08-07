@@ -41,7 +41,7 @@
 
 	<section>
 		<h1>공 지 사 항</h1>
-		<hr>
+		
 		<form action="${pageContext.request.contextPath}/NoticeController.do"
 			method="post">
 			<input type="hidden" name="command" value="list"> <input

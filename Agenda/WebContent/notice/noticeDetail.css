@@ -14,25 +14,29 @@ section {
 	heigth: 100%;
 	padding: 30px;
 	margin: 80px auto;
-	border : 1px solid blue;
 }
 
-
-hr{
-	margin-top : 10px;
-	margin-bottom: 10px;
+section h1{
+	margin-bottom: 50px;	
 }
 
-table {
+#board {
 	border-collapse: collapse;
 	width: 100%;
-	border : 1px solid red;
 }
 
 
-th,td{
+#board th,td{
 	padding : 5px;
-	border : 1px dotted red;
+	text-align: left;
+}
+
+#board button{
+	text-align: right;
+}
+
+#board tr:first-child{
+	border : 1px solid red;
 }
 
 #viewer{
