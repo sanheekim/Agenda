@@ -26,7 +26,7 @@
 			<c:choose>
 				<c:when test="${logindto.member_role eq 'ADMIN' }">
 					<ul class="header-menu">
-					<li><a href="${pageContext.request.contextPath}/admin/adlayout.jsp"><span class="mypage"><button id="mypage">Mypage</button></span></a></li>
+					<li><a href="${pageContext.request.contextPath}/adController?command=adminpage&member_id=${logindto.member_id }"><span class="mypage"><button id="mypage">Mypage</button></span></a></li>
 					<li><a href="${pageContext.request.contextPath}/LoginController?command=logout"><span class="logout"><button id="logout">Log out</button></span></a></li>
 					<li><a href="#"><span class="list" onclick="openNav()">&#9776;</span></a></li>
 					</ul>

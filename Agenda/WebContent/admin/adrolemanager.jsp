@@ -14,9 +14,9 @@
 
 	<h1>회원등급 변경 페이지</h1>
 
-	<form action="../Agenda/adController" method="post">
-		<input type="hidden" name="command" value="updateres"/>
-		<input type="hidden" name="member_role" value="<%=dto.getMember_role() %>"/>
+	<form action="../Agenda/adController?command=updateres" method="post">
+	<input type="hidden" name="command" value="member_id"/>
+	<input type="hidden" name="command" value="member_role"/>
 		
 		<table border="1">
 			<col width="50" />
@@ -24,7 +24,7 @@
 			<col width="100" />
 			<tr>
 				<th>아이디</th>
-				<td><%=dto.getMember_id() %></td>
+				<td><input name="member_id" value="<%=dto.getMember_id() %>"></td>
 			</tr>
 			<tr>
 				<th>이름</th>
@@ -33,7 +33,7 @@
 			<tr>
 				<th>등급</th>
 				<td>
-					<select name="myrole">
+					<select name="member_role">
 						<option value="USER" <%=dto.getMember_role().equals("USER")?"selected":"" %> >일반회원</option>
 						<option value="ADMIN" <%=dto.getMember_role().equals("ADMIN")?"selected":"" %> >관리자</option>
 					</select>

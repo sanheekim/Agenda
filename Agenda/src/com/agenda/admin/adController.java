@@ -1,7 +1,7 @@
 package com.agenda.admin;
 
 import java.io.IOException;
-
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
 import com.agenda.admin.adDto;
@@ -29,13 +30,26 @@ public class adController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		HttpSession session = request.getSession();
+		PrintWriter out = response.getWriter();
 		adDto dto = new adDto();
 		adDao dao = new adDao();
 		
 		String command = request.getParameter("command");
 		System.out.println(command);
 		
-		if(command.contentEquals("allMember")) {
+		if(command.contentEquals("adminpage")) {
+			
+			response.sendRedirect("admin/adlayout.jsp?member_id="+request.getParameter("member_id"));
+			
+			/*
+			 * RequestDispatcher dispatch =
+			 * request.getRequestDispatcher("admin/adlayout.jsp"); dispatch.forward(request,
+			 * response);
+			 */
+		}
+		
+		else if(command.contentEquals("allMember")) {
 			
 			List <adDto> list = dao.selectList();
 			request.setAttribute("list", list);
@@ -64,8 +78,11 @@ public class adController extends HttpServlet {
 			
 			String member_id = request.getParameter("member_id");
 			String member_role = request.getParameter("member_role");
+			System.out.println(member_id);
+			System.out.println(member_role);
 			
-			int res = dao.update(member_id, member_role);
+			//dto가 안 되면 adDao에서 맵에 담기
+			int res = dao.update(dto);
 			System.out.println(res);
 			
 			if (res > 0){
