@@ -37,9 +37,14 @@
 		<div class="SearchId__bottom">
 		
 		<div class="SearchtId__sub__title">찾으시는 아이디는</div>
-		<div><%=id %></div>
-		<div>입니다</div>
+		<div class="SearchId__Result">
 		
+		<span class="douquot">"</span>
+		<span class="SearchId__Result"> <%=id %></span>
+		<span class="douquot">"</span>
+		
+		<div>입니다</div>
+	</div>
 		</div>
 		
 		<div>
@@ -47,12 +52,6 @@
 						
 		</div>
 
-<%-- 	<div class =searchId>
-		<div class=searchId__Title>아이디 찾기 성공!</div>
-	<div class=searchId__Container>찾으시는 아이디는
-	<div class=searchId__Result><%=id %></div><div>입니다.</div>
-	</div>
-</div> --%>
 </div>
 </section>
  <jsp:include page="../footer/mainFooter.jsp" />
