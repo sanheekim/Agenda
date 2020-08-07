@@ -140,7 +140,7 @@ function checkLoginStatus(){
 
 				<input type="hidden" name="command" value="login" />
 
-				<div class="login__submit">
+			<div class="login__submit">
 					<div class="login__submit__id">
 
 						<input type="text" placeholder="아이디" name="member_id" required />
@@ -153,22 +153,22 @@ function checkLoginStatus(){
 					</div>
 
 
-					<div class="login__submit__remember">
-						<span class="forgotid"><a
-							href="${pageContext.request.contextPath}/login/loginForgotId.jsp">아이디</a></span>
-						<span class="forgotpw"><a href="#">비밀번호</a>를 잊으셨습니까?</span>
-					</div>
-
-					<div class="login__submit__button">
-						<button type="submit" value="loginbtn">로그인</button>
-						
-				
-				
-				
-				
-					</div>
-
+				<div class="login__submit__remember">
+					<span class="forgotid">
+					<a href="${pageContext.request.contextPath}/login/loginForgotId.jsp">아이디</a></span>
+					<span class="forgotpw"><a href="#">비밀번호</a>를 잊으셨습니까?</span>
 				</div>
+
+				<div>
+					<button class="login__submit__button" type="submit" value="loginbtn">로그인</button>
+				</div>
+					
+							
+				<div >
+					<button class="registbtn" onclick="location.href='${pageContext.request.contextPath}/regist/registForm.jsp'">회원가입</button>
+				</div>
+
+			</div>
 
 
 
@@ -222,11 +222,8 @@ function checkLoginStatus(){
 			메일 : <span id="kakaoemail"></span>
 		</div>
 
-		<form action="" method="post">
-			<div class="logout">
-				<button type="submit" value="logoutbtn">카카오 로그아웃</button>
-			</div>
-		</form>
+
+		
 
 
 	</div>

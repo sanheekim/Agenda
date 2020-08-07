@@ -10,26 +10,19 @@ for (var k = 0; k < 3; k ++){
 
 // 커서
 let cousor = document.getElementById("cursor");
-let cousor2 = document.getElementById("cursor2");
-
 let cousorArea = document.getElementsByClassName("area");
 
 for (var l = 0; l < 4; l++) {
 	cousorArea[l].addEventListener("mousemove", function(e) {
-//		cursor2.style.visibility = "visible";
-//		cursor2.style.left = e.pageX + "px";
-//		cursor2.style.top = e.pageY + "px";
 		cursor.style.visibility = "hidden";
 	});
 }
 
 for (var p = 4; p < cousorArea.length; p++){
 	cousorArea[p].addEventListener("mousemove", function(e) {
-		cursor2.style.visibility = "hidden";
 		cursor.style.visibility = "visible";
 		cursor.style.left = e.pageX + "px";
 		cursor.style.top = e.pageY + "px";
-		cursor.style.zIndex = "0";
 	});
 }
 
@@ -76,31 +69,6 @@ for(let a = 0; a < donation.length; a++){
 
 
 // 스크롤
-
-$('.right-menu-bar li').click(function(){
-	var scrollPosition = $($(this).attr('data-target')).offset().top;
-	console.log(scrollPosition);
-	$('html, body').animate({
-		scrollTop : scrollPosition 
-	}, 500);
-});
-
-//
-//$('.section').each( function() {
-// var sectionPosition = $( this ).offset().top;
-// console.log(sectionPosition);
-//} );
-
-
-//document.addEventListener("scroll", () => {
-//	console.log(window.scrollY);
-//	  if (window.scrollY > section.scrollY) {
-//		  console.log("확인");
-//	  } 
-//});
-
-
-
 const main = document.querySelector('.first');
 const mainHeight = main.getBoundingClientRect().height;
 

@@ -1,4 +1,11 @@
 /** @format */
+@charset "UTF-8";
+@font-face{font-family:'Nanum Gothic'; src:url('../font/NanumBarunGothic.ttf')}
+@font-face{font-family:'Nanum Gothic Light'; src:url('../font/NanumBarunGothicLight.ttf')}
+@font-face{font-family:'Nanum Gothic Bold'; src:url('../font/NanumBarunGothicBold.ttf')}
+@font-face{font-family:'Nanum Gothic Ultra Light'; src:url('../font/NanumBarunGothicUltraLight.ttf')}
+
+
 
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -18,14 +25,15 @@ body {
 }
 
 
-input[type="text"],
-input[type="email"] {
+.SearchId__Result {
+
   width: 300px;
   padding: 12px 7px;
   margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
+  display: flex;
+  border: 1px solid red;
   box-sizing: border-box;
+  
 }
 
 
@@ -69,9 +77,6 @@ input[type="email"] {
 	justify-content:center;
 }
 
-.forgotId__buttons{
-	display:flex;
-}
 
 .forgotId__submit__button{
   background-color: #4f4f4f;
@@ -84,6 +89,10 @@ input[type="email"] {
   height: 35px;
 }
 
+.forgotId__submit__button:hover{
+	opacity:0.8;
+}
+
 .name__title,
 .email__title{
 	margin:auto;
@@ -92,4 +101,15 @@ input[type="email"] {
 
 .forgotId__sub__title{
 	margin-bottom:20px;
+}
+input[type="text"],
+input[type="email"]{
+
+  height:30px;
+  width: 300px;
+  padding: 12px 7px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
 }
