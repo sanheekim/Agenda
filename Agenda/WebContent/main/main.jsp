@@ -33,18 +33,7 @@
 	
 	<!-- 커서 -->
 	<div id ="cursor"></div>
-	<div id ="cursor2"></div>
 
-	<!-- 메뉴바 -->
-	<ul class="right-menu-bar">
-		<li data-target=".first"></li>
-		<li data-target=".second"></li>
-		<li data-target=".third"></li>
-		<li data-target=".fourth"></li>
-		<li data-target=".contact"></li>
-		<li data-target="#footerArea"></li>
-	</ul>
-	
 	<section class="section first area">
 		<div class="text-wrap">
 			<p class="text" data-text="아프지마요.">아프지마요.</p>
