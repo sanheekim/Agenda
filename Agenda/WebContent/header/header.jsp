@@ -54,7 +54,7 @@
 				<a href="${pageContext.request.contextPath}/MainController?command=findPharm"
 					onmouseover="this.innerHTML='&nbsp;Finding Pharmacy'"
 					onmouseout="this.innerHTML='&nbsp;약국찾기'"><span>약국찾기</span></a> 
-				<a href="${pageContext.request.contextPath}/MainController?command=mediLocker" 
+				<a href="${pageContext.request.contextPath}/MediLockerRegistController?command=mediLocker" 
 					onmouseover="this.innerHTML='&nbsp;Prescription'"
 					onmouseout="this.innerHTML='&nbsp;처방전'"><span>처방전</span></a> <br>
 				<br> <br>
