@@ -26,15 +26,15 @@
 			<c:choose>
 				<c:when test="${logindto.member_role eq 'ADMIN' }">
 					<ul class="header-menu">
-					<li><a href="admin/adlayout.jsp"><span class="mypage"><button id="mypage">Mypage</button></span></a></li>
-					<li><a href="LoginController?command=logout"><span class="logout"><button id="logout">Log out</button></span></a></li>
+					<li><a href="${pageContext.request.contextPath}/admin/adlayout.jsp"><span class="mypage"><button id="mypage">Mypage</button></span></a></li>
+					<li><a href="${pageContext.request.contextPath}/LoginController?command=logout"><span class="logout"><button id="logout">Log out</button></span></a></li>
 					<li><a href="#"><span class="list" onclick="openNav()">&#9776;</span></a></li>
 					</ul>
 				</c:when>
 				<c:otherwise>
 					<ul class="header-menu">
-					<li><a href="MyinfoController?command=myinfo&member_id=${logindto.member_id }"><span class="mypage"><button id="mypage">Mypage</button></span></a></li>
-					<li><a href="LoginController?command=logout"><span class="logout"><button id="logout">Log out</button></span></a></li>
+					<li><a href="${pageContext.request.contextPath}/MyinfoController?command=myinfo&member_id=${logindto.member_id }"><span class="mypage"><button id="mypage">Mypage</button></span></a></li>
+					<li><a href="${pageContext.request.contextPath}/LoginController?command=logout"><span class="logout"><button id="logout">Log out</button></span></a></li>
 					<li><a href="#"><span class="list" onclick="openNav()">&#9776;</span></a></li>
 					</ul>
 				</c:otherwise>
@@ -51,7 +51,7 @@
 					onmouseout="this.innerHTML='&nbsp;약국찾기'"><span>약국찾기</span>
 				</a> 
 				<a
-					href="${pageContext.request.contextPath}/MainController?command=mediLocker" 
+					href="${pageContext.request.contextPath}/MediLockerRegistController?command=mediLocker" 
 					onmouseover="this.innerHTML='&nbsp;Prescription'"
 					onmouseout="this.innerHTML='&nbsp;처방전'"><span>처방전</span>
 				</a> <br>
