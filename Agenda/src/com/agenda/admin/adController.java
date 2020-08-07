@@ -1,7 +1,7 @@
 package com.agenda.admin;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,8 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.swing.JOptionPane;
 
 import com.agenda.admin.adDto;
 import com.google.gson.JsonElement;
@@ -30,8 +28,6 @@ public class adController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
-		HttpSession session = request.getSession();
-		PrintWriter out = response.getWriter();
 		adDto dto = new adDto();
 		adDao dao = new adDao();
 		
@@ -41,12 +37,7 @@ public class adController extends HttpServlet {
 		if(command.contentEquals("adminpage")) {
 			
 			response.sendRedirect("admin/adlayout.jsp?member_id="+request.getParameter("member_id"));
-			
-			/*
-			 * RequestDispatcher dispatch =
-			 * request.getRequestDispatcher("admin/adlayout.jsp"); dispatch.forward(request,
-			 * response);
-			 */
+
 		}
 		
 		else if(command.contentEquals("allMember")) {
