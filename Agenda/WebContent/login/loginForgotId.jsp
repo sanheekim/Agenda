@@ -6,16 +6,6 @@
 <meta charset="UTF-8">
 <title>아이디 찾기</title>
 <style type="text/css">
-#forgotId{
-margin-top:20px;
-height:100vh;
-}
-
-section {
-	width: 1000px;
-	height: 100%;
-	margin: 80px auto;
-}
 
 </style>
 <script>
@@ -40,13 +30,18 @@ function idSearch(){
 
 </script>
 </head>
+<link rel="stylesheet" type="text/css"href="${pageContext.request.contextPath}/login/loginForgotId.css">
 <body>
 	<jsp:include page="../header/header.jsp" />
-<section>
+<section class= first >
 	<div id="fotgotId">
+	
+	
 		<div class="fotgotId__top">
 
 			<h2 class="forgotId__title">아이디 찾기</h2>
+			
+			
 		</div>
 
 
@@ -59,31 +54,35 @@ function idSearch(){
 
 				<div class="forgotId__submit">
 				
-					<div class="forgotId__submit__id">
 					
-						<div>아이디는 가입시 입력하신 이름과 이메일을 통해 찾을 수 있습니다</div>
+					
+						<div class="forgotId__sub__title">가입시 입력하신 이름과 이메일을 통해 찾을 수 있습니다</div>
+						
+						<div class="forgotId__submit__name">
+						<div class="name__title"> 회원정보에 등록한 이름</div>
 						<input type="text" placeholder="이름을 입력하세요" name="member_name"
 							required />
-					</div>
+						</div>
 
 					<div class="forgotId__submit__email">
 					
-						<div>회원정보에 등록한 이메일</div>
+						<div class="email__title">회원정보에 등록한 이메일</div>
 						<input type="email"  placeholder="이메일을 입력하세요" name="member_email" required>
 						
 					</div>
 
-
-					<div class="forgotId__submit__button">
-						<button type="submit" value="forgotIdbtn"  onclick="idSearch()">아이디찾기</button>
+					<div>
+					<div>
+						<button class="forgotId__submit__button" type="submit" value="forgotIdbtn"  onclick="idSearch()">아이디찾기</button>
 						
 					</div>
+					
 
+</div>
 				</div>
 
 			</form>
 
-			<div></div>
 
 		</div>
 

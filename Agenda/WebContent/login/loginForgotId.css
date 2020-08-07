@@ -7,8 +7,17 @@ body {
  
 }
 
+.first {
+	min-width: 100%;
+	min-height: 100%;
+	background-color: whitesmoke;
+	height: 100vh;
+	overflow: hidden;
+}
+
+
 input[type="text"],
-input[type="password"] {
+input[type="email"] {
   width: 300px;
   padding: 12px 7px;
   margin: 8px 0;
@@ -16,12 +25,14 @@ input[type="password"] {
   border: 1px solid #ccc;
   box-sizing: border-box;
 }
-.fotgotId {
+
+
+#fotgotId {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
- /*  border: 2px solid red;
+ 	border: 1px solid red;
   margin-top:200px;
    
   
@@ -45,49 +56,41 @@ input[type="password"] {
   justify-content: center;
 
 }
-.fotgotId__submit__api {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; 
-  width:300px;
+.forgotId__submit__name,
+.forgotId__submit__email{
+	display:flex;
+	flex-direction:column;
 }
 
-.cancelbtn {
-  width: 60px;
-  height: 30px;
-  padding: 5px 7px;
-  background-color: black;
-  color: white;
-  font-size: 12px;
+.forgotId__submit{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
 }
 
-button {
-  background-color: black;
+.forgotId__buttons{
+	display:flex;
+}
+
+.forgotId__submit__button{
+  background-color: #4f4f4f;
   color: white;
   padding: 3px 3px;
-  margin: 10px 0;
+  margin: 5px 0;
   border: none;
   cursor: pointer;
   width: 300px;
   height: 35px;
 }
 
-button:hover {
-  opacity: 0.8;
-}
-.fotgotId__submit__button {
-  background-color: black;
-}
-.fotgotId__submit__api {
-  margin: 0 0;
-  margin: auto;
-  text-align: center;
-  width:300px;
+.name__title,
+.email__title{
+	margin:auto;
+	padding:0 0px;
 }
 
-
-span.psw {
-  float: right;
-  padding-top: 16px;
+.forgotId__sub__title{
+	margin-bottom:20px;
+	border:1px solid red;
 }
