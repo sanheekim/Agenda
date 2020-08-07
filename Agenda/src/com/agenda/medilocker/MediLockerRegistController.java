@@ -1,6 +1,7 @@
 package com.agenda.medilocker;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -46,7 +47,10 @@ public class MediLockerRegistController extends HttpServlet {
 		if(command.equals("mediLocker")) {
 			if(dto !=null) {		
 				List<MediLockerDto> list = dao.selectList(dto.getMember_id());
-				System.out.println(list.get(0).getPres_mediname());
+				List<String> scanList = new ArrayList<String>();
+				scanList = (List<String>) request.getAttribute("scanList");
+				System.out.println("list들어왔다~");
+				request.setAttribute("scanList", scanList);
 				request.setAttribute("list", list);		
 				dispatch(request, response, "medilocker/mediLockerScanMain.jsp");
 				
@@ -54,15 +58,12 @@ public class MediLockerRegistController extends HttpServlet {
 				System.out.println("로그인후 이용해주세요");
 				jsResponse("로그인 후 이용해주세요", "login/loginForm.jsp", response);
 			}
-		}else if(command.equals("scanRegist")){
+		}	else if(command.equals("scanRegist")) {
 			MediLockerRegist rg = new MediLockerRegist();
 			String strJson = request.getParameter("strObj");
 			String [] items = request.getParameterValues("items");
 			System.out.println(items.length);
 			rg.MediRegist(strJson,items);
-			
-			
-		
 		}
 	}
 	private void jsResponse(String msg, String url, HttpServletResponse response) throws ServletException, IOException{
@@ -73,11 +74,13 @@ public class MediLockerRegistController extends HttpServlet {
 		response.getWriter().append(s);
 	}
 	
+
+	
 	private void dispatch(HttpServletRequest request, HttpServletResponse response, String url)
 			throws ServletException, IOException {
 		RequestDispatcher dispatch = request.getRequestDispatcher(url);
 		dispatch.forward(request, response);
 	}
-
+	
 
 }

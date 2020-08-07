@@ -15,10 +15,18 @@
 	<header>
 		<jsp:include page="../header/loginMain.jsp"></jsp:include>
 	</header>
+	<c:choose>
+		<c:when test="${empty scanList }">
+		</c:when>
+		<c:otherwise>
+			<input type="hidden" value="${scanList }" id="scanList">
+		</c:otherwise>
+	</c:choose>
 	<div id="LockerMainDiv">
 		<div id="LockerThemeDiv">
 			<h2>처방전 보관함</h2>
-			<button onclick="docScan();">SCAN</button>
+			<button onclick="docScan();">SCAN</button>			
+			<button onclick="upLoad();">SCAN</button>			
 		</div>
 		<div id="Locker2ndDiv">
 			<div id="Locker3rdDiv">

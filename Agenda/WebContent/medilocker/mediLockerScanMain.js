@@ -1,6 +1,8 @@
 
 
-function upload(){
+/*function upload(){
+    var scanList = $("#scanList").val();
+    console.log(scanList);
     //window.open("Upload.jsp","","width=300px, height=150px");
     var items = ["종근당아스피린정","록스펜정","그리밍캡슐"];
     console.log(items);
@@ -44,12 +46,22 @@ function upload(){
 	// ListDiv.appendChild(div);
     // }
 }
-function docScan(){
-    var items = ["종근당아스피린정","록스펜정","그리밍캡슐"];
- 
+*/
+function upLoad(){
+    open("medilocker/mediLockerUpload.jsp","처방전 스캔","width = 300px, height = 150px, top = 100px, left = 100px");
+}
+
+
+$(function(){
+    var items = $("#scanList").val();
+ 	if(items.val()== undefined){
+
+     }else{
+    console.log("리스트 존재");
     var key = '?' + encodeURIComponent('ServiceKey') + '='+'BfXgu8Nrg94kP5UMKtnT32kMX6AUp1kzvIOupvhUowIXqupdnwrP0XSpWIeXNo1zQ%2BYvNT7NAEWM%2BL5P5E3Shw%3D%3D';
     $.ajaxSettings.traditional = true; //js에서 java로 배열을 보낼 때 해줘야하는 설정
 	for(var i in items){
+
     var item_name = '&' + encodeURIComponent('item_name') + '='+ encodeURIComponent(items[i]);
     $.ajax({
         type: "GET",
@@ -83,7 +95,8 @@ function docScan(){
         }
     });
     }
-}
+};
+});
 
 function conv2json(dom){
    // var dom = parseXml(_xml);
@@ -93,4 +106,5 @@ function conv2json(dom){
     var jsonObj = eval( "(" + jsonStr + ")" ); //eval 문자열을 코드로 인식하게 하는 함수
     return jsonObj;
 }
+
 

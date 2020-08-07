@@ -19,7 +19,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 
-@WebServlet("/GoogleVisionController")
+@WebServlet("/MediLockerScanController")
 public class MediLockerScanController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	public static String filename;
@@ -67,7 +67,7 @@ public class MediLockerScanController extends HttpServlet {
 
 
 
-			
+	                                		
 			try {
 				MultipartRequest multi = new MultipartRequest(request, realfolder, maxSize, 
 							encType, new DefaultFileRenamePolicy());//파일이름 변경 자동으로 가능(파일명 겹칠시)
@@ -80,8 +80,9 @@ public class MediLockerScanController extends HttpServlet {
 				filename = realfolder + "\\" + onFile;
 				out.println(filename);
 				List<String> list = MediLockerScan.detectText(filename);
-				request.setAttribute("list", list);
-				RequestDispatcher dispatch = request.getRequestDispatcher("medilockerscan/mediLockerScanMain.jsp");
+				System.out.println(list.size());
+				request.setAttribute("scanList", list);
+				RequestDispatcher dispatch = request.getRequestDispatcher("MediLockerRegistController?command=mediLocker");
 				dispatch.forward(request, response);
 				
 				

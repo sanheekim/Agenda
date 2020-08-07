@@ -32,7 +32,7 @@ public class MediLockerRegist {
 		
 		}else if(isElement.get("item").isJsonObject() == true) {
 
-			//System.out.println(isElement.get("item").getAsJsonObject().get("ITEM_NAME"));
+			System.out.println(isElement.get("item").getAsJsonObject().get("ITEM_NAME"));
 		}
 	}		
 }
