@@ -28,12 +28,14 @@ function idSearch(){
 
 }
 
+
+
 </script>
 </head>
-<link rel="stylesheet" type="text/css"href="${pageContext.request.contextPath}/login/loginForgotId.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/login/loginForgotId.css">
 <body>
 	<jsp:include page="../header/header.jsp" />
-<section class= first >
+<section class= "first" >
 	<div id="fotgotId">
 	
 	
