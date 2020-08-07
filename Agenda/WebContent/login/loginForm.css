@@ -61,18 +61,32 @@ input[type="password"] {
   font-size: 12px;
 }
 
-button {
+.login__submit__button {
   background-color: black;
   color: white;
   padding: 3px 3px;
-  margin: 10px 0;
+  margin: 5px 0;
   border: none;
   cursor: pointer;
   width: 300px;
   height: 35px;
 }
 
-button:hover {
+.registbtn{
+	background-color: #0f79c8;
+  color: white;
+  padding: 3px 3px;
+  margin: 5px 0;
+  border: none;
+  cursor: pointer;
+  width: 300px;
+  height: 35px;
+}
+.registbtn:hover{
+	opacity:0.8;
+}
+
+.login__submit__button:hover {
   opacity: 0.8;
 }
 .login__submit__buttonn {
@@ -129,3 +143,4 @@ span.psw {
 	width:300px;
 	height:35px;
 }
+
