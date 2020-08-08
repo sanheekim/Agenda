@@ -3,10 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/footer/mainFooter.css" >
-
-<script type="text/javascript" src="${pageContext.request.contextPath}/footer/footer.js"></script>
-	
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/footer/mainFooter.css" >	
 <script src="https://kit.fontawesome.com/fa4588ee5d.js"></script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
