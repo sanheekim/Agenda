@@ -33,7 +33,7 @@
     
     <!-- 섹션 -->
 	<section>
-		<h1>Q & A</h1>
+		<h1><a href="${pageContext.request.contextPath}/qna/index.jsp">Q & A</a></h1>
 		<form action="${pageContext.request.contextPath}/qnaController.do" method="post">
 			<input type="hidden" name="command" value="list">
 			<input type="hidden" name="curPage" value="1">
@@ -84,7 +84,7 @@
 						<option value="qna_content" <c:out value="${map.searchOption == 'content'?'selected':''}"/> >내용</option>
 						<option value="qna_title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
 					</select>
-							<input name="keyword" value="${map.keyword}">
+							<input type="text" name="keyword" value="${map.keyword}" placeholder="검색어를 입력하세요">
 							<input type="submit" value="조회">
 							<c:choose>
 							<c:when test="${logindto ne null }">

@@ -131,42 +131,38 @@ $(document).ready(function(){
 
 
 	<section>
-		<h1>Q&A 글보기</h1>
+		<h1><a href="${pageContext.request.contextPath}/qna/index.jsp">Q & A</a></h1>
 		<!-- 글 상세내역 부분 -->
 			<input type="hidden" name="qna_no" value="${detail.qna_no }" id="qna_no">
+			<input type="hidden" name="member_id" value="${detail.member_id }">
 			<table id="board">
 				<tr>
-					<th>제목</th>
-					<td colspan="5">
+					<td>
 					<input type="hidden" name="qna_title" value="${detail.qna_title }">${detail.qna_title }
 					</td>
 				</tr>
 				<tr>
-					<th>작성자</th>
-					<td><input type="hidden" name="member_id"
-						value="${detail.member_id }">${detail.member_id}</td>
-					<th>작성시간</th>
-					<td>${detail.qna_regdate}</td>
-					<th>조회</th>
-					<td>${detail.qna_hit}</td>
+					<td>작성자 | ${detail.member_id}</td>
+					<td>작성시간 | ${detail.qna_regdate}</td>
+					<td>조회수 | ${detail.qna_hit}회</td>
 				</tr>
 				<tr>
-					<td colspan="6">
-						<div id="viewer" name="qna_content" value="${detail.qna_content }"></div>
+					<td>
+						<c:if test="${logindto.member_id == detail.member_id}">
+							<input type="button" value="수정하기"
+							onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=update&qna_no=${detail.qna_no }'">
+						</c:if>
+							<input type="button" value="목록으로"
+							onclick="location.href='${pageContext.request.contextPath}/qna/index.jsp'">
+						<c:if test="${logindto.member_id == detail.member_id || logindto.member_role == 'ADMIN' }">
+							<input type="button" value="글삭제"
+							onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=delete&qna_no=${detail.qna_no }'">
+						</c:if>
 					</td>
 				</tr>
 				<tr>
-					<td colspan="6">
-					<c:if test="${logindto.member_id == detail.member_id}">
-						<input type="button" value="수정하기"
-						onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=update&qna_no=${detail.qna_no }'">
-					</c:if>
-						<input type="button" value="목록으로"
-						onclick="location.href='${pageContext.request.contextPath}/qna/index.jsp'">
-					<c:if test="${logindto.member_id == detail.member_id || logindto.member_role == 'ADMIN' }">
-						<input type="button" value="글삭제"
-						onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=delete&qna_no=${detail.qna_no }'">
-					</c:if>
+					<td colspan="3">
+						<div id="viewer" name="qna_content" value="${detail.qna_content }"></div>
 					</td>
 				</tr>
 			</table>
@@ -177,16 +173,15 @@ $(document).ready(function(){
 				<c:forEach var="row" items="${commlist}">
 				<tr>	
 					<td>
-						번호 : ${row.comm_no }
-						<br>
-						작성자 : ${row.member_id}
-						<br>
-						<textarea rows="3" cols="40" disabled="disabled" class="comm_content">${row.comm_content }</textarea>
-						<br>
-						날짜 : ${row.comm_regdate}
-						<br>
-						<hr>
-						
+						${row.member_id}
+					</td>
+					<td>
+						<textarea rows="2" cols="80" disabled="disabled" class="comm_content">${row.comm_content }</textarea>
+					</td>
+					<td>
+						${row.comm_regdate}
+					</td>
+					<td>						
 						<c:if test="${logindto.member_id == row.member_id || logindto.member_role == 'ADMIN'}">
 							<input type="button" value="삭제" class="btnDelete" name="${row.comm_no }">
 						</c:if>
@@ -206,14 +201,13 @@ $(document).ready(function(){
 					<c:when test="${logindto ne null }">
 						<tr>
 							<th><c:out value="${logindto.member_id }"></c:out></th>
-							<td colspan="3"><textarea name="comm_content" id="comm_content"></textarea></td>
+							<td><textarea rows="2" cols="80" name="comm_content" id="comm_content"></textarea></td>
 							<td><input type="button" value="작성" id="btnReply" name="${logindto.member_id }"></td>
 						</tr>
 					</c:when>
 					<c:otherwise>
-						<tr>
-						<td><span>댓글 작성을 위해 로그인 해주세요</span></td>
-						</tr>
+							<th></th>
+							<td><textarea rows="2" cols="80" disabled="disabled" name="comm_content" id="comm_content" placeholder="댓글 작성을 위해 로그인해주세요"></textarea></td>
 					</c:otherwise>
 				</c:choose>
 			</table>
@@ -226,7 +220,6 @@ $(document).ready(function(){
 <script>
 	const viewer = new toastui.Editor({
 		el : document.querySelector('#viewer'),
-		height : '300px',
 		initialValue : `${detail.qna_content }`
 	});
 </script>
