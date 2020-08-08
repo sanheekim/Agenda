@@ -8,8 +8,13 @@
 <title>Admin Page</title>
 <script src="http://code.jquery.com/jquery-3.5.1.js"></script>
 <style type="text/css">
-
-	body{
+@charset "UTF-8";
+@font-face{font-family:'Nanum Gothic'; src:url('../font/NanumBarunGothic.ttf')}
+@font-face{font-family:'Nanum Gothic Light'; src:url('../font/NanumBarunGothicLight.ttf')}
+@font-face{font-family:'Nanum Gothic Bold'; src:url('../font/NanumBarunGothicBold.ttf')}
+@font-face{font-family:'Nanum Gothic Ultra Light'; src:url('../font/NanumBarunGothicUltraLight.ttf')}
+	
+	body {
  		margin: 0 0;
  		padding: 0 0;
 	}
@@ -33,9 +38,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		font-family: Montserrat;
-		font-style: normal;
-		font-weight: normal;
+		font-family:'Nanum Gothic Bold';
 		font-size: 44px;
 		line-height: 72px;
 		color: #000000;		
@@ -47,6 +50,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
+		font-family:'Nanum Gothic';
 	}
 	
 	.ad_box {
@@ -118,7 +122,9 @@
 			</div>
 	</div>	
 
-	<jsp:include page="../footer/mainFooter.jsp" />
+	<footer id="ad_footer">
+		<jsp:include page="../footer/mainFooter.jsp"></jsp:include>
+	</footer>
 </div>
 
 <script type="text/javascript" src="adtransfer.js"></script>
