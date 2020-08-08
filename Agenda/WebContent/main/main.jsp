@@ -173,18 +173,19 @@
 			</div>
 		<div class="fourth-pages">
 			<div class="fourth-pages-text">
-				<h2>01. how to scan my Prescription?</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mae
-					cenas ex justo, efficitur a iaculis ac, pellentesque a odio.
-					Phasellus non eros eu nulla hendrerit s celerisque sed at justo.
-					Sed vulputate.</p>
+				<h2>01. How to scan my Prescription?</h2>
+				<p>First, Register a new account and Log on AH.GENDA. Second, Connect
+				to Prescription Cabinet. Third, Click SCAN button. Fourth, Upload your
+				image file of prescription. Fifth, Scan will be started after upload.
+				Sixth, Verify completed scan file and enjoy your own prescription!.</p>
 			</div>
 			<div class="fourth-pages-text">
-				<h2>02.Save your page in cabinet</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mae
-					cenas ex justo, efficitur a iaculis ac, pellentesque a odio.
-					Phasellus non eros eu nulla hendrerit s celerisque sed at justo.
-					Sed vulputate.</p>
+				<h2>02. Make your own page in Prescription Cabinet.</h2>
+				<p>You can keep your last prescriptions and verify their images on
+				AH.GENDA. Check your medicines' information what you were prescribed
+				and read Side Effect as you use our Searching Medicine and Medical
+				Supplies. You can record dates when you got prescription or should go
+				hospital. So you can make a regular routine.</p>
 			</div>
 			<div class="fourth-pages-text">
 				<h2>03. You're Done!</h2>
@@ -194,10 +195,9 @@
 
 	<section class="section contact area">
 		<div class="contact-title"><p>Do you need help?</p></h2></div>
-		<div class="contact-sub">There are many variations of passages
-			of Lorem Ipsum availd chunks as necessary, making this the first true
-			generator on the Internet. It uses a dictionary of over 200 Latin
-			words, com</div>
+		<div class="contact-sub">Click the Chat Button where it is in
+		right-below. Pharmacists will consult with you in real time. Or Write
+		your question on Q&A board. We will answer in a day.</div>
 	</section>
 
 	<!-- 풋터 -->
