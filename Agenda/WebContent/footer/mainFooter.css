@@ -33,6 +33,8 @@
 
   /**Animation*/
   --animation-duration: 300ms;
+  /*Transition*/
+  $thetransition: all .5s cubic-bezier(1,.25,0,.75) 0s;
 }
 
 /* footer */
@@ -85,6 +87,30 @@
   margin-bottom: 30px;
   width: 50px;
   border-bottom: 1px solid white;
+}
+
+ .footer__outro__mail > span:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  bottom: 0;
+  left: 0;
+  background-color: #f00;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  transform: scaleX(0);
+  -webkit-transition: $thetransition;
+  transition: $thetransition;
+  }
+  .footer__outro__mail > span:hover:before {
+  visibility: visible;
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  }
+
+.footer__outro__mail > span:hover{
+	 transition: transform 0.5s;
 }
 
 .footer__outro__address {
@@ -203,3 +229,48 @@ ul li {
   transform-origin: bottom;
   transition: transform 0.5s;
 }
+
+/** @format */
+
+.box-e a {
+  line-height: 125px;
+}
+
+
+.custom-underline {
+  position: relative;
+  display: flex;
+  font-size: 30px;
+  font-weight: 400;
+  text-align: center;
+}
+
+
+
+.custom-underline,
+.custom-underline:hover,
+.custom-underline:focus,
+.custom-underline:active {
+  color: #fff;
+  text-decoration: none;
+}
+
+.custom-underline::after {
+  content: "";
+  position: absolute;
+}
+
+.box-e .custom-underline::after {
+  top: 65%;
+  height: 2px;
+  width: 0%;
+  left: 0%;
+  background-color: rgba(255, 255, 255, 0.6);
+  transition: 0.5s ease all 0.3s;
+}
+
+.box-e:hover .custom-underline::after {
+  width: 90%;
+  transition: 0.3s ease all;
+}
+

@@ -15,9 +15,9 @@
 		<div id="footer">
 			<div class="footer__outro__container">
 				<div class="footer__outro__grid__left">
-					<div class="footer__outro__mail">
-						<span>kh@kh.com</span>
-					</div>
+					<div class="box-e">
+        <a href="#" class="custom-underline">kh@kh.com</a>
+      </div>
 					<div class="footer__outro__address">
 						<a href="https://www.iei.or.kr/main/main.kh">Seoul Korea</a>
 					</div>
