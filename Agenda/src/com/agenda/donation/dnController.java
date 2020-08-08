@@ -12,6 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.agenda.login.LoginDto;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
@@ -84,8 +87,8 @@ public class dnController extends HttpServlet {
 			String member_id = request.getParameter("member_id");
 		
 			dnDao dao = new dnDao();
+			
 			dnDto dto = new dnDto();
-		
 			dto = dao.selectOne(member_id);
 			request.setAttribute("dto", dto);
 				
@@ -113,4 +116,5 @@ public class dnController extends HttpServlet {
 		RequestDispatcher dispatch = request.getRequestDispatcher(url);
 		dispatch.forward(request, response);
 	}
+	
 }

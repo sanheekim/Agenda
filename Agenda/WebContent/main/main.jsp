@@ -135,6 +135,8 @@
 	<section class="section third area">
 		<p>D O N A T I O N</p>
 		<div class="donation-wrapper">
+			<c:choose>
+			<c:when test="${logindto ne null }">
 			<div class="donation-content" onclick="pay01()">
 				<div class="donation-content-01">
 					<p>1,000</p>
@@ -156,6 +158,31 @@
 					<p>50,000</p>
 				</div>
 			</div>
+			</c:when>
+			<c:otherwise>
+				<div class="donation-content" onclick="alert('로그인 해주세요')">
+				<div class="donation-content-01">
+					<p>1,000</p>
+				</div>
+			</div>
+			<div class="donation-content" onclick="alert('로그인 해주세요')">
+				<div class="donation-content-01">
+					<p>5,000</p>
+				</div>
+			</div>
+			<div class="donation-content" onclick="alert('로그인 해주세요')">
+				<div class="donation-content-01">
+					<p>10,000</p>
+				</div>
+			</div>
+
+			<div class="donation-content" onclick="alert('로그인 해주세요')">
+				<div class="donation-content-01">
+					<p>50,000</p>
+				</div>
+			</div>
+			</c:otherwise>
+			</c:choose>
 		</div>
 	</section>
 
