@@ -22,7 +22,7 @@
 		<div class="wrapper">
 			<div id="header-bar" onclick="location.href='${pageContext.request.contextPath}/main/main.jsp'">
 				<img src="${pageContext.request.contextPath}/header/resources/img/medicine.png">
-				<span>AH.GENDA</span>
+				<span>AGENDA</span>
 			</div>
 			<nav>
 				<ul class="header-menu">

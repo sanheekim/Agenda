@@ -1,7 +1,7 @@
-@font-face{font-family:'Nanum Gothic'; src:url('../font/NanumBarunGothic.ttf')}
-@font-face{font-family:'Nanum Gothic Light'; src:url('../font/NanumBarunGothicLight.ttf')}
-@font-face{font-family:'Nanum Gothic Bold'; src:url('../font/NanumBarunGothicBold.ttf')}
-@font-face{font-family:'Nanum Gothic Ultra Light'; src:url('../font/NanumBarunGothicUltraLight.ttf')}
+@font-face {font-family: 'Nanum Gothic'; src: url('../font/NanumBarunGothic.ttf') }
+@font-face {font-family: 'Nanum Gothic Light'; src: url('../font/NanumBarunGothicLight.ttf')}
+@font-face {font-family: 'Nanum Gothic Bold'; src: url('../font/NanumBarunGothicBold.ttf')}
+@font-face {font-family: 'Nanum Gothic Ultra Light';src: url('../font/NanumBarunGothicUltraLight.ttf')}
 
 * {
 	margin: 0px;
@@ -16,71 +16,36 @@ header {
 	z-index: 1;
 }
 
-
 /* 첫번째 */
-.first {
-	min-width: 100%;
-	min-height: 100vh;
-	background-color: whitesmoke;
-	height: 100vh;
-	overflow: hidden;
+.first{
+	width: 100%;
+	height : 100vh;
+	background-color : whitesmoke;	
 }
 
-.text-wrap {
-	width: 50%;
-	padding-top: 130px;
+.first h1, h2 {
+  font-weight: 200;
 }
 
-.text:before {
-	content: attr(data-text);
-	position: absolute;
-	top: 20px;
-	left: -20px;
-	color: rgba(0, 0, 0, 0.5);
-	text-shadow: none;
-	filter: blur(4px);
-	z-index: -1;
+.first h1{
+  font-size: 3.5em;
 }
 
-.text {
-	position: relative;
-	font-size: 4em;
-	color: whitesmoke;
-	letter-spacing: 3px;
-	transform: rotate(-25deg) skew(25deg);
-	margin-left: 80px;
-	font-family:'Nanum Gothic Light'
+.first h2{
+  color: rgb(187, 187, 187);
+  font-size: 2em;
 }
 
-
-.content-wrapper {
-	position: absolute;
-	width: 50%;
-	height: 80vh;
-	border-radius: 15px;
-	top: 100px;
-	right: 0px;
+.first-wrapper{
+	width: 100%;
+	height : 100vh;
 	display: flex;
-	justify-content: space-around;
-	align-items: flex-end;
-	overflow: hidden;
+	flex-direction: column;
+	justify-content : center;
+	align-content: center;
+	padding-left: 30px;
 }
 
-.content {
-	width: 100px;
-	height: 100px;
-	border-radius: 15px;
-	transform: rotate(-25deg) skew(25deg);
-	box-shadow: inset 6px 6px 12px #e1e1e1, inset -6px -6px 12px #ffffff;
-}
-
-.content img {
-	transform: rotate(25deg) skew(-20deg);
-	width: 120px;
-	position: relative;
-	bottom: 30px;
-	left: 50px;
-}
 
 /* 두번째 */
 .second {
@@ -96,7 +61,7 @@ header {
 	overflow: hidden;
 }
 
-.second>p {
+.second > p {
 	font-size: 2em;
 	margin-bottom: -100px;
 }
@@ -226,9 +191,9 @@ header {
 	color: white;
 }
 
-.fourth-pages-text:last-child h2{
-	padding : 5px 10px;
-	border : 1px solid white;
+.fourth-pages-text:last-child h2 {
+	padding: 5px 10px;
+	border: 1px solid white;
 }
 
 .fourth-pages-text p {
@@ -241,7 +206,6 @@ header {
 .fourth-pages div:nth-child(1) {
 	background-color: rgb(97, 97, 97);
 }
-
 
 .fourth-pages div:nth-child(2) {
 	background-color: rgb(61, 61, 61);
@@ -268,20 +232,17 @@ header {
 	font-size: 2em;
 	font-weight: bolder;
 	margin: 0 30px 0px 120px;
-	animation : textanim 3s infinite alternate;
+	animation: textanim 3s infinite alternate;
 	z-index: 1000;
 }
 
-@keyframes textanim{
+@keyframes textanim{ 
 	0%, 100%{
-		transform : rotate(-25deg) skew(25deg) translate(0,0);
-	}
-	
-	50%{
-		transform : rotate(-25deg) skew(25deg) translate(10px, -10px);
-	}
-}
+	transform: rotate(-25deg) skew(25deg) translate(0, 0);}
 
+	50%{
+	transform: rotate(-25deg) skew(25deg) translate(10px, -10px);}
+}
 
 .contact-sub {
 	margin: 40px 120px;
@@ -303,28 +264,10 @@ header {
 	z-index: 9999;
 }
 
-#cursor2 {
-	width: 1em;
-	height: 1em;
-	border : 1px solid gray;
-	border-radius: 50%;
-	position: absolute;
-	transform: translate(-50%, -50%);
-	transition-duration: 150ms;
-	transition-timing-function: ease-out;
-	visibility: hidden;
-	z-index: 9999;
-}
-
 @keyframes cursorAnim{
-    from{
-        transform: scale(0.7) translate(-50%, -50%);
-    }
-    to{
-        transform: scale(1) translate(-50%, -50%);
-    }
+	from {transform: scale(0.7) translate(-50%, -50%);}
+to {transform: scale(1) translate(-50%, -50%);}
 }
-
 
 .right-menu-bar {
 	position: fixed;
@@ -337,25 +280,22 @@ header {
 }
 
 /*Scroll*/
-.arrow-up{
-	position:fixed;
+.arrow-up {
+	position: fixed;
 	bottom: 50px;
-	right:50px;
-	
-	width:50px;
-	height:50px;
-	font-size:30px;
-
-	color:grey;
+	right: 50px;
+	width: 50px;
+	height: 50px;
+	font-size: 30px;
+	color: grey;
 	background-color: transparent;
-	border-radius:50%;
-	opacity:0;
-	pointer-events:none;
+	border-radius: 50%;
+	opacity: 0;
+	pointer-events: none;
 	transition: opacity 300ms ease-in;
 }
 
-.arrow-up.visible{
-	opacity:1;
-	pointer-events:auto;
-	
+.arrow-up.visible {
+	opacity: 1;
+	pointer-events: auto;
 }

@@ -28,25 +28,18 @@
 			</c:otherwise>
 		</c:choose>
 	</header>
-
-	<!-- 메인 -->
-	
 	<!-- 커서 -->
 	<div id ="cursor"></div>
-
+	
+	<!-- 메인 -->
 	<section class="section first area">
-		<div class="text-wrap">
-			<p class="text" data-text="아프지마요.">아프지마요.</p>
-			<p class="text" data-text="괜찮아요?">괜찮아요?</p>
-			<p class="text" data-text="다친데는없어요?">다친데는없어요?</p>
-		</div>
-		<div class="content-wrapper">
-			<div class="content"></div>
-			<div class="content"></div>
-			<div class="content"></div>
+		<div class="first-wrapper">
+			<h1> Agenda is 
+				<span class="txt-rotate" data-period="2000" data-rotate='[ "Simple.", "Good.", "Fun.", "Easy to use.", "" ]'></span>
+			</h1>
+			<h2>아프지 마요. 괜찮아요? 다친덴 없어요?</h2>
 		</div>
 	</section>
-
 
 	<section class="section second area">
 		<p>M E N U</p>
@@ -169,7 +162,7 @@
 	
 	<section class="section fourth area">
 		<div class="fourth-title">
-				<h2 id=>How to Scan Prescription</h2>
+				<h2>How to Scan Prescription</h2>
 			</div>
 		<div class="fourth-pages">
 			<div class="fourth-pages-text">
