@@ -104,7 +104,7 @@
 	</div>
 	
 	<div id="ad_bottom">
-			<div class="ad_box" onclick="location.href='../adController?command=admyinfo'">
+			<div class="ad_box" onclick="location.href='../adController?command=admyinfo&member_id=${logindto.member_id }'">
 			<span>내 정보 수정</span>
 			<img class="icon" src="image/info.png" />
 			</div>

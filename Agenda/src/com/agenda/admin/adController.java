@@ -29,6 +29,12 @@ public class adController extends HttpServlet {
 		System.out.println(command);
 		
 		if(command.contentEquals("adminpage")) {
+	
+			response.sendRedirect("admin/adlayout.jsp?member_id="+request.getParameter("member_id"));
+
+		}
+		
+		else if(command.contentEquals("admyinfo")) {
 			
 			String member_id = request.getParameter("member_id");
 			System.out.println(member_id);
@@ -37,27 +43,9 @@ public class adController extends HttpServlet {
 			request.setAttribute("dto", dto);
 			System.out.println(dto);
 			
-			RequestDispatcher dispatch = request.getRequestDispatcher("admin/adlayout.jsp");
+			RequestDispatcher dispatch = request.getRequestDispatcher("admin/admyinfo.jsp");
 			dispatch.forward(request, response);
-			
-			// response.sendRedirect("admin/adlayout.jsp?member_id="+request.getParameter("member_id"));
-
-		}
-		
-		else if(command.contentEquals("admyinfo")) {
-			
-//			String member_id = request.getParameter("member_id");
-//			System.out.println(member_id);
-//			
-//			dto = dao.selectOne(member_id);
-//			request.setAttribute("dto", dto);
-//			System.out.println(dto);
-//			
-//			RequestDispatcher dispatch = request.getRequestDispatcher("admin/admyinfo.jsp");
-//			dispatch.forward(request, response);
-			
-			response.sendRedirect("admin/admyinfo.jsp?member_id="+request.getParameter("member_id"));
-			
+					
 		}
 		
 		else if(command.contentEquals("allMember")) {
