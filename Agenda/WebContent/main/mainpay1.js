@@ -1,5 +1,5 @@
-var pay01 = function(){
-
+window.onload = function() {
+	
 BootPay.request({
 	price: '1000',
 	application_id: "5f17cf9f8f0751002136c6b9",
@@ -51,10 +51,11 @@ BootPay.request({
     console.log(data);
 }).done(function (data) {
 		console.log(data);
+		
 		$.ajax({
-			url: "./dnController?",
+			url: "./dnController?command=donation",
 			method: "post",
-			data: {"obj" : JSON.stringify(data), command:"donation"},
+			data: {"obj" : JSON.stringify(data), member_id},
 			success: function(msg){
 				location.href="./dnController?command=dnlist";
 			},

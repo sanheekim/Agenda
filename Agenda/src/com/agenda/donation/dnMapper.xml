@@ -23,9 +23,9 @@
 	
 	<insert id="insert" parameterType="dnDto">
 		INSERT INTO AG_DONATION
-		(DONA_NO, DONA_BILL, DONA_DATE)
+		(DONA_NO, MEMBER_ID, DONA_BILL, DONA_DATE)
 		VALUES
-		(AG_DONATIONSEQ.NEXTVAL, #{dona_bill}, #{dona_date})
+		(AG_DONATIONSEQ.NEXTVAL, #{member_id}, #{dona_bill}, #{dona_date})
 	</insert>
 
 

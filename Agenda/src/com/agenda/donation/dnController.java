@@ -34,10 +34,23 @@ public class dnController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
 		
+		dnDao dao = new dnDao();
+		
 		String command = request.getParameter("command");
 		System.out.println(command);
 		
-		if (command.equals("donation")) {
+		if (command.equals("getid01")) {
+			
+			String member_id = request.getParameter("member_id");
+			System.out.println(member_id);
+			response.sendRedirect("main/mainpay1.js?member_id="+request.getParameter("member_id"));
+			
+		}
+		
+		else if (command.equals("donation")) {
+			
+		String member_id = request.getParameter("member_id");
+		System.out.println(member_id);
 		
 		// JSON문자열을 string 변수에 담음 - getParameter의 괄호는 dnpay.js의 62번째 줄 date 이름이랑 같아야 한다.
 		String obj = request.getParameter("obj");
@@ -66,32 +79,28 @@ public class dnController extends HttpServlet {
 		dnDto dto = new dnDto();
 		dto.setDona_bill(dona_bill);
 		dto.setDona_date(dona_date);
-		
-		// dto에 위 값들을 꺼내서 dao(후원내역 조회에 data를 insert할 수 있는 쿼리 있음, 여기에 member_id를 받아서 같이 넣기. selectList 쿼리도 있음.)에 넣기
-		dnDao dao = new dnDao();
+		dto.setMember_id(member_id);
 		
 		// db에 넣기
 		int dona_db = dao.insert(dto);
 		System.out.println(dona_db); //dona_db:1 즉, db에 저장 성공
 		
 		// db에 있는 값 꺼내서 후원내역 테이블에서 보여주려면
-		// db에 저장된 값(dona_db>0)을 dnpay.js의 msg에 응답시켜주기
+		// db에 저장된 값(dona_db>0)을 mainpay1~4.js의 msg에 응답시켜주기
 		response.getWriter().print(dona_db);
 		
 		}
 		
 		else if (command.equals("dnlist")) {
-		
-		// 이후 1. adreceipt.jsp에서 <script>에 ajax 써서 body에 있는 테이블에 값 불러오거나
-		// 2. 컨트롤러 통해서 adreceipt.jsp에 뿌리기
-			String member_id = request.getParameter("member_id");
-		
-			dnDao dao = new dnDao();
-			System.out.println(dao);
 			
+			String member_id = request.getParameter("member_id");
+			System.out.println(member_id);
+		
 			dnDto dto = new dnDto();
 			dto = dao.selectOne(member_id);
 			request.setAttribute("dto", dto);
+			System.out.println(dao);
+			System.out.println(dto);
 				
 			RequestDispatcher dispatch = request.getRequestDispatcher("myinfo/myreceipt.jsp");
 			dispatch.forward(request, response);
@@ -99,8 +108,6 @@ public class dnController extends HttpServlet {
 		}
 		
 		else if (command.equals("alldnlist")) {
-			
-			dnDao dao = new dnDao();
 			
 			List <dnDto> list = dao.selectList();
 			request.setAttribute("list", list);

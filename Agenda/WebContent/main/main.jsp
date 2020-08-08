@@ -137,7 +137,7 @@
 		<div class="donation-wrapper">
 			<c:choose>
 			<c:when test="${logindto ne null }">
-			<div class="donation-content" onclick="pay01()">
+			<div class="donation-content" onclick="location.href='${pageContext.request.contextPath}/dnController?command=getid01&member_id=${logindto.member_id }'">
 				<div class="donation-content-01">
 					<p>1,000</p>
 				</div>
