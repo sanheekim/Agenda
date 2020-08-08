@@ -72,7 +72,10 @@ public class adController extends HttpServlet {
 			System.out.println(member_id);
 			System.out.println(member_role);
 			
-			//dto가 안 되면 adDao에서 맵에 담기
+			//dto에 세팅
+			dto = new adDto(member_id, member_role);
+			
+			//dto 대신 adDao에서 맵에 담아도 됨
 			int res = dao.update(dto);
 			System.out.println(res);
 			
