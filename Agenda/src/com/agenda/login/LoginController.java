@@ -141,6 +141,35 @@ public class LoginController extends HttpServlet {
 			}
 			
 		}
+		
+		else if (command.equals("forgotPw")) {
+			
+			System.out.println("Hi you can find your pw");
+			String member_name = request.getParameter("member_name");
+			String member_email = request.getParameter("member_email");
+			System.out.println(">>findname="+member_name);
+			System.out.println(">>findemail="+member_email);
+			
+			LoginDto FindPwDto = new LoginDto();
+			FindPwDto.setMember_name(member_name);
+			FindPwDto.setMember_email(member_email);
+			
+			dto = dao.findid(FindPwDto);
+			if(dto!=null) {
+				String member_id = dto.getMember_id();
+				request.setAttribute("member_id",member_id);
+				loginResponse("인증번호를 가입한 메일로 발송했습니다.","login/loginTemp.jsp",response);
+				
+			}else {
+				
+				
+				
+				loginResponse("찾으시는 아이디가 존재하지 않습니다.","regist/registForm.jsp",response);
+				
+			}
+			
+			
+		}
 
 		/*
 		 * else if (command.equals("naverlogin")) {

@@ -67,6 +67,16 @@
 	
 </select>
 
+<select id="findPw" parameterType="loginDto" resultType="logindto">
+
+	UPDATE AG_MEMBER
+	SET MEMBER_PW = #{member_pw}	
+	WHERE MEMBER_ID = #{member_id}
+	AND MEMBER_NAME = #{member_name}
+	AND MEMBER_EMAIL = #{member_email}
+
+</select>
+
 
 </mapper>
 

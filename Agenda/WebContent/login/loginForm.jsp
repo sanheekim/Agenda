@@ -156,7 +156,8 @@ function checkLoginStatus(){
 				<div class="login__submit__remember">
 					<span class="forgotid">
 					<a href="${pageContext.request.contextPath}/login/loginForgotId.jsp">아이디</a></span>
-					<span class="forgotpw"><a href="#">비밀번호</a>를 잊으셨습니까?</span>
+					<span class="forgotpw">
+					<a href="${pageContext.request.contextPath}/login/loginForgotPw.jsp">비밀번호</a>를 잊으셨습니까?</span>
 				</div>
 
 				<div>
