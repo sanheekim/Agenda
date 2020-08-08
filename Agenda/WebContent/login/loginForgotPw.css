@@ -1,0 +1,116 @@
+/** @format */
+@charset "UTF-8";
+@font-face{font-family:'Nanum Gothic'; src:url('../font/NanumBarunGothic.ttf')}
+@font-face{font-family:'Nanum Gothic Light'; src:url('../font/NanumBarunGothicLight.ttf')}
+@font-face{font-family:'Nanum Gothic Bold'; src:url('../font/NanumBarunGothicBold.ttf')}
+@font-face{font-family:'Nanum Gothic Ultra Light'; src:url('../font/NanumBarunGothicUltraLight.ttf')}
+
+
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+
+
+ 
+}
+
+.first {
+	min-width: 100%;
+	min-height: 100%;
+	background-color: whitesmoke;
+	height: 100vh;
+	overflow: hidden;
+	
+	
+}
+
+
+.SearchId__Result {
+
+  width: 300px;
+  padding: 12px 7px;
+  margin: 8px 0;
+  display: flex;
+  border: 1px solid red;
+  box-sizing: border-box;
+  
+}
+
+
+#forgotPw {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top:200px;
+   
+  
+}
+.forgotId__top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+}
+.login__icon {
+  width: 20px;
+  border: 1px solid 
+}
+.forgotId__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+.forgotPw__submit__name,
+.forgotPw__submit__email,
+.forgotPw__submit__id{
+	display:flex;
+	flex-direction:column;
+}
+
+.forgotPw__submit{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+	justify-content:center;
+}
+
+
+.forgotPw__submit__button{
+  background-color: #4f4f4f;
+  color: white;
+  padding: 3px 3px;
+  margin: 5px 0;
+  border: none;
+  cursor: pointer;
+  width: 300px;
+  height: 35px;
+}
+
+.forgotPw__submit__button:hover{
+	opacity:0.8;
+}
+
+.name__title,
+.email__title{
+	margin:auto;
+	padding:0 0px;
+}
+
+.forgotPw__sub__title{
+	margin-bottom:20px;
+}
+input[type="text"],
+input[type="email"]{
+
+  height:30px;
+  width: 300px;
+  padding: 12px 7px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
