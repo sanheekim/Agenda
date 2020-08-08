@@ -5,23 +5,35 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>등급변경 페이지</title>
+<title>회원등급 변경</title>
+<style type="text/css">
+	#title{
+		font-size: 16pt;
+		text-align: center;
+	}
+	
+	.btn {
+		background-color: black;
+		color: white;
+		cursor: pointer;
+	}
+</style>
 </head>
 <body>
 <%
 	adDto dto = (adDto) request.getAttribute("dto");
 %>
-
-	<h1>회원등급 변경 페이지</h1>
-
 	<form action="../Agenda/adController?command=updateres" method="post">
 	<input type="hidden" name="command" value="member_id"/>
 	<input type="hidden" name="command" value="member_role"/>
 		
 		<table border="1">
-			<col width="50" />
 			<col width="200" />
 			<col width="100" />
+			<col width="100" />
+			<tr>
+				<td id="title" colspan="5">회원등급 변경</td>
+			</tr>
 			<tr>
 				<th>아이디</th>
 				<td><input name="member_id" value="<%=dto.getMember_id() %>"></td>
@@ -41,8 +53,8 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="변경 완료" />
-					<input type="button" value="목록" onclick="location.href='../Agenda/adController?command=allMember'" />
+					<input class="btn" type="submit" value="변경 완료" />
+					<input class="btn" type="button" value="목록" onclick="location.href='../Agenda/adController?command=allMember'" />
 				</td>
 			</tr>
 		</table>

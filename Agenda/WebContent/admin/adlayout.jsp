@@ -54,18 +54,19 @@
 	}
 	
 	.ad_box {
-		width: 200px;
+		width: 240px;
 		height: 400px;
 		top: 373px;
 		bottom: 40px;
 		background: #FAFAFA;
 		cursor: pointer;
 		text-align: center;
+		font-size: 16pt;
+		line-height: 200px;
 	}
 	
 	#ad_box span {
 		display: teble-cell;
-		verical-align: middle;
 	}
 	
 	.icon {
@@ -73,7 +74,6 @@
 		height: 100px;
 		display: block;
 		position: relative;
-		top: 150px;
 		margin: 0px auto;
 	}
 	
@@ -104,7 +104,7 @@
 	</div>
 	
 	<div id="ad_bottom">
-			<div class="ad_box" onclick="location.href='../admin/admyinfo.jsp'">
+			<div class="ad_box" onclick="location.href='../adController?command=admyinfo'">
 			<span>내 정보 수정</span>
 			<img class="icon" src="image/info.png" />
 			</div>

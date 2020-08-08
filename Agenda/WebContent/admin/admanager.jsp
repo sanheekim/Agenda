@@ -11,18 +11,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원 정보 관리</title>
+<title>전체 회원 정보 조회</title>
 <script src="http://code.jquery.com/jquery-3.5.1.js"></script>
 <style type="text/css">
 
-	#allmember {
+	#allmemberlist {
 		width: 100vw;
 		height: 100vh;
-		background-color: white;
+		display: flex;
+		justify-content: center;
+	}
+	
+	#title {
+		font-size: 16pt;
+		text-align: center;
 	}
 	
 	#update {
 		background-color: gold;
+		cursor: pointer;
+	}
+	
+	#back {
+		background-color: black;
+		color: white;
 		cursor: pointer;
 	}
 	
@@ -41,7 +53,6 @@ function changeRole(member_id){
 %>
 
 <div id="allmemberlist">
-	<h1>전체회원정보조회</h1>
 	<table border="1">
 		<col width="100"/>
 		<col width="100"/>
@@ -54,16 +65,19 @@ function changeRole(member_id){
 		<col width="100"/>
 		<col width="100"/>
 			<tr>
-			<td>번    호</td>
-			<td>I   D</td>
-			<td>P   W</td>
-			<td>이     름</td>	
-			<td>이 메 일</td>
-			<td>핸 드 폰</td>
-			<td>주     소</td>
-			<td>활 성 화</td>
-			<td>등     급</td>
-			<td>등급변경</td>
+				<td id="title" colspan="10">전체 회원 정보 조회</td>
+			</tr>
+			<tr>
+				<td>번    호</td>
+				<td>I   D</td>
+				<td>P   W</td>
+				<td>이     름</td>	
+				<td>이 메 일</td>
+				<td>핸 드 폰</td>
+				<td>주     소</td>
+				<td>활 성 화</td>
+				<td>등     급</td>
+				<td>등급변경</td>
 			</tr>
 <%
 		if (list.size() == 0 ) {
@@ -92,7 +106,7 @@ function changeRole(member_id){
 		}
 %>
 		<tr>
-			<td colspan="6"><input type="button" onclick="location.href='admin/adlayout.jsp'" value="돌아가기"/></td>
+			<td colspan="10"><input id="back" type="button" onclick="location.href='admin/adlayout.jsp'" value="돌아가기"/></td>
 		</tr>
 	</table>
 

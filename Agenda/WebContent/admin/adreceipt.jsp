@@ -9,13 +9,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>관리자페이지 전체후원내역조회</title>
+<title>전체 후원내역 조회</title>
+
 <style type="text/css">
 
 	#allreceipt {
 		width: 100vw;
 		height: 100vh;
-		background-color: white;
+	}
+	
+	#title {
+		font-size: 16pt;
+	}
+	
+	#back {
+		background-color: black;
+		color: white;
+		cursor: pointer;
 	}
 	
 </style>
@@ -25,8 +35,8 @@
 
 
 <div id="allreceipt">
-	<h1>전체후원내역</h1>
 	<table border="1">
+		<caption id="title">전체 후원내역</caption>
 		<thead>
 			<tr>
 			<td>후원 번호</td>
@@ -52,6 +62,11 @@
 					</c:otherwise>
 				</c:choose>
 		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="10"><input id="back" type="button" onclick="location.href='admin/adlayout.jsp'" value="돌아가기"></button></td>
+			</tr>
+		</tfoot>
 	</table>
 </div>
 
