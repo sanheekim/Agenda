@@ -12,12 +12,12 @@
 function idSearch(){
 
 	 var frm = document.idfindscreen;
-	  if (frm.findname.value.length < 1) {
+	  if (frm.member_name.value.length < 1) {
 	   alert("이름을 입력해주세요");
 	   return;
 	  }
 	  
-	  if (frm.findemail.value.length < 1) {
+	  if (frm.member_email.value.length < 1) {
 	   alert("이메일을 입력해주세요");
 	   return;
 	  }
@@ -36,7 +36,7 @@ function idSearch(){
 <body>
 	<jsp:include page="../header/header.jsp" />
 <section class= "first" >
-	<div id="fotgotId">
+	<div id="forgotId">
 	
 	
 		<div class="fotgotId__top">
