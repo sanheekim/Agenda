@@ -52,7 +52,7 @@ var pay02 = function(){
 	}).done(function (data) {
 		console.log(data);
 		$.ajax({
-			url: "dnController",
+			url: "./dnController",
 			method: "post",
 			data: {"obj" : JSON.stringify(data), command:"donation"},
 			success: function(msg){

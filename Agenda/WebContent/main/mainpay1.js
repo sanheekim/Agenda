@@ -47,16 +47,16 @@ BootPay.request({
 	} else {
 		BootPay.removePaymentWindow();
 	}
-})/*.close(function (data) {
+}).close(function (data) {
     console.log(data);
-})*/.done(function (data) {
+}).done(function (data) {
 		console.log(data);
 		$.ajax({
-			url: "../dnController",
+			url: "./dnController?",
 			method: "post",
 			data: {"obj" : JSON.stringify(data), command:"donation"},
 			success: function(msg){
-				location.href="../dnController?command=dnlist";
+				location.href="./dnController?command=dnlist";
 			},
 			error:function(){
 				alert("통신 실패");

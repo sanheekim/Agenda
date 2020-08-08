@@ -87,6 +87,7 @@ public class dnController extends HttpServlet {
 			String member_id = request.getParameter("member_id");
 		
 			dnDao dao = new dnDao();
+			System.out.println(dao);
 			
 			dnDto dto = new dnDto();
 			dto = dao.selectOne(member_id);

@@ -16,9 +16,9 @@
     </select>
     
     <select id="selectOne" parameterType="String" resultType="dnDto">
-		SELECT DONA_NO, DONA_BILL, DONA_DATE, MEMBER_ID
+		SELECT DONA_NO, MEMBER_ID, DONA_BILL, DONA_DATE
  		FROM AG_DONATION
-		WHERE MEMBER_ID = #{member_id} 	
+		WHERE MEMBER_ID = #{member_id}
  	</select>
 	
 	<insert id="insert" parameterType="dnDto">
@@ -27,10 +27,6 @@
 		VALUES
 		(AG_DONATIONSEQ.NEXTVAL, #{dona_bill}, #{dona_date})
 	</insert>
- 	
- 	<delete id="delete" parameterType="int">
-		DELETE FROM AG_DONATION
-		WHERE DONA_NO = #{dona_no}
-	</delete>
+
 
 </mapper>
