@@ -1,4 +1,4 @@
-var pay02 = function(){
+function pay02(){
 
 	BootPay.request({
 		price: '5000',
@@ -34,13 +34,13 @@ var pay02 = function(){
 			custom_font_color: '#ffffff'
 		}
 	}).error(function (data) {
-		console.log(data);
+		console.log("에러 : " + data);
 	}).cancel(function (data) {
-		console.log(data);
+		console.log("취소 : " + data);
 	}).ready(function (data) {
-		console.log(data);
+		console.log("준비 : " + data);
 	}).confirm(function (data) {
-		console.log(data);
+		console.log("확인 : " + data);
 		var enable = true;
 		if (enable) {
 			BootPay.transactionConfirm(data);
@@ -50,18 +50,19 @@ var pay02 = function(){
 	}).close(function (data) {
 	    console.log(data);
 	}).done(function (data) {
-		console.log(data);
+		var member_id = $("#donationClick").attr("title");
+		console.log("컨트롤러 넘어가기전 아이디" + member_id)
+		console.log("끝 : "+data);
 		$.ajax({
 			url: "./dnController",
 			method: "post",
-			data: {"obj" : JSON.stringify(data), command:"donation"},
+			data: {"obj" : JSON.stringify(data), command : "donation", member_id : member_id},
 			success: function(msg){
-				location.href="./dnController?command=dnlist";
+				location.href="./dnController?command=dnlist&member_id="+member_id;
 			},
 			error:function(){
 				alert("통신 실패");
 			}
 		});
 	});
-
-	}
+}

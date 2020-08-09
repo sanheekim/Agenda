@@ -36,14 +36,14 @@
 			</tr>
 		</thead>
 		<tbody>
-				
+			<c:forEach var="donation" items="${donationList}">
 			<tr>
-				<td>${dto.dona_no }</td>
-				<td>${dto.member_id }</td>
-				<td>${dto.dona_bill }</td>
-				<td>${dto.dona_date }</td>
+				<td>${donation.dona_no }</td>
+				<td>${donation.member_id }</td>
+				<td>${donation.dona_bill }</td>
+				<td>${donation.dona_date }</td>
 			</tr>
-				
+			</c:forEach>
 		</tbody>
 	</table>
 </div>
