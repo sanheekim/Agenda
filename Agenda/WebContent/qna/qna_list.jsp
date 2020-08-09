@@ -17,6 +17,11 @@
 	function list(curPage){
 		location.href="${pageContext.request.contextPath}/qnaController.do?command=list&curPage="+curPage+"&searchOption=${map.searchOption}"+"&keyword=${map.keyword}";
 	}
+	
+	function loginAlert(){
+		alert('로그인해주세요');
+		location.href="${pageContext.request.contextPath}/login/loginForm.jsp";
+	}
 </script>
 </head>
 
@@ -92,7 +97,7 @@
 								onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=write'">
 							</c:when>
 							<c:otherwise>
-								<input type="button" value="글쓰기" id="insertBtn" onclick="alert('로그인 해주세요')">
+								<input type="button" value="글쓰기" id="insertBtn" onclick="loginAlert()">
 							</c:otherwise>
 							</c:choose>
 					</td>
