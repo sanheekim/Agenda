@@ -75,46 +75,6 @@
 								});
 					});
 </script>
-
-<!-- 구글 로그인 -->
-<script>
-function checkLoginStatus(){
-    var loginBtn = document.querySelector('#loginBtn');
-    var nameTxt = document.querySelector('#name');
-    //로그인 성공하면
-    if(gauth.isSignedIn.get()){
-      console.log('logined');
-      loginBtn.value = 'Logout';
-      var profile = gauth.currentUser.get().getBasicProfile();
-      nameTxt.innerHTML = 'Welcome <strong>'+profile.getName()+'</strong> ';
-      
-		location.href = "googleController.do?command=login&member_id="
-				+ profile.getId() + "&member_pw=" + profile.getEmail();
-		
-    } else { // 실패하면
-      console.log('logouted');
-      loginBtn.value = 'Login';
-      nameTxt.innerHTML = '';
-    }
-  }
-  function init(){
-    console.log('init');
-    gapi.load('auth2', function() {
-      console.log('auth2');
-      window.gauth = gapi.auth2.init({
-        client_id:'387206565373-pirulfq47eamrs5ge97dg64f1r8sv7cq.apps.googleusercontent.com'
-      })
-      gauth.then(function(){
-        console.log('googleAuth success');
-        checkLoginStatus();
-      }, function(){
-        console.log('googleAuth fail');
-      });
-    });
-  }
-  
-  
-</script>
 <title>Document</title>
 </head>
 <body>
@@ -195,33 +155,10 @@ function checkLoginStatus(){
 		<div class="login__submit__api">
 
 			<div class="login__submit__kakao">
+
 				<a href="#"><img id="kakao-login-btn" src="imgs/카카오버튼.png" /></a>
-
+	
 			</div>
-			
-			<!-- 구글 로그인 시작-->
-<!-- 			<div class="g-signin2" data-width="220" data-height="45"
-						data-onsuccess="onSignIn" data-longtitle="true"></div> -->
-			<!-- 구글 로그인 끝 -->
-			<span id="name"></span><input type="button" id="loginBtn"
-				value="checking..." onclick="
-				if(this.value === 'Login'){
-				 gauth.signIn({
-		      }).then(function(){
-		        console.log('gauth.signIn()');
-		        checkLoginStatus();
-		      });
-		       } else {
-		      gauth.signOut().then(function(){
-		        console.log('gauth.signOut()');
-		        checkLoginStatus();
-		      });
-		    }
-		  ">
-
-			<!-- 			<div class="login__submit__google">
-				<a href="#"><img id=google__btn src="imgs/구글버튼.png" /></a>
-			</div> -->
 	
 			<div class="login__submit__naver">
 				<a href="<%=apiURL%>"><img id=naver__btn src="imgs/네아로버튼.png" /></a>
@@ -229,20 +166,8 @@ function checkLoginStatus(){
 
 
 		</div>
-		<div>
-			카카오 아이디 : <span id="kakaoIdentity"></span>
-		</div>
-
-		<div>
-			메일 : <span id="kakaoemail"></span>
-		</div>
-
-
-		
-
 
 	</div>
-	 <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
-<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+	
 </body>
 </html>
