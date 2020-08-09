@@ -36,14 +36,14 @@ public class LoginDto {
 	
 	
 	//login : member_id, member_pw
-	public LoginDto (String member_id, String member_pw) {
+	public LoginDto (String member_id, String member_enabled) {
 		this.member_id = member_id;
-		this.member_pw = member_pw;
+		this.member_enabled = member_enabled;
 	}
 	
 	public LoginDto (String member_id, String member_pw,String member_enabled) {	
 		this.member_id = member_id;
-		this.member_pw= member_pw;
+		this.member_pw = member_pw;
 		this.member_enabled = member_enabled;
 	}
 	

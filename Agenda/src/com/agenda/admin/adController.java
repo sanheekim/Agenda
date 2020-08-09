@@ -1,6 +1,7 @@
 package com.agenda.admin;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.agenda.myinfo.MyinfoDto;
 
@@ -23,6 +25,9 @@ public class adController extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		
+		HttpSession session = request.getSession();
+		PrintWriter out = response.getWriter();
 		
 		adDto dto = new adDto();
 		adDao dao = new adDao();
@@ -42,7 +47,7 @@ public class adController extends HttpServlet {
 			System.out.println(member_id);
 			
 			dto = dao.selectOne(member_id);
-			request.setAttribute("dto", dto);
+			session.setAttribute("dto", dto);
 			System.out.println(dto);
 			
 			RequestDispatcher dispatch = request.getRequestDispatcher("admin/admyinfo.jsp");
@@ -56,6 +61,7 @@ public class adController extends HttpServlet {
 			System.out.println(member_id);
 			
 			dto = dao.selectOne(member_id);
+			request.setAttribute("dto", dto);
 			System.out.println(dto);
 			
 			RequestDispatcher dispatch = request.getRequestDispatcher("admin/admyinfoUpdate.jsp");
@@ -65,11 +71,13 @@ public class adController extends HttpServlet {
 		
 		else if(command.equals("admyinfoUpdate")) {
 			String member_id = request.getParameter("member_id");
-			String name = request.getParameter("name");
-			String email = request.getParameter("email");
-			String addr = request.getParameter("addr");
+			String member_email = request.getParameter("member_email");
+			String member_addr = request.getParameter("member_addr");
+			System.out.println(member_id);
+			System.out.println(member_email);
+			System.out.println(member_addr);
 			
-			int res = dao.update(new adDto(member_id, name, email, addr));
+			int res = dao.updateinfo(new adDto(member_id, member_email, member_addr));
 			System.out.println(res);
 			
 			if(res > 0) {

@@ -43,10 +43,11 @@
 
 <select id="kakaologin" parameterType="loginDto" resultType="logindto">
 	
-	SELECT MEMBER_ID, MEMBER_PW, MEMBER_ENABLED,MEMBER_EMAIL
+	SELECT MEMBER_ID, MEMBER_NAME, MEMBER_EMAIL,
+	MEMBER_ENABLED, MEMBER_ROLE, MEMBER_SALT
+	
 	FROM   AG_MEMBER
 	WHERE  MEMBER_ID = #{member_id}
-	AND    MEMBER_EMAIL = #{member_email}
 	AND    MEMBER_ENABLED ='N'
 </select>
 

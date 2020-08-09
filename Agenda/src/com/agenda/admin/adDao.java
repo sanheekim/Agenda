@@ -56,6 +56,26 @@ public class adDao extends adSqlMapConfig {
 		return res;
 	}
 	
+	public int updateinfo(adDto dto) {
+		
+		SqlSession session = null;
+		int res = 0;
+		
+		try {
+			session = getSqlSessionFactory().openSession(false);
+			res = session.update(namespace+"updateinfo", dto);
+			
+			if(res > 0) {
+				session.commit();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			session.close();
+		}
+		return res;
+	}
+	
 	public int delete(String member_id) {
 		SqlSession session = null;
 		int res = 0;
