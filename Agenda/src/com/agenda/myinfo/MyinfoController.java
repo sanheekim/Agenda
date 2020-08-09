@@ -90,13 +90,21 @@ public class MyinfoController extends HttpServlet {
 			
 			if(res > 0) {
 				System.out.println("들어옴");
-				response.sendRedirect("index.jsp");//command가 list인걸로 다시요청해라
+				session.invalidate();
+				loginResponse("탈퇴 되었습니다.", "main/main.jsp", response);
 				
-			
 			}else {
-				response.sendRedirect("MyinfoController?command=myinfo&member_id="+member_id);
+				loginResponse("탈퇴 실패하였습니다.", "MyinfoController?command=myinfo&member_id="+member_id, response);
 			}
 		}
 			
 		}
+	
+	public void loginResponse(String msg, String url, HttpServletResponse response) throws IOException {
+		String js = "<script type = 'text/javascript'>" + "alert('" + msg + "');" + "location.href='" + url + "';"
+				+ "</script>";
+
+		response.getWriter().append(js);
+	}
+	
 	}

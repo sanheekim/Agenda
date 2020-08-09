@@ -33,7 +33,7 @@
 		<tr>
 			<td>
 				<input type="submit" value="수정"/>
-				<input type="button" value="회원탈퇴" onclick="location.href='MyinfoController?command=myinfoDelete&member_id=${dto.member_id}'"/> 
+				<input type="button" value="회원탈퇴" onclick="location.href='${pageContext.request.contextPath}/MyinfoController?command=myinfoDelete&member_id=${logindto.member_id }'"/> 
 				<input type="button" value="후원내역조회" onclick="location.href='${pageContext.request.contextPath}/dnController?command=dnlist&member_id=${logindto.member_id }'"/>
 				<input id="back" type="button" onclick="location.href='main/main.jsp'" value="돌아가기">
 			</td>
