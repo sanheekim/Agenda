@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.agenda.myinfo.MyinfoDto;
+
 @WebServlet("/adController")
 public class adController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -46,6 +48,38 @@ public class adController extends HttpServlet {
 			RequestDispatcher dispatch = request.getRequestDispatcher("admin/admyinfo.jsp");
 			dispatch.forward(request, response);
 					
+		}
+		
+		else if(command.equals("admyinfoUpdateform")) {
+			
+			String member_id = request.getParameter("member_id");
+			System.out.println(member_id);
+			
+			dto = dao.selectOne(member_id);
+			System.out.println(dto);
+			
+			RequestDispatcher dispatch = request.getRequestDispatcher("admin/admyinfoUpdate.jsp");
+			dispatch.forward(request, response);
+			
+		}
+		
+		else if(command.equals("admyinfoUpdate")) {
+			String member_id = request.getParameter("member_id");
+			String name = request.getParameter("name");
+			String email = request.getParameter("email");
+			String addr = request.getParameter("addr");
+			
+			int res = dao.update(new adDto(member_id, name, email, addr));
+			System.out.println(res);
+			
+			if(res > 0) {
+				System.out.println("수정 성공");
+				response.sendRedirect("adController?command=admyinfo&member_id="+member_id);
+				
+			}else {
+				System.out.println("수정 실패");
+				response.sendRedirect("admin/admyinfoUpdate.jsp");
+			}
 		}
 		
 		else if(command.contentEquals("allMember")) {

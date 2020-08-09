@@ -58,6 +58,13 @@ public class adDto {
 		this.member_role = member_role;
 	}
 	
+	public adDto(String member_id, String member_name, String member_email, String member_addr) {
+		this.member_id = member_id;
+		this.member_name = member_name;
+		this.member_email = member_email;
+		this.member_addr = member_addr;
+	}
+	
 	public String getMember_id() {
 		return member_id;
 	}
