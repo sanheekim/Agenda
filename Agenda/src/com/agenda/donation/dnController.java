@@ -50,7 +50,7 @@ public class dnController extends HttpServlet {
 		else if (command.equals("donation")) {
 			
 		String member_id = request.getParameter("member_id");
-		System.out.println(member_id);
+		System.out.println("도네이션 컨트롤러 : " + member_id);
 		
 		// JSON문자열을 string 변수에 담음 - getParameter의 괄호는 dnpay.js의 62번째 줄 date 이름이랑 같아야 한다.
 		String obj = request.getParameter("obj");
@@ -94,13 +94,11 @@ public class dnController extends HttpServlet {
 		else if (command.equals("dnlist")) {
 			
 			String member_id = request.getParameter("member_id");
-			System.out.println(member_id);
+			System.out.println("리스트 아이디 : " + member_id);
 		
-			dnDto dto = new dnDto();
-			dto = dao.selectOne(member_id);
-			request.setAttribute("dto", dto);
-			System.out.println(dao);
-			System.out.println(dto);
+			List<dnDto> list = dao.selectOne(member_id);
+			request.setAttribute("donationList", list);
+			System.out.println(list);
 				
 			RequestDispatcher dispatch = request.getRequestDispatcher("myinfo/myreceipt.jsp");
 			dispatch.forward(request, response);
