@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
    
 <!DOCTYPE html>
 <html>
@@ -98,6 +99,15 @@
 <body>
 
 <div id="admin">
+
+	<c:choose>
+    	<c:when test="${empty logindto }">
+    		<jsp:include page="../header/header.jsp" />
+    	</c:when>
+    	<c:otherwise>
+    		<jsp:include page="../header/loginMain.jsp" />
+    	</c:otherwise>
+	</c:choose>
 
 	<div id="ad_top">
 		<div id="ad_title">관리자 페이지</div>
