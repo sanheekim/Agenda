@@ -147,22 +147,24 @@ public class LoginController extends HttpServlet {
 			System.out.println("Hi you can find your pw");
 			String member_name = request.getParameter("member_name");
 			String member_email = request.getParameter("member_email");
+			
 			System.out.println(">>findname="+member_name);
 			System.out.println(">>findemail="+member_email);
 			
 			LoginDto FindPwDto = new LoginDto();
+			
 			FindPwDto.setMember_name(member_name);
 			FindPwDto.setMember_email(member_email);
 			
 			dto = dao.findid(FindPwDto);
+			
 			if(dto!=null) {
+				
 				String member_id = dto.getMember_id();
 				request.setAttribute("member_id",member_id);
 				loginResponse("인증번호를 가입한 메일로 발송했습니다.","login/loginTemp.jsp",response);
 				
 			}else {
-				
-				
 				
 				loginResponse("찾으시는 아이디가 존재하지 않습니다.","regist/registForm.jsp",response);
 				
@@ -171,11 +173,23 @@ public class LoginController extends HttpServlet {
 			
 		}
 
-		/*
-		 * else if (command.equals("naverlogin")) {
-		 * 
-		 * //naverlogin을 눌렀을때 naver id로 계정이 가입되어있는지 확인 하고 있다면 바로 로그인, 없다면 회원가입폼으로 넘겨야함 }
-		 */
+		
+		 else if (command.equals("kakaologin")) {
+			 
+			 System.out.println("loginController: kakao login 확인");
+			 String member_id = request.getParameter("member_id");
+			 System.out.println(">>kakao:"+member_id);
+			 String member_email = request.getParameter("member_email");
+			 System.out.println(">>kakao:"+member_email);
+			
+			
+			session.setAttribute("member_id", member_id);
+			session.setAttribute("member_email", member_email);
+			RequestDispatcher dispatch = request.getRequestDispatcher("kakaoRegistController");    
+			dispatch.forward(request, response);
+		 
+		 }
+		 
 
 	}
 

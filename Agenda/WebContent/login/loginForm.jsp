@@ -20,6 +20,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id" content="387206565373-pirulfq47eamrs5ge97dg64f1r8sv7cq.apps.googleusercontent.com">
 <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
@@ -44,9 +45,23 @@
 														// @breif 아이디
 														document
 																.getElementById("kakaoIdentity").innerHTML = res.id;
+														
+														var member_id = res.id;
+														console.log(member_id);
 														// @breif 생일(월,일)
 														document
 																.getElementById("kakaoemail").innerHTML = res.kakao_account.email;
+														var member_email = res.kakao_account.email;
+														console.log(member_email);
+														
+														location.href="../LoginController?command=kakaologin&member_id="+member_id+"&member_email="+member_email;
+														
+														
+														
+														
+														
+														
+														
 													},
 													fail : function(error) {
 														alert(JSON
@@ -55,7 +70,6 @@
 												});
 									},
 									fail : function(error) {
-
 										alert(JSON.stringify(error));
 									}
 								});
