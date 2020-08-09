@@ -43,20 +43,21 @@ public class dnDao extends dnSqlMapConfig {
 		return res;
 	}
 	
-	public dnDto selectOne(String member_id) {
+	public List<dnDto> selectOne(String member_id) {
 		
 		SqlSession session = null;
-		dnDto dto = null;
+		List<dnDto> list = null;
 
 		try {
 			session = getSqlSessionFactory().openSession(false);
-			dto = session.selectOne(namespace+"selectOne",member_id);
+			list = session.selectList(namespace+"selectOne", member_id);
+			System.out.println("dao>>" + list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			session.close();
 		}
-	return dto;
+	return list;
 	}
 	
 	public int delete(int dona_no) {

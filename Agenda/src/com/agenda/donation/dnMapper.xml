@@ -15,7 +15,7 @@
         ORDER BY DONA_NO
     </select>
     
-    <select id="selectOne" parameterType="String" resultType="dnDto">
+    <select id="selectOne" resultMap="dnResultMap">
 		SELECT DONA_NO, MEMBER_ID, DONA_BILL, DONA_DATE
  		FROM AG_DONATION
 		WHERE MEMBER_ID = #{member_id}
