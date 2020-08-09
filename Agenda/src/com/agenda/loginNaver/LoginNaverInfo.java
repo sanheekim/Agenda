@@ -92,17 +92,19 @@ public class LoginNaverInfo extends HttpServlet {
 			
 			String id = (String)((JSONObject)result.get("response")).get("id");
 			System.out.println(id);
-		
+			
 			String command = "NaverRegist";
 			session.setAttribute("member_id", id);
 			session.setAttribute("member_email", email);
 			session.setAttribute("member_name", name);
 			session.setAttribute("command", command);
 			
+			
+			
 			if(session != null) {
 				
 				System.out.println("session이 null이 아니면 넘어가라 ");   
-				RequestDispatcher dispatch = request.getRequestDispatcher("NaverRegistController");    
+				RequestDispatcher dispatch = request.getRequestDispatcher("/regist/NaverRegistForm.jsp");    
 				dispatch.forward(request, response);	
 				
 			}

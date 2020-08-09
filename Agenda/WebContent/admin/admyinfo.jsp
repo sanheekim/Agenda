@@ -32,7 +32,7 @@
 			<td>
 				<input type="submit" value="수정"/>
 				<input type="button" value="회원탈퇴" onclick="location.href='../MyinfoController?command=myinfoDelete&member_id=${dto.member_id}'"/> 
-				<input type="button" value="후원내역조회" onclick="location.href='../DonationController?command=Donation&member_id=${dto.member_id}'"/>
+				<input type="button" value="후원내역조회" onclick="location.href='../dnController?command=dnlist&member_id=${dto.member_id}'"/>
 			</td>
 		</tr>
 	</table>
