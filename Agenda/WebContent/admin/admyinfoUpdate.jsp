@@ -15,19 +15,19 @@
 	<table>
 		<tr>
 			<th>아이디</th>
-			<td>${logindto.member_id}</td>
+			<td>${dto.member_id}</td>
 		</tr>
 		<tr>
 			<th>이름</th>
-			<td>${logindto.member_name}</td>
+			<td>${dto.member_name}</td>
 		</tr>
 		<tr>
 			<th>이메일</th>
-			<td><input type="text" name="email" value="${logindto.member_email}"/></td>
+			<td><input type="text" name="member_email" value="${dto.member_email}"/></td>
 		</tr>
 		<tr>
 			<th>주소</th>
-			<td><input type="text" name="addr" value="${logindto.member_addr}"/></td>
+			<td><input type="text" name="member_addr" value="${dto.member_addr}"/></td>
 		</tr>
 		<tr>
 			<td>
