@@ -185,7 +185,7 @@ public class LoginController extends HttpServlet {
 			
 			session.setAttribute("member_id", member_id);
 			session.setAttribute("member_email", member_email);
-			RequestDispatcher dispatch = request.getRequestDispatcher("kakaoRegistController");    
+			RequestDispatcher dispatch = request.getRequestDispatcher("/regist/KakaoRegistForm.jsp");    
 			dispatch.forward(request, response);
 		 
 		 }
