@@ -45,6 +45,11 @@
 			</tr>
 			</c:forEach>
 		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="10"><input id="back" type="button" onclick="location.href='main/main.jsp'" value="돌아가기"></button></td>
+			</tr>
+		</tfoot>
 	</table>
 </div>
 
