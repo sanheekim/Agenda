@@ -36,15 +36,14 @@
     
     <!-- 섹션 -->
 	<section>
-		<h1>Q&A 글수정</h1>
-		<hr>
+		<h1><a href="${pageContext.request.contextPath}/qna/index.jsp">Q & A</a></h1>
 		<form action="${pageContext.request.contextPath}/qnaController.do" method="post">
 			<input type="hidden" name="qna_no" value="${update.qna_no }">
 			<input type="hidden" name="command" value="updateres">
-			<table border="1">
+			<table>
 				<tr>
 					<th>작성자</th>
-					<td><input type="text" name="member_id" value="${update.member_id }" disabled="disabled"></td>
+					<td>${update.member_id }</td>
 				</tr>
 				<tr>
 					<th>제목</th>
@@ -71,7 +70,7 @@
 		const editor = new toastui.Editor({
 			el : document.querySelector('#editor'),
 			previewStyle : 'tab',
-			height : '300px',
+			height : '400px',
 			initialValue : `${update.qna_content }`,
 			initialEditType : 'wysiwyg'
 		});

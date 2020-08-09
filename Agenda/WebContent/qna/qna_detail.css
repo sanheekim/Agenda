@@ -54,6 +54,15 @@ h1 a{
 
 #board tr:nth-child(2){
 	border-bottom: 1px solid gray;
+	font-size : 0.8em;
+}
+
+#board tr:nth-child(2) td:last-child{
+	text-align: right;
+}
+
+#board tr:nth-child(3) td:last-child{
+	text-align: right;
 }
 
 #board tr:last-child{
@@ -63,7 +72,7 @@ h1 a{
 
 #viewer{
 	padding-top : 40px;
-	padding-bottom : 40px;
+	padding-bottom : 60px;
 }
 
 input[type="button"]{
@@ -85,6 +94,10 @@ input[type="button"]{
 	border-collapse : collapse;
 }
 
+#listReply table td{
+	text-align: center;
+}
+
 #listReply table textarea{
 	resize : none;
 	padding : 5px;
@@ -94,9 +107,42 @@ input[type="button"]{
 
 #listReply table td:first-child{
 	width : 100px;
+	text-align: center;
+}
+
+#listReply table td:nth-child(2){
+	width: 700px;
+}
+
+#listReply table td:nth-child(3){
+	width: 100px;
+	font-size: 0.8em;
+}
+
+#listReply table{
+	border-bottom: 1px solid gray;
 }
 
 /* 댓글 작성 */
+
+#replyBoard td{
+	text-align: center;
+}
+
+#replyBoard td:first-child{
+	width : 100px;
+	text-align: center;
+}
+
+#replyBoard td:nth-child(2){
+	width: 700px;
+}
+
+#replyBoard td:nth-child(3){
+	width: 100px;
+	font-size: 0.8em;
+}
+
 #replyBoard textarea{
 	resize : none;
 	padding : 5px;

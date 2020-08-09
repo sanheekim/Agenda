@@ -5,6 +5,7 @@
 <%response.setContentType("text/html; charset=UTF-8");%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -77,8 +78,12 @@ $(document).ready(function(){
 	
 	$(".btnUpdate").click(function(){
 		console.log("update click");
+		var comm_no = $(this).attr("name");
+		console.log(comm_no);
 		
-		$(this).parent().children('.comm_content').attr("disabled", false);
+		var a = $(this).parent().children('.comm_content').attr("disabled",false);
+		console.log(a);
+
 		$(this).attr("value", "확인");
 		
 		$(this).attr("value", "확인").click(function(){
@@ -143,21 +148,23 @@ $(document).ready(function(){
 				</tr>
 				<tr>
 					<td>작성자 | ${detail.member_id}</td>
-					<td>작성시간 | ${detail.qna_regdate}</td>
+					<td>작성시간 | <fmt:formatDate value="${detail.qna_regdate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
 					<td>조회수 | ${detail.qna_hit}회</td>
 				</tr>
 				<tr>
 					<td>
 						<c:if test="${logindto.member_id == detail.member_id}">
-							<input type="button" value="수정하기"
+							<input type="button" value="수정"
 							onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=update&qna_no=${detail.qna_no }'">
 						</c:if>
-							<input type="button" value="목록으로"
-							onclick="location.href='${pageContext.request.contextPath}/qna/index.jsp'">
 						<c:if test="${logindto.member_id == detail.member_id || logindto.member_role == 'ADMIN' }">
-							<input type="button" value="글삭제"
+							<input type="button" value="삭제"
 							onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=delete&qna_no=${detail.qna_no }'">
 						</c:if>
+					</td>
+					<td colspan="2">
+						<input type="button" value="목록으로"
+						onclick="location.href='${pageContext.request.contextPath}/qna/index.jsp'">
 					</td>
 				</tr>
 				<tr>
@@ -171,22 +178,21 @@ $(document).ready(function(){
 			<div id="listReply">
 			<table>
 				<c:forEach var="row" items="${commlist}">
+				<input type="hidden" value="${row.comm_no }">
 				<tr>	
 					<td>
 						${row.member_id}
 					</td>
 					<td>
-						<textarea rows="2" cols="80" disabled="disabled" class="comm_content">${row.comm_content }</textarea>
+						<textarea rows="2" cols="70" disabled="disabled" class="comm_content">${row.comm_content }</textarea>
 					</td>
-					<td>
-						${row.comm_regdate}
-					</td>
-					<td>						
-						<c:if test="${logindto.member_id == row.member_id || logindto.member_role == 'ADMIN'}">
-							<input type="button" value="삭제" class="btnDelete" name="${row.comm_no }">
-						</c:if>
+					<td>					
+						<fmt:formatDate value="${row.comm_regdate}" pattern="yyyy-MM-dd HH:mm:ss"/><br>
 						<c:if test="${logindto.member_id == row.member_id}">
 							<input type="button" value="수정" class="btnUpdate" name="${row.comm_no }">
+						</c:if>
+						<c:if test="${logindto.member_id == row.member_id || logindto.member_role == 'ADMIN'}">
+							<input type="button" value="삭제" class="btnDelete" name="${row.comm_no }">
 						</c:if>
 					</td>
 				</tr>
@@ -201,13 +207,13 @@ $(document).ready(function(){
 					<c:when test="${logindto ne null }">
 						<tr>
 							<th><c:out value="${logindto.member_id }"></c:out></th>
-							<td><textarea rows="2" cols="80" name="comm_content" id="comm_content"></textarea></td>
+							<td><textarea rows="2" cols="70" name="comm_content" id="comm_content"></textarea></td>
 							<td><input type="button" value="작성" id="btnReply" name="${logindto.member_id }"></td>
 						</tr>
 					</c:when>
 					<c:otherwise>
 							<th></th>
-							<td><textarea rows="2" cols="80" disabled="disabled" name="comm_content" id="comm_content" placeholder="댓글 작성을 위해 로그인해주세요"></textarea></td>
+							<td><textarea rows="2" cols="70" disabled="disabled" name="comm_content" id="comm_content" placeholder="댓글 작성을 위해 로그인해주세요"></textarea></td>
 					</c:otherwise>
 				</c:choose>
 			</table>

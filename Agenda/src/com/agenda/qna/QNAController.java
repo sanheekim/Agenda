@@ -87,7 +87,7 @@ public class QNAController extends HttpServlet {
 			if (res > 0) {
 				response.sendRedirect("qnaController.do?command=list&curPage=1&searchOption=all&keyword=");
 			} else {
-				String msg = "작성 실패!";
+				String msg = "내용 혹은 제목을 입력해주세요";
 				jsResponse(msg, "qnaController.do?command=write", request, response);
 			}
 		} else if (command.equals("detail")) {
