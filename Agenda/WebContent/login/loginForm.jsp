@@ -43,14 +43,12 @@
 													success : function(res) {
 														console.log(res);
 														// @breif 아이디
-														document
-																.getElementById("kakaoIdentity").innerHTML = res.id;
+														//document.getElementById("kakaoIdentity").innerHTML = res.id;
 														
 														var member_id = res.id;
 														console.log(member_id);
 														// @breif 생일(월,일)
-														document
-																.getElementById("kakaoemail").innerHTML = res.kakao_account.email;
+														//document.getElementById("kakaoemail").innerHTML = res.kakao_account.email;
 														var member_email = res.kakao_account.email;
 														console.log(member_email);
 														

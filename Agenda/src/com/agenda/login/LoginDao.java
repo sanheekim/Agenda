@@ -68,4 +68,6 @@ public class LoginDao extends LoginSqlMapConfig {
 		}
 		return logindto;
 	}
+	
+
 }

@@ -173,34 +173,46 @@ public class LoginController extends HttpServlet {
 			
 		}
 
-		/*
-		 * else if (command.equals("kakaologin")) {
-		 * 
-		 * System.out.println("loginController: kakao login 확인"); String member_id =
-		 * request.getParameter("member_id"); System.out.println(">>kakao:"+member_id);
-		 * 
-		 * String member_email = request.getParameter("member_email");
-		 * System.out.println(">>kakao:"+member_email); String member_enabled =
-		 * request.getParameter("member_enabeld"); LoginDto idemail = new
-		 * LoginDto(member_id, member_email,member_enabled); dto =
-		 * dao.kakaologin(idemail);
-		 * 
-		 * System.out.println("dto=" + dto);
-		 * 
-		 * if(dto != null ) { session.setAttribute("logindto", dto);
-		 * session.setMaxInactiveInterval(10 * 60);
-		 * 
-		 * System.out.println("DTO 있음  = mypage main으로 보냄"); RequestDispatcher dispatch
-		 * = request.getRequestDispatcher("main/main.jsp"); dispatch.forward(request,
-		 * response);
-		 * 
-		 * } else { session.setAttribute("member_id", member_id);
-		 * session.setAttribute("member_email", member_email); RequestDispatcher
-		 * dispatch = request.getRequestDispatcher("/regist/KakaoRegistForm.jsp");
-		 * dispatch.forward(request, response); }
-		 * 
-		 * }
-		 */
+		
+		 else if (command.equals("kakaologin")) {
+			 
+			 String member_id = request.getParameter("member_id");
+			 String member_email = request.getParameter("member_email");
+			 String member_enabled = request.getParameter("member_enabeld");
+			 LoginDto idemail = new LoginDto(member_id, member_email, member_enabled);
+			 dto = dao.kakaologin(idemail);
+			
+			 
+			
+			 
+			 System.out.println("loginController: kakao login 확인");
+			 System.out.println(">>kakao:"+member_id);
+			 System.out.println(">>kakao:"+member_email);
+			 System.out.println(">>kakao:"+member_enabled);
+			 
+			System.out.println("dto=" + dto);
+			
+			 if(dto != null ) {
+				 
+				 	dto.setMember_id(member_id);
+				 	dto.setMember_email(member_email);
+				 	dto.setMember_enabled(member_enabled);
+				 	session.setAttribute("logindto", dto);
+					session.setMaxInactiveInterval(10 * 60);
+					loginResponse("카카오계정으로 로그인하셨습니다 .","main/main.jsp",response);
+					System.out.println("DTO 있음  = mypage main으로 보냄");
+					
+				
+			 
+			 } else {
+				 
+				 	session.setAttribute("member_id", member_id);
+				 	session.setAttribute("member_email", member_email);
+					RequestDispatcher dispatch = request.getRequestDispatcher("/regist/KakaoRegistForm.jsp");    
+					dispatch.forward(request, response);				 
+			 }
+				
+		 }
 		 
 
 	}
