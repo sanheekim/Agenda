@@ -6,7 +6,7 @@ for (var l = 0; l < 4; l++) {
 	cousorArea[l].addEventListener("mousemove", function(e) {
 		cursor.style.visibility = "hidden";
 	});
-}
+} 
 
 for (var p = 4; p < cousorArea.length; p++){
 	cousorArea[p].addEventListener("mousemove", function(e) {
