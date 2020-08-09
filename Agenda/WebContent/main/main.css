@@ -16,6 +16,14 @@ header {
 	z-index: 1;
 }
 
+/* header 스크롤시  컬러 변경용 */
+#header.header--dark {
+  background-color: white;
+  opacity:0.9;
+ 
+  
+}
+
 /* 첫번째 */
 .first{
 	width: 100%;
