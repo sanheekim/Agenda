@@ -6,26 +6,19 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/medilocker/mediLockerScanMain.css" >
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/medilocker/mediLockerScanMain.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="${pageContext.request.contextPath}/medilocker/mediLockerXml2json.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/medilocker/mediLockerScanMain.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/medilocker/mediLockerScanMain.css" >
 </head>
 <body>
 	<header>
 		<jsp:include page="../header/loginMain.jsp"></jsp:include>
 	</header>
-	<c:choose>
-		<c:when test="${empty scanList }">
-		</c:when>
-		<c:otherwise>
-			<input type="hidden" value="${scanList }" id="scanList">
-		</c:otherwise>
-	</c:choose>
+
 	<div id="LockerMainDiv">
 		<div id="LockerThemeDiv">
-			<h2>처방전 보관함</h2>
-			<button onclick="docScan();">SCAN</button>			
+			<h2>처방전 보관함</h2>		
 			<button onclick="upLoad();">SCAN</button>			
 		</div>
 		<div id="Locker2ndDiv">
@@ -50,16 +43,42 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-			<div>상세정보리스트</div>
-			
+			<div>
+				<div>상세정보리스트</div>
+				<div id="detailList">
+				<c:choose>
+					<c:when test="${empty list }"></c:when>
+					<c:otherwise>
+						<c:forEach items="${list }" var="dto">
+							<div class="listItem">
+							<c:forTokens items="${dto.pres_mediname }" delims="," var="name">
+								<a href="#">${name }</a>
+							</c:forTokens>
+							</div>
+						</c:forEach>
+
+					</c:otherwise>
+				</c:choose>
+				</div>
+			</div>
 		</div>
 	</div>
 	<footer>
 		<jsp:include page="../footer/mainFooter.jsp"></jsp:include>
-	</footer>
-	  <c:forEach items="${list }" var="scan">
- 		<li> ${scan }</li>
- 	  </c:forEach>
+	</footer> 	  
+		<div id="popUp">
+			<div id="subpopUp">
+				<div>
+					<div>사진을 선택해주세요</div>
+					<div>
+					<form method="post" enctype="multipart/form-data">
+					<input type="file" value="파일 선택" name="file" class="selectFile" />
+					</form>
+					</div>
+			   </div>
+			   <input type="button" value="파일업로드" onclick="fileUpload();"/>
+         	</div>
+        </div>
 
 	
 </body>

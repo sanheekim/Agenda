@@ -3,6 +3,7 @@ package com.agenda.medilocker;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
 
@@ -37,11 +38,11 @@ public class MediLockerScanController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
+		System.out.println("처방전스캔컨트롤러진입");
 		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter();
 		
-		
-			request.setCharacterEncoding("UTF-8");
+
 			String file="";//변경된 이름 
 			String onFile="";
 			//프로젝트내에 만들어질 폴더를 저장할 이름 변수선언
@@ -78,16 +79,40 @@ public class MediLockerScanController extends HttpServlet {
 				onFile = multi.getOriginalFileName(str);//원래 파일 이름
 				
 				filename = realfolder + "\\" + onFile;
-				out.println(filename);
+				//out.println(filename);
 				List<String> list = MediLockerScan.detectText(filename);
-				System.out.println(list.size());
-				request.setAttribute("scanList", list);
-				RequestDispatcher dispatch = request.getRequestDispatcher("MediLockerRegistController?command=mediLocker");
-				dispatch.forward(request, response);
+				List<String> listArr = new ArrayList<String>();
+				System.out.println("추출된 문자열 길이 : "+ list.size());						
+				String[] strArr = new String[list.size()];
 				
+				MediLockerRegist mlr = new MediLockerRegist();
 				
+				String strList = "";
+				for(String i : list) {
+					if(i == list.get(0)) {
+						strList += i.trim();						
+					}else {
+						strList += "," + i.trim();
+					}
+				}
+				strArr = mlr.replaceStr(strList);
+				listArr = mlr.removeDuplicate(strArr);
+				
+				String strlist = "";
+				for(String i : listArr) {
+					if(i == listArr.get(0)) {
+						strlist += i;			
+					}else {
+						strlist += "," + i;
+					}
+				}
+				
+				System.out.println(strlist);
+				PrintWriter pr = response.getWriter();
+				pr.write(strlist);
+				pr.flush();
 			} catch (IOException e) {
-			
+				System.out.println("[ERROR] 문자 추출 오류");
 				e.printStackTrace();
 			}
 		}

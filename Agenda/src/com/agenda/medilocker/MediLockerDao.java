@@ -12,7 +12,6 @@ public class MediLockerDao extends MediLockerSqlMapConfig {
 		
 		SqlSession session = null;
 		List<MediLockerDto> list = new ArrayList<MediLockerDto>();
-		System.out.println("시도합니다..");
 		try {
 			session = getSqlSessionFactory().openSession(false);
 			list = session.selectList(namespace+"selectList",member_id);
