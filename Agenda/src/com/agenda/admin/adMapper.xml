@@ -32,6 +32,12 @@
 		WHERE MEMBER_ID = #{member_id}
 	</update>
 	
+	<update id="updateinfo" parameterType="adDto">
+		UPDATE AG_MEMBER
+		SET MEMBER_EMAIL = #{member_email}, MEMBER_ADDR = #{member_addr}
+		WHERE MEMBER_ID = #{member_id}
+	</update>
+	
 	<delete id="delete" parameterType="String">
 		DELECT MEMBER_NO, MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL, MEMBER_ADDR, MEMBER_PHONE, MEMBER_ENABLED, MEMBER_ROLE
 		FROM AG_MEMBER
