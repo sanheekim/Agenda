@@ -54,4 +54,18 @@ public class LoginDao extends LoginSqlMapConfig {
 		
 		return logindto;
 	}
+	
+	public LoginDto kakaologin(LoginDto idemail) {
+		SqlSession session = null;
+		LoginDto logindto = null;
+		
+		try {
+			session = getSqlSessionFactory().openSession(false);
+			logindto = session.selectOne(namespace+"kakaologin",idemail);
+		} catch (Exception e) {
+			System.out.println("kakao 로그인 dao ");
+			e.printStackTrace();
+		}
+		return logindto;
+	}
 }

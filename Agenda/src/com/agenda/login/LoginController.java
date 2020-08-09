@@ -179,15 +179,30 @@ public class LoginController extends HttpServlet {
 			 System.out.println("loginController: kakao login 확인");
 			 String member_id = request.getParameter("member_id");
 			 System.out.println(">>kakao:"+member_id);
+			 
 			 String member_email = request.getParameter("member_email");
 			 System.out.println(">>kakao:"+member_email);
+			 String member_enabled = request.getParameter("member_enabeld");	
+			 LoginDto idemail = new LoginDto(member_id, member_email,member_enabled);				
+			 dto = dao.kakaologin(idemail);
+				
+				System.out.println("dto=" + dto);
 			
-			
-			session.setAttribute("member_id", member_id);
-			session.setAttribute("member_email", member_email);
-			RequestDispatcher dispatch = request.getRequestDispatcher("/regist/KakaoRegistForm.jsp");    
-			dispatch.forward(request, response);
-		 
+			 if(dto != null ) {				
+				 session.setAttribute("logindto", dto);
+					session.setMaxInactiveInterval(10 * 60);
+
+					System.out.println("DTO 있음  = mypage main으로 보냄");
+					RequestDispatcher dispatch = request.getRequestDispatcher("main/main.jsp");
+					dispatch.forward(request, response);
+			 
+			 } else {
+				 	session.setAttribute("member_id", member_id);
+					session.setAttribute("member_email", member_email);
+					RequestDispatcher dispatch = request.getRequestDispatcher("/regist/KakaoRegistForm.jsp");    
+					dispatch.forward(request, response);				 
+			 }
+				
 		 }
 		 
 

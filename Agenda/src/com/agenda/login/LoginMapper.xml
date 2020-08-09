@@ -43,10 +43,11 @@
 
 <select id="kakaologin" parameterType="loginDto" resultType="logindto">
 	
-	SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME
+	SELECT MEMBER_ID, MEMBER_PW, MEMBER_ENABLED,MEMBER_EMAIL
 	FROM   AG_MEMBER
 	WHERE  MEMBER_ID = #{member_id}
-	AND    MEMBER_PW = #{member_pw}
+	AND    MEMBER_EMAIL = #{member_email}
+	AND    MEMBER_ENABLED ='N'
 </select>
 
 <select id ="findId" parameterType="loginDto" resultType="logindto">
@@ -67,7 +68,7 @@
 	
 </select>
 
-<select id="findPw" parameterType="loginDto" resultType="logindto">
+<!-- <select id="findPw" parameterType="loginDto" resultType="logindto">
 
 	UPDATE AG_MEMBER
 	SET MEMBER_PW = #{member_pw}	
@@ -75,7 +76,7 @@
 	AND MEMBER_NAME = #{member_name}
 	AND MEMBER_EMAIL = #{member_email}
 
-</select>
+</select> -->
 
 
 </mapper>
