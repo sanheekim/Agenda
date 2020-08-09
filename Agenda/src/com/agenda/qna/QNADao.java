@@ -18,7 +18,6 @@ public class QNADao extends QNASqlMapConfig {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("searchOption", searchOption);
 		map.put("keyword", keyword);
-		// BETWEEN #{start}, #{end}에 입력될 값
 		map.put("start", start);
 		map.put("end", end);
 		

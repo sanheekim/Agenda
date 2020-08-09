@@ -56,7 +56,7 @@
 						<td>${row.qna_no} </td>
 						<!-- 게시글 상세보기 페이지로 이동시 게시글 목록페이지에 있는 검색조건, 키워드, 현재페이지 값을 유지하기 위해 -->
 						<td><a
-							href="${pageContext.request.contextPath}/qnaController.do?command=detail&qna_no=${row.qna_no}">${row.qna_title}
+							href="${pageContext.request.contextPath}/qnaController.do?command=detail&qna_no=${row.qna_no}">${row.qna_title} [${row.qna_recnt}]
 						</a></td>
 						<td>${row.member_id }</td>
 						<td>${row.qna_regdate}</td>

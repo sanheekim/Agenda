@@ -107,5 +107,6 @@ public class COMMDao extends COMMSqlMapConfig {
 
 		return res;
 	}
+	
 
 }

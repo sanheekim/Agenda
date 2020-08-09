@@ -23,17 +23,21 @@ $(document).ready(function(){
 	
 	$("#btnReply").click(function (){
 		
-		console.log("insert click");
+		//console.log("insert click");
 		
 		var member_id = $(this).attr("name");
-		console.log(member_id)
+		//console.log(member_id)
 		var comm_content=$("#comm_content").val();
 		var qna_no="${detail.qna_no}";
-		console.log(comm_content + " " + qna_no);
-	
+		//console.log(comm_content + " " + qna_no);
+		
+		if(comm_content == ""){
+			alert("내용을 입력하세요");
+			return;
+		}
 		
 		var url = "commController.do";
-		console.log(url);
+		//console.log(url);
 		
 	   $.ajax({				
 			type: "post",
@@ -46,22 +50,23 @@ $(document).ready(function(){
 			success: function(){
 				alert("댓글이 등록되었습니다.");
 				location.href= "qnaController.do?command=detail&qna_no="+${detail.qna_no};
-			}                
+			}       
 		}); 
 	});
 	
 	$(".btnDelete").click(function (){
-		console.log("click");
+		//console.log("click");
 		
 		var comm_no= $(this).attr("name");
-		console.log(comm_no);
+		//console.log("댓글번호" +  comm_no);
 		
 		var qna_no="${detail.qna_no}";
-		console.log(qna_no);
+		//console.log(qna_no);
 		
 		var url = "commController.do";
-		console.log(url);
-				
+		//console.log(url);
+		
+		if(confirm("삭제하시겠습니까?")){
 		$.ajax({				
 			type: "post",
 			url: url+"?command=commdelete", 
@@ -74,30 +79,30 @@ $(document).ready(function(){
 				location.href= "qnaController.do?command=detail&qna_no="+${detail.qna_no};
 			}                
 		});
+		}
 	});
 	
 	$(".btnUpdate").click(function(){
-		console.log("update click");
+		//console.log("update click");
+		alert('수정하시겠습니까?');
 		var comm_no = $(this).attr("name");
-		console.log(comm_no);
+		//console.log("댓글번호" +  comm_no);
 		
-		var a = $(this).parent().children('.comm_content').attr("disabled",false);
-		console.log(a);
-
+		$(this).parent().parent().children().children().attr("disabled",false);
 		$(this).attr("value", "확인");
 		
 		$(this).attr("value", "확인").click(function(){
 			
-			console.log("확인");
+			//console.log("확인");
 			
 			var qna_no="${detail.qna_no}";
-			console.log(qna_no);
+			//console.log(qna_no);
 			
 			var comm_no= $(this).attr("name");
-			console.log(comm_no);
+			//console.log(comm_no);
 			
-			var comm_content=$(this).parent().children('.comm_content').val();
-			console.log(comm_content);
+			var comm_content=	$(this).parent().parent().children().children().val();
+			//console.log(comm_content);
 			
 			var url = "commController.do"
 			
@@ -143,7 +148,7 @@ $(document).ready(function(){
 			<table id="board">
 				<tr>
 					<td>
-					<input type="hidden" name="qna_title" value="${detail.qna_title }">${detail.qna_title }
+					<input type="hidden" name="qna_title" value="${detail.qna_title }">${detail.qna_title } 
 					</td>
 				</tr>
 				<tr>
@@ -178,15 +183,14 @@ $(document).ready(function(){
 			<div id="listReply">
 			<table>
 				<c:forEach var="row" items="${commlist}">
-				<input type="hidden" value="${row.comm_no }">
-				<tr>	
+				<tr title="1">	
 					<td>
 						${row.member_id}
 					</td>
-					<td>
-						<textarea rows="2" cols="70" disabled="disabled" class="comm_content">${row.comm_content }</textarea>
+					<td title="3">
+						<textarea title="4" rows="2" cols="70" disabled="disabled" class="comm_content">${row.comm_content }</textarea>
 					</td>
-					<td>					
+					<td title="2">					
 						<fmt:formatDate value="${row.comm_regdate}" pattern="yyyy-MM-dd HH:mm:ss"/><br>
 						<c:if test="${logindto.member_id == row.member_id}">
 							<input type="button" value="수정" class="btnUpdate" name="${row.comm_no }">

@@ -34,7 +34,7 @@
 	</delete>
 	
 	<select id="countReply" resultType="int">
-		SELECT COUNT(*) FROM AG_COMMENT WHERE COMM_NO=#{comm_no }
+		SELECT COUNT(*) FROM AG_COMMENT WHERE QNA_NO=#{qno_no }
 	</select>
 
 </mapper>

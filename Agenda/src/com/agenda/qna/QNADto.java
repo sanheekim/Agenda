@@ -13,13 +13,14 @@ public class QNADto {
 	private int qna_hit;
 	private String qna_delflag;
 	private String member_id;
+	private int qna_recnt;
 
 	public QNADto() {
 
 	}
 
 	public QNADto(int qna_no, String qna_title, String qna_content, Date qna_regdate, int qna_hit, String qna_delflag,
-			String member_id) {
+			String member_id,int qna_recnt) {
 		this.qna_no = qna_no;
 		this.qna_title = qna_title;
 		this.qna_content = qna_content;
@@ -27,6 +28,7 @@ public class QNADto {
 		this.qna_hit = qna_hit;
 		this.qna_delflag = qna_delflag;
 		this.member_id = member_id;
+		this.qna_recnt = qna_recnt;
 	}
 
 	// 글쓰기
@@ -100,6 +102,14 @@ public class QNADto {
 
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
+	}
+
+	public int getQna_recnt() {
+	    return qna_recnt;
+	}
+
+	public void setQna_recnt(int qna_recnt) {
+	    this.qna_recnt = qna_recnt;
 	}
 	
 }
