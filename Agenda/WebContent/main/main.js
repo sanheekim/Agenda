@@ -13,7 +13,6 @@ for (var p = 4; p < cousorArea.length; p++){
 		cursor.style.visibility = "visible";
 		cursor.style.left = e.pageX + "px";
 		cursor.style.top = e.pageY + "px";
-		cursor.style.zIndex = "0";
 	});
 }
 
