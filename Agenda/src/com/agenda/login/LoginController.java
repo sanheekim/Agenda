@@ -178,17 +178,14 @@ public class LoginController extends HttpServlet {
 			 
 			 String member_id = request.getParameter("member_id");
 			 String member_email = request.getParameter("member_email");
-			 String member_enabled = request.getParameter("member_enabeld");
-			 LoginDto idemail = new LoginDto(member_id, member_email, member_enabled);
+			 String member_enabled = request.getParameter("member_enabled");
+			 LoginDto idemail = new LoginDto(member_id, member_email,member_enabled);
 			 dto = dao.kakaologin(idemail);
-			
-			 
-			
 			 
 			 System.out.println("loginController: kakao login 확인");
 			 System.out.println(">>kakao:"+member_id);
 			 System.out.println(">>kakao:"+member_email);
-			 System.out.println(">>kakao:"+member_enabled);
+			 System.out.println(">>kakao enabled "+ member_enabled);
 			 
 			System.out.println("dto=" + dto);
 			
