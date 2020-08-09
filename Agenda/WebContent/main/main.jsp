@@ -137,23 +137,23 @@
 		<div class="donation-wrapper">
 			<c:choose>
 			<c:when test="${logindto ne null }">
-			<div class="donation-content" onclick="location.href='${pageContext.request.contextPath}/dnController?command=getid01&member_id=${logindto.member_id }'">
+			<div class="donation-content" onclick="pay01()" id="donaClick01" title="${logindto.member_id }">
 				<div class="donation-content-01">
 					<p>1,000</p>
 				</div>
 			</div>
-			<div class="donation-content" onclick="pay02()">
+			<div class="donation-content" onclick="pay02()" id="donaClick02" title="${logindto.member_id }">
 				<div class="donation-content-01">
 					<p>5,000</p>
 				</div>
 			</div>
-			<div class="donation-content" onclick="pay03()">
+			<div class="donation-content" onclick="pay03()" id="donaClick03" title="${logindto.member_id }">
 				<div class="donation-content-01">
 					<p>10,000</p>
 				</div>
 			</div>
 
-			<div class="donation-content" onclick="pay04()">
+			<div class="donation-content" onclick="pay04()" id="donaClick04" title="${logindto.member_id }">
 				<div class="donation-content-01">
 					<p>50,000</p>
 				</div>
@@ -229,10 +229,7 @@
       <i class="fas fa-arrow-up"></i>
     </button>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/main/mainpay1.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/main/mainpay2.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/main/mainpay3.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath}/main/mainpay4.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/main/mainpay.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/main/main.js"></script>
