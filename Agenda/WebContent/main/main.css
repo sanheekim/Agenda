@@ -38,6 +38,7 @@ header {
 
 .first h1{
   font-size: 3.5em;
+  font-family: 'Nanum Gothic';
 }
 
 .first h2{
@@ -180,6 +181,7 @@ header {
 	align-items: center;
 	font-size: 2em;
 	color: gray;
+	z-index: 0;
 }
 
 .fourth-title h2 {
@@ -238,7 +240,7 @@ header {
 }
 
 .contact-title {
-	font-size: 2em;
+	font-size: 3em;
 	font-weight: bolder;
 	margin: 0 30px 0px 120px;
 	animation: textanim 3s infinite alternate;
