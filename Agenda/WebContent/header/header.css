@@ -75,7 +75,7 @@ header {
 }
 
 .login button { /*로그인*/
-	background-color: white;
+	background-color: #dadada;
 	color: black;
 	border : none;
 	border-radius: 5px;

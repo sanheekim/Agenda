@@ -20,7 +20,7 @@ header {
 /* header 스크롤시  컬러 변경용 */
 #header.header--dark {
   background-color: white;
-  opacity:0.9;
+  opacity:1;
  
   
 }
