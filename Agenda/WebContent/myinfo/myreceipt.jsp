@@ -47,7 +47,7 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="10"><input id="back" type="button" onclick="location.href='main/main.jsp'" value="돌아가기"></button></td>
+				<td colspan="10"><input id="back" type="button" onclick="location.href='main/main.jsp'" value="돌아가기"></td>
 			</tr>
 		</tfoot>
 	</table>
