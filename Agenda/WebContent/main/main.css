@@ -7,6 +7,7 @@
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
+	font-family: 'Nanum Gothic Light'
 }
 
 header {
@@ -21,8 +22,6 @@ header {
 #header.header--dark {
   background-color: white;
   opacity:1;
- 
-  
 }
 
 /* 첫번째 */
@@ -41,9 +40,10 @@ header {
   font-family: 'Nanum Gothic';
 }
 
-.first h2{
+.first p{
   color: rgb(187, 187, 187);
   font-size: 2em;
+  margin-right: 10px;
 }
 
 .first-wrapper{
@@ -56,6 +56,18 @@ header {
 	padding-left: 30px;
 }
 
+.second-wrapper {
+	display: flex;
+}
+
+.first p span{
+	opacity : 0;
+	transition : all 3s ease;
+}
+
+.first p span.fade{
+	opacity : 1;
+}
 
 /* 두번째 */
 .second {
@@ -187,6 +199,7 @@ header {
 .fourth-title h2 {
 	border-top: 2px solid #f5f5f5;
 	border-bottom: 2px solid #f5f5f5;
+	z-index: -1;
 }
 
 .fourth-pages {
@@ -241,10 +254,12 @@ header {
 
 .contact-title {
 	font-size: 3em;
-	font-weight: bolder;
 	margin: 0 30px 0px 120px;
 	animation: textanim 3s infinite alternate;
-	z-index: 1000;
+}
+
+.contact-title p{
+	font-family: 'Nanum Gothic Bold';
 }
 
 @keyframes textanim{ 
@@ -272,22 +287,11 @@ header {
 	transition-timing-function: ease-out;
 	animation: cursorAnim .3s infinite alternate;
 	visibility: hidden;
-	z-index: 9999;
 }
 
 @keyframes cursorAnim{
-	from {transform: scale(0.7) translate(-50%, -50%);}
-to {transform: scale(1) translate(-50%, -50%);}
-}
-
-.right-menu-bar {
-	position: fixed;
-	right: 30px;
-	top: 50%;
-	cursor: pointer;
-	z-index: 100;
-	transform: translate(-50%, -50%);
-	list-style: circle;
+	from {transform: scale(1) translate(-50%, -50%);}
+to {transform: scale(1.5) translate(-50%, -50%);}
 }
 
 /*Scroll*/

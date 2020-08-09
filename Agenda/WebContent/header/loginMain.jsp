@@ -43,27 +43,27 @@
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 				<p>SERVICE</p>
 				<a href="${pageContext.request.contextPath}/MainController?command=mediSearch" 
-					onmouseover="this.innerHTML='&nbsp;Medication check'"
-					onmouseout="this.innerHTML='&nbsp;의약품조회'">의약품조회
+					onmouseover="this.innerHTML='Medication check'"
+					onmouseout="this.innerHTML='의약품조회'">의약품조회
 				</a> 
 				<a href="${pageContext.request.contextPath}/MainController?command=findPharm"
-					onmouseover="this.innerHTML='&nbsp;Finding Pharmacy'"
-					onmouseout="this.innerHTML='&nbsp;약국찾기'"><span>약국찾기</span>
+					onmouseover="this.innerHTML='Finding Pharmacy'"
+					onmouseout="this.innerHTML='약국찾기'"><span>약국찾기</span>
 				</a> 
 				<a
 					href="${pageContext.request.contextPath}/MediLockerRegistController?command=mediLocker" 
-					onmouseover="this.innerHTML='&nbsp;Prescription'"
-					onmouseout="this.innerHTML='&nbsp;처방전'"><span>처방전</span>
+					onmouseover="this.innerHTML='Prescription'"
+					onmouseout="this.innerHTML='처방전'"><span>처방전</span>
 				</a> <br>
 				<br> <br>
 				<p>NOTICE</p>
 				<a href="${pageContext.request.contextPath}/MainController?command=notice" 
-					onmouseover="this.innerHTML='&nbsp;Notice'"
-					onmouseout="this.innerHTML='&nbsp;공지사항'">공지사항</a>
+					onmouseover="this.innerHTML='Notice'"
+					onmouseout="this.innerHTML='공지사항'">공지사항</a>
 				<p>SUPPORT</p>
 				<a href="${pageContext.request.contextPath}/MainController?command=qna"
-					onmouseover="this.innerHTML='&nbsp;Questions and Answers'"
-					onmouseout="this.innerHTML='&nbsp;Q&A'">Q&A
+					onmouseover="this.innerHTML='Questions and Answers'"
+					onmouseout="this.innerHTML='Q&A'">Q&A
 				</a>
 			</div>
 			</nav>

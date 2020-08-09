@@ -8,14 +8,24 @@ for (var l = 0; l < 4; l++) {
 	});
 } 
 
-for (var p = 4; p < cousorArea.length; p++){
+cousorArea[4].addEventListener("mousemove", function(e) {
+	showCursor(e);
+	cursor.style.zIndex="0";
+});
+
+
+for (var p = 5; p < cousorArea.length; p++){
 	cousorArea[p].addEventListener("mousemove", function(e) {
-		cursor.style.visibility = "visible";
-		cursor.style.left = e.pageX + "px";
-		cursor.style.top = e.pageY + "px";
+		showCursor(e);
+		cursor.style.zIndex="9999";
 	});
 }
 
+function showCursor(e){
+	cursor.style.visibility = "visible";
+	cursor.style.left = e.pageX + "px";
+	cursor.style.top = e.pageY + "px";
+}
 
 // 메인텍스트
 var TxtRotate = function (el, toRotate, period) {
@@ -77,7 +87,35 @@ var TxtRotate = function (el, toRotate, period) {
 	  document.body.appendChild(css);
 	};
 	
-
+//메인 텍스트2
+	const AgendaText = document.querySelector(".agendaText");
+	const agendaText = AgendaText.textContent;
+	const splitText = agendaText.split("");
+	console.log(splitText);
+	
+	AgendaText.textContent ="";
+	for(let b=0; b<splitText.length; b++){
+		AgendaText.innerHTML += "<span>"+splitText[b]+"</span>";
+	}
+	
+	let char = 0;
+	let timer = setInterval(onTick,50);
+	
+	function onTick(){
+		const span = AgendaText.querySelectorAll("span")[char];
+		span.classList.add("fade");
+		char++
+		if(char == splitText.length){
+			complete();
+			return;
+		}
+	}
+	
+	function complete(){
+		clearInterval(timer);
+		timer = null;
+	}
+	
 //스플릿스크롤
 function splitScroll() {
 	const controller = new ScrollMagic.Controller();

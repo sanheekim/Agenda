@@ -12,7 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+<title>Agenda</title>
 <script src="https://cdn.bootpay.co.kr/js/bootpay-3.2.6.min.js" type="application/javascript"></script>
 <script src="http://code.jquery.com/jquery-3.5.1.js"></script>
 <link rel="stylesheet" type="text/css"href="${pageContext.request.contextPath}/main/main.css">
@@ -37,7 +37,9 @@
 			<h1> Agenda is 
 				<span class="txt-rotate" data-period="2000" data-rotate='[ "Simple.", "Good.", "Fun.", "Easy to use.", "" ]'></span>
 			</h1>
-			<h2>아프지 마요. 괜찮아요? 다친데 없어요?</h2>
+			<div class="second-wrapper">
+			<p class="agendaText">아프지 마요.</p> <p class="agendaText">괜찮아요?</p> <p class="agendaText">다친데 없어요?</p>
+			</div>
 		</div>
 	</section>
 
@@ -214,7 +216,7 @@
 	</section>
 
 	<section class="section contact area">
-		<div class="contact-title"><p>Do you need help?</p></h2></div>
+		<div class="contact-title"><p>Do you need help?</p></div>
 		<div class="contact-sub">Click the Chat Button where it is in
 		right-below. Pharmacists will consult with you in real time. Or Write
 		your question on Q&A board. We will answer in a day.</div>

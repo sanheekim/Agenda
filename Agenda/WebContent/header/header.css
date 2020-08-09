@@ -45,7 +45,8 @@ header {
 	font-size: 1.5em;
 	margin-left: 10px;
 	margin: auto;
-	font-family:'Nanum Gothic Bold';
+	font-family:'Nanum Gothic';
+	letter-spacing: 3px;
 }
 
 .wrapper a{
