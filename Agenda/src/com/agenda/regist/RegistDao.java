@@ -61,24 +61,24 @@ public class RegistDao extends RegistSqlMapConfig {
 	}
 	
 	
-//	public boolean insertNaver(RegistDto naver) {
-//		
-//		SqlSession session = null;
-//		int res = 0;
-//		
-//		try {
-//			session = getSqlSessionFactory().openSession(false);
-//			res = session.insert(namespace + "insertNaver", naver);
-//			if(res > 0) {
-//				session.commit();
-//			}
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			session.close();
-//		}
-//		return res > 0? true : false;
-//	}
+	public boolean insertNaver(RegistDto dto) {
+		
+		SqlSession session = null;
+		int res = 0;
+		
+		try {
+			session = getSqlSessionFactory().openSession(false);
+			res = session.insert(namespace + "insertNaver", dto);
+			if(res > 0) {
+				session.commit();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return res > 0? true : false;
+	}
 
 }
 
