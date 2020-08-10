@@ -14,23 +14,15 @@ firstTL.from([firstBg, firstBgAddition], {
 	stagger : {
 		amount : .2
 	}
-}).from(headerMain, {
-	y: 10,
-	opacity : 0,
-	duration : .8,
-	ease: 'power3.inOut'
 }).from(firstWrapper, {
-	delay : -0.5,
 	opacity : 0,
 	y: 80,
-	duration : .8, 
+	duration : .6, 
 	ease : 'power3.inOut',
 	stagger : {
 		amount : 0.2
 	}
 })
-
-
 
 
 /* 내려올때 header 컬러 변경 */

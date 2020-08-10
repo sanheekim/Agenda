@@ -46,7 +46,7 @@ header {
 	margin-left: 10px;
 	margin: auto;
 	font-weight: bolder;
-	font-family:'Nanum Gothic';
+	font-family:'Nanum Gothic Light';
 	letter-spacing: 3px;
 }
 
@@ -122,6 +122,7 @@ header {
 	overflow: hidden;
 	transition: 0.5s;
 	padding-top: 60px;
+	z-index: 9999;
 }
 
 .sidenav a {
@@ -132,6 +133,7 @@ header {
 	display: block;
 	width: 500px;
 	transition: 0.3s;
+	z-index: 9999;
 }
 
 .sidenav p {
@@ -142,6 +144,7 @@ header {
 	display: block;
 	transition: 0.3s;
 	text-align: left;
+	z-index: 9999;
 }
 
 .sidenav a:hover {
@@ -154,35 +157,6 @@ header {
 	float: right;
 	font-size: 36px;
 	margin-left: 300px;
-}
-
-
-
-
-#overlay {
-	background: #000;
-	bottom: 0;
-	height: 100%;
-	left: 0;
-	opacity: 0;
-	overflow: hidden;
-	position: fixed;
-	right: 0;
-	top: 0;
-	visibility: hidden;
-	width: 100%;
-	z-index: 99;
-	-webkit-transition: all .5s ease-in-out;
-	-moz-transition: all .5s ease-in-out;
-	transition: all .5s ease-in-out;
-}
-
-html.active #overlay {
-	opacity: .65;
-	visibility: visible;
-	-webkit-transition: all .5s ease-in-out;
-	-moz-transition: all .5s ease-in-out;
-	transition: all .5s ease-in-out;
 }
 
 @media screen and (max-height: 450px) {

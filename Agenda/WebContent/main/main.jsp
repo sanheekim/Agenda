@@ -135,7 +135,73 @@
 		</div>
 	</section>
 
+
+<!-- 세번째 -->
 	<section class="section third area">
+	
+		<div class="donation-wrapper">
+			<div class="donation-content-wrapper">
+				<p>A Cup of Coffee </p>
+				<c:choose>
+					<c:when test="${logindto ne null }">
+						<div class="donation-content" onclick="pay01()" id="donaClick01" title="${logindto.member_id }">donate</div>
+					</c:when>
+					<c:otherwise>
+						<div class="donation-content" onclick="alert('로그인해주세요')" id="donaClick01">donate</div>
+					</c:otherwise>
+				</c:choose>
+			</div>
+			<span></span><span></span><span></span>
+		</div>
+		
+		<div class="donation-wrapper">
+			<span></span><span></span><span></span>
+			<div class="donation-content-wrapper">
+				<p>A piece of cake</p>
+				<c:choose>
+					<c:when test="${logindto ne null }">
+						<div class="donation-content" onclick="pay02()" id="donaClick02" title="${logindto.member_id }">donate</div>
+					</c:when>
+					<c:otherwise>
+						<div class="donation-content" onclick="alert('로그인해주세요')" id="donaClick02">donate</div>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+		
+		<div class="donation-wrapper">
+			<span></span><span></span><span></span>
+			<div class="donation-content-wrapper">
+				<p>Coffee</p> <p>with a Piece of Cake</p>
+				<c:choose>
+					<c:when test="${logindto ne null }">
+						<div class="donation-content" onclick="pay03()" id="donaClick03" title="${logindto.member_id }">donate</div>
+					</c:when>
+					<c:otherwise>
+						<div class="donation-content" onclick="alert('로그인해주세요')" id="donaClick03">donate</div>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+		
+		<div class="donation-wrapper">
+			<span></span><span></span><span></span>
+			<div class="donation-content-wrapper">
+				<p>Whole Cake set</p>
+				<c:choose>
+					<c:when test="${logindto ne null }">
+						<div class="donation-content" onclick="pay04()" id="donaClick04" title="${logindto.member_id }">donate</div>
+					</c:when>
+					<c:otherwise>
+						<div class="donation-content" onclick="alert('로그인해주세요')" id="donaClick04">donate</div>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+
+		
+	</section>
+	<%-- <section class="section third area">
 		<p>D O N A T I O N</p>
 		<div class="donation-wrapper">
 			<c:choose>
@@ -187,7 +253,7 @@
 			</c:otherwise>
 			</c:choose>
 		</div>
-	</section>
+	</section> --%>
 
 	
 	<section class="section fourth area">

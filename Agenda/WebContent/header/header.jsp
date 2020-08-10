@@ -78,7 +78,6 @@
 				document.getElementById("mySidenav").style.width = "0";
 			}
 
-			$('body').prepend('<div id="overlay">');
 		</script>
 	</header>
 </body>
