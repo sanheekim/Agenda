@@ -3,13 +3,13 @@ function pay01() {
 BootPay.request({
 	price: '1000',
 	application_id: "5f17cf9f8f0751002136c6b9",
-	name: '1,000원을 후원하시겠습니까?',
+	name: '커피 한 잔을 후원하시겠습니까?',
 	pg: '',
 	method: 'card',
 	show_agree_window: 0,
 	items: [
 		{
-			item_name: '1,000원',
+			item_name:'A Cup of Coffee',
 			qty: 1,
 			unique: '123',
 			price: 1000,
@@ -52,7 +52,7 @@ BootPay.request({
 }).done(function (data) {
 		console.log(data);
 		
-		var member_id = $("#donaClick02").attr("title");
+		var member_id = $("#donaClick01").attr("title");
 		console.log("컨트롤러 넘어가기전 아이디" + member_id)
 		console.log("끝 : "+data);
 		
@@ -77,13 +77,13 @@ function pay02(){
 	BootPay.request({
 		price: '5000',
 		application_id: "5f17cf9f8f0751002136c6b9",
-		name: '5,000원을 후원하시겠습니까?',
+		name: '케이크 한 조각을 후원하시겠습니까?',
 		pg: '',
 		method: 'card',
 		show_agree_window: 0,
 		items: [
 			{
-				item_name: '5,000원',
+				item_name: 'A Piece of Cake',
 				qty: 1,
 				unique: '123',
 				price: 5000,
@@ -152,13 +152,13 @@ function pay03(){
 	BootPay.request({
 		price: '10000',
 		application_id: "5f17cf9f8f0751002136c6b9",
-		name: '10,000원을 후원하시겠습니까?',
+		name: '커피와 조각케이크를 후원하시겠습니까?',
 		pg: '',
 		method: 'card',
 		show_agree_window: 0,
 		items: [
 			{
-				item_name: '10,000원',
+				item_name: 'Coffee With a Piece of Cake',
 				qty: 1,
 				unique: '123',
 				price: 10000,
@@ -201,7 +201,7 @@ function pay03(){
 	}).done(function (data) {
 		console.log(data);
 		
-		var member_id = $("#donaClick02").attr("title");
+		var member_id = $("#donaClick03").attr("title");
 		console.log("컨트롤러 넘어가기전 아이디" + member_id)
 		console.log("끝 : "+data);
 		
@@ -227,13 +227,13 @@ function pay04(){
 	BootPay.request({
 		price: '50000',
 		application_id: "5f17cf9f8f0751002136c6b9",
-		name: '50,000원을 후원하시겠습니까?',
+		name: '케이크 세트를 후원하시겠습니까?',
 		pg: '',
 		method: 'card',
 		show_agree_window: 0,
 		items: [
 			{
-				item_name: '50,000원',
+				item_name: 'Whole Cake Set',
 				qty: 1,
 				unique: '123',
 				price: 50000,
@@ -276,7 +276,7 @@ function pay04(){
 	}).done(function (data) {
 		console.log(data);
 		
-		var member_id = $("#donaClick02").attr("title");
+		var member_id = $("#donaClick04").attr("title");
 		console.log("컨트롤러 넘어가기전 아이디" + member_id)
 		console.log("끝 : "+data);
 		
