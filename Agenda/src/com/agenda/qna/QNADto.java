@@ -1,6 +1,6 @@
 package com.agenda.qna;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class QNADto {
 

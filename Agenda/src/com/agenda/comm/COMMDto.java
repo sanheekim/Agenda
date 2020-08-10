@@ -1,6 +1,6 @@
 package com.agenda.comm;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class COMMDto {
 

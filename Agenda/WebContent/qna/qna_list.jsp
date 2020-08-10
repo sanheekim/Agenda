@@ -5,6 +5,7 @@
 <%response.setContentType("text/html; charset=UTF-8");%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html>
@@ -64,7 +65,7 @@
 							href="${pageContext.request.contextPath}/qnaController.do?command=detail&qna_no=${row.qna_no}">${row.qna_title} [${row.qna_recnt}]
 						</a></td>
 						<td>${row.member_id }</td>
-						<td>${row.qna_regdate}</td>
+						<td><fmt:formatDate value="${row.qna_regdate}" pattern="yyyy-MM-dd"/></td>
 						<td>${row.qna_hit }</td>
 					</tr>
 					</c:when>
@@ -73,7 +74,7 @@
 						<td>${row.qna_no}</td>
 						<td><span>삭제된 글 입니다</span></td>
 						<td>${row.member_id }</td>
-						<td>${row.qna_regdate}</td>
+						<td><fmt:formatDate value="${row.qna_regdate}" pattern="yyyy-MM-dd"/></td>
 						<td>${row.qna_hit }</td>
 					</tr>
 					</c:otherwise>
