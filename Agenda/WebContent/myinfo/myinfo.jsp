@@ -64,6 +64,8 @@
 		text-align: center;
 		font-size: 16pt;
 		line-height: 200px;
+		margin-top: 150px;
+		margin-bottom: 150px;
 	}
 	
 	#my_box span {
