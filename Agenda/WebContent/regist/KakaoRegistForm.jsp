@@ -1,15 +1,8 @@
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
-
-	<%!
-	%>
-
-
 
 <!DOCTYPE html>
 <html>
@@ -19,8 +12,28 @@
 
 <style type="text/css">
 
-	h1 {
-		text-align: center;
+	body {
+		background-color: whitesmoke;		
+	}
+	
+	#header-bar {
+		display: flex;
+		cursor: pointer;
+		padding-left: 600px;
+	}
+	
+	#header-bar img{
+		width: 30px;
+		height: 30px;
+		padding : 10px;
+		margin-left: 10px;
+	}
+	
+	#header-bar span{
+		display: block;
+		font-size: 2em;
+		font-family:'Nanum Gothic';
+		letter-spacing: 3px;
 	}
 	
 	h2 {
@@ -29,7 +42,7 @@
 	
 	form {
 		width: 500px;
-		height: 950px;
+		height: 600px;
 		border: 1px solid #dbdbdb;
 		margin-left: auto;
 		margin-right: auto;
@@ -121,47 +134,18 @@
 		}
 	}
 	
-	function goPopup(){
-		// 주소검색을 수행할 팝업 페이지를 호출합니다.
-		// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
-		var pop = window.open("./regist/addrPop.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
-		//location.href="${pageContext.request.contextPath}/addrPop.jsp"
-		// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
-	    //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
-	}
-
-	function jusoCallBack(roadFullAddr){
-			// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.	
-			console.log(roadFullAddr);
-			document.getElementById("roadFullAddr").value = roadFullAddr;		
-	}
-	
-	
-	
-	$(function(){
-	    $('#mypw1').keyup(function(){
-	      $('#chkNotice').html('');
-	    });
-
-	    $('#mypw2').keyup(function(){
-
-	        if($('#mypw1').val() != $('#mypw2').val()){
-	          $('#Notice').html('비밀번호 일치하지 않음<br><br>');
-	          $('#Notice').attr('color', '#f82a2aa3');
-	        } else{
-	          $('#Notice').html('비밀번호 일치함<br><br>');
-	          $('#Notice').attr('color', '#199894b3');
-	        }
-	    });  
-	});
-	
 </script>
 
 </head>
 
 <body>
-
-	<h1>A.gen.da</h1>
+	
+	<br>
+	<div id="header-bar" onclick="location.href='${pageContext.request.contextPath}/main/main.jsp'">
+		<img src="${pageContext.request.contextPath}/header/resources/img/medicine.png">
+		<span>AGENDA</span>
+	</div>
+	<br>
 	
 	<form action="${pageContext.request.contextPath}/KakaoRegistController" method="post">
 	
@@ -173,51 +157,27 @@
 			<tr>
 				<td>아이디<br>
 				<!-- 이런건 보통 id를 줌 -->
-					<input type="text" name="member_id" id="myid" placeholder="아이디를 입력하세요." required="required" value="<%=session.getAttribute("member_id") %>" title="n" />
+					<input type="text" name="member_id" id="myid" placeholder="아이디를 입력하세요." required="required" value="<%=session.getAttribute("member_id") %>" title="n" readonly="readonly" style="background: whitesmoke;"/>
 					<br>
 					<input type="button" id="idButton" value="중복체크" onclick="idCheck();"/>  
 					<br><span>영문,숫자,특수문자의 입력이 가능합니다.</span><br>
 				</td>
 			</tr>
 			<tr>
-				<td><br>비밀번호<br>
-				<!-- name 속성 지우지마!! -->
-					<input type="password" name="member_pw" id="mypw1" class="pw" placeholder="비밀번호." required="required" />
-					<br><span>영문,숫자,특수문자의 입력이 가능합니다.</span><br>				
-					<br><input type="password" name="member_pw" id="mypw2" class="pw" placeholder="비밀번호 재입력" required="required" />
-					<br><span>비밀번호를 다시 입력해주세요.</span><br>
-    				<font id="Notice" size="2"></font>
-    				<input type="hidden" name="member_salt">
-    				
-				</td>
-			</tr>
-			<tr>
 				<td><br>닉네임<br>
-					<input type="text" name="member_name" id="myname" placeholder="닉네임을 입력해주세요." required="required" />
-				</td>
-			</tr>
-			<tr>
-				<td><br>주소<br>
-					<input type="button" id="addrButton" class="btn btn-warning" value="주소검색" onclick="goPopup()">
-					<br>
-					<input type="text" name="member_addr" id="roadFullAddr" class="form-control" placeholder="주소를 검색하세요." required="required" disabled/>
-				</td>
-			</tr>
-			<tr>
-				<td><br>전화번호<br>
-					<input type="text" name="member_phone" id="myph" placeholder="전화번호를 '-'없이 입력하세요." required="required" />
+					<input type="text" name="member_name" id="myname" placeholder="닉네임을 입력해주세요." required="required" style="background: whitesmoke;"/>
 				</td>
 			</tr>
 			<tr>
 				<td><br>이메일<br>
-					<input type="email" name="member_email" id="email"  placeholder="이메일을 입력하세요." value="<%=session.getAttribute("member_email") %>"/>
+					<input type="email" name="member_email" id="email"  placeholder="이메일을 입력하세요." value="<%=session.getAttribute("member_email") %>" readonly="readonly" style="background: whitesmoke;"/>
 				</td>
 			</tr>
 			<tr>
 				<td>
 					<input id="receiver" type="button" value="인증번호발송" onclick="sendEmail()">
 					<br>
-					<input type="text" name="member_email_valid" id="code_text" placeholder="인증코드">
+					<input type="text" name="member_email_valid" id="code_text" placeholder="받으신 인증번호를 입력하세요." style="background: whitesmoke;">
 				</td>
 			</tr>
 			<tr>
@@ -229,6 +189,7 @@
 			</tr>
 		</table>
 	</form>
+	
 	<script>
 	function sendEmail() {
 		var email = document.getElementById("email").value

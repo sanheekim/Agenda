@@ -102,7 +102,7 @@ public class RegistController extends HttpServlet {
 				if (res) {	
 					
 					//out.println("<scipt>alert('회원가입 성공'); location.href='loginMain.jsp';</script>");
-					registResponse(member_id + " 님 " + " 아괜다 회원이 되신걸 축하드립니다.", "main/main.jsp", response);
+					registResponse(member_id + " 님 " + " 아괜다 회원이 되신걸 축하드립니다. 다시 로그인 해주시길 바랍니다.", "main/main.jsp", response);
 					//response.sendRedirect("/regist/registForm.jsp");
 					
 				} else {

@@ -1,15 +1,8 @@
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
-
-	<%!
-	%>
-
-
 
 <!DOCTYPE html>
 <html>
@@ -19,8 +12,28 @@
 
 <style type="text/css">
 
-	h1 {
-		text-align: center;
+	body {
+		background-color: whitesmoke;		
+	}
+
+	#header-bar {
+		display: flex;
+		cursor: pointer;
+		padding-left: 600px;
+	}
+	
+	#header-bar img{
+		width: 30px;
+		height: 30px;
+		padding : 10px;
+		margin-left: 10px;
+	}
+	
+	#header-bar span{
+		display: block;
+		font-size: 2em;
+		font-family:'Nanum Gothic';
+		letter-spacing: 3px;
 	}
 	
 	h2 {
@@ -160,7 +173,12 @@
 </head>
 <body>
 
-	<h1>A.gen.da</h1>
+	<br>
+	<div id="header-bar" onclick="location.href='${pageContext.request.contextPath}/main/main.jsp'">
+		<img src="${pageContext.request.contextPath}/header/resources/img/medicine.png">
+		<span>AGENDA</span>
+	</div>
+	<br>
 	
 	<form action="/Agenda/RegistController" method="post">
 	
@@ -172,7 +190,7 @@
 			<tr>
 				<td>아이디<br>
 				<!-- 이런건 보통 id를 줌 -->
-					<input type="text" name="member_id" id="myid" placeholder="아이디를 입력하세요." required="required" title="n" />
+					<input type="text" name="member_id" id="myid" placeholder="아이디를 입력하세요." required="required" title="n" style="background: whitesmoke;"/>
 					<br>
 					<input type="button" id="idButton" value="중복체크" onclick="idCheck();"/>  
 					<br><span>영문,숫자,특수문자의 입력이 가능합니다.</span><br>  
@@ -181,9 +199,9 @@
 			<tr>
 				<td><br>비밀번호<br>
 				<!-- name 속성 지우지마!! -->
-					<input type="password" name="member_pw" id="mypw1" class="pw" placeholder="비밀번호." required="required" />
+					<input type="password" name="member_pw" id="mypw1" class="pw" placeholder="비밀번호." required="required" style="background: whitesmoke;"/>
 					<br><span>영문,숫자,특수문자의 입력이 가능합니다.</span><br>				
-					<br><input type="password" name="member_pw" id="mypw2" class="pw" placeholder="비밀번호 재입력" required="required" />
+					<br><input type="password" name="member_pw" id="mypw2" class="pw" placeholder="비밀번호 재입력" required="required" style="background: whitesmoke;"/>
 					<br><span>비밀번호를 다시 입력해주세요.</span><br>
     				<font id="Notice" size="2"></font>
     				<input type="hidden" name="member_salt">
@@ -192,31 +210,31 @@
 			</tr>
 			<tr>
 				<td><br>닉네임<br>
-					<input type="text" name="member_name" id="myname" placeholder="닉네임을 입력해주세요." required="required" />
+					<input type="text" name="member_name" id="myname" placeholder="닉네임을 입력해주세요." required="required" style="background: whitesmoke;"/>
 				</td>
 			</tr>
 			<tr>
 				<td><br>주소<br>
 					<input type="button" id="addrButton" class="btn btn-warning" value="주소검색" onclick="goPopup()">
 					<br>
-					<input type="text" id="roadFullAddr" name="member_addr" class="form-control" placeholder="주소를 검색하세요." required="true" readonly="readonly"/>
+					<input type="text" id="roadFullAddr" name="member_addr" class="form-control" placeholder="주소를 검색하세요." required="true" readonly="readonly" style="background: whitesmoke;"/>
 				</td>
 			</tr>
 			<tr>
 				<td><br>전화번호<br>
-					<input type="tel" name="member_phone" id="myph" placeholder="전화번호를 '-'없이 입력하세요." required="required" />
+					<input type="tel" name="member_phone" id="myph" placeholder="전화번호를 '-'없이 입력하세요." required="required" style="background: whitesmoke;"/>
 				</td>
 			</tr>
 			<tr>
 				<td><br>이메일<br>
-					<input type="email" name="member_email" id="email"  placeholder="이메일을 입력하세요."/>
+					<input type="email" name="member_email" id="email"  placeholder="이메일을 입력하세요."style="background: whitesmoke;"/>
 				</td>
 			</tr>
 			<tr>
 				<td>
 					<input id="receiver" type="button" value="인증번호발송" onclick="sendEmail()">
 					<br>
-					<input type="text" name="member_email_valid" id="code_text" placeholder="인증코드">
+					<input type="text" name="member_email_valid" id="code_text" placeholder="받으신 인증번호를 입력하세요." style="background: whitesmoke;">
 				</td>
 			</tr>
 			<tr>
