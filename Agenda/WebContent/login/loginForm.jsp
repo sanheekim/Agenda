@@ -86,12 +86,11 @@
 	apiURL += "&client_id=" + clientId;
 	apiURL += "&redirect_uri=" + redirectURI;
 	apiURL += "&state=" + state;
-
 	session.setAttribute("state", state);
 	System.out.println("로그인페이지");
 	%>
 
-
+<section class="first">
 	<div class="login">
 
 		<div class="login__top">
@@ -166,6 +165,7 @@
 		</div>
 
 	</div>
-	
+	</section>
+	<jsp:include page="../footer/mainFooter.jsp" />
 </body>
 </html>

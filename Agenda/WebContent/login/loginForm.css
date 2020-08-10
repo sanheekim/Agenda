@@ -1,12 +1,23 @@
 /** @format */
+@charset "UTF-8";
+@font-face {font-family: 'Nanum Gothic'; src: url('../font/NanumBarunGothic.ttf') }
+@font-face {font-family: 'Nanum Gothic Light'; src: url('../font/NanumBarunGothicLight.ttf')}
+@font-face {font-family: 'Nanum Gothic Bold'; src: url('../font/NanumBarunGothicBold.ttf')}
+@font-face {font-family: 'Nanum Gothic Ultra Light';src: url('../font/NanumBarunGothicUltraLight.ttf')}
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-
+ font-family: 'Nanum Gothic Light';
 
  
 }
+.first{
+	height:100vh;
+}
+.login__title{
+	font-family: 'Nanum Gothic Bold';
+	margin-bottom:20px;
 
+}
 input[type="text"],
 input[type="password"] {
   width: 300px;
@@ -73,7 +84,7 @@ input[type="password"] {
 }
 
 .registbtn{
-	background-color: #0f79c8;
+  background-color: #0f79c8;
   color: white;
   padding: 3px 3px;
   margin: 5px 0;
@@ -89,7 +100,8 @@ input[type="password"] {
 .login__submit__button:hover {
   opacity: 0.8;
 }
-.login__submit__buttonn {
+.login__submit__button {
+  margin-top:8px;
   background-color: black;
 }
 .login__submit__api {
@@ -118,10 +130,12 @@ input[type="password"] {
 	width:300px;
 }
 #kakao-login-btn{
+	margin-top:5px;
 	width:300px;
 	height:35px;
 }
 .login__submit__remember {
+	margin-top:8px;
   font-size: 13px;
 }
 
@@ -132,7 +146,8 @@ input[type="password"] {
 	border:1px solid grey;
 }
 #naver__btn{
-	border:1px solid grey;
+	margin-top:8px;
+	
 }
 span.psw {
   float: right;
