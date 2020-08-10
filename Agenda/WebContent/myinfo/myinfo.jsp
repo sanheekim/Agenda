@@ -115,15 +115,15 @@
 	<div id="my_bottom">
 			<div class="my_box" onclick="location.href='${pageContext.request.contextPath}/MyinfoController?command=myinfoUpdateform&member_id=${dto.member_id}'">
 			<span>내 정보 수정</span>
-			<img class="icon" src="img/info.png" />
+			<img class="icon" src="myinfo/img/info.png" />
 			</div>
 			<div class="my_box" onclick="location.href='${pageContext.request.contextPath}/MyinfoController?command=myinfoDelete&member_id=${logindto.member_id }'">
 			<span>계정 탈퇴</span>
-			<img class="icon" src="img/bye.png" />
+			<img class="icon" src="myinfo/img/bye.png" />
 			</div>
 			<div class="my_box" onclick="location.href='${pageContext.request.contextPath}/dnController?command=dnlist&member_id=${logindto.member_id }'">
 			<span>후원내역조회</span>
-			<img class="icon" src="img/qr.png" />
+			<img class="icon" src="myinfo/img/qr.png" />
 			</div>
 	</div>	
 
