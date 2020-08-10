@@ -89,16 +89,20 @@ public class ScheduleController extends HttpServlet {
 			String member_id = request.getParameter("member_id");
 			System.out.println( "  :  " + member_id);
 			
-			ScheduleDto dto = new ScheduleDto();
-			dto = new ScheduleDto(member_id);
-			
-			List<String> list = dao.selectList(dto);
 			
 			
-			System.out.println(list.toString());
-			//String[] string = list.toArray(new String[list.size()]);
-			session.setAttribute("list", list);
+			List<String> list = dao.selectList(member_id);
 			
+			
+			
+			
+			//System.out.println(list.toString());
+			//String[] string = new String[list.size()];
+			
+			for(int i = 0; i < list.size(); i++) {
+				String str = list.get(i).toString();
+				System.out.println(str);
+			}
 				
 		
 			

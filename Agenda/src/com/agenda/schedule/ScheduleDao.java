@@ -30,13 +30,13 @@ public class ScheduleDao extends ScheduleSqlMapConfig {
 		}
 		return res;
 	}
-	public List<String> selectList(ScheduleDto dto) {
+	public List<String> selectList(String member_id) {
 		SqlSession session = null;
 		List<String> list = null;
 		
 		try {
 			session = getSqlSessionFactory().openSession(false);
-			list =  session.selectList(namespace+"selectList",dto);
+			list =  session.selectList(namespace+"selectList",member_id);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

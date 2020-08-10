@@ -23,68 +23,80 @@
 	String member_id = request.getParameter("member_id");
 	System.out.println("  :  " + member_id);
 	
+	ScheduleDao dao = new ScheduleDao();
+	List<String> list = dao.selectList(member_id);
+	session.setAttribute("dao",list);
+	
+
+	
+		
 %>
 
 
 $(function(){
-	 var member_id = "<%= member_id %>";
-	 console.log("reload")
-	 console.log("member id : " + member_id);
-	 var arr;
+	
+	
+
+	
+	
+	 
+	 
 		 
-		  $.ajax({				
+		  /*$.ajax({				
 				type: "post",
 				url: "./ScheduleController?command=Alrim",
 				data : {
 					member_id : member_id
 					},
-				success: function(list){
+				success: function(msg){
 					$.ajaxSettings.traditional = true;
-					arr = list.dataList;
-					console.log(list);
-					console.log(arr);
+					console.log(map);
 					if(window.Notification){
 				         Notification.requestPermission();
 				      }
 				    
-				    printTime(arr);
+				    printTime(msg);
 				},
-				error : function(msg) {  
+				error : function(map) {  
 				        alert("통신실패");
 				     }
-			}); 
+			}); */
 	  
 	  
 		   
-     /* if(window.Notification){
+     if(window.Notification){
          Notification.requestPermission();
       }
     
-    printTime();*/
+    printTime();
+    
    		
     
       
    });
-   function printTime(arr) {
-	    
-	   for(var i in arr){
-	   	arr[i];
-	   	console.log(arr);
-	   }
+   function printTime() {
+	  
+	   var arr = new Array(); 
+	   <c:forEach items="${dao}" var="item">
+	   		arr.push("${item.sche_time}");
+	   </c:forEach>
+	   console.log(arr);
+	   
 	   
 	
 	   
 	   var clock = document.getElementById("clock");            // 출력할 장소 선택
 	   var now = new Date();                                                  // 현재시간
 	   var nowTime = /*now.getFullYear() + "년" + (now.getMonth()+1) + "월" + now.getDate() + "일" +*/ now.getHours() + ":" + now.getMinutes()  ;  
-	   
+	   console.log(nowTime);
 	  
 	   		if(arr.includes(nowTime)){
 		  
-	   			clock.innerHTML = nowTime + "q";    // 현재시간을 출력
+	   			
 	   	 		var set = setTimeout(function(){
 	       		notify();
-	   			}, 1000);
+	   			}, 10000);
+	   	 		
 	   			return;
 	   			
 	   		}
@@ -106,14 +118,14 @@ $(function(){
           alert('notification is disabled');
        }
        else {
-          var notification = new Notification('요리조리', {
+          var notification = new Notification('Agenda', {
              icon : './img/warning.jpg',
-             body : '방송이 시작되었습니다.',
+             body : '약 먹을 시간입니다.',
           });
           
           /* 푸쉬알림 클릭 시 어디로 이동할건지 : 우리페이지로.. */
           notification.onclick = function(){
-             window.open('http://naver.com');
+             location.reload();
           };
        } 
       

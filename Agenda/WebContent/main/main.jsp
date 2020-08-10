@@ -27,7 +27,9 @@
 				<jsp:include page="../header/header.jsp" />
 			</c:when>
 			<c:otherwise>
-				<jsp:include page="../header/loginMain.jsp" />
+				<jsp:include page="../header/loginMain.jsp" >
+					<jsp:param name="member_id" value="${logindto.member_id}"/>
+				</jsp:include>
 			</c:otherwise>
 		</c:choose>
 	</header>
