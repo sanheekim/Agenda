@@ -24,7 +24,6 @@ firstTL.from([firstBg, firstBgAddition], {
 	}
 })
 
-
 /* 내려올때 header 컬러 변경 */
 const header = document.querySelector("#header");
 const headerHeight = header.getBoundingClientRect().height;
@@ -173,17 +172,16 @@ function splitScroll() {
 splitScroll();
 
 
-//도네이션 효과
-var donation = document.querySelectorAll('.donation-content-01');
-for(let a = 0; a < donation.length; a++){
-	
-	donation[a].addEventListener('mouseover', function(){
-		 donation[a].setAttribute("style","background-color: rgba(255, 255, 255, 0.7);")
+//메뉴 효과
+var menuWrapper = document.querySelectorAll('.second-menu');
+for(let p = 0; p < menuWrapper.length; p++){
+	menuWrapper[p].addEventListener('mouseover',function(){
+		menuWrapper[p].setAttribute("style","background-color: rgba(255, 255, 255, 0.7);")
+	});
+	menuWrapper[p].addEventListener('mouseout', function(){
+		menuWrapper[p].removeAttribute("style");
 	});
 	
-	donation[a].addEventListener('mouseout', function(){
-		 donation[a].removeAttribute("style");
-	});
 }
 
 
@@ -215,31 +213,3 @@ function scrollIntoView(selector){
 	const scrollTo = document.querySelector(selector);
 	scrollTo.scrollIntoView({behavior:'smooth'});
 }
-
-
-
-//----------------------------------------------------------------
-
-////메뉴 아이콘 효과
-//var icon = document.querySelectorAll('.menu-icon-inside')
-//
-//for(let j = 0; j < icon.length; j++){
-//    icon[j].addEventListener('mouseover', function(){
-//        icon[j].setAttribute("style","background: linear-gradient(200deg, #ffffff, #dddddd);")
-//    })
-//    
-//    icon[j].addEventListener('mouseout', function(){
-//        icon[j].removeAttribute("style");
-//    })
-//}
-//
-////3D텍스트
-//var text = document.getElementsByClassName('text');
-//var shadow = '';
-//for (var i = 0; i < 20; i++){
-//    shadow +=(shadow? ',':'')+ -i*1+'px ' + i*1+'px 0 #d9d9d9' ;
-//}
-//for (var k = 0; k < 3; k ++){
-//	text[k].style.textShadow = shadow;
-//}
-//

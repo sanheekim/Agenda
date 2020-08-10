@@ -152,11 +152,19 @@ header {
 	justify-content: center;
 	text-align: center;
 	cursor : pointer;
+	background-color: rgba(255,255,255,0.2);
+	border-radius: 30px 10px;
+	box-shadow: 10px 14px 28px -20px rgba(209,209,209,1);
 }
 
 .second-menu p{
 	margin-top : 10px;
-	margin-bottom: 10px;	
+	margin-bottom: 10px;
+}
+
+.second-menu p:last-child{
+	font-family: 'Nanum Gothic Ultra Light';
+	font-size: 0.9em;
 }
 
 
@@ -226,7 +234,6 @@ header {
 }
 
 
-
 .donation-wrapper span:nth-child(2){
 	position : absolute;
 	top : 0;
@@ -239,7 +246,6 @@ header {
 	animation : donaAnim 10s linear infinite;
 	z-index: 0;
 }
-
 
 
 .donation-wrapper span:nth-child(3){
