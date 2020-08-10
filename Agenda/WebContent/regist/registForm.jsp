@@ -199,12 +199,12 @@
 				<td><br>주소<br>
 					<input type="button" id="addrButton" class="btn btn-warning" value="주소검색" onclick="goPopup()">
 					<br>
-					<input type="text" name="member_addr" id="roadFullAddr" class="form-control" placeholder="주소를 검색하세요." required="required" disabled/>
+					<input type="text" id="roadFullAddr" name="member_addr" class="form-control" placeholder="주소를 검색하세요." required="true" readonly="readonly"/>
 				</td>
 			</tr>
 			<tr>
 				<td><br>전화번호<br>
-					<input type="text" name="member_phone" id="myph" placeholder="전화번호를 '-'없이 입력하세요." required="required" />
+					<input type="tel" name="member_phone" id="myph" placeholder="전화번호를 '-'없이 입력하세요." required="required" />
 				</td>
 			</tr>
 			<tr>
