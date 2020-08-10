@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="${pageContext.request.contextPath}/medilocker/mediLockerXml2json.js"></script>
+<script src="${pageContext.request.contextPath}/schedule/Schedule.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/medilocker/mediLockerScanMain.js"></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/medilocker/mediLockerScanMain.css" >
 </head>
@@ -38,6 +39,9 @@
 						<div class="LockerListDiv">
 							<div>${status.index+1}</div>
 							<div>${dto.pres_name }</div>
+							<div>
+							<button onclick="upload();">일정등록</button>
+							</div>
 							<div>
 							<input type="button" value="삭제" onclick="deletePres('${dto.pres_no}');">
 							<input type="hidden" value="${dto.pres_no }" name="pres_no">
