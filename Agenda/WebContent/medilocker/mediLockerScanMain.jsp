@@ -20,10 +20,10 @@
 	<div id="LockerMainDiv">
 		<div id="LockerThemeDiv">
 			<h2>처방전 보관함</h2>		
-			<button onclick="upLoad();">SCAN</button>			
+			<button onclick="upLoad();" id="scanBtn"><span>SCAN</span></button>			
 		</div>
 		<div id="Locker2ndDiv">
-			<div id="Locker3rdDiv">
+			<div class="Locker3rdDiv">
 				<c:choose>
 					<c:when test="${empty list }">
 						<div>등록된 처방전이 없습니다.</div>
@@ -33,15 +33,21 @@
 						<div>${list[0].member_id }님의 처방전 리스트 ♥</div>
 						<div class="LockerListDiv">
 							<div>처방전번호</div>
+							<div>|</div>
 							<div>처방전이름</div>
+							<div>|</div>
+							<div>일정등록</div>
+							<div>|</div>
+							<div>삭제</div>
 						</div>
 						<c:forEach items="${list }" var="dto" varStatus="status" >
-						<div class="LockerListDiv">
+						<div class="LockerListDiv" id="LLD">
 							<div>${status.index+1}</div>
+							<div>|</div>
 							<div>${dto.pres_name }</div>
-							<div>
-							<button onclick="upload();">일정등록</button>
-							</div>
+							<div>|</div>
+							<button onclick="upload();" id="scheBtn"><span>일 정 등 록</span></button>
+							<div>|</div>
 							<div>
 							<input type="button" value="삭제" onclick="deletePres('${dto.pres_no}');">
 							<input type="hidden" value="${dto.pres_no }" name="pres_no">
@@ -51,8 +57,10 @@
 					</c:otherwise>
 				</c:choose>
 			</div>
-			<div>
+			<div class="Locker3rdDiv">
+				<div class="LockerDetailDiv">
 				<div>상세정보리스트</div>
+				</div>
 				<div id="detailList">
 				<c:choose>
 					<c:when test="${empty list }" />
@@ -80,21 +88,22 @@
 	</footer> 	  
 		<div id="popUp">
 			<div id="subpopUp">
-				<div>
-					<div>사진을 선택해주세요</div>
+				<div id="3rdpopUp">
+					<div id="4rdPop">사진을 선택해주세요</div>
 					<div>
 						<form method="post" enctype="multipart/form-data" >
-							<input type="file" value="파일 선택" name="file" class="selectFile" />
+							<input type="file" value="파일 선택" name="file" class="scanBtnC" />
 						</form>
 					</div>
 			   </div>
-			   <input type="button" value="파일업로드" onclick="fileUpload();"/>
+			   <input type="button" value="파일업로드" onclick="fileUpload();" class="scanBtnC"/>
 			   <div onclick="closeBtn();" class="closeBtn">&times;</div>
 			 </div>
 			</div>
+		<div id="popUp2">
 			<div id="scanIng" class="aboutScan">스캔 진행중입니다.</div>
 			<div id="scanEnd" class="aboutScan">스캔이 완료되었습니다.</div>
-			
+		</div>	
 		<div id="detailInfo">
 			<div id="detailSubInfo">
 				 <div onclick="closeInfo();" class="closeBtn">&times;</div>

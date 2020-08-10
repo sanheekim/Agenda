@@ -24,11 +24,9 @@ function detailApi(name){
             let item = obj.response.body.items;    
             let item_image = item.item.ITEM_IMAGE;
             console.log(item);
-            if(item !== null){
-                $("#ITEM_IMAGE").hide();
-            }else{
-                $("#ITEM_IMAGE").attr("src",item_image);
-            }
+
+            $("#ITEM_IMAGE").attr("src",item_image);
+
             //else조건 해결해야함
             
         },
@@ -82,8 +80,8 @@ function fileUpload(){
     let strArr;
     let scanStr;
     //var url = ${pageContext.request.contextPath}+"/MediLockerScanController";
-        if($(".selectFile").val()){
-            $("#scanIng").show();
+        if($(".scanBtnC").val()){
+            alert("스캔이 시작되었습니다");
             console.log("구글비전 스캔 시작 준비");
                $.ajax({
                 type: "POST",
@@ -165,6 +163,7 @@ function fileUpload(){
             })
             .done(function(){
                 setTimeout(() => {
+                	$("#popUp2").hide();
                     alert("스캔이 완료되었습니다!");
                     location.reload();
                 }, 5000);
