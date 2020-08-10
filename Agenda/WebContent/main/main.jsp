@@ -91,7 +91,7 @@
                      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
 				</div>
 				
-				<div class="second-menu" onClick="location.href ='${pageContext.request.contextPath}/MainController?command=mediSearch'">
+				<div class="second-menu" onClick="location.href ='${pageContext.request.contextPath}/MediLockerRegistController?command=mediLocker'">
 					<svg width="50" height="50" viewBox="0 0 203 203" fill="none"
 							xmlns="http://www.w3.org/2000/svg">
                                 <path d="M58.7083 133.242V133.742H59.2083H123.064H123.564V133.242V122.599V122.099H123.064H59.2083H58.7083V122.599V133.242Z"
