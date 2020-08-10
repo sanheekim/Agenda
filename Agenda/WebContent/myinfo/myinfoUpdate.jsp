@@ -8,6 +8,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+
+	#back {
+		background-color: black;
+		color: white;
+		cursor: pointer;
+	}
+
+</style>
 </head>
 <body>
 <form action="MyinfoController?command=myinfoUpdate" method="post">
@@ -32,6 +41,7 @@
 		<tr>
 			<td>
 				<input type="submit" value="수정"/>
+				<input id="back" type="button" onclick="location.href=location.href='${pageContext.request.contextPath}/MyinfoController?command=myinfo&member_id=${dto.member_id }'" value="돌아가기">
 			</td>
 		</tr>
 	</table>
