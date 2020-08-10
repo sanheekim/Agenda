@@ -47,7 +47,7 @@
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="10"><input id="back" type="button" onclick="location.href='main/main.jsp'" value="돌아가기"></td>
+				<td colspan="10"><input id="back" type="button" onclick="location.href='${pageContext.request.contextPath}/MyinfoController?command=myinfo&member_id=${logindto.member_id }'" value="돌아가기"></td>
 			</tr>
 		</tfoot>
 	</table>
