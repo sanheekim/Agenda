@@ -8,6 +8,15 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자페이지 - 내 정보 수정 - 수정</title>
+<style type="text/css">
+
+	#back {
+		background-color: black;
+		color: white;
+		cursor: pointer;
+	}
+
+</style>
 </head>
 <body>
 <form action="adController?command=admyinfoUpdate" method="post">
@@ -32,6 +41,7 @@
 		<tr>
 			<td>
 				<input type="submit" value="수정"/>
+				<input id="back" type="button" onclick="location.href=location.href='${pageContext.request.contextPath}/adController?command=admyinfo&member_id=${logindto.member_id }'" value="돌아가기">
 			</td>
 		</tr>
 	</table>

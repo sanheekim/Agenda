@@ -7,13 +7,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>내 정보 수정</title>
+<style type="text/css">
+	
+	#back {
+		background-color: black;
+		color: white;
+		cursor: pointer;
+	}
+	
+</style>
 </head>
 <body>
 <form action="MyinfoController" method="post" >
 <input type="hidden" name="command" value="myinfoUpdateform">
 <input type="hidden" name="member_id" value="${dto.member_id}">
-	<table>
+	<table border="1">
 		<tr>
 			<th>아이디</th>
 			<td>${dto.member_id}</td>
@@ -31,7 +40,7 @@
 			<td>${dto.member_addr}</td>
 		</tr>
 		<tr>
-			<td>
+			<td colspan="10">
 				<input type="submit" value="수정"/>
 				<input type="button" value="회원탈퇴" onclick="location.href='${pageContext.request.contextPath}/MyinfoController?command=myinfoDelete&member_id=${logindto.member_id }'"/> 
 				<input type="button" value="후원내역조회" onclick="location.href='${pageContext.request.contextPath}/dnController?command=dnlist&member_id=${logindto.member_id }'"/>

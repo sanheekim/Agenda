@@ -9,13 +9,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마이페이지 개인후원내역조회 (특정 아이디 뽑아서 조회되도록 해야 함)</title>
+<title>개인후원내역조회</title>
 <style type="text/css">
 
 	#allreceipt {
 		width: 100vw;
 		height: 100vh;
 		background-color: white;
+	}
+	
+	#back {
+		background-color: black;
+		color: white;
+		cursor: pointer;
 	}
 	
 </style>

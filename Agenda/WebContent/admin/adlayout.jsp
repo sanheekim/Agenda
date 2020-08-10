@@ -114,11 +114,11 @@
 	</div>
 	
 	<div id="ad_bottom">
-			<div class="ad_box" onclick="location.href='../adController?command=admyinfo&member_id=${logindto.member_id }'">
+			<div class="ad_box" onclick="location.href='${pageContext.request.contextPath}/adController?command=admyinfo&member_id=${logindto.member_id }'">
 			<span>내 정보 수정</span>
 			<img class="icon" src="image/info.png" />
 			</div>
-			<div class="ad_box" onclick="location.href='../adController?command=allMember'">
+			<div class="ad_box" onclick="location.href='${pageContext.request.contextPath}/adController?command=allMember'">
 			<span>회원 정보 관리</span>
 			<img class="icon" src="image/search.png" />
 			</div>
@@ -126,7 +126,7 @@
 			<span>전체 채팅기록</span>
 			<img class="icon" src="image/chat.png" />
 			</div>
-			<div class="ad_box" onclick="location.href='../dnController?command=alldnlist'">
+			<div class="ad_box" onclick="location.href='${pageContext.request.contextPath}/dnController?command=alldnlist'">
 			<span>전체 후원기록</span>
 			<img class="icon" src="image/qr.png" />
 			</div>
