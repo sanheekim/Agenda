@@ -24,10 +24,38 @@
 		cursor: pointer;
 	}
 	
+	#myreceipt{
+		background-color: whitesmoke;
+		width : 100%;
+		height : 100vh;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+	
+	table{
+		border-collapse: collapse;
+		margin-top : 100px;
+		margin-bottom: 50px;
+	}
+	
+	tr,td{
+		padding : 5px;
+	}
+	
 </style>
 
 </head>
 <body>
+	<c:choose>
+    	<c:when test="${empty logindto }">
+    		<jsp:include page="../header/header.jsp" />
+    	</c:when>
+    	<c:otherwise>
+    		<jsp:include page="../header/loginMain.jsp" />
+    	</c:otherwise>
+	</c:choose>
 
 
 <div id="myreceipt">
@@ -59,5 +87,6 @@
 	</table>
 </div>
 
+<jsp:include page="../footer/mainFooter.jsp"></jsp:include>
 
 </body>
