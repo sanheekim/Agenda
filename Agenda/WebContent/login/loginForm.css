@@ -4,14 +4,26 @@
 @font-face {font-family: 'Nanum Gothic Light'; src: url('../font/NanumBarunGothicLight.ttf')}
 @font-face {font-family: 'Nanum Gothic Bold'; src: url('../font/NanumBarunGothicBold.ttf')}
 @font-face {font-family: 'Nanum Gothic Ultra Light';src: url('../font/NanumBarunGothicUltraLight.ttf')}
-
+*{
+	margin:0px;
+	padding:0xp;
+}
 body {
  font-family: 'Nanum Gothic Light';
 
  
 }
+
+a:link {text-decoration: none; color: grey;}
+a:visited {text-decoration: none; color: grey;}
+a:active {text-decoration: none; color: grey;}
+a:hover {text-decoration: underline; color: red;}
 .first{
 	height:100vh;
+	background-color: whitesmoke;
+	display:flex;
+	 justify-content: center;
+	 align-items:center;
 }
 .login__title{
 	font-family: 'Nanum Gothic Bold';
@@ -32,8 +44,9 @@ input[type="password"] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom:100px;
  /*  border: 2px solid red; */
-  margin-top:200px;
+
    
   
 }
@@ -43,7 +56,7 @@ input[type="password"] {
   align-items: center;
   justify-content: center;
  
-  justify-content: space-between;
+  
 }
 .login__icon {
   width: 20px;
@@ -159,3 +172,6 @@ span.psw {
 	height:35px;
 }
 
+.forgotpw{
+	color:grey;
+}
