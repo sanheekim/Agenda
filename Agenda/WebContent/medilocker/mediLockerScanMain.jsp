@@ -52,7 +52,7 @@
 						<c:forEach items="${list }" var="dto">
 							<div class="listItem">
 							<c:forTokens items="${dto.pres_mediname }" delims="," var="name">
-								<a href="#">${name }</a>
+								<a onclick="detailApi();">${name }</a>
 							</c:forTokens>
 							</div>
 						</c:forEach>

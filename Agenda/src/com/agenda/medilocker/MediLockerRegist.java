@@ -41,18 +41,18 @@ public class MediLockerRegist {
 					if(str_1.equals(item_name)) { // 추출된 문자와 조회된 item_name이 완벽하게 일치할 때
 						System.out.println("toStr : " + item_name );
 						
-						if(strArr[0].equals(subStr)) {
-							dto.setPres_mediname(subStr);
+						if(strArr[0].equals(item_name)) {
+							dto.setPres_mediname(item_name);
 							dao.insert(dto);
 						}else {
-							int idx = dupArr.indexOf(subStr);
+							int idx = dupArr.indexOf(item_name);
 							String mediadd = "";
 							for(int j = 0 ; j < idx; j++) {
 								mediadd += (j == 0)? dupArr.get(0): "," + dupArr.get(j) ;
 							}
 							System.out.println("mediadd : " + mediadd);
 							dto.setPres_mediname(mediadd);
-							dto.setPres_medinameadd(","+subStr);
+							dto.setPres_medinameadd(","+item_name);
 							dao.update(dto);
 						}
 					}else if(str_1.equals(subStr)) { // 추출된 문자와 추출된 문자의 길이만큼 잘라낸 item_name이 일치할 때
@@ -87,18 +87,18 @@ public class MediLockerRegist {
 					if(str_1.equals(item_name)) { // 추출된 문자와 조회된 item_name이 완벽하게 일치할 때
 						System.out.println("toStr : " + item_name );
 						
-						if(strArr[0].equals(subStr)) {
-							dto.setPres_mediname(subStr);
+						if(strArr[0].equals(item_name)) {
+							dto.setPres_mediname(item_name);
 							dao.insert(dto);
 						}else {
-							int idx = dupArr.indexOf(subStr);
+							int idx = dupArr.indexOf(item_name);
 							String mediadd = "";
 							for(int i = 0 ; i < idx; i++) {
 								mediadd += (i == 0)? dupArr.get(0): "," + dupArr.get(i) ;
 							}
 							System.out.println("mediadd : " + mediadd);
 							dto.setPres_mediname(mediadd);
-							dto.setPres_medinameadd(","+subStr);
+							dto.setPres_medinameadd(","+item_name);
 							dao.update(dto);
 						}
 					}else if(str_1.equals(subStr)) { // 추출된 문자와 추출된 문자의 길이만큼 잘라낸 item_name이 일치할 때
