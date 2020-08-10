@@ -81,7 +81,6 @@ public class RegistController extends HttpServlet {
 			System.out.println(member_enabled);
 			System.out.println(member_role);
 			System.out.println(member_token);
-			System.out.println(member_salt);
 			System.out.println(member_phone);
 			
 			System.out.println(SHA256.getEncryptSaltFixed(member_email));
@@ -103,7 +102,7 @@ public class RegistController extends HttpServlet {
 				if (res) {	
 					
 					//out.println("<scipt>alert('회원가입 성공'); location.href='loginMain.jsp';</script>");
-					registResponse("아괜다 회원이 되신걸 축하드립니다.", "main/main.jsp", response);
+					registResponse(member_id + " 님 " + " 아괜다 회원이 되신걸 축하드립니다.", "main/main.jsp", response);
 					//response.sendRedirect("/regist/registForm.jsp");
 					
 				} else {
@@ -117,16 +116,7 @@ public class RegistController extends HttpServlet {
 				//이러면 인증 코드 달라서 통과 X
 				System.out.println("인증코드가 올바르지 않음");
 			}
-			
-//		} else if (command.equals("login")) {
-//			String member_id = request.getParameter("member_id");
-//			RegistDto dto = dao.getSaltId(member_id);
-//			String member_pw = SHA256.getEncrypt(request.getParameter("member_pw"), dto.getMember_salt());
-//			dto = dao.login(member_id, member_pw);
-			
-//			HttpSession session1 = request.getSession(); //세션받는거
-//			session1.setAttribute("AG_MEMBER", dto);
-			
+						
 		} else if (command.equals("emailValid")) {
 			System.out.println("4-1");
 			response.setContentType("application/text");
