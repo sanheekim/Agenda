@@ -63,4 +63,24 @@ public class MediLockerDao extends MediLockerSqlMapConfig {
 		}
 		return res;
 	}
+	
+	public int delete(int pres_no) {
+		SqlSession session = null;
+		int res = 0;
+		
+		try {
+			session = getSqlSessionFactory().openSession(false);
+			res = session.delete(namespace+"delete", pres_no);
+			
+			if(res > 0) {
+				session.commit();
+			}
+		} catch (Exception e) {
+			System.out.println("[ERROR] 3. 4. delete");
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+		return res;
+	}
 }

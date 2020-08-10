@@ -1,10 +1,69 @@
+const key ='?' + encodeURIComponent('ServiceKey') + '='+'BfXgu8Nrg94kP5UMKtnT32kMX6AUp1kzvIOupvhUowIXqupdnwrP0XSpWIeXNo1zQ%2BYvNT7NAEWM%2BL5P5E3Shw%3D%3D';
 $(function(){
-
 })
 function upLoad(){
-   $("#popUp").show();
+    $("#popUp").fadeIn();
 }
 
+function closeBtn(){
+	$(".selectFile").val('');
+    $("#popUp").hide();
+}
+
+function detailApi(name){
+	$("td").eq(0).text(name);
+    $("#detailInfo").fadeIn();
+    $.ajaxSettings.traditional = true; //js에서 java로 배열을 보낼 때 해줘야하는 설정
+    let item_name = '&' + encodeURIComponent('item_name') + '='+ encodeURIComponent(name);
+    $.ajax({
+        type: "GET",
+        url: "http://apis.data.go.kr/1470000/MdcinGrnIdntfcInfoService/getMdcinGrnIdntfcInfoList" + key + item_name,
+        dataType: "xml",
+        success: function (xml) {
+            let obj = conv2json(xml);
+            let item = obj.response.body.items;    
+            let item_image = item.item.ITEM_IMAGE;
+            console.log(item);
+            if(item !== null){
+                $("#ITEM_IMAGE").hide();
+            }else{
+                $("#ITEM_IMAGE").attr("src",item_image);
+            }
+            //else조건 해결해야함
+            
+        },
+        error: function(){
+            console.log("데이터없음");
+        }
+    });
+    
+    $.ajax({
+        type: "GET",
+        url: "http://apis.data.go.kr/1471057/MdcinPrductPrmisnInfoService/getMdcinPrductItem" + key + item_name,
+        dataType: "xml",
+        success: function (xml) {
+            let obj = conv2json(xml);
+            console.log(obj);
+          	let item1 = obj.response.body.items.item.EE_DOC_DATA.DOC.SECTION.ARTICLE.PARAGRAPH;
+          	let item3 = obj.response.body.items.item.UD_DOC_DATA.DOC.SECTION.ARTICLE.PARAGRAPH;
+            let effect = item1['#cdata'];
+            let capacity = item3['#cdata'];
+          	$("td").eq(2).text(effect);
+          	$("td").eq(3).text(capacity);
+        },
+        error : function(){
+        	console.log("상세정보없음");
+        }
+    });
+}
+
+function closeInfo(){
+
+    $("#ITEM_IMAGE").attr("src","");
+    $("td").eq(3).text("");
+    $("td").eq(4).text("");
+	$("#detailInfo").hide();
+}
 function test11(){
 var ducks = ["첫째 오리", "둘째 오리", "셋째 오리", "넷째 오리", "다섯째 오리"]
 var delaySec = 2000;
@@ -24,6 +83,7 @@ function fileUpload(){
     let scanStr;
     //var url = ${pageContext.request.contextPath}+"/MediLockerScanController";
         if($(".selectFile").val()){
+            $("#scanIng").show();
             console.log("구글비전 스캔 시작 준비");
                $.ajax({
                 type: "POST",
@@ -43,9 +103,10 @@ function fileUpload(){
                 //}
                 if(strArr == null){
                     alert("추출된 문자열이 없습니다");
+                    location.reload();
                     }
                     else{
-                        var key = '?' + encodeURIComponent('ServiceKey') + '='+'BfXgu8Nrg94kP5UMKtnT32kMX6AUp1kzvIOupvhUowIXqupdnwrP0XSpWIeXNo1zQ%2BYvNT7NAEWM%2BL5P5E3Shw%3D%3D';
+                    
                         for(let i in strArr){
                             (function(ii) {
                                 setTimeout(() => {
@@ -53,7 +114,7 @@ function fileUpload(){
                                     let item_name = '&' + encodeURIComponent('item_name') + '='+ encodeURIComponent(strArr[i]);
                                     let item_str = strArr[i];
                                     let jsonData;
-                                    console.log(strArr[i]);
+                                    console.log(strArr);
                                     console.log("item_name : " + item_name);
                                     console.log(key);
                                     //let : 지역변수 , const : 상수
@@ -94,6 +155,7 @@ function fileUpload(){
                                     });     
                                 }, ii * 1000);
                             })(i);
+                           ;
                         }
                     }
                 },
@@ -102,7 +164,10 @@ function fileUpload(){
                 },
             })
             .done(function(){
-
+                setTimeout(() => {
+                    alert("스캔이 완료되었습니다!");
+                    location.reload();
+                }, 5000);
             });
 
 
@@ -122,13 +187,29 @@ function conv2json(dom){
     return jsonObj;
 }
 
-function loop(x){
-    setTimeout(function(){
-        console.log(x);
-    }, 1000*(x+1));
-}
 
-function detailApi(){
+function deletePres(pres_no){
+    var del = confirm("삭제하시겠습니까?");
+    if(del){
+    $.ajax({
+        type: "POST",
+        url: "./MediLockerRegistController",
+        data: {command : "delete", pres_no : pres_no},
+        success: function (int) {
+            console.log(int);
+            var res = int;
+        },
+    })
+    .done(function(res){
+        if(res > 0){
+            alert("삭제 성공!");
+            location.reload();    
+        }else{
+            alert("삭제 실패");
+            location.reload();
+        }
+    })
+    }
 }
 
 

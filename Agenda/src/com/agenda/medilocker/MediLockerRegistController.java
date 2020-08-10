@@ -1,6 +1,7 @@
 package com.agenda.medilocker;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,6 +65,13 @@ public class MediLockerRegistController extends HttpServlet {
 			String strArr = request.getParameter("strArr");
 			String str = request.getParameter("str");
 			rg.MediRegist(strJson, strArr, str, member_id);
+		} else if(command.equals("delete")) {
+			int pres_no = Integer.parseInt(request.getParameter("pres_no"));
+			int res = dao.delete(pres_no);
+			
+				PrintWriter pr = response.getWriter();
+				pr.println(res);
+			
 		}
 	}
 

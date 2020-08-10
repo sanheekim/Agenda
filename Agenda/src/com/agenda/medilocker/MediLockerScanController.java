@@ -75,7 +75,7 @@ public class MediLockerScanController extends HttpServlet {
 				Enumeration files = multi.getFileNames();
 				String str = (String)files.nextElement();
 				
-				file=multi.getFilesystemName(str);//파일이름 중복시 변경된 이름
+				file =multi.getFilesystemName(str);//파일이름 중복시 변경된 이름
 				onFile = multi.getOriginalFileName(str);//원래 파일 이름
 				
 				filename = realfolder + "\\" + onFile;

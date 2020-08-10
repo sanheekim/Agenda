@@ -3,7 +3,7 @@
 <mapper namespace="MediLockerRegist">
 	
 	<select id="selectList" parameterType="String" resultType="MediLockerDto">
-		SELECT MEMBER_ID, PRES_NO, PRES_MEDINAME, PRES_DATE, PRES_VIEW, PRES_NAME, PRES_MEDINAMEADD FROM AG_PRESCRIPTION WHERE MEMBER_ID = #{member_id}
+		SELECT MEMBER_ID, PRES_NO, PRES_MEDINAME, PRES_DATE, PRES_VIEW, PRES_NAME, PRES_MEDINAMEADD FROM AG_PRESCRIPTION WHERE MEMBER_ID = #{member_id} ORDER BY PRES_DATE DESC
 	</select>
 	<select id="selectOne" resultType="MediLockerDto">
 		SELECT PRES_MEDINAMEADD FROM AG_PRESCRIPTION 
@@ -14,4 +14,8 @@
 	<update id="update" parameterType="MediLockerDto">
 		UPDATE AG_PRESCRIPTION SET PRES_MEDINAME = #{pres_mediname}||#{pres_medinameadd} WHERE PRES_MEDINAME = #{pres_mediname}
 	</update>
+	
+	<delete id="delete" parameterType="int" >
+		DELETE FROM AG_PRESCRIPTION WHERE PRES_NO = #{pres_no}
+	</delete>
 </mapper>
