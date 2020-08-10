@@ -44,8 +44,6 @@ if (navigator.geolocation) {
 				current.appendChild(currentClick);
 				mapHeader.appendChild(current);
 				
-				console.log(mapHeader);
-
 				current.addEventListener('click', function() {
 					setBounds();
 				})
@@ -136,11 +134,9 @@ if (navigator.geolocation) {
 
 					} else if (status === kakao.maps.services.Status.ZERO_RESULT) {
 						alert("근처에 약국이 없습니다");
-						// 검색결과가 없는경우 해야할 처리가 있다면 이곳에 작성해 주세요
 
 					} else if (status === kakao.maps.services.Status.ERROR) {
 						alert("검색결과 오류");
-						// 에러로 인해 검색결과가 나오지 않은 경우 해야할 처리가 있다면 이곳에 작성해 주세요
 
 					}
 				}
@@ -168,8 +164,6 @@ if (navigator.geolocation) {
 						var marker = addMarker(new kakao.maps.LatLng(
 								places[i].y, places[i].x), order), itemEl = getListItem(
 								i, places[i]); // 검색 결과 항목 Element를 생성합니다;
-
-						/* 고쳐야할 부분 */
 
 						// 마커와 검색결과 항목을 클릭 했을 때
 						// 장소정보를 표출하도록 클릭 이벤트를 등록합니다
@@ -223,22 +217,11 @@ if (navigator.geolocation) {
 				// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
 				function addMarker(position, order) {
 					var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png', // 마커
-					// 이미지
-					// url,
-					// 스프라이트
-					// 이미지를
-					// 씁니다
 					imageSize = new kakao.maps.Size(27, 28), // 마커 이미지의 크기
 					imgOptions = {
 						spriteSize : new kakao.maps.Size(72, 208), // 스프라이트
 						// 이미지의 크기
 						spriteOrigin : new kakao.maps.Point(46, (2 * 36)), // 스프라이트
-						// 이미지
-						// 중
-						// 사용할
-						// 영역의
-						// 좌상단
-						// 좌표
 						offset : new kakao.maps.Point(11, 28)
 					// 마커 좌표에 일치시킬 이미지 내에서의 좌표
 					}, markerImage = new kakao.maps.MarkerImage(imageSrc,
@@ -339,5 +322,5 @@ if (navigator.geolocation) {
 			});
 
 } else {
-	console.log("Geolocation을 지원하지 않는 브라우저 입니다.");
+	console.log("현재 위치 서비스를 지원하지 않는 브라우저입니다.");
 }

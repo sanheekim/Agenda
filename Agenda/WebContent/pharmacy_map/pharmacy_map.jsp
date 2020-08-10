@@ -10,10 +10,13 @@
 <html>
 <head>
 <meta charset="utf-8">
+<title>Agenda</title>
 <link rel="stylesheet" type="text/css" href="pharmacy_map.css">
-<script src="pharmacy_map.js" defer="defer"></script>
+<script src="pharmacy_map.js" defer></script>
 </head>
 <body>
+
+	<!-- 헤더 -->
 	<c:choose>
     	<c:when test="${empty logindto }">
     		<jsp:include page="../header/header.jsp" />
@@ -36,10 +39,11 @@
 		</div>
 	</section>
 	
+	<!-- 풋터 -->
 	<jsp:include page="../footer/mainFooter.jsp" />
-
-</body>
+	
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bbd355e231cd5468c69e01f2e5801a5d&libraries=services"></script>
+</body>
 
 </html>
