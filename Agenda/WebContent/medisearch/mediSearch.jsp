@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>   
 <%request.setCharacterEncoding("UTF-8");%>
 <%response.setContentType("text/html; charset=UTF-8");%>
 <!DOCTYPE html>
@@ -60,7 +60,14 @@ $(function(){
 <body>
 
 	<header>
-		<jsp:include page="../header/header.jsp"></jsp:include>
+		<c:choose>
+    		<c:when test="${empty logindto }">
+    			<jsp:include page="../header/header.jsp" />
+    		</c:when>
+    		<c:otherwise>
+    			<jsp:include page="../header/loginMain.jsp" />
+    		</c:otherwise>
+		</c:choose>
 	</header>
 	<div id="mainDiv">
 		<div class="subDiv">
