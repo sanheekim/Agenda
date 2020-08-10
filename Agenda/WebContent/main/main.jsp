@@ -140,6 +140,7 @@
 	<section class="section third area">
 	
 		<div class="donation-wrapper">
+			<span></span><span></span><span></span>
 			<div class="donation-content-wrapper">
 				<p>A Cup of Coffee </p>
 				<c:choose>
