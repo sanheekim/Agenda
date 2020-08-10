@@ -1,8 +1,16 @@
 package com.agenda.regist;
 
-import java.io.IOException;
+import java.io.IOException; 
 import java.io.PrintWriter;
+import java.util.Properties;
 
+import javax.mail.Address;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,14 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import javax.mail.Authenticator;
-import javax.mail.Transport;
-import javax.mail.Message;
-import javax.mail.internet.InternetAddress;
-import javax.mail.Address;
-import javax.mail.internet.MimeMessage;
-import javax.mail.Session;
-import java.util.Properties;
+
 
 @WebServlet("/NaverRegistController")
 public class NaverRegistController extends HttpServlet {
@@ -73,13 +74,10 @@ public class NaverRegistController extends HttpServlet {
 		}else if (command.equals("Naverregistres")){
 			// 1.
 			String member_id = request.getParameter("member_id");
-			//String member_id = (String) session.getAttribute("member_id");
-			String member_salt = Password.generateSalt();
-			String member_pw = Password.getEncrypt(request.getParameter("member_pw"), member_salt);
+			String member_salt = request.getParameter("member_salt");
+			String member_pw = request.getParameter("member_pw");
 			String member_name = request.getParameter("member_name");
-			//String member_name = (String) session.getAttribute("member_name");
 			String member_email = request.getParameter("member_email");
-			//String member_email = (String) session.getAttribute("member_email");
 			String member_email_valid = request.getParameter("member_email_valid");
 			String member_addr = request.getParameter("member_addr");
 			String member_enabled = request.getParameter("member_enabled");
@@ -88,6 +86,7 @@ public class NaverRegistController extends HttpServlet {
 			String member_phone = request.getParameter("member_phone"); 
 			
 			System.out.println(member_id);
+			System.out.println(member_salt);
 			System.out.println(member_pw);
 			System.out.println(member_name);
 			System.out.println(member_email);
@@ -96,12 +95,8 @@ public class NaverRegistController extends HttpServlet {
 			System.out.println(member_enabled);
 			System.out.println(member_role);
 			System.out.println(member_token);
-			System.out.println(member_salt);
 			System.out.println(member_phone);
-			
-			System.out.println(SHA256.getEncryptSaltFixed(member_email));
-			System.out.println(member_id);
-			
+
 			
 			if(member_email_valid.equals(SHA256.getEncryptSaltFixed(member_email)))
 			{
@@ -114,12 +109,12 @@ public class NaverRegistController extends HttpServlet {
 				System.out.println(dto);
 				System.out.println("2");
 				// 2.
-				boolean res = dao.insertUser(dto);
+				boolean res = dao.insertNaver(dto);
 				System.out.println(res);
 				if (res) {	
 					
 					//out.println("<scipt>alert('회원가입 성공'); location.href='loginMain.jsp';</script>");
-					registResponse(member_id + " 님 " + " 아괜다 회원이 되신걸 축하드립니다.", "main/main.jsp", response);
+					registResponse(member_id + " 님 " + " 아괜다 회원이 되신걸 축하드립니다. 다시 로그인 해주시길 바랍니다.", "main/main.jsp", response);
 					//response.sendRedirect("/regist/registForm.jsp");
 					
 				} else {
@@ -131,12 +126,13 @@ public class NaverRegistController extends HttpServlet {
 			}
 			else {
 				//이러면 인증 코드 달라서 통과 X
-				System.out.println("3");
+				System.out.println("인증코드가 올바르지 않음");
 			}
+						
 		} else if (command.equals("emailValid")) {
 			System.out.println("4-1");
 			response.setContentType("application/text");
-			String host = "http://localhost:8787/Agenda/NaverRegistController/";		
+			String host = "http://localhost:8787/Agenda/RegistController/";		
 			String from = "rldndvxt1122@gmail.com";		//보내는사람
 			String to = request.getParameter("email");
 			String code = SHA256.getEncryptSaltFixed(to);

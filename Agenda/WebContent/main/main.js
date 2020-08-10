@@ -1,3 +1,38 @@
+//gsap
+
+const firstBg = document.querySelector('#first-bg');
+const firstBgAddition = document.querySelector('#first-bg-addition');
+const firstWrapper = document.querySelector('.first-wrapper');
+const headerMain = document.querySelector('#header');
+
+const firstTL = gsap.timeline()
+firstTL.from([firstBg, firstBgAddition], {
+	duration : 1,
+	width : 0,
+	skewX : 4,
+	ease : 'power3.inOut',
+	stagger : {
+		amount : .2
+	}
+}).from(headerMain, {
+	y: 10,
+	opacity : 0,
+	duration : .8,
+	ease: 'power3.inOut'
+}).from(firstWrapper, {
+	delay : -0.5,
+	opacity : 0,
+	y: 80,
+	duration : .8, 
+	ease : 'power3.inOut',
+	stagger : {
+		amount : 0.2
+	}
+})
+
+
+
+
 /* 내려올때 header 컬러 변경 */
 const header = document.querySelector("#header");
 const headerHeight = header.getBoundingClientRect().height;
@@ -107,7 +142,6 @@ var TxtRotate = function (el, toRotate, period) {
 	const AgendaText = document.querySelector(".agendaText");
 	const agendaText = AgendaText.textContent;
 	const splitText = agendaText.split("");
-	console.log(splitText);
 	
 	AgendaText.textContent ="";
 	for(let b=0; b<splitText.length; b++){
@@ -179,6 +213,7 @@ document.addEventListener('scroll', () => {
   }
 });
 
+
 // Handle click on the "arrow up" button
 arrowUp.addEventListener("click", () => {
   scrollIntoView(".first");
@@ -188,6 +223,7 @@ function scrollIntoView(selector){
 	const scrollTo = document.querySelector(selector);
 	scrollTo.scrollIntoView({behavior:'smooth'});
 }
+
 
 
 //----------------------------------------------------------------

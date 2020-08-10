@@ -73,13 +73,10 @@ public class KakaoRegistController extends HttpServlet {
 		}else if (command.equals("Kakaoregistres")){
 			// 1.
 			String member_id = request.getParameter("member_id");
-			//String member_id = (String) session.getAttribute("member_id");
-			String member_salt = Password.generateSalt();
-			String member_pw = Password.getEncrypt(request.getParameter("member_pw"), member_salt);
+			String member_salt = request.getParameter("member_salt");
+			String member_pw = request.getParameter("member_pw");
 			String member_name = request.getParameter("member_name");
-			//String member_name = (String) session.getAttribute("member_name");
 			String member_email = request.getParameter("member_email");
-			//String member_email = (String) session.getAttribute("member_email");
 			String member_email_valid = request.getParameter("member_email_valid");
 			String member_addr = request.getParameter("member_addr");
 			String member_enabled = request.getParameter("member_enabled");
@@ -88,6 +85,7 @@ public class KakaoRegistController extends HttpServlet {
 			String member_phone = request.getParameter("member_phone"); 
 			
 			System.out.println(member_id);
+			System.out.println(member_salt);
 			System.out.println(member_pw);
 			System.out.println(member_name);
 			System.out.println(member_email);
@@ -96,11 +94,7 @@ public class KakaoRegistController extends HttpServlet {
 			System.out.println(member_enabled);
 			System.out.println(member_role);
 			System.out.println(member_token);
-			System.out.println(member_salt);
 			System.out.println(member_phone);
-			
-			System.out.println(SHA256.getEncryptSaltFixed(member_email));
-			System.out.println(member_id);
 			
 			
 			if(member_email_valid.equals(SHA256.getEncryptSaltFixed(member_email)))

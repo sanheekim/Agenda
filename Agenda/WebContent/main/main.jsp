@@ -15,6 +15,7 @@
 <title>Agenda</title>
 <script src="https://cdn.bootpay.co.kr/js/bootpay-3.2.6.min.js" type="application/javascript"></script>
 <script src="http://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.4.2/gsap.min.js" integrity="sha512-pCPP9sfLW9T7EZiw725jUl+ux032sjGhFE+ZAx00C1iO55ZmZJWpfNGbDf2ZF5b0UqxRqSW548PbZEWmH+S7pA==" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css"href="${pageContext.request.contextPath}/main/main.css">
 <body>
 	<!-- 헤더 -->
@@ -33,6 +34,8 @@
 	
 	<!-- 메인 -->
 	<section class="section first area">
+		<div id="first-bg"> </div>
+		<div id="first-bg-addition"> </div>
 		<div class="first-wrapper">
 			<h1> Agenda is 
 				<span class="txt-rotate" data-period="2000" data-rotate='[ "Simple.", "Good.", "Fun.", "Easy to use.", "" ]'></span>
