@@ -1,6 +1,8 @@
 <%@page import="com.agenda.admin.adDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+   
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,12 +19,42 @@
 		color: white;
 		cursor: pointer;
 	}
+	
+	section{
+		width : 100%;
+		height : 100vh;
+		display : flex;
+		justify-content: center;
+		align-items: center;
+		background-color: whitesmoke;
+	}
+	
+	table{
+		border-collapse: collapse;
+	}
+	
+	tr,td{
+		padding : 5px;
+	}
 </style>
 </head>
 <body>
+
 <%
 	adDto dto = (adDto) request.getAttribute("dto");
 %>
+
+	<c:choose>
+    	<c:when test="${empty logindto }">
+    		<jsp:include page="../header/header.jsp" />
+    	</c:when>
+    	<c:otherwise>
+    		<jsp:include page="../header/loginMain.jsp" />
+    	</c:otherwise>
+	</c:choose>
+	
+	
+	<section>
 	<form action="../Agenda/adController?command=updateres" method="post">
 	<input type="hidden" name="command" value="member_id"/>
 	<input type="hidden" name="command" value="member_role"/>
@@ -59,7 +91,9 @@
 			</tr>
 		</table>
 	</form>	
+	</section>
 
-
+	<!-- 풋터-->
+	<jsp:include page="../footer/mainFooter.jsp" />
 </body>
 </html>

@@ -17,9 +17,10 @@
 
 	#allmemberlist {
 		width: 100vw;
-		height: 100vh;
 		display: flex;
 		justify-content: center;
+		height : 100%;
+		background-color: whitesmoke;
 	}
 	
 	#title {
@@ -38,6 +39,18 @@
 		cursor: pointer;
 	}
 	
+	
+	table{
+		border-collapse: collapse;
+		width : 1200px;
+		margin-top : 100px;
+		margin-bottom: 50px;
+	}
+	
+	tr,td{
+		padding : 5px;
+	}
+	
 </style>
 <script type="text/javascript">
 
@@ -51,7 +64,16 @@ function changeRole(member_id){
 <%
 	List<adDto> list = (List<adDto>)request.getAttribute("list");
 %>
-
+<c:choose>
+    	<c:when test="${empty logindto }">
+    		<jsp:include page="../header/header.jsp" />
+    	</c:when>
+    	<c:otherwise>
+    		<jsp:include page="../header/loginMain.jsp" />
+    	</c:otherwise>
+	</c:choose>
+	
+	<section>
 <div id="allmemberlist">
 	<table border="1">
 		<col width="100"/>
@@ -111,5 +133,12 @@ function changeRole(member_id){
 	</table>
 
 </div>
+
+</section>
+
+<!-- 풋터-->
+	<jsp:include page="../footer/mainFooter.jsp" />
+	
+	
 </body>
 </html>

@@ -16,6 +16,18 @@
 	#allreceipt {
 		width: 100vw;
 		height: 100vh;
+		background-color: whitesmoke;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	table{
+		border-collapse: collapse;
+	}
+	
+	tr,td{
+		padding : 5px;
 	}
 	
 	#title {
@@ -33,6 +45,14 @@
 </head>
 <body>
 
+	<c:choose>
+    	<c:when test="${empty logindto }">
+    		<jsp:include page="../header/header.jsp" />
+    	</c:when>
+    	<c:otherwise>
+    		<jsp:include page="../header/loginMain.jsp" />
+    	</c:otherwise>
+	</c:choose>
 
 <div id="allreceipt">
 	<table border="1">
@@ -70,5 +90,7 @@
 	</table>
 </div>
 
-
+	<!-- 풋터-->
+	<jsp:include page="../footer/mainFooter.jsp" />
+	
 </body>

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -15,14 +16,55 @@
 		color: white;
 		cursor: pointer;
 	}
+	
+	section{
+		width : 100%;
+		height : 100vh;
+		background-color : whitesmoke;
+		display : flex;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	table{
+		border-collapse: collapse;
+		border : 1px solid black;
+		width: 400px;
+	}
+	
+	th,td{
+		padding : 10px;
+	}
+	
+	input{
+		padding : 3px 5px;
+		border-radius: 0px;
+		border : 1px solid gray;
+	}
+	
+	tr:last-child {
+	text-align: right;
+}
 
 </style>
 </head>
 <body>
+<!-- 헤더 -->
+	<c:choose>
+    	<c:when test="${empty logindto }">
+    		<jsp:include page="../header/header.jsp" />
+    	</c:when>
+    	<c:otherwise>
+    		<jsp:include page="../header/loginMain.jsp" />
+    	</c:otherwise>
+	</c:choose>
+	
+<!-- 섹션 -->
+<section>
 <form action="${pageContext.request.contextPath}/adController" method="post" >
 <input type="hidden" name="command" value="admyinfoUpdateform">
 <input type="hidden" name="member_id" value="${logindto.member_id }">
-	<table border="1">
+	<table>
 		<tr>
 			<th>아이디</th>
 			<td>${dto.member_id}</td>
@@ -40,7 +82,7 @@
 			<td>${dto.member_addr}</td>
 		</tr>
 		<tr>
-			<td colspan="4">
+			<td colspan="2">
 				<input type="submit" value="수정"/>
 				<input type="button" value="회원탈퇴" onclick="location.href='${pageContext.request.contextPath}/adController?command=admyinfoDelete&member_id=${logindto.member_id }'"/> 				
 				<input type="button" value="후원내역조회" onclick="location.href='${pageContext.request.contextPath}/dnController?command=dnlist&member_id=${logindto.member_id }'"/>
@@ -49,6 +91,10 @@
 		</tr>
 	</table>
 </form>
+</section>
 
+	<!-- 풋터-->
+	<jsp:include page="../footer/mainFooter.jsp" />
+	
 </body>
 </html>

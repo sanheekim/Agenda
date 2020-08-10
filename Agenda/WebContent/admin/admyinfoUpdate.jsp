@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
     
 <% request.setCharacterEncoding("UTF-8"); %>
 <% response.setContentType("text/html; charset=UTF-8"); %>    
@@ -15,10 +16,38 @@
 		color: white;
 		cursor: pointer;
 	}
+	
+	section{
+		width : 100%;
+		height : 100vh;
+		display : flex;
+		justify-content: center;
+		align-items: center;
+		background-color: whitesmoke;
+	}
+	
+	table{
+		border-collapse: collapse;
+	}
+	
+	tr,td{
+		padding : 5px;
+	}
 
 </style>
 </head>
 <body>
+
+	<c:choose>
+    	<c:when test="${empty logindto }">
+    		<jsp:include page="../header/header.jsp" />
+    	</c:when>
+    	<c:otherwise>
+    		<jsp:include page="../header/loginMain.jsp" />
+    	</c:otherwise>
+	</c:choose>
+	
+<section>
 <form action="adController?command=admyinfoUpdate" method="post">
 <input type="hidden" name="member_id" value="${logindto.member_id}">
 	<table>
@@ -46,6 +75,10 @@
 		</tr>
 	</table>
 </form>
+</section>
 
+	<!-- 풋터-->
+	<jsp:include page="../footer/mainFooter.jsp" />
+	
 </body>
 </html>
