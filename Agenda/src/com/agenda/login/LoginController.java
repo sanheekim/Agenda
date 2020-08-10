@@ -1,7 +1,16 @@
 package com.agenda.login;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Properties;
 
+import javax.mail.Address;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,12 +19,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.agenda.regist.Gmail;
 import com.agenda.regist.Password;
+import com.agenda.regist.SHA256;
+
+
 
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private Object member_id;
 
 	public LoginController() {
 		System.out.println("컨트롤러로 넘어옴");
@@ -39,7 +51,7 @@ public class LoginController extends HttpServlet {
 		String command = request.getParameter("command");
 		System.out.println("["+command+"]");
 		HttpSession session = request.getSession();
-		
+		PrintWriter out = response.getWriter();
 		
 		// 로그인페이지
 		if (command.equals("login")) {
@@ -147,33 +159,106 @@ public class LoginController extends HttpServlet {
 			System.out.println("Hi you can find your pw");
 			String member_name = request.getParameter("member_name");
 			String member_email = request.getParameter("member_email");
-			
+			String member_email_valid = request.getParameter("member_email_valid");
 			System.out.println(">>findname="+member_name);
 			System.out.println(">>findemail="+member_email);
+			System.out.println(">>인증번호찾기="+member_email_valid);
 			
-			LoginDto FindPwDto = new LoginDto();
 			
-			FindPwDto.setMember_name(member_name);
-			FindPwDto.setMember_email(member_email);
+			if(member_email_valid.equals(SHA256.getEncryptSaltFixed(member_email)))
+			{
+				System.out.println("<");
+				System.out.println(SHA256.getEncryptSaltFixed(member_email));
+				System.out.println(",");
+				System.out.println(member_email_valid);
+				System.out.println(">");
+//				//int member_no = Integer.parseInt(request.getParameter("member_no")); registfrom에 no값은 없기때문에 null값이 뜬다.
+//				
+//				dto = new LoginDto(member_name, member_email);
+//				
+//				System.out.println(dto);
+//				System.out.println("2");
+//				// 2.
+//				boolean res = dao.emailck(dto);
+//				System.out.println(res);
+//				if (res) {	
+//					
+//					System.out.println("되라좀");
+//					
+//				} else {
+//					
+//					System.out.println("ㅆ");
+//				}
+				LoginDto FindDto = new LoginDto();
+				FindDto.setMember_name(member_name);
+				FindDto.setMember_email(member_email);
+
+				dto = dao.findid(FindDto);
+				
+				if (dto != null) {
+					
+					String member_id = dto.getMember_id();
+					request.setAttribute("member_id",member_id);
+					loginResponse("인증번호가 일치합니다. 비밀번호를 재설정 하세요.","login/loginTemp.jsp",response);
 			
-			dto = dao.findid(FindPwDto);
-			
-			if(dto!=null) {
-				
-				String member_id = dto.getMember_id();
-				request.setAttribute("member_id",member_id);
-				loginResponse("인증번호를 가입한 메일로 발송했습니다.","login/loginTemp.jsp",response);
-				
-			}else {
-				
-				loginResponse("찾으시는 아이디가 존재하지 않습니다.","regist/registForm.jsp",response);
-				
+				} else {
+		
+					loginResponse("찾으시는 아이디가 존재하지 않습니다.","regist/registForm.jsp",response);					
+				}
+			}
+			else {
+				//이러면 인증 코드 달라서 통과 X
+				loginResponse("잘못된 인증번호 입니다. 다시 입력해주세요.","login/loginForgotPw.jsp",response);
 			}
 			
-			
-		}
+		} else if (command.equals("emailValid")) {
+			System.out.println("4-1");
+			response.setContentType("application/text");
+			String host = "http://localhost:8787/Agenda/LoginController/";		
+			String from = "rldndvxt1122@gmail.com";		//보내는사람
+			String to = request.getParameter("email");
+			String code = SHA256.getEncryptSaltFixed(to);
 
-		
+			//사용자에게 보낼 메시지
+			String subject = "회원가입을 위한 이메일 인증 메일입니다.";
+			String content = "인증코드 : "+code;
+
+			Properties p = new Properties();
+			p.put("mail.smtp.user", from);
+			p.put("mail.smtp.host", "smtp.googlemail.com");
+			p.put("mail.smtp.port", "465"); //TLS 587, SSL 465
+			p.put("mail.smtp.starttls.enable", "true");
+			p.put("mail.smtp.auth", "true");
+			p.put("mail.smtp.debug", "true");
+			p.put("mail.smtp.socketFactory.port", "465"); 
+			p.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+			p.put("mail.smtp.sockerFactory.fallback", "false");
+			System.out.println("4-2");
+			try {
+				Authenticator auth = new Gmail();
+				Session ses = Session.getInstance(p, auth);
+				ses.setDebug(true);
+				MimeMessage msg = new MimeMessage(ses);
+				msg.setSubject(subject);
+				Address fromAddr = new InternetAddress(from);
+				msg.setFrom(fromAddr);
+				Address toAddr = new InternetAddress(to);
+				msg.addRecipient(Message.RecipientType.TO, toAddr);
+				msg.setContent(content, "text/html; charset=UTF8");
+				Transport.send(msg);
+				String msgs = "메일 발송을 성공했습니다";
+				out.print(msgs);
+				out.flush();
+				System.out.println("4-3");
+			} catch (Exception e) {
+				System.out.println(e);
+				String msgs = "메일 주소를 확인 해 주세요";
+				out.print(msgs);
+				out.flush();
+				System.out.println("4-4");
+			} 
+		} 
+
 		 else if (command.equals("kakaologin")) {
 			 
 			 String member_id = request.getParameter("member_id");

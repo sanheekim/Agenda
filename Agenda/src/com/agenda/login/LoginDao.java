@@ -69,5 +69,35 @@ public class LoginDao extends LoginSqlMapConfig {
 		return logindto;
 	}
 	
+//	public boolean (LoginDto dto) {
+//		
+//		SqlSession session = null;
+//		int res = 0;
+//		
+//		try {
+//			session = getSqlSessionFactory().openSession(false);
+//			res = session.insert(namespace + "emai", dto);
+//			if(res > 0) {
+//				session.commit();
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			session.close();
+//		}
+//		return res > 0? true : false;
+//	}
+	public LoginDto emailck(LoginDto dto) {
+		SqlSession session = null;
+		LoginDto logindto = null;
+		try {
+			session = getSqlSessionFactory().openSession(false);
+			logindto = session.selectOne(namespace + "emailck", dto);
+		} catch (Exception e) {
 
+			e.printStackTrace();
+		}
+
+		return logindto;
+	}
 }
