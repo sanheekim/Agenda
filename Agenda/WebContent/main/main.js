@@ -1,3 +1,20 @@
+/* 내려올때 header 컬러 변경 */
+const header = document.querySelector("#header");
+const headerHeight = header.getBoundingClientRect().height;
+
+document.addEventListener("scroll", () => {
+
+/*  console.log(window.scrollY);
+  console.log(`headerHeight: ${headerHeight}`);*/
+
+  if (window.scrollY > headerHeight) {
+    header.classList.add("header--dark");
+  } else {
+    header.classList.remove("header--dark");
+  }
+});
+
+
 // 마우스커서
 let cousor = document.getElementById("cursor");
 let cousorArea = document.getElementsByClassName("area");
@@ -12,7 +29,6 @@ cousorArea[4].addEventListener("mousemove", function(e) {
 	showCursor(e);
 	cursor.style.zIndex="0";
 });
-
 
 for (var p = 5; p < cousorArea.length; p++){
 	cousorArea[p].addEventListener("mousemove", function(e) {
@@ -116,6 +132,7 @@ var TxtRotate = function (el, toRotate, period) {
 		timer = null;
 	}
 	
+	
 //스플릿스크롤
 function splitScroll() {
 	const controller = new ScrollMagic.Controller();
@@ -171,23 +188,6 @@ function scrollIntoView(selector){
 	const scrollTo = document.querySelector(selector);
 	scrollTo.scrollIntoView({behavior:'smooth'});
 }
-
-
-/* 내려올때 header 컬러 변경 */
-const header = document.querySelector("#header");
-const headerHeight = header.getBoundingClientRect().height;
-
-document.addEventListener("scroll", () => {
-
-/*  console.log(window.scrollY);
-  console.log(`headerHeight: ${headerHeight}`);*/
-
-  if (window.scrollY > headerHeight) {
-    header.classList.add("header--dark");
-  } else {
-    header.classList.remove("header--dark");
-  }
-});
 
 
 //----------------------------------------------------------------
