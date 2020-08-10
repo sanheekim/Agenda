@@ -92,7 +92,6 @@
 		background: #E5E5E5;
 	}
 	
-	
 </style>
 
 </head>
@@ -136,8 +135,6 @@
 		<jsp:include page="../footer/mainFooter.jsp"></jsp:include>
 	</footer>
 </div>
-
-<script type="text/javascript" src="adtransfer.js"></script>
 
 </body>
 </html>
