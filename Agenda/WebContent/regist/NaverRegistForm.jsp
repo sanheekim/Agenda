@@ -20,7 +20,8 @@
 	#header-bar {
 		display: flex;
 		cursor: pointer;
-		padding-left: 600px;
+		justify-content: center;
+		
 	}
 	
 	#header-bar img{
