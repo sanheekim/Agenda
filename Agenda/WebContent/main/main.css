@@ -1,7 +1,22 @@
-@font-face {font-family: 'Nanum Gothic'; src: url('../font/NanumBarunGothic.ttf') }
-@font-face {font-family: 'Nanum Gothic Light'; src: url('../font/NanumBarunGothicLight.ttf')}
-@font-face {font-family: 'Nanum Gothic Bold'; src: url('../font/NanumBarunGothicBold.ttf')}
-@font-face {font-family: 'Nanum Gothic Ultra Light';src: url('../font/NanumBarunGothicUltraLight.ttf')}
+@font-face {
+	font-family: 'Nanum Gothic';
+	src: url('../font/NanumBarunGothic.ttf')
+}
+
+@font-face {
+	font-family: 'Nanum Gothic Light';
+	src: url('../font/NanumBarunGothicLight.ttf')
+}
+
+@font-face {
+	font-family: 'Nanum Gothic Bold';
+	src: url('../font/NanumBarunGothicBold.ttf')
+}
+
+@font-face {
+	font-family: 'Nanum Gothic Ultra Light';
+	src: url('../font/NanumBarunGothicUltraLight.ttf')
+}
 
 * {
 	margin: 0px;
@@ -20,53 +35,53 @@ header {
 
 /* header 스크롤시  컬러 변경용 */
 #header.header--dark {
-  background-color: white;
-  opacity:1;
+	background-color: white;
+	opacity: 1;
 }
 
 /* 첫번째 */
-.first{
+.first {
 	width: 100%;
-	height : 100vh;
-	background-color : whitesmoke;	
+	height: 100vh;
+	background-color: whitesmoke;
 }
 
-.first h1, h2 {
-  font-weight: 200;
-}
-
-.first h1{
-  font-size: 3.5em;
-  font-family: 'Nanum Gothic';
-}
-
-.first p{
-  color: rgb(187, 187, 187);
-  font-size: 2em;
-  margin-right: 10px;
-}
-
-.first-wrapper{
+.first-wrapper {
 	width: 100%;
-	height : 100vh;
+	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	justify-content : center;
+	justify-content: center;
+	align-items: center;
+/* 	justify-content: center;
 	align-content: center;
-	padding-left: 30px;
+	padding-left: 30px; */
+	
 }
 
-.second-wrapper {
-	display: flex;
+.first h1 {
+	font-size: 3.5em;
+	font-family: 'Nanum Gothic';
+	margin-bottom: 5px;
 }
 
-.first p span{
-	opacity : 0;
-	transition : all 3s ease;
+.agendaText {
+	color: rgb(187, 187, 187);
+	font-size: 2em;
+	font-family: 'Nanum Gothic Light';
 }
 
-.first p span.fade{
-	opacity : 1;
+
+/* 페이드 효과 */ 
+.first p span {
+	opacity: 0;
+	transition: all 3s ease-in-out;
+	font-family: 'Nanum Gothic Light';
+}
+
+.first p span.fade {
+	opacity: 1;
+	font-family: 'Nanum Gothic Light';
 }
 
 /* 두번째 */
@@ -83,7 +98,7 @@ header {
 	overflow: hidden;
 }
 
-.second > p {
+.second>p {
 	font-size: 2em;
 	margin-bottom: -100px;
 }
@@ -258,16 +273,18 @@ header {
 	animation: textanim 3s infinite alternate;
 }
 
-.contact-title p{
+.contact-title p {
 	font-family: 'Nanum Gothic Bold';
 }
 
-@keyframes textanim{ 
+@keyframes textanim { 
 	0%, 100%{
-	transform: rotate(-25deg) skew(25deg) translate(0, 0);}
+	transform: rotate(-25deg) skew(25deg) translate(0, 0);
+	}
 
 	50%{
-	transform: rotate(-25deg) skew(25deg) translate(10px, -10px);}
+	transform:rotate(-25deg) skew(25deg) translate(10px,-10px);
+	}
 }
 
 .contact-sub {
@@ -289,9 +306,12 @@ header {
 	visibility: hidden;
 }
 
-@keyframes cursorAnim{
-	from {transform: scale(1) translate(-50%, -50%);}
-to {transform: scale(1.5) translate(-50%, -50%);}
+@keyframes cursorAnim {
+	from {transform: scale(1) translate(-50%, -50%);
+	}
+to {
+	transform: scale(1.5) translate(-50%, -50%);
+	}
 }
 
 /*Scroll*/
@@ -308,7 +328,7 @@ to {transform: scale(1.5) translate(-50%, -50%);}
 	opacity: 0;
 	pointer-events: none;
 	transition: opacity 300ms ease-in;
-	z-index : 9999;
+	z-index: 9999;
 }
 
 .arrow-up.visible {

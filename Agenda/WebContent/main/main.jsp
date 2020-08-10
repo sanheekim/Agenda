@@ -37,9 +37,7 @@
 			<h1> Agenda is 
 				<span class="txt-rotate" data-period="2000" data-rotate='[ "Simple.", "Good.", "Fun.", "Easy to use.", "" ]'></span>
 			</h1>
-			<div class="second-wrapper">
-			<p class="agendaText">아프지 마요.</p> <p class="agendaText">괜찮아요?</p> <p class="agendaText">다친데 없어요?</p>
-			</div>
+			<p class="agendaText">아프지 마요. 괜찮아요? 다친데 없어요?</p>
 		</div>
 	</section>
 
