@@ -6,7 +6,8 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.agenda.schedule.ScheduleDto;
+import com.agenda.alrim.AlrimDto;
+
 
 public class ScheduleDao extends ScheduleSqlMapConfig {
 	private String namespace = "ScheduleMapper.";
@@ -44,6 +45,25 @@ public class ScheduleDao extends ScheduleSqlMapConfig {
 		
 		
 		return list;
+	}
+	public ScheduleDto selectOne(String member_id) {
+		SqlSession session = null;
+		ScheduleDto dto = null;
+		
+		try {
+			session = getSqlSessionFactory().openSession(false);
+			dto = session.selectOne(namespace+"selectOne",member_id);
+			System.out.println(">>"+session+"dao 글 보기 성공");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("[ERROR] 3.4.");
+		} finally {
+			session.close();
+			System.out.println("dao종료");
+		}
+		
+		return dto;
 	}
 	
 	

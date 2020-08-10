@@ -3,7 +3,6 @@
 <mapper namespace="ScheduleMapper">
 	<resultMap type="ScheduleDto" id="ScheduleMap">
 		<result property ="sche_no" column="SCHE_NO"/>
-		<result property ="pres_no" column="PRES_NO"/>
 		<result property ="member_id" column="MEMBER_ID"/>
 		<result property ="sche_content" column="SCHE_CONTENT"/>
 		<result property ="sche_time" column="SCHE_TIME"/>
@@ -15,6 +14,11 @@
 		SELECT SCHE_TIME
  		FROM AG_SCHEDULE
 		WHERE MEMBER_ID = #{member_id}	
+ 	</select>
+ 	<select id ="selectOne" parameterType="String" resultType="ScheduleDto">
+ 		SELECT SCHE_TIME, SCHE_CONTENT, SCHE_REGDATE
+ 		FROM AG_SCHEDULE
+		WHERE MEMBER_ID = #{member_id}
  	</select>
  	<insert id = "insert" parameterType="Map">
  		INSERT INTO AG_SCHEDULE
