@@ -29,7 +29,7 @@
 	table{
 		border-collapse: collapse;
 		border : 1px solid black;
-		width: 400px;
+		width: 650px;
 	}
 	
 	th,td{
