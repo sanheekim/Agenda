@@ -156,6 +156,7 @@ $(function(){
 					<li><a href="${pageContext.request.contextPath}/LoginController?command=logout"><span class="logout"><button id="logout">Log out</button></span></a></li>
 					<li><a href="#"><span class="list" onclick="openNav()">&#9776;</span></a></li>
 					</ul>
+					
 				</c:when>
 				<c:otherwise>
 					<ul class="header-menu">
