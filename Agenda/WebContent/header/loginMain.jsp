@@ -151,7 +151,7 @@ $(function(){
 			<c:choose>
 				<c:when test="${logindto.member_role eq 'ADMIN' }">
 					<ul class="header-menu">
-					<li><button onclick="location.href='${pageContext.request.contextPath}/AlrimController?command=Alrimlist&member_id=${logindto.member_id }'">알람 보기</button></li>
+					<li><a href="${pageContext.request.contextPath}/AlrimController?command=Alrimlist&member_id=${logindto.member_id }"><span class="myalert"><button id="myalert">알람 보기</button></span></a></li>
 					<li><a href="${pageContext.request.contextPath}/adController?command=adminpage&member_id=${logindto.member_id }"><span class="mypage"><button id="mypage">Mypage</button></span></a></li>
 					<li><a href="${pageContext.request.contextPath}/LoginController?command=logout"><span class="logout"><button id="logout">Log out</button></span></a></li>
 					<li><a href="#"><span class="list" onclick="openNav()">&#9776;</span></a></li>
@@ -159,7 +159,7 @@ $(function(){
 				</c:when>
 				<c:otherwise>
 					<ul class="header-menu">
-					<li><button onclick="location.href='${pageContext.request.contextPath}/AlrimController?command=Alrimlist&member_id=${logindto.member_id }'">알람 보기</button></li>
+					<li><a href="${pageContext.request.contextPath}/AlrimController?command=Alrimlist&member_id=${logindto.member_id }"><span class="myalert"><button id="myalert">알람 보기</button></span></a></li>
 					<li><a href="${pageContext.request.contextPath}/MyinfoController?command=myinfo&member_id=${logindto.member_id }"><span class="mypage"><button id="mypage">Mypage</button></span></a></li>
 					<li><a href="${pageContext.request.contextPath}/LoginController?command=logout"><span class="logout"><button id="logout">Log out</button></span></a></li>
 					<li><a href="#"><span class="list" onclick="openNav()">&#9776;</span></a></li>
