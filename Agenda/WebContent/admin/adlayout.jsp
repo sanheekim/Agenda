@@ -123,10 +123,6 @@
 			<span>회원 정보 관리</span>
 			<img class="icon" src="image/search.png" />
 			</div>
-			<div class="ad_box" onclick="">
-			<span>전체 채팅기록</span>
-			<img class="icon" src="image/chat.png" />
-			</div>
 			<div class="ad_box" onclick="location.href='${pageContext.request.contextPath}/dnController?command=alldnlist'">
 			<span>전체 후원기록</span>
 			<img class="icon" src="image/qr.png" />
