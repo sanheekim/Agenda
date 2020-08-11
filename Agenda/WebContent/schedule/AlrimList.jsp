@@ -13,9 +13,19 @@
 
 </head>
 <body>
+	<c:choose>
+    	<c:when test="${empty logindto }">
+    		<jsp:include page="../header/header.jsp" />
+    	</c:when>
+    	<c:otherwise>
+    		<jsp:include page="../header/loginMain.jsp" />
+    	</c:otherwise>
+    	
+	</c:choose>
+	
 	<div id="popUp">
 	<div id="subpopUp">
-	<h1>글 목록</h1>
+	<h1>알람 리스트</h1>
 	
 	<table border="1">
 		<col width="50"/>
@@ -58,6 +68,7 @@
 	</table>
 	</div>
 	</div>
+	<jsp:include page="../footer/mainFooter.jsp" />
 		
 </body>
 </html>
