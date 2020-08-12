@@ -26,15 +26,16 @@
     	</c:otherwise>
 	</c:choose>
 
+	<!-- 메인 -->
 	<section>
 		<div id="map_header">
 		<h2>약국찾기</h2>
 		</div>
 		<div class="map_wrap">
-			<div id="map"></div>
-			<div id="menu_wrap">
-				<ul id="placesList"></ul>
-				<div id="pagination"></div>
+			<div id="map"></div> <!-- 지도영역 -->
+			<div id="menu_wrap"> <!-- 검색 결과 출력 영역 -->
+				<ul id="placesList"></ul> <!-- 검색결과 목록 -->
+				<div id="pagination"></div> <!-- 검색결과 페이징 -->
 			</div>
 		</div>
 	</section>
@@ -42,8 +43,6 @@
 	<!-- 풋터 -->
 	<jsp:include page="../footer/mainFooter.jsp" />
 	
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bbd355e231cd5468c69e01f2e5801a5d&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bbd355e231cd5468c69e01f2e5801a5d&libraries=services"></script>
 </body>
-
 </html>

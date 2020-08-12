@@ -1,30 +1,33 @@
+//현재 위치 정보를 허용했을 때
 if (navigator.geolocation) {
 
-	// GeoLocation을 이용해서 접속 위치를 얻어옵니다
+	// GeoLocation을 이용해서 접속 위치를 얻기
 	navigator.geolocation.getCurrentPosition(function getLocation(position) {
 
-				var latitude = position.coords.latitude;
-				var longitude = position.coords.longitude;
+				var latitude = position.coords.latitude; // 위도
+				var longitude = position.coords.longitude; // 경도
 
-				var mapContainer = document.getElementById('map'), 
-				// 지도를 표시할 div
+				var mapContainer = document.getElementById('map'), // 맵 컨테이너
 
 				mapOption = {
-					center : new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표
-					level : 4
-				// 지도의 확대 레벨
+					center : new kakao.maps.LatLng(latitude, longitude), // 지도의 중심좌표, 위에서 얻은 현재 위치의 위도와 경도가 입력됨
+					level : 4 // 지도의 확대 레벨
 				};
 
-				// 지도를 생성합니다
+				// 지도를 생성
 				var map = new kakao.maps.Map(mapContainer, mapOption);
 				
-				// 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이입니다
-				var placeOverlay = new kakao.maps.CustomOverlay({
-					zIndex : 1
-				}), contentNode = document.createElement('div'), // 커스텀 오버레이의 컨텐츠 엘리먼트입니다
-				markers = [], // 마커를 담을 배열입니다
-				currCategory = ''; // 현재 선택된 카테고리를 가지고 있을 변수입니다
+				// 마우스 휠과 모바일 터치를 이용한 지도 확대, 축소를 막는다
+				map.setZoomable(false);
 
+				// 지도에 확대 축소 컨트롤을 생성한다
+				var zoomControl = new kakao.maps.ZoomControl();
+
+				// 지도의 우측에 확대 축소 컨트롤을 추가한다
+				map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+				
+				
+				// 현재 위치 재 설정 시작--------------
 				// 버튼을 클릭하면 아래 배열의 좌표들이 모두 보이게 지도 범위를 재설정합니다
 				var points = new kakao.maps.LatLng(latitude, longitude)
 
@@ -44,24 +47,17 @@ if (navigator.geolocation) {
 				current.appendChild(currentClick);
 				mapHeader.appendChild(current);
 				
+				// 현재위치 재설정 버튼을 클릭했을 때 seBounds() 호출
 				current.addEventListener('click', function() {
 					setBounds();
 				})
 
 				function setBounds() {
-					// LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정합니다
-					// 이때 지도의 중심좌표와 레벨이 변경될 수 있습니다
+					// LatLngBounds 객체에 추가된 좌표들을 기준으로 지도의 범위를 재설정
 					map.setBounds(bounds);
 				}
+				// 현재 위치 재 설정 끝 --------------
 
-				// 마우스 휠과 모바일 터치를 이용한 지도 확대, 축소를 막는다
-				map.setZoomable(false);
-
-				// 지도에 확대 축소 컨트롤을 생성한다
-				var zoomControl = new kakao.maps.ZoomControl();
-
-				// 지도의 우측에 확대 축소 컨트롤을 추가한다
-				map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 
 				// 장소 검색 객체를 생성합니다
 				var ps = new kakao.maps.services.Places(map);
@@ -70,6 +66,14 @@ if (navigator.geolocation) {
 				var infowindow = new kakao.maps.InfoWindow({
 					zIndex : 1
 				});
+				
+				// 마커를 클릭했을 때 해당 장소의 상세정보를 보여줄 커스텀오버레이
+				var placeOverlay = new kakao.maps.CustomOverlay({
+					zIndex : 1
+					}), 
+					contentNode = document.createElement('div'), // 커스텀 오버레이의 컨텐츠 엘리먼트
+					markers = [], // 마커를 담을 배열입니다
+					currCategory = ''; // 현재 선택된 카테고리를 가지고 있을 변수입니다
 
 				// 약국 검색
 				ps.categorySearch('PM9', placesSearchCB, {
@@ -85,10 +89,8 @@ if (navigator.geolocation) {
 				// 커스텀 오버레이의 컨텐츠 노드에 mousedown, touchstart 이벤트가 발생했을때
 				// 지도 객체에 이벤트가 전달되지 않도록 이벤트 핸들러로 kakao.maps.event.preventMap
 				// 메소드를 등록합니다
-				addEventHandle(contentNode, 'mousedown',
-						kakao.maps.event.preventMap);
-				addEventHandle(contentNode, 'touchstart',
-						kakao.maps.event.preventMap);
+				addEventHandle(contentNode, 'mousedown', kakao.maps.event.preventMap);
+				addEventHandle(contentNode, 'touchstart', kakao.maps.event.preventMap);
 
 				// 커스텀 오버레이 컨텐츠를 설정합니다
 				placeOverlay.setContent(contentNode);
@@ -104,22 +106,16 @@ if (navigator.geolocation) {
 
 				// 카테고리 검색을 요청하는 함수입니다
 				function searchPlaces() {
-					if (!currCategory) {
-						ps.categorySearch('PM9', placesSearchCB, {
-							useMapBounds : true
-						})
-						return;
-					}
-
+					ps.categorySearch('PM9', placesSearchCB, {
+						useMapBounds : true
+					})
+					
 					// 커스텀 오버레이를 숨깁니다
 					placeOverlay.setMap(null);
 
 					// 지도에 표시되고 있는 마커를 제거합니다
 					removeMarker();
 
-					ps.categorySearch(currCategory, placesSearchCB, {
-						useMapBounds : true
-					});
 				}
 
 				// 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
@@ -131,26 +127,27 @@ if (navigator.geolocation) {
 
 						// 페이지 번호를 표출합니다
 						displayPagination(pagination);
-
+						
+					// 검색 결과가 없을 떄
 					} else if (status === kakao.maps.services.Status.ZERO_RESULT) {
 						alert("근처에 약국이 없습니다");
 
 					} else if (status === kakao.maps.services.Status.ERROR) {
 						alert("검색결과 오류");
-
 					}
 				}
 
-				// 지도에 마커를 표출하는 함수입니다
+				// 지도에 마커를 표출하는 함수
 				function displayPlaces(places) {
 
 					// 몇번째 카테고리가 선택되어 있는지 얻어옵니다
 					// 이 순서는 스프라이트 이미지에서의 위치를 계산하는데 사용됩니다
 					var order = 1;
 
-					var listEl = document.getElementById('placesList'), menuEl = document
-							.getElementById('menu_wrap'), fragment = document
-							.createDocumentFragment(), listStr = '';
+					var listEl = document.getElementById('placesList'), 
+						menuEl = document.getElementById('menu_wrap'), 
+						fragment = document.createDocumentFragment(), 
+						listStr = '';
 
 					// 검색 결과 목록에 추가된 항목들을 제거합니다
 					removeAllChildNods(listEl);
@@ -161,15 +158,13 @@ if (navigator.geolocation) {
 					for (var i = 0; i < places.length; i++) {
 
 						// 마커를 생성하고 지도에 표시합니다
-						var marker = addMarker(new kakao.maps.LatLng(
-								places[i].y, places[i].x), order), itemEl = getListItem(
-								i, places[i]); // 검색 결과 항목 Element를 생성합니다;
+						var marker = addMarker(new kakao.maps.LatLng(places[i].y, places[i].x), order), 
+							itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다;
 
 						// 마커와 검색결과 항목을 클릭 했을 때
 						// 장소정보를 표출하도록 클릭 이벤트를 등록합니다
 						(function(marker, place) {
-							kakao.maps.event.addListener(marker, 'mouseover',
-									function() {
+							kakao.maps.event.addListener(marker, 'mouseover', function() {
 										displayPlaceInfo(place);
 									});
 
@@ -181,7 +176,7 @@ if (navigator.geolocation) {
 						fragment.appendChild(itemEl);
 					}
 
-					// 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
+					// 검색결과 항목들을 검색결과 목록에 추가
 					listEl.appendChild(fragment);
 					menuEl.scrollTop = 0;
 
@@ -190,7 +185,8 @@ if (navigator.geolocation) {
 				// 검색결과 항목을 Element로 반환하는 함수입니다
 				function getListItem(index, places) {
 
-					var el = document.createElement('li'), itemStr = '<span class="markerbg marker_'
+					var el = document.createElement('li'), 
+					itemStr = '<span class="markerbg marker_'
 							+ (index + 1)
 							+ '"></span>'
 							+ '<div class="info">'
@@ -219,12 +215,11 @@ if (navigator.geolocation) {
 					var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_category.png', // 마커
 					imageSize = new kakao.maps.Size(27, 28), // 마커 이미지의 크기
 					imgOptions = {
-						spriteSize : new kakao.maps.Size(72, 208), // 스프라이트
-						// 이미지의 크기
+						spriteSize : new kakao.maps.Size(72, 208), // 스프라이트 이미지의 크기
 						spriteOrigin : new kakao.maps.Point(46, (2 * 36)), // 스프라이트
-						offset : new kakao.maps.Point(11, 28)
-					// 마커 좌표에 일치시킬 이미지 내에서의 좌표
-					}, markerImage = new kakao.maps.MarkerImage(imageSrc,
+						offset : new kakao.maps.Point(11, 28) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
+					}, 
+					markerImage = new kakao.maps.MarkerImage(imageSrc,
 							imageSize, imgOptions), marker = new kakao.maps.Marker(
 							{
 								position : position, // 마커의 위치
@@ -274,18 +269,10 @@ if (navigator.geolocation) {
 					placeOverlay.setMap(map);
 				}
 
-				// 지도 위에 표시되고 있는 마커를 모두 제거합니다
-				function removeMarker() {
-					for (var i = 0; i < markers.length; i++) {
-						markers[i].setMap(null);
-					}
-					markers = [];
-				}
-
 				// 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
 				function displayPagination(pagination) {
-					var paginationEl = document.getElementById('pagination'), fragment = document
-							.createDocumentFragment(), i;
+					var paginationEl = document.getElementById('pagination'), 
+						fragment = document.createDocumentFragment(), i;
 
 					// 기존에 추가된 페이지번호를 삭제합니다
 					while (paginationEl.hasChildNodes()) {
@@ -321,6 +308,6 @@ if (navigator.geolocation) {
 
 			});
 
-} else {
+} else { //현재 위치 서비스를 지원하지 않을 때 
 	console.log("현재 위치 서비스를 지원하지 않는 브라우저입니다.");
 }
