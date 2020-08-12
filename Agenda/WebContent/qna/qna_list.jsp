@@ -15,8 +15,11 @@
 <title>Insert title here</title>
 <script>
 	// 원하는 페이지로 이동시 검색조건, 키워드 값을 유지하기 위해 
-	function list(curPage){
-		location.href="${pageContext.request.contextPath}/qnaController.do?command=list&curPage="+curPage+"&searchOption=${map.searchOption}"+"&keyword=${map.keyword}";
+	function list(curPage) {
+		location.href = "${pageContext.request.contextPath}/qnaController.do?command=list&curPage="
+			+ curPage
+			+ "&searchOption=${map.searchOption}"
+			+ "&keyword=${map.keyword}";
 	}
 	
 	// 로그인 알림 후 로그인 페이지로 이동
@@ -43,6 +46,7 @@
 		<h1><a href="${pageContext.request.contextPath}/qna/index.jsp">Q & A</a></h1>
 		
 		<form action="${pageContext.request.contextPath}/qnaController.do" method="post">
+			<input type="hidden" name="command" value="list">
 			<input type="hidden" name="curPage" value="1">
 			<p>총 ${map.count}개의 게시물이 있습니다.</p>
 			<table>
@@ -87,10 +91,10 @@
 				<tr>
 					<td colspan="5">
 					<select name="searchOption">
-						<option value="all" <c:out value="${map.searchOption == 'all'?'selected':''}"/> >제목+이름+내용</option>
-						<option value="member_id" <c:out value="${map.searchOption == 'user_name'?'selected':''}"/> >이름</option>
-						<option value="qna_content" <c:out value="${map.searchOption == 'content'?'selected':''}"/> >내용</option>
-						<option value="qna_title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
+						<option value="all" <c:out value="${map.searchOption == 'all' ? 'selectd':'' }"/>>제목+이름+내용</option>
+						<option value="member_id" <c:out value="${map.searchOption =='user_name'?'selectd': ''}"/>>이름</option>
+						<option value="qna_content" <c:out value="${map.searchOption == 'content'?'selectd':'' }"/>>내용</option>
+						<option value="qna_title" <c:out value="${map.searchOption == 'title'?'selectd':'' }"/>>제목</option>
 					</select>
 						<input type="text" name="keyword" value="${map.keyword}" placeholder="검색어를 입력하세요">
 						<input type="submit" value="조회">

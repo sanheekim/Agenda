@@ -41,14 +41,15 @@
 		SELECT COUNT(*) FROM AG_QNA
 		<choose>
 				<when test="searchOption == 'all'">
-					WHERE (member_id like '%'||#{keyword}||'%'
-					OR qna_content like '%'||#{keyword}||'%'
-					OR qna_title like '%'||#{keyword}||'%')
+					WHERE (member_id like '%'||#{keyword}||'%' AND QNA_DELFLAG = 'N'
+					OR qna_content like '%'||#{keyword}||'%' AND QNA_DELFLAG = 'N'
+					OR qna_title like '%'||#{keyword}||'%') AND QNA_DELFLAG = 'N'
 				</when>
 				<otherwise>
 					WHERE ${searchOption} like '%'||#{keyword}||'%'
 				</otherwise>
 		</choose>
+		AND QNA_DELFLAG = 'N'
 	</select>
 
 	<select id="selectOne" parameterType="int" resultType="QNADto">
