@@ -11,16 +11,14 @@
 <head>
 <meta charset="UTF-8">
 <!-- Editor's Dependecy Style -->
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css" />
 <!-- Editor's Style -->
-<link rel="stylesheet"
-	href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/qna/qna_insert.css">
 <title>Insert title here</title>
 </head>
-
 <body>
+	<!-- 헤더 -->
   	<c:choose>
     	<c:when test="${empty logindto }">
     		<jsp:include page="../header/header.jsp" />
@@ -30,8 +28,10 @@
     	</c:otherwise>
 	</c:choose>
     
+    <!-- 메인 -->
 	<section>
 		<h1><a href="${pageContext.request.contextPath}/qna/index.jsp">Q & A</a></h1>
+		
 		<form action="${pageContext.request.contextPath}/qnaController.do" method="post">
 			<input type="hidden" name="command" value="writeres">
 			<input type="hidden" name="member_id" value="${logindto.member_id }">
@@ -57,9 +57,12 @@
 			</table>
 		</form>
 	</section>
+	
+	<!-- 풋터 -->
     <jsp:include page="../footer/mainFooter.jsp" />
-	<script
-		src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+    
+    <!-- 토스트 ui -->
+	<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 	<script>
 		const editor = new toastui.Editor({
 			el : document.querySelector('#editor'),
@@ -78,6 +81,10 @@
 			input.setAttribute("value", editor.getHtml());
 			document.querySelector("#editor").append(input);
 		}
+		/* 
+		 * input 태그를 생성하고 type=hidden, name=qna_content, value=editor.getHtml() 속성을 추가 
+		 * #editor에 생성한 input 태그를 추가한다
+		 */
 	</script>
 </body>
 </html>

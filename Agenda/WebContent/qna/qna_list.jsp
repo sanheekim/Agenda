@@ -19,6 +19,7 @@
 		location.href="${pageContext.request.contextPath}/qnaController.do?command=list&curPage="+curPage+"&searchOption=${map.searchOption}"+"&keyword=${map.keyword}";
 	}
 	
+	// 로그인 알림 후 로그인 페이지로 이동
 	function loginAlert(){
 		alert('로그인해주세요');
 		location.href="${pageContext.request.contextPath}/login/loginForm.jsp";
@@ -29,10 +30,10 @@
 <body>
 	<!-- 헤더 -->
     <c:choose>
-    	<c:when test="${empty logindto }">
+    	<c:when test="${empty logindto }"> <!-- 로그인 안했을 때-->
     		<jsp:include page="../header/header.jsp" />
     	</c:when>
-    	<c:otherwise>
+    	<c:otherwise> <!-- 로그인 성공했을 때 -->
     		<jsp:include page="../header/loginMain.jsp" />
     	</c:otherwise>
 	</c:choose>
@@ -40,8 +41,8 @@
     <!-- 섹션 -->
 	<section>
 		<h1><a href="${pageContext.request.contextPath}/qna/index.jsp">Q & A</a></h1>
+		
 		<form action="${pageContext.request.contextPath}/qnaController.do" method="post">
-			<input type="hidden" name="command" value="list">
 			<input type="hidden" name="curPage" value="1">
 			<p>총 ${map.count}개의 게시물이 있습니다.</p>
 			<table>
@@ -54,21 +55,23 @@
 					<th>조회</th>
 				</tr>
 				
-				<!-- 내용 -->
+				<!-- 테이블내용 -->
 				<c:forEach var="row" items="${map.list}">
 				<c:choose>
+					<!-- 삭제하지 않은 게시물 -->
 					<c:when test="${row.qna_delflag == 'N' }">
 					<tr>
 						<td>${row.qna_no} </td>
-						<!-- 게시글 상세보기 페이지로 이동시 게시글 목록페이지에 있는 검색조건, 키워드, 현재페이지 값을 유지하기 위해 -->
 						<td><a
 							href="${pageContext.request.contextPath}/qnaController.do?command=detail&qna_no=${row.qna_no}">${row.qna_title} [${row.qna_recnt}]
-						</a></td>
+							</a></td>
 						<td>${row.member_id }</td>
 						<td><fmt:formatDate value="${row.qna_regdate}" pattern="yyyy-MM-dd"/></td>
 						<td>${row.qna_hit }</td>
 					</tr>
 					</c:when>
+					
+					<!-- 삭제한 게시물 -->
 					<c:otherwise>
 					<tr>
 						<td>${row.qna_no}</td>
@@ -90,25 +93,26 @@
 						<option value="qna_content" <c:out value="${map.searchOption == 'content'?'selected':''}"/> >내용</option>
 						<option value="qna_title" <c:out value="${map.searchOption == 'title'?'selected':''}"/> >제목</option>
 					</select>
-							<input type="text" name="keyword" value="${map.keyword}" placeholder="검색어를 입력하세요">
-							<input type="submit" value="조회">
-							<c:choose>
-							<c:when test="${logindto ne null }">
+						<input type="text" name="keyword" value="${map.keyword}" placeholder="검색어를 입력하세요">
+						<input type="submit" value="조회">
+							
+				<!-- 글쓰기 버튼 -->
+						<c:choose>
+							<c:when test="${logindto ne null }"> <!-- 로그인 했을 때 -->
 							<input type="button" value="글쓰기" id="insertBtn"
 								onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=write'">
 							</c:when>
-							<c:otherwise>
+							<c:otherwise> <!-- 로그인 안했을때 -->
 								<input type="button" value="글쓰기" id="insertBtn" onclick="loginAlert()">
 							</c:otherwise>
-							</c:choose>
+						</c:choose>
 					</td>
 				</tr>
-				<!-- 검색 끝 -->
 				
 				<!-- 페이징 -->
 				<tr>
 					<td colspan="5">
-						<!-- 처음페이지로 이동 : 현재 페이지가 1보다 크면  [처음]하이퍼링크를 화면에 출력-->
+						<!-- 처음페이지로 이동 : 현재 페이지가 1보다 크면 [처음]하이퍼링크를 화면에 출력-->
 						<c:if test="${map.boardPager.curBlock > 1}">
 							<a href="javascript:list('1')">[처음]</a>
 						</c:if>
@@ -118,14 +122,14 @@
 							<a href="javascript:list('${map.boardPager.prevPage}')">[이전]</a>
 						</c:if>
 						
-						<!-- **하나의 블럭 시작페이지부터 끝페이지까지 반복문 실행 -->
+						<!-- 하나의 블럭 시작페이지부터 끝페이지까지 반복문 실행 -->
 						<c:forEach var="num" begin="${map.boardPager.blockBegin}" end="${map.boardPager.blockEnd}">
 							<!-- 현재페이지이면 하이퍼링크 제거 -->
 							<c:choose>
-								<c:when test="${num == map.boardPager.curPage}">
+								<c:when test="${num == map.boardPager.curPage}"> <!-- 현재페이지 -->
 									<span style="color: red">${num}</span>&nbsp;
 								</c:when>
-								<c:otherwise>
+								<c:otherwise> <!-- 다른페이지 -->
 									<a href="javascript:list('${num}')">${num}</a>&nbsp;
 								</c:otherwise>
 							</c:choose>
@@ -142,11 +146,11 @@
 						</c:if>
 					</td>
 				</tr>
-				<!-- 페이징끝 -->
-				
 			</table>
 		</form>
 	</section>
+	
+	<!-- 풋터 -->
 	<jsp:include page="../footer/mainFooter.jsp" />
 </body>
 </html>
