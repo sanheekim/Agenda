@@ -4,8 +4,6 @@ import java.util.Date;
 
 public class QNADto {
 
-//	QNA_NO, QNA_TITLE, QNA_CONTENT, QNA_REGDATE, QNA_HIT, QNA_DELFLAG, MEMBER_ID
-
 	private int qna_no;
 	private String qna_title;
 	private String qna_content;
@@ -39,7 +37,6 @@ public class QNADto {
 
 	}
 
-	//수정
 	public QNADto(int qna_no, String qna_title, String qna_content, String member_id) {
 		this.qna_no = qna_no;
 		this.qna_title = qna_title;

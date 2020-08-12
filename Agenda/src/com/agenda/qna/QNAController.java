@@ -94,7 +94,7 @@ public class QNAController extends HttpServlet {
 		} else if (command.equals("delete")) {
 			int qna_no = Integer.parseInt(request.getParameter("qna_no"));
 			int res = dao.delete(qna_no);
-			System.out.println("delete : " + res);
+			
 			if (res > 0) {
 				String msg = "삭제 성공!";
 				jsResponse(msg, "qnaController.do?command=list&curPage=1&searchOption=all&keyword=", request, response);
