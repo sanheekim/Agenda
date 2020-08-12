@@ -27,15 +27,20 @@ public class LoginNaver extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("doGet첫 줄");
+	
 		// 세션얻기
 		HttpSession session = request.getSession();
-
+		// cliendIt, clientSectet 등록한 apllication에서 제공받은 것을 기입.
 		String clientId = "aKYqnvW_wCpjcTsDuFRA";
 		String clientSecret = "AbpHHWfTB9";
+		
 		String code = request.getParameter("code");
 		String state = request.getParameter("state");
+		
+		// 네이버 로그인에 기입한 call back URI 기입.
+				//(네이버는 localhost제공 하지않음,127.0.0.1사용).
 		String redirectURI = URLEncoder.encode("http://127.0.0.1:8787/Agenda/LoginNaver", "UTF-8");
+
 
 		StringBuffer apiURL = new StringBuffer();
 		apiURL.append("https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&");
@@ -44,23 +49,22 @@ public class LoginNaver extends HttpServlet {
 		apiURL.append("&redirect_uri=" + redirectURI);
 		apiURL.append("&code=" + code);
 		apiURL.append("&state=" + state);
+		// access_tokne, refresh_token은 나중에 이용.
 		String access_token = "";
-		String refresh_token = ""; // 나중에 이용
-		System.out.println("token받기전");
+		String refresh_token = ""; 
+	
 		
 		try {
+			
 			URL url = new URL(apiURL.toString());
-			// URL url = new URL (apiURL);
-			// 예제에서 URL url = new URL (apiURL); 로 나와있었음
-			// The constructor URL(StringBuffer) is undefined
-			// changeType of'apiURL' to 'String' 으로 에러뜸
-			// 임의로 stringbuffer를 string으로 형변환시켜줌 -> 물어보장
-
+			//검색에서는 URL url = new URL(apiURL);로 쓰는경우가 있음
+			//경우에따라 형 변환 시켜서 쓰기.
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
 			con.setRequestMethod("GET");
 			int responseCode = con.getResponseCode();
 			BufferedReader br;
+			//만든 callback URI에 맞춰서 정상 처리 되면 access_token, refresh_token을 넘겨줌.
 			System.out.print("responseCode=" + responseCode);
 
 			if (responseCode == 200) { // 정상 호출
@@ -94,9 +98,9 @@ public class LoginNaver extends HttpServlet {
 				access_token = (String) jsonObj.get("access_token");
 				refresh_token = (String) jsonObj.get("refresh_token");
 
-				System.out.println("access_token값+++ :" +access_token);
-				System.out.println("refresh_token값+++"+refresh_token);
-				System.out.println("token");
+				//access_token,refresh_token을 정상적으로 받아오면
+				//session에 담아서 회원정보조회API에 넘겨줌
+				//네이버 로그인은 성공 -> 회원조회를 위해 회원조회 API로 넘겨줌
 		
 				session.setAttribute("access_token", access_token);
 				session.setAttribute("refresh_token", refresh_token);
@@ -105,10 +109,10 @@ public class LoginNaver extends HttpServlet {
 			}
 			
 			if(access_token!=null) {
-				//token이 null값이 아니라면 성공한거니까 이제 값을 받아오면됨
+				
 				try {
 				
-				 System.out.println("access_token is not null!이면 밑에 줄 실행시켜라");
+				 System.out.println(">> access_token is not null");
 
 
 				}catch (Exception e) {
@@ -121,12 +125,6 @@ public class LoginNaver extends HttpServlet {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		// dto add dto 에 담기
-		// session add session 에 담기
-		// string token header add
-		// dispatch-> class study smaple 수업시간 보고 디스패치 하고
-		// dispatch -> naver -> after login
-		// 디스패치하고 네이버 ? 로그인 후 화면으로 보내주기
 
 	}
 	

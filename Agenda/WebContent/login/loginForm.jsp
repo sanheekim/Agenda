@@ -30,9 +30,10 @@
 			.addEventListener(
 					"DOMContentLoaded",
 					function() {
-						// @details 카카오톡 Developer API 사이트에서 발급받은 JavaScript Key
+						// 카카오톡 Developer에 우선 application을 등록한 후에 API 사이트에서 발급받은 JavaScript Key
 						Kakao.init("14450773e72f51b9201cbbec7c53a0a4");
-						// @breif 카카오 로그인 버튼을 생성합니다.
+						// 카카오 로그인 버튼을 생성함수 (이 경우 kakaodeveloper에서 제공받아 html에 태그를 넣어주면 동작함.)
+						// 이 프로젝트에서는 이미지를 이용함.
 						Kakao.Auth
 								.createLoginButton({
 									container : "#kakao-login-btn",
@@ -42,17 +43,13 @@
 												.request({
 													url : "/v2/user/me",
 													success : function(res) {
-														console.log(res);
-														// @breif 아이디
-														//document.getElementById("kakaoIdentity").innerHTML = res.id;
 														
+														//받아오는 값들 id,email등은 카카오 developer API에서 검색 후 사용가능함
+														//해당 프로젝트에서는 ID와 EMAIL만 받아오기로함.	
 														var member_id = res.id;
-														console.log(member_id);
-														// @breif 생일(월,일)
-														//document.getElementById("kakaoemail").innerHTML = res.kakao_account.email;
 														var member_email = res.kakao_account.email;
-														console.log(member_email);
 														
+														// 제공받은 id와 email을 kakaoLoginController에 보내줌.
 														location.href="../LoginController?command=kakaologin&member_id="+member_id+"&member_email="+member_email;
 	
 														
@@ -73,6 +70,14 @@
 </head>
 <body>
 
+<!-- 네이버:
+1. 네이버 아이디로 로그인 시작하기전에 naver developer 에서 application신청 
+2. access_token을 받아올 call back page url을 기입해야함 
+3. 네이버 로그인 버튼을 누르면 clientId에 붙은 값들을 비교
+4. 기입한 callbackURI를 통해 token을 받을 수 있다. -->
+
+<!-- 네이버: clientId,redirectURI는 naver developer에 application신청 후 제공받은 것을 쓰면 됨 -->
+<!-- redirect URI는 token값을 받을 수 있는 주소로 설정해줌 -->
 	<%
 	String clientId = "aKYqnvW_wCpjcTsDuFRA";//애플리케이션 클라이언트 아이디값";
 	String redirectURI = URLEncoder.encode("http://127.0.0.1:8787/Agenda/LoginNaver", "UTF-8");
@@ -146,13 +151,13 @@
 
 
 		<div class="login__submit__api">
-
+<!--카카오: 카카오 아이디로 로그인 버튼 .해당 프로젝트에서는 임시로 이미지 사용   -->
 			<div class="login__submit__kakao">
 
 				<a href="#"><img id="kakao-login-btn" src="imgs/카카오버튼.png" /></a>
 	
 			</div>
-	
+<!--네이버 : 네이버 아이디로 로그인 버튼 생성-->	
 			<div class="login__submit__naver">
 				<a href="<%=apiURL%>"><img id=naver__btn src="imgs/네아로버튼.png" /></a>
 			</div>
