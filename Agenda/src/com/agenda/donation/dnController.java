@@ -1,7 +1,6 @@
 package com.agenda.donation;
 
 import java.io.IOException;
-
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -39,15 +38,7 @@ public class dnController extends HttpServlet {
 		String command = request.getParameter("command");
 		System.out.println(command);
 		
-		if (command.equals("getid01")) {
-			
-			String member_id = request.getParameter("member_id");
-			System.out.println(member_id);
-			response.sendRedirect("main/mainpay1.js?member_id="+request.getParameter("member_id"));
-			
-		}
-		
-		else if (command.equals("donation")) {
+		if (command.equals("donation")) {
 		
 		// mainpay.js에서 보낸 member_id를 받음
 		String member_id = request.getParameter("member_id");
