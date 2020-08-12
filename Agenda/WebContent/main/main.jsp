@@ -128,7 +128,17 @@
 		</div>
 	</section>
 
-	<!-- 세번째 -->
+	<!-- 세번째 : 후원	-->
+	<!-- 8번째 줄에 JSTL import 코드 있고,
+	16번째 줄에 bootpay cdn(html이나 jsp 파일에서 결제창(js) 띄울 수 있도록 웹에 연동하는 것) 코드 있고,
+	body 끝나기 직전에 js(javascript) 호출 코드 있음.
+	
+	JSTL의 c:choose문에서 후원 버튼을 눌렀을 때
+	logindto가 null이 ne(아닐)일 때 결제창이 실행되고(c:when),
+	null이라면 '로그인해주세요'라는 alert창이 뜸(c:otherwise)
+	
+	onclick="pay01()","pay02()","pay03()","pay04()"가 어떻게 작동하는지는 js파일로 넘어가서 주석 볼 것. -->
+
 	<section class="section third area">
 	
 		<div class="donation-wrapper">

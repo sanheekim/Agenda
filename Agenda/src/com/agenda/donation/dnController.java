@@ -48,23 +48,26 @@ public class dnController extends HttpServlet {
 		}
 		
 		else if (command.equals("donation")) {
-			
+		
+		// mainpay.js에서 보낸 member_id를 받음
 		String member_id = request.getParameter("member_id");
 		System.out.println("도네이션 컨트롤러 : " + member_id);
 		
-		// JSON문자열을 string 변수에 담음 - getParameter의 괄호는 dnpay.js의 62번째 줄 date 이름이랑 같아야 한다.
+		// mainpay.js에서 보낸 obj(JSON문자열)를 받아서 string 변수에 담음
 		String obj = request.getParameter("obj");
 		System.out.println(obj);
 		
-		// dnPay.js의 JSON형태의 결제 결과값들을 파싱
+		// mainpay.js의 JSON형태의 결제 결과값들을 파싱
 		JsonElement element = JsonParser.parseString(obj);
 		
 		// JSON element 값을 JSON object 형태로 바꿔서 꺼냄
 		JsonObject tmp = element.getAsJsonObject();
 		
-		// json 형태인 {"key":"value"}에서 key를 호출하기
+		// json 형태인 {"key":"value"}에서 key("price", "pruchased_at")를 호출한 뒤 변수에 담아줌
 		int dona_bill = tmp.get("price").getAsInt();
 		String dona_date2 = tmp.get("purchased_at").getAsString();
+		
+		// String형태의 dano_date2라는 변수를 Date로 형변환
 		SimpleDateFormat transFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date dona_date = null;
 		try {
@@ -75,7 +78,7 @@ public class dnController extends HttpServlet {
 		System.out.println(dona_bill);
 		System.out.println(dona_date);
 		
-		// 세팅
+		// dto에 세팅
 		dnDto dto = new dnDto();
 		dto.setDona_bill(dona_bill);
 		dto.setDona_date(dona_date);
@@ -86,11 +89,13 @@ public class dnController extends HttpServlet {
 		System.out.println(dona_db); //dona_db:1 즉, db에 저장 성공
 		
 		// db에 있는 값 꺼내서 후원내역 테이블에서 보여주려면
-		// db에 저장된 값(dona_db>0)을 mainpay1~4.js의 msg에 응답시켜주기
+		// db에 저장된 값(dona_db>0)을 mainpay.js의 msg에 응답 시키기
+		// 아래 코드를 통해서 다시 mainpay.js ajax의 success로 돌아감
 		response.getWriter().print(dona_db);
 		
 		}
 		
+		// 개인 후원내역조회 - 메인페이지에서 후원하고 나면 결제창 꺼지면서 자동으로 바로 넘어감
 		else if (command.equals("dnlist")) {
 			
 			String member_id = request.getParameter("member_id");
@@ -105,6 +110,7 @@ public class dnController extends HttpServlet {
 				
 		}
 		
+		// 전체 후원내역 조회 - 관리자 계정으로 로그인해서 관리자페이지에서만 볼 수 있음
 		else if (command.equals("alldnlist")) {
 			
 			List <dnDto> list = dao.selectList();
