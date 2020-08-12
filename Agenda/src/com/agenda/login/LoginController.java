@@ -30,7 +30,7 @@ public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	public LoginController() {
-		System.out.println("컨트롤러로 넘어옴");
+		
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -210,7 +210,7 @@ public class LoginController extends HttpServlet {
 			 dto = dao.kakaologin(idemail);
 			 
 			System.out.println("loginController: kakao login 확인");			 
-			System.out.println("dto=" + dto);
+			
 			//social로 가입된 회원들은 member_enabled=N 이므로 체크해준 후 로그인시켜줌
 			
 			
@@ -222,7 +222,7 @@ public class LoginController extends HttpServlet {
 				 	session.setAttribute("logindto", dto);
 					session.setMaxInactiveInterval(10 * 60);
 					loginResponse("카카오계정으로 로그인하셨습니다 .","main/main.jsp",response);
-					System.out.println("DTO 있음  = mypage main으로 보냄");
+				
 					
 				
 			 
