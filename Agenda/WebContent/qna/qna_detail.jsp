@@ -189,7 +189,7 @@ $(document).ready(function(){
 			<!-- 댓글 작성 -->
 			<table id="replyBoard">
 				<c:choose>
-					<!-- 로그인 했을 때 -->
+					<%-- 로그인 했을 때 --%>
 					<c:when test="${logindto ne null }">
 						<tr>
 							<th><c:out value="${logindto.member_id }"></c:out></th>
@@ -197,7 +197,7 @@ $(document).ready(function(){
 							<td><input type="button" value="작성" id="btnReply" name="${logindto.member_id }"></td>
 						</tr>
 					</c:when>
-					<!-- 로그인 하지 않았을 때 댓글 작성 불가 -->
+					<%-- 로그인 하지 않았을 때 댓글 작성 불가 --%>
 					<c:otherwise>
 							<th></th>
 							<td><textarea rows="2" cols="70" disabled="disabled" name="comm_content" id="comm_content" placeholder="댓글 작성을 위해 로그인해주세요"></textarea></td>

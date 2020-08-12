@@ -58,7 +58,7 @@
 				<!-- 테이블내용 -->
 				<c:forEach var="row" items="${map.list}">
 				<c:choose>
-					<!-- 삭제하지 않은 게시물 -->
+					<%-- 삭제하지 않은 글 --%>
 					<c:when test="${row.qna_delflag == 'N' }">
 					<tr>
 						<td>${row.qna_no} </td>
@@ -70,8 +70,7 @@
 						<td>${row.qna_hit }</td>
 					</tr>
 					</c:when>
-					
-					<!-- 삭제한 게시물 -->
+					<%-- 삭제한 글 --%>
 					<c:otherwise>
 					<tr>
 						<td>${row.qna_no}</td>
@@ -98,11 +97,11 @@
 							
 				<!-- 글쓰기 버튼 -->
 						<c:choose>
-							<c:when test="${logindto ne null }"> <!-- 로그인 했을 때 -->
+							<c:when test="${logindto ne null }"> <%-- 로그인 했을 떄 --%>
 							<input type="button" value="글쓰기" id="insertBtn"
 								onclick="location.href='${pageContext.request.contextPath}/qnaController.do?command=write'">
 							</c:when>
-							<c:otherwise> <!-- 로그인 안했을때 -->
+							<c:otherwise> <%-- 로그인 안 했을 떄--%>
 								<input type="button" value="글쓰기" id="insertBtn" onclick="loginAlert()">
 							</c:otherwise>
 						</c:choose>
@@ -124,12 +123,12 @@
 						
 						<!-- 하나의 블럭 시작페이지부터 끝페이지까지 반복문 실행 -->
 						<c:forEach var="num" begin="${map.boardPager.blockBegin}" end="${map.boardPager.blockEnd}">
-							<!-- 현재페이지이면 하이퍼링크 제거 -->
+							<%-- 현재페이지이면 하이퍼링크 제거 --%>
 							<c:choose>
-								<c:when test="${num == map.boardPager.curPage}"> <!-- 현재페이지 -->
+								<c:when test="${num == map.boardPager.curPage}"> <%-- 현재 페이지 --%>
 									<span style="color: red">${num}</span>&nbsp;
 								</c:when>
-								<c:otherwise> <!-- 다른페이지 -->
+								<c:otherwise> <%-- 다른 페이지--%>
 									<a href="javascript:list('${num}')">${num}</a>&nbsp;
 								</c:otherwise>
 							</c:choose>
