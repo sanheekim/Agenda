@@ -32,30 +32,23 @@ public class QNAController extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-
 		String command = request.getParameter("command");
-		System.out.println("[" + command + "]");
-
 		COMMDao commdao = new COMMDao();
 		QNADao dao = new QNADao();
 		
-		if (command.equals("list")) {
+		if (command.equals("list")) { // 게시물 리스트
 
-			String searchOption = request.getParameter("searchOption");
-			String keyword = request.getParameter("keyword");
-			int curPage = Integer.parseInt(request.getParameter("curPage"));
+			String searchOption = request.getParameter("searchOption"); //검색 옵션
+			String keyword = request.getParameter("keyword"); // 검색어
+			int curPage = Integer.parseInt(request.getParameter("curPage")); // 페이지
 			
-			System.out.println("서치옵션 : " + searchOption + " 키워드 : " + keyword + " 현재 페이지 : " + curPage);
-				
-			// 레코드의 갯수 계산
-			
+			// 게시물 카운트
 			int count = dao.listCount(searchOption, keyword);
-			System.out.println("글 개수 : " + count);
 
 			// 페이지 나누기 관련 처리
 			QNABoardPager boardPager = new QNABoardPager(count, curPage);
 			
-			// 페이지당 게시물 수 - 완료
+			// 페이지당 게시물 수
 			int start = boardPager.getPageBegin();
 			int end = boardPager.getPageEnd();
 			
@@ -64,7 +57,7 @@ public class QNAController extends HttpServlet {
 			// 데이터를 맵에 저장
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("list", list); // list
-			map.put("count", count); // 레코드의 갯수
+			map.put("count", count); // 게시물 개수
 			map.put("searchOption", searchOption); // 검색옵션
 			map.put("keyword", keyword); // 검색키워드
 			map.put("boardPager", boardPager);
@@ -78,7 +71,6 @@ public class QNAController extends HttpServlet {
 			String qna_title = request.getParameter("qna_title");
 			String qna_content = request.getParameter("qna_content");
 			String member_id = request.getParameter("member_id");
-			System.out.println("Controller -> 제목 : " + qna_title + " 내용 : "  + qna_content + " 아이디 : " + member_id);
 
 			QNADto dto = new QNADto(qna_title, qna_content, member_id);
 
@@ -92,13 +84,12 @@ public class QNAController extends HttpServlet {
 			}
 		} else if (command.equals("detail")) {
 			int qna_no = Integer.parseInt(request.getParameter("qna_no"));
-			//조회수 처리
-			dao.viewCount(qna_no);
+			dao.viewCount(qna_no); //조회수 처리 -> 글 상세보기 할 때마다 조회수 +1
 			QNADto dto = dao.selectOne(qna_no);
 			List<COMMDto> list = commdao.list(qna_no);
 			
 			request.setAttribute("detail", dto);
-			request.setAttribute("commlist", list);
+			request.setAttribute("commlist", list); // 글 상세보기에 넘겨줄 댓글 list
 			dispatch("qna/qna_detail.jsp", request, response);
 		} else if (command.equals("delete")) {
 			int qna_no = Integer.parseInt(request.getParameter("qna_no"));
@@ -121,12 +112,10 @@ public class QNAController extends HttpServlet {
 			String qna_title = request.getParameter("qna_title");
 			String qna_content = request.getParameter("qna_content");
 			String member_id = request.getParameter("member_id");
-			System.out.println("제목 : " + qna_title + " 내용 : "  + qna_content + " 아이디 : " + member_id);
 
 			QNADto dto = new QNADto(qna_no, qna_title, qna_content, member_id);
 
 			int res = dao.update(dto);
-			System.out.println("update : " + res );
 
 			if (res > 0) {
 				dispatch("qnaController.do?command=detail&qna_no=" + qna_no, request, response);
