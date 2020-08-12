@@ -57,57 +57,25 @@ public class LoginController extends HttpServlet {
 		if (command.equals("login")) {
 
 			String member_id = request.getParameter("member_id");
-			System.out.println(">>"+member_id);
-			
 			dto = dao.idsalt(member_id);
-			System.out.println(">>saltdto"+dto.getMember_salt());
-			
 			String member_pw = Password.getEncrypt(request.getParameter("member_pw"),dto.getMember_salt());
-			System.out.println(member_pw);
-			
-			
 			String member_enabled = request.getParameter("member_enabeld");	
 			LoginDto input = new LoginDto(member_id, member_pw, member_enabled);
 			
 			dto = dao.login(input);
-			
-			System.out.println("dto=" + dto);
-
-			
-			
-			
 
 			if (dto != null) {
 
 				session.setAttribute("logindto", dto);
 				session.setMaxInactiveInterval(10 * 60);
-
-				System.out.println("DTO 있음  = mypage main으로 보냄");
 				// User, Admin 구분하지 않고 바로 main으로 보내기
 				RequestDispatcher dispatch = request.getRequestDispatcher("main/main.jsp");
 				dispatch.forward(request, response);
-				// response.sendRedirect("header/loginMain.jsp");
 
-//			if(dto.getMember_role().equals("ADMIN")) {				
-//				
-//		    RequestDispatcher dispatch = request.getRequestDispatcher("login/loginAdmin.jsp");
-//			dispatch.forward(request, response);
-//				response.sendRedirect(".login/loginAdmin.jsp");
-//			}
-
-//			else if(dto.getMember_role().equals("USER")) {
-//				dispatcher
-//				forward쓰기
-//
-//				RequestDispatcher dispatch = request.getRequestDispatcher("login/loginUser.jsp");
-//				dispatch.forward(request,response);			
-//				response.sendRedirect(".login/loginUser.jsp");
-//			}
 
 			} else {
 				System.out.println("dto is null : login form 으로 다시 보냄");
 				loginResponse("아이디 또는 비밀번호가 틀렸습니다", "login/loginForm.jsp", response);
-				// response.sendRedirect("login/loginForm.jsp");
 
 			} 
 
@@ -118,19 +86,16 @@ public class LoginController extends HttpServlet {
 			// session 객체가 가진 값 삭제
 			loginResponse("로그아웃 되셨습니다!", "main/main.jsp", response);
 			session.invalidate();
-			// response.sendRedirect("main/main.jsp");
+
 
 		}
 
 		else if (command.equals("forgotId")) {
 
-			System.out.println("hi! you can find your id ");
+			System.out.println(">> forgotId Controller ");
 			String member_name = request.getParameter("member_name");
 			String member_email = request.getParameter("member_email");
 
-			System.out.println(member_name);
-			System.out.println(member_email);
-			
 			LoginDto FindDto = new LoginDto();
 			FindDto.setMember_name(member_name);
 			FindDto.setMember_email(member_email);
@@ -145,9 +110,7 @@ public class LoginController extends HttpServlet {
 				dispatch.forward(request, response);
 
 			} else {
-				
-				//response.sendRedirect("login/loginForgotId.jsp");
-				
+
 				loginResponse("찾으시는 아이디가 존재하지 않습니다.","login/loginForgotId.jsp",response);
 				
 			}
@@ -156,15 +119,11 @@ public class LoginController extends HttpServlet {
 		
 		else if (command.equals("forgotPw")) {
 			
-			System.out.println("Hi you can find your pw");
+			System.out.println("forgotPw Controller진입.");
 			String member_name = request.getParameter("member_name");
 			String member_email = request.getParameter("member_email");
 			String member_email_valid = request.getParameter("member_email_valid");
-			System.out.println(">>findname="+member_name);
-			System.out.println(">>findemail="+member_email);
-			System.out.println(">>인증번호찾기="+member_email_valid);
-			
-			
+					
 			if(member_email_valid.equals(SHA256.getEncryptSaltFixed(member_email)))
 			{
 				System.out.println("<");
@@ -172,23 +131,6 @@ public class LoginController extends HttpServlet {
 				System.out.println(",");
 				System.out.println(member_email_valid);
 				System.out.println(">");
-//				//int member_no = Integer.parseInt(request.getParameter("member_no")); registfrom에 no값은 없기때문에 null값이 뜬다.
-//				
-//				dto = new LoginDto(member_name, member_email);
-//				
-//				System.out.println(dto);
-//				System.out.println("2");
-//				// 2.
-//				boolean res = dao.emailck(dto);
-//				System.out.println(res);
-//				if (res) {	
-//					
-//					System.out.println("되라좀");
-//					
-//				} else {
-//					
-//					System.out.println("ㅆ");
-//				}
 				LoginDto FindDto = new LoginDto();
 				FindDto.setMember_name(member_name);
 				FindDto.setMember_email(member_email);
@@ -207,7 +149,7 @@ public class LoginController extends HttpServlet {
 				}
 			}
 			else {
-				//이러면 인증 코드 달라서 통과 X
+				// 인증 코드 달라서 통과 X
 				loginResponse("잘못된 인증번호 입니다. 다시 입력해주세요.","login/loginForgotPw.jsp",response);
 			}
 			
@@ -306,10 +248,6 @@ public class LoginController extends HttpServlet {
 		response.getWriter().append(js);
 	}
 
-	private void dispatch(HttpServletRequest request, HttpServletResponse response, String url)
-			throws ServletException, IOException {
-		RequestDispatcher dispatch = request.getRequestDispatcher(url);
-		dispatch.forward(request, response);
-	}
+
 
 }

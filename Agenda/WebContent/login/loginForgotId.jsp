@@ -22,10 +22,6 @@ function idSearch(){
 	   return;
 	  }
 
-	/*   frm.method = "post";
-	  frm.action = "${pageContext.request.contextPath}/login/loginSearchId.jsp"; //넘어간화면
-	  frm.submit();  //post방식으로 넘긴다. */
-
 }
 
 

@@ -32,15 +32,6 @@
 	AND    MEMBER_ENABLED = 'N'
 </select>
 
-<!-- <select id ="naverlogin" parameterType="loginDto" resultType="logindto" >
-	
-	SELECT MEMBER_ID, MEMBER_NAME , MEMBER_EMAIL
-	FROM   AG_MEMBER
-	WHERE  MEMBER_ID = #{member_id}
-	AND    MEMBER_PW = #{member_pw}
-	
-</select>
- -->
 <select id="kakaologin" parameterType="loginDto" resultType="logindto">
 	
 	SELECT MEMBER_ID, MEMBER_NAME, MEMBER_EMAIL,
@@ -78,17 +69,6 @@
 	WHERE MEMBER_ID = #{member_id}
 	
 </select>
-
-<!-- <select id="findPw" parameterType="loginDto" resultType="logindto">
-
-	UPDATE AG_MEMBER
-	SET MEMBER_PW = #{member_pw}	
-	WHERE MEMBER_ID = #{member_id}
-	AND MEMBER_NAME = #{member_name}
-	AND MEMBER_EMAIL = #{member_email}
-
-</select> -->
-
 
 </mapper>
 

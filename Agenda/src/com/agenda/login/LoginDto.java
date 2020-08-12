@@ -47,13 +47,6 @@ public class LoginDto {
 		this.member_enabled = member_enabled;
 	}
 	
-	/*
-	 * public LoginDto (String member_id, String member_email, String member_name) {
-	 * this.member_id = member_id; this.member_email = member_email;
-	 * this.member_name = member_name; }
-	 */
-	
-	//일반유저정보보기: id,pw,name,addr,phone,email
 	public LoginDto(String member_id, String member_pw, String member_name, String member_email,String member_addr,
 			String member_phone) {
 		

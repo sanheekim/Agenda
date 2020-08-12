@@ -23,6 +23,7 @@
 
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <meta name="google-signin-client_id" content="387206565373-pirulfq47eamrs5ge97dg64f1r8sv7cq.apps.googleusercontent.com">
+<!--카카오 : 카카오 로그인을 위해 import 붙여줌-->
 <script type="text/javascript" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script type="text/javascript">
 	document
@@ -53,12 +54,7 @@
 														console.log(member_email);
 														
 														location.href="../LoginController?command=kakaologin&member_id="+member_id+"&member_email="+member_email;
-														
-														
-														
-														
-														
-														
+	
 														
 													},
 													fail : function(error) {
