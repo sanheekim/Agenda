@@ -123,33 +123,3 @@ input[type="button"]{
 	border-bottom: 1px solid gray;
 }
 
-/* 댓글 작성 */
-
-#replyBoard td{
-	text-align: center;
-}
-
-#replyBoard td:first-child{
-	width : 100px;
-	text-align: center;
-}
-
-#replyBoard td:nth-child(2){
-	width: 700px;
-}
-
-#replyBoard td:nth-child(3){
-	width: 100px;
-	font-size: 0.8em;
-}
-
-#replyBoard textarea{
-	resize : none;
-	padding : 5px;
-	overflow-x : hidden;
-	overflow-y : auto;
-}
-
-#replyBoard th{
-	width : 100px;
-}

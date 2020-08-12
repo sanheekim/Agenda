@@ -109,27 +109,6 @@
 				</c:forEach>
 			</table>
 			</div>
-			<!-- 댓글 작성 -->
-			<%-- <table>
-				<c:choose>			s
-					<c:when test="${logindto ne null }">
-						<tr>
-						<th><c:out value="${logindto.member_id }"></c:out></th>
-							<td colspan="3">
-								<textarea name="comm_content" class="comm_content"></textarea>
-							</td>
-							<td>
-							<input type="submit" value="댓글작성" id="btnReply" name="${logindto.member_id }">
-							</td>
-						</tr>
-					</c:when>
-					<c:otherwise>
-						<tr>
-							<td><span>댓글 작성을 위해 로그인해주세요</span></td>
-						</tr>
-					</c:otherwise>
-				</c:choose>
-			</table> --%>
 	</section>
 	
     <jsp:include page="../footer/mainFooter.jsp" />
