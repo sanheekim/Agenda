@@ -209,12 +209,10 @@ public class LoginController extends HttpServlet {
 			 LoginDto idemail = new LoginDto(member_id, member_email,member_enabled);
 			 dto = dao.kakaologin(idemail);
 			 
-			 System.out.println("loginController: kakao login 확인");
-			 System.out.println(">>kakao:"+member_id);
-			 System.out.println(">>kakao:"+member_email);
-			 System.out.println(">>kakao enabled "+ member_enabled);
-			 
+			System.out.println("loginController: kakao login 확인");			 
 			System.out.println("dto=" + dto);
+			//social로 가입된 회원들은 member_enabled=N 이므로 체크해준 후 로그인시켜줌
+			
 			
 			 if(dto != null ) {
 				 
