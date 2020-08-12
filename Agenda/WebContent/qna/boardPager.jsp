@@ -19,14 +19,19 @@
 </style>
 </head>
 <body>
+	<!-- 페이징 영역 -->
 	<div id="paging">
+	
 		<!-- 1~10까지 있는 페이지의 페이징 -->
 		<c:url var="action" value="qnaController.do" />
 		
+		
+		<!-- 이전 페이지 -->
 		<c:if test="${param.prev}">
 			<a href="${action}?page=${param.beginPage-1}&command=list">prev</a>
 		</c:if>
 		
+		<!-- 시작페이지부터 마지막 페이지까지 -->
 		<c:forEach begin="${param.beginPage}" end="${param.endPage}" step="1" var="index">
 			<c:choose>
 				<c:when test="${param.page == index}">
@@ -38,6 +43,7 @@
 			</c:choose>
 		</c:forEach>
 		
+		<!-- 다음 페이지 -->
 		<c:if test="${param.next}">
 			<a href="${action}?page=${param.endPage+1}&command=list">next</a>
 		</c:if>

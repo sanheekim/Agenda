@@ -30,10 +30,10 @@
 <body>
 	<!-- 헤더 -->
     <c:choose>
-    	<c:when test="${empty logindto }"> <!-- 로그인 안했을 때-->
+    	<c:when test="${empty logindto }"> <%--로그인 안했을 때 --%>
     		<jsp:include page="../header/header.jsp" />
     	</c:when>
-    	<c:otherwise> <!-- 로그인 성공했을 때 -->
+    	<c:otherwise> <%--로그인 했을 때 --%>
     		<jsp:include page="../header/loginMain.jsp" />
     	</c:otherwise>
 	</c:choose>
