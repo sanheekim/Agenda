@@ -4,8 +4,6 @@ import java.util.Date;
 
 public class COMMDto {
 
-//	 COMM_NO, COMM_CONTENT, COMM_REGDATE, COMM_STEP, QNA_NO, MEMBER_ID
-
 	private int comm_no;
 	private String comm_content;
 	private Date comm_regdate;

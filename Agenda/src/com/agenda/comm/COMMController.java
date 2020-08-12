@@ -30,19 +30,13 @@ public class COMMController extends HttpServlet {
 
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
-
 		String command = request.getParameter("command");
-		System.out.println("[" + command + "]");
-		
 		COMMDao dao = new COMMDao();
 		
 		if (command.equals("commlist")) {
 			
 			int qna_no = Integer.parseInt(request.getParameter("qna_no"));
 			List<COMMDto> commlist = dao.list(qna_no);
-			
-			System.out.println(qna_no);
-			System.out.println(commlist);
 			
 			Map<String, Object> map = new HashMap<String, Object>();
 			map.put("qna_no", qna_no);
@@ -56,35 +50,28 @@ public class COMMController extends HttpServlet {
 			String member_id = request.getParameter("member_id");
 			String comm_content = request.getParameter("comm_content");
 			int qna_no = Integer.parseInt(request.getParameter("qna_no"));
-			System.out.println(member_id + " " + comm_content + " " + qna_no);
 			
 			COMMDto dto = new COMMDto();
 			dto.setMember_id(member_id);
 			dto.setComm_content(comm_content);
 			dto.setQna_no(qna_no);
 			
-			int res = dao.insert(dto);
-			System.out.println("write : " + res);
+			dao.insert(dto);
 			
 		}  else if (command.equals("commdelete")) {
 			int comm_no = Integer.parseInt(request.getParameter("comm_no"));
-			System.out.println(comm_no);
 			
-			int res = dao.delete(comm_no);
-			System.out.println("delete : " + res);
-			
+			dao.delete(comm_no);
 			
 		} else if (command.equals("commupdate")) {
 			int comm_no = Integer.parseInt(request.getParameter("comm_no"));
 			String comm_content = request.getParameter("comm_content");
-			System.out.println(comm_no + " " + comm_content);
 			
 			COMMDto dto = new COMMDto();
 			dto.setComm_no(comm_no);
 			dto.setComm_content(comm_content);
 			
-			int res = dao.update(dto);
-			System.out.println("update : " + res);
+			dao.update(dto);
 		}
 	}
 
@@ -97,6 +84,7 @@ public class COMMController extends HttpServlet {
 
 	public void jsResponse(String msg, String url, HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
+	    
 		String alert = "<script type='text/javascript'>" + "alert('" + msg + "');" + "location.href='" + url + "';"
 				+ "</script>";
 
