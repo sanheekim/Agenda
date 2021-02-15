@@ -20,7 +20,7 @@ public class LoginDto {
 	}
 	
 	public LoginDto(String member_id, String member_pw, String member_name, String member_email,String member_addr,
-			 String member_enabled, String member_role,String member_token, String member_salt,String member_phone) {
+			 String member_enabled, String member_role, String member_phone) {
 		this.member_id = member_id;
 		this.member_pw = member_pw;
 		this.member_name = member_name;
@@ -28,8 +28,6 @@ public class LoginDto {
 		this.member_addr = member_addr;
 		this.member_enabled=member_enabled;
 		this.member_role= member_role;
-		this.member_token = member_token;
-		this.member_salt = member_salt;
 		this.member_phone = member_phone;
 			
 	}

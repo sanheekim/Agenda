@@ -11,11 +11,9 @@
 	<result property = "member_name" column="MEMBER_NAME" />
 	<result property = "member_email" column="MEMBER_EMAIL"/>
 	<result property = "member_addr" column="MEMBER_ADDR"/>
-	<result property = "member_phone" column="MEMBER_ PHONE"/>
+	<result property = "member_phone" column="MEMBER_PHONE"/>
 	<result property = "member_enabled" column="MEMBER_ENABLED"/>
 	<result property = "member_role" column="MEMBER_ROLE"/>
-	<result property = "member_token" column="MEMBER_TOKEN"/>
-	<result property = "member_salt" column="MEMBER_SALT"/>
 	
 </resultMap>
 
@@ -25,7 +23,7 @@
 <select id="login" parameterType="loginDto" resultType="logindto" >
 
 	SELECT MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_EMAIL,
-		   MEMBER_ADDR, MEMBER_PHONE, MEMBER_ENABLED, MEMBER_ROLE, MEMBER_TOKEN, MEMBER_SALT
+		   MEMBER_ADDR, MEMBER_PHONE, MEMBER_ENABLED, MEMBER_ROLE
 	FROM   AG_MEMBER 
 	WHERE  MEMBER_ID = #{member_id}
 	AND    MEMBER_PW = #{member_pw}
@@ -71,5 +69,3 @@
 </select>
 
 </mapper>
-
-

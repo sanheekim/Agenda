@@ -58,16 +58,7 @@ public class LoginController extends HttpServlet {
 
 			
 			String member_id = request.getParameter("member_id");
-			
-			//비밀번호 암호화 이용한 로그인 작업.
-			//dao의 idsalt메소드에 member_id입력시 salt값 반환함.
-			dto = dao.idsalt(member_id);
-			
-			// 1.SHA256.java파일의 Password.getEncrypt메소드를 이용.
-			// 2.사용자가 입력한 pw에 salt결과값을 붙여줌
-			// 3.회원가입시 db에 저장된 암호화된 비밀번호와,입력한pw+salt값을 비교해 로그인 시도.
-			String member_pw = Password.getEncrypt(request.getParameter("member_pw"),dto.getMember_salt());
-			
+			String member_pw = request.getParameter("member_pw");
 			String member_enabled = request.getParameter("member_enabeld");	
 			LoginDto input = new LoginDto(member_id, member_pw, member_enabled);
 			
@@ -83,6 +74,7 @@ public class LoginController extends HttpServlet {
 
 
 			} else {
+				System.out.println(dto);
 				System.out.println("dto is null : login form 으로 다시 보냄");
 				loginResponse("아이디 또는 비밀번호가 틀렸습니다", "login/loginForm.jsp", response);
 
