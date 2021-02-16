@@ -28,3 +28,4 @@
 ![전체 후원내역 조회](https://user-images.githubusercontent.com/68312957/108027328-571a0000-706d-11eb-9197-ea6499695d10.gif)
 
 - 전체 회원내역 조회
+![전체 회원내역 조회(모자이크, 저용량2)](https://user-images.githubusercontent.com/68312957/108032095-47061e80-7075-11eb-8238-d699e413d6fb.gif)
