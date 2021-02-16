@@ -33,4 +33,4 @@
 
 - 전체 회원내역 조회
 
-![전체 회원내역 조회(모자이크, 저용량2)](https://user-images.githubusercontent.com/68312957/108032095-47061e80-7075-11eb-8238-d699e413d6fb.gif)
+<img src="https://user-images.githubusercontent.com/68312957/108032095-47061e80-7075-11eb-8238-d699e413d6fb.gif" width="200%" height="200%" title="전체 회원내역 조회(모자이크, 저용량2)"></img>
