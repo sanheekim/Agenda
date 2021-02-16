@@ -16,16 +16,21 @@
 ---
 ## 담당역할
 - 부트페이 API
+
 ![부트페이 API](https://user-images.githubusercontent.com/68312957/108027260-3d78b880-706d-11eb-86f9-8979b531babc.gif)
 
 - 관리자페이지 디자인 및 구현
+
 ![관리자페이지 디자인 및 구현](https://user-images.githubusercontent.com/68312957/108027300-4cf80180-706d-11eb-8f96-510dccef5b57.gif)
 
 - 마이페이지 디자인
+
 ![마이페이지 디자인](https://user-images.githubusercontent.com/68312957/108027312-51241f00-706d-11eb-90fd-6a23e5b55733.gif)
 
 - 전체 후원내역 조회
+
 ![전체 후원내역 조회](https://user-images.githubusercontent.com/68312957/108027328-571a0000-706d-11eb-9197-ea6499695d10.gif)
 
 - 전체 회원내역 조회
+
 ![전체 회원내역 조회(모자이크, 저용량2)](https://user-images.githubusercontent.com/68312957/108032095-47061e80-7075-11eb-8238-d699e413d6fb.gif)
